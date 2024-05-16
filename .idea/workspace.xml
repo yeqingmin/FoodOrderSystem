@@ -18,6 +18,9 @@
   <component name="KubernetesApiProvider"><![CDATA[{
   "isMigrated": true
 }]]></component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 4
 }]]></component>
@@ -144,7 +147,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1715742774720</updated>
-      <workItem from="1715742775751" duration="1696000" />
+      <workItem from="1715742775751" duration="3309000" />
     </task>
     <servers />
   </component>
