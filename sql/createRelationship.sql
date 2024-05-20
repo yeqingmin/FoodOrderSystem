@@ -25,8 +25,9 @@ create table if not exists `Order`
     `orderId`  int auto_increment  primary key comment '订单id',
     foreign key (userId) references User(userId),
     foreign key (merchantId) references Merchant(merchantId),
-    `orderStatus` tinyint default 0 comment '订单状态，0表示未完成（默认情况），1表示已完成',
-    `totalPrice` float comment '订单总价'
+    `orderStatus` tinyint default 0 comment '订单状态，0表示已确认未完成（默认情况），1表示已完成,2表述预定未确认',
+    `totalPrice` float comment '订单总价',
+    `orderTime` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '订单时间'
 );
 create table if not exists `UDReview`
 (
