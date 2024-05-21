@@ -53,6 +53,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -173,7 +176,7 @@
       <workItem from="1715742775751" duration="3309000" />
       <workItem from="1715855510023" duration="7358000" />
       <workItem from="1716172152949" duration="9113000" />
-      <workItem from="1716272508350" duration="6863000" />
+      <workItem from="1716272508350" duration="8973000" />
     </task>
     <servers />
   </component>
