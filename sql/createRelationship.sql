@@ -8,6 +8,8 @@ create table if not exists `UMReview`
     `merchantRating`  int          not null default 0 comment '对商家的评分',
     `merchantComment` varchar(256) null comment '用户对于商家的评价',
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
+    `userId` INT NOT NULL comment '用户' ,
+    `merchantId` INT NOT NULL comment '商家' ,
     FOREIGN KEY (userId) REFERENCES user (userId),
     FOREIGN KEY (merchantId) REFERENCES merchant (merchantId)
 );
@@ -15,6 +17,8 @@ create table if not exists `UMReview`
 create table if not exists `UMFavor`
 (
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
+    `userId` INT NOT NULL comment '用户' ,
+    `merchantId` INT NOT NULL comment '商家' ,
     foreign key (userId) references User (userId),
     foreign key (merchantId) references Merchant (merchantId)
 );
@@ -23,6 +27,8 @@ create table if not exists `Order`
 (
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
     `orderId`  int auto_increment  primary key comment '订单id',
+    `userId` INT NOT NULL comment '用户' ,
+    `merchantId` INT NOT NULL comment '商家' ,
     foreign key (userId) references User(userId),
     foreign key (merchantId) references Merchant(merchantId),
     `orderStatus` tinyint default 0 comment '订单状态，0表示已确认未完成（默认情况），1表示已完成',
@@ -35,6 +41,8 @@ create table if not exists `UDReview`
     `reviewId`        int  auto_increment primary key comment '评价id',
     `dishRating`  int          not null default 0 comment '对菜品的评分',
     `dishComment` varchar(256) null comment '用户对于菜品的评价',
+    `dishId` INT NOT NULL comment '菜品id',
+    `userId` INT NOT NULL comment '用户' ,
     FOREIGN KEY (userId) REFERENCES User (userId),
     FOREIGN KEY (dishId) REFERENCES Dish (dishId)
 );
@@ -42,6 +50,8 @@ create table if not exists `UDReview`
 create table if not exists `UDFavor`
 (
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
+    `dishId` INT NOT NULL comment '菜品id',
+    `userId` INT NOT NULL comment '用户' ,
     foreign key (userId) references User (userId),
     foreign key (dishId) references Dish (dishId)
 );
@@ -51,6 +61,8 @@ create table if not exists `Sale`
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
     `isFeature` tinyint default 0 comment '表示是否主打，0为非主打，1为主打，默认为0',
     `type` varchar(50) comment '菜品分类',
+    `dishId` INT NOT NULL comment '菜品id',
+    `merchantId` INT NOT NULL comment '商家' ,
     foreign key (merchantId) references Merchant (merchantId),
     foreign key (dishId) references Dish (dishId)
 );
@@ -73,6 +85,6 @@ CREATE TABLE if not exists `Book` (
     `bookEndTime` DATETIME NOT NULL comment '预定结束时间' ,
     `bookStatus` ENUM('valid', 'invalid') NOT NULL comment '订单状态' ,
     FOREIGN KEY (userId) REFERENCES User(userId),
-    FOREIGN KEY (merchantId) REFERENCES Merchant(dishId),
+    FOREIGN KEY (merchantId) REFERENCES Merchant(merchantId),
     CHECK (bookStartTime <= bookEndTime)
 );
