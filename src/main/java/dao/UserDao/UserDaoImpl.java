@@ -13,7 +13,7 @@ public class UserDaoImpl implements UserDao{
         PreparedStatement pstm = null;
         ResultSet rs = null;
         if(null != connection){
-            String sql = "SELECT * FROM users WHERE id = ?";
+            String sql = "SELECT * FROM User WHERE userId = ?";
             pstm = connection.prepareStatement(sql);
             Object[] params = {id};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
@@ -35,7 +35,7 @@ public class UserDaoImpl implements UserDao{
         PreparedStatement pstm = null;
         int flag = 0;
         if(null != connection){
-            String sql = "INSERT INTO users (userId ,username, gender, isDelete) VALUES (?, ?, ?,?)";
+            String sql = "INSERT INTO User (userId ,username, gender, isDelete) VALUES (?, ?, ?,?)";
             Object[] params = {user.getUserId(),user.getUserName(),user.getUserGender(),
                     user.isDelete()};
             flag = BaseDao.execute(connection, pstm, sql, params);
@@ -49,7 +49,7 @@ public class UserDaoImpl implements UserDao{
         PreparedStatement pstm = null;
         int flag = 0;
         if(null != connection){
-            String sql = "delete from users where id=?";
+            String sql = "delete from User where userId=?";
             Object[] params = {id};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
@@ -62,8 +62,8 @@ public class UserDaoImpl implements UserDao{
         int flag = 0;
         PreparedStatement pstm = null;
         if(null != connection){
-            String sql = "update user set userId=?,userName=?,userGender=?," +
-                    "userIsDelete=? where id=? ";
+            String sql = "update User set userId=?,userName=?,userGender=?," +
+                    "userIsDelete=? where userId=? ";
             Object[] params = {user.getUserId(),user.getUserName(),user.getUserGender(),
                     user.isDelete(),user.getUserId()};
             flag = BaseDao.execute(connection, pstm, sql, params);
