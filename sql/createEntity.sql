@@ -13,7 +13,9 @@ CREATE TABLE if not exists dishes (
     `dishImage` BLOB comment '菜品图片', -- BLOB用于存储二进制数据，如图片
     `merchantId` INT comment '商户名称',
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
-    FOREIGN KEY (merchantId) REFERENCES merchants(merchantId) -- 假设商户表名为merchants，商户ID字段名为merchant_id
+    FOREIGN KEY (merchantId) REFERENCES merchants(merchantId), -- 假设商户表名为merchants，商户ID字段名为merchantId
+    `onlineSales` INT COMMENT '线上销量',
+    `offlineSales` INT COMMENT '线下销量'
 );
 CREATE TABLE if not exists merchants (
     `merchantId` INT AUTO_INCREMENT comment '商户id' PRIMARY KEY,
