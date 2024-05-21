@@ -13,6 +13,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -46,7 +47,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "E:/Project/SMBMS",
+    "last_opened_file_path": "E:/Courses/DataBase/FoodOrderSystem/src/main/java/dao",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -66,6 +67,11 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\java\dao" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Tomcat9" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat9" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="BROWSER_ID" value="37cae5b9-e8b2-4949-9172-aafa37fbc09c" />
@@ -167,7 +173,7 @@
       <workItem from="1715742775751" duration="3309000" />
       <workItem from="1715855510023" duration="7358000" />
       <workItem from="1716172152949" duration="9113000" />
-      <workItem from="1716272508350" duration="1563000" />
+      <workItem from="1716272508350" duration="2708000" />
     </task>
     <servers />
   </component>
