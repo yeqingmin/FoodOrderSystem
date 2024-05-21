@@ -4,44 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b5d2a6a-612e-4175-b6b7-f8acd1ef54e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/Dish.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/DishPrice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/Merchant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/OrderDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/Sale.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/UDFavor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/UDReview.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/UMFavor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/UMReview.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75/storage_v2/_src_/schema/databaseproject.Pqnyvw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75/storage_v2/_src_/schema/food_order_sys.u8d5eA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75/storage_v2/_src_/schema/information_schema.FNRwLQ.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75/storage_v2/_src_/schema/mybatis.03UUWg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75/storage_v2/_src_/schema/smb-ms.S5Rqyg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75/storage_v2/_src_/schema/ssmbuild.gcgvLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75/storage_v2/_src_/schema/sys.zb4BAA.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75/storage_v2/_src_/schema/test.kkQ2AA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75/storage_v2/_src_/schema/yeqingmin.Vb46Iw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75/storage_v2/_src_/schema/yoj.FNQBAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bcc9b01b-33e7-48fd-9658-711ce6bb3e75/storage_v2/_src_/schema/yqmapi.pcnl1A.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/createEntity.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/createEntity.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/createRelationship.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/createRelationship.sql" afterDir="false" />
-    </list>
+    <list default="true" id="9b5d2a6a-612e-4175-b6b7-f8acd1ef54e7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,7 +44,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging master",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "E:/Project/SMBMS",
     "node.js.detected.package.eslint": "true",
@@ -204,7 +167,7 @@
       <workItem from="1715742775751" duration="3309000" />
       <workItem from="1715855510023" duration="7358000" />
       <workItem from="1716172152949" duration="9113000" />
-      <workItem from="1716272508350" duration="1245000" />
+      <workItem from="1716272508350" duration="1563000" />
     </task>
     <servers />
   </component>

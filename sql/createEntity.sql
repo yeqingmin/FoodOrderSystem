@@ -22,3 +22,10 @@ CREATE TABLE if not exists merchants (
     `merchantAddr` VARCHAR(255) NOT NULL comment '商户地址',
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除'
 );
+CREATE TABLE if not exists Login (
+    `id` INT AUTO_INCREMENT comment 'id' PRIMARY KEY,
+    `role` ENUM('user', 'merchant', 'admin') NOT NULL comment '角色' ,
+    `password` VARCHAR(255) NOT NULL comment '密码' ,
+    `name` VARCHAR(255) NOT NULL comment '用户名',
+    `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除'
+);
