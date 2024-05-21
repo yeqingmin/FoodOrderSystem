@@ -8,8 +8,8 @@ create table if not exists `UMReview`
     `merchantRating`  int          not null default 0 comment '对商家的评分',
     `merchantComment` varchar(256) null comment '用户对于商家的评价',
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
-    FOREIGN KEY (userId) REFERENCES User (userId),
-    FOREIGN KEY (merchantId) REFERENCES Merchant (merchantId)
+    FOREIGN KEY (userId) REFERENCES user (userId),
+    FOREIGN KEY (merchantId) REFERENCES merchant (merchantId)
 );
 
 create table if not exists `UMFavor`
@@ -64,7 +64,7 @@ CREATE TABLE if not exists `DishPrice` (
     FOREIGN KEY (dishId) REFERENCES Dish(dishId) -- 假设菜品表名为Dish，且主键为id
 );
 
-CREATE TABLE if not exists Book (
+CREATE TABLE if not exists `Book` (
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
     `bookId` INT AUTO_INCREMENT comment '预定单号' PRIMARY KEY,
     `userId` INT NOT NULL comment '下单用户' ,
