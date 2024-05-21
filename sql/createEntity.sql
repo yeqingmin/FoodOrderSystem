@@ -7,6 +7,7 @@ CREATE TABLE if not exists User (
 CREATE TABLE if not exists Merchant (
     `merchantId` INT AUTO_INCREMENT comment '商户id' PRIMARY KEY,
     `merchantAddr` VARCHAR(255) NOT NULL comment '商户地址',
+    `merchantName` VARCHAR(255) NOT NULL comment '商户名称',
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除'
 );
 

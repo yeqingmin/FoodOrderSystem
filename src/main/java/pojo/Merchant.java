@@ -3,7 +3,16 @@ package pojo;
 public class Merchant {
     private Integer merchantId;
     private String merchantAddr;
+    private String merchantName;
     private Boolean isDelete;
+
+    public void setMerchantName(String merchantName) {
+        this.merchantName = merchantName;
+    }
+
+    public String getMerchantName() {
+        return merchantName;
+    }
 
     public Integer getMerchantId() {
         return merchantId;
