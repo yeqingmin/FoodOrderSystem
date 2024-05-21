@@ -29,11 +29,11 @@ public interface UMReviewDao {
      * 用户删除指定评价
      * @author:liuying
      * @param connection 数据库连接
-     * @param reviewId   待删除评价的记录ID
+     * @param review   待删除评价的记录ID
      * @return 如果删除成功返回影响的记录数（通常为1），否则返回0或抛出异常
      * @throws Exception 如果数据库操作出错
      */
-    public int deleteReview(Connection connection, int reviewId) throws Exception;
+    public int deleteReview(Connection connection, UMReview review) throws Exception;
 
     /**
      * 用户修改指定评价
