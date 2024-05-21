@@ -20,22 +20,23 @@ public class MerchantDaoImpl implements MerchantDao{
     }
 
     @Override
-    public boolean add() {
+    public boolean addMerchant() {
         return false;
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean deleteMerchantById(int id) {
         return false;
     }
 
     @Override
-    public int modify(Merchant merchant) {
+    public int modifyMerchantById(Merchant merchant) {
         return 0;
     }
 
     @Override
-    public Merchant getMerchantById() {
+    public Merchant getMerchantById(int id) {
         return null;
     }
+
 }

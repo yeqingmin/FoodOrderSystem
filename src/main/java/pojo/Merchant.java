@@ -5,16 +5,6 @@ public class Merchant {
     private String merchantAddr;
     private Boolean isDelete;
 
-
-    public Merchant() {}
-
-    public Merchant(Integer merchantId, String merchantAddr, Boolean isDelete) {
-        this.merchantId = merchantId;
-        this.merchantAddr = merchantAddr;
-        this.isDelete = isDelete;
-    }
-
-
     public Integer getMerchantId() {
         return merchantId;
     }

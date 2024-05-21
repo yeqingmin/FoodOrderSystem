@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
   <component name="dataSourceStorageLocal" created-in="IU-232.10203.10">
     <data-source name="@localhost" uuid="daabf42c-b370-4d2f-8874-b0a25c7bd514">
       <database-info product="MySQL" version="8.0.35" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.35" exact-driver-version="8.0">
-=======
-  <component name="dataSourceStorageLocal" created-in="IU-241.15989.150">
-    <data-source name="@localhost [2]" uuid="0a2851c1-40b4-4ff5-9cb9-7df1ce553c57">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0">
->>>>>>> ae72b61fb3dd38f1b8e92b7727c6178d53497375
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
         <jdbc-catalog-is-schema>true</jdbc-catalog-is-schema>
@@ -16,15 +10,11 @@
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-<<<<<<< HEAD
       <schema-mapping>
         <introspection-scope>
           <node kind="schema" negative="1" />
         </introspection-scope>
       </schema-mapping>
-=======
-      <schema-mapping />
->>>>>>> ae72b61fb3dd38f1b8e92b7727c6178d53497375
     </data-source>
   </component>
 </project>

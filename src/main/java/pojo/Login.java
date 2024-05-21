@@ -7,17 +7,43 @@ public class Login {
     private String role;
     private Boolean isDelete;
 
-    // Constructors, Getters, and Setters
-    public Login() {}
-
-    public Login(String password, String name, Integer correspondingID, String role, Boolean isDelete) {
-        this.password = password;
-        this.name = name;
-        this.correspondingID = correspondingID;
-        this.role = role;
-        this.isDelete = isDelete;
+    public String getPassword() {
+        return password;
     }
 
-    // Getters and Setters
-    // ...
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getCorrespondingID() {
+        return correspondingID;
+    }
+
+    public void setCorrespondingID(Integer correspondingID) {
+        this.correspondingID = correspondingID;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Boolean getDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(Boolean delete) {
+        isDelete = delete;
+    }
 }
