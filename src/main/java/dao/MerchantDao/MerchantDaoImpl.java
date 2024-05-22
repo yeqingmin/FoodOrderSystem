@@ -25,6 +25,7 @@ public class MerchantDaoImpl implements MerchantDao{
                 Merchant merchant =new Merchant();
             }
         }
+        return merchants;
     }
 
     @Override
