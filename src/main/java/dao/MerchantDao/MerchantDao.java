@@ -14,13 +14,11 @@ public interface MerchantDao {
      */
     public ArrayList<Merchant> getSimpleMerchantByName(Connection connection,String name) throws SQLException;
 
-    public Merchant getDetailedMerchantByName(Connection connection,String name);
-
     public boolean addMerchant(Connection connection,Merchant merchant) throws Exception;
 
     public boolean deleteMerchantById(Connection connection,int id) throws Exception;
 
-    public int modifyMerchantById(Connection connection,Merchant merchant);
+    public int modifyMerchantById(Connection connection,Merchant merchant) throws Exception;
 
-    public Merchant getMerchantById(Connection connection,int id);
+    public Merchant getMerchantById(Connection connection,int id) throws SQLException;
 }

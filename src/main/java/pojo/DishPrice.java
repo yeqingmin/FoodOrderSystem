@@ -8,7 +8,7 @@ public class DishPrice {
     private Integer id; // 历史价格id
     private Integer dishId; // 菜品id
     private Float price; // 价格，使用BigDecimal以保持精度
-    private Date validStartTime; // 当前价格有效的开始时间
+    private Date validTime; // 当前价格有效的开始时间
 
     // 构造函数
     public DishPrice() {
@@ -47,11 +47,11 @@ public class DishPrice {
         this.price = price;
     }
 
-    public Date getValidStartTime() {
-        return validStartTime;
+    public Date getValidTime() {
+        return validTime;
     }
 
-    public void setValidStartTime(Date validStartTime) {
-        this.validStartTime = validStartTime;
+    public void setValidTime(Date validStartTime) {
+        this.validTime = validStartTime;
     }
 }

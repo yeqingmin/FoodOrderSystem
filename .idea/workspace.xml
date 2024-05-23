@@ -4,7 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b5d2a6a-612e-4175-b6b7-f8acd1ef54e7" name="Changes" comment="" />
+    <list default="true" id="9b5d2a6a-612e-4175-b6b7-f8acd1ef54e7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/MerchantDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/Merchant/MerchantService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/Merchant/MerchantServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/createEntity.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/createEntity.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/createRelationship.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/createRelationship.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/BookDao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/BookDao/BookDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/BookDao/BookDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/BookDao/BookDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DishDao/DishDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DishDao/DishDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DishDao/DishDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DishDao/DishDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DishPriceDao/DishPriceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DishPriceDao/DishPriceDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DishPriceDao/DishPriceDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DishPriceDao/DishPriceDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/LoginDao/LoginDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/LoginDao/LoginDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/LoginDao/LoginDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/LoginDao/LoginDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/MerchantDao/MerchantDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/MerchantDao/MerchantDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/MerchantDao/MerchantDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/MerchantDao/MerchantDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/SaleDao/SaleDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/SaleDao/SaleDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UMFavorDao/UMFavorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UMFavorDao/UMFavorDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UMFavorDao/UMFavorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UMFavorDao/UMFavorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UMReviewDao/UMReviewDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UMReviewDao/UMReviewDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UMReviewDao/UMReviewDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UMReviewDao/UMReviewDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UserDao/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UserDao/UserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/DishPrice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/DishPrice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/Merchant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/Merchant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/Sale.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,9 +79,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Merging master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/lenovo/Desktop/Courses/数据库设计/lab/Lab1/lab_1",
+    "last_opened_file_path": "C:/Users/lenovo/Desktop/SEProject",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -177,6 +211,9 @@
       <workItem from="1715855510023" duration="7358000" />
       <workItem from="1716172152949" duration="9113000" />
       <workItem from="1716272508350" duration="15750000" />
+      <workItem from="1716374005523" duration="2029000" />
+      <workItem from="1716381041722" duration="1395000" />
+      <workItem from="1716435748383" duration="7841000" />
     </task>
     <servers />
   </component>
