@@ -21,4 +21,6 @@ public interface MerchantDao {
     public int modifyMerchantById(Connection connection,Merchant merchant) throws Exception;
 
     public Merchant getMerchantById(Connection connection,int id) throws SQLException;
+
+    public Merchant getMerchantByNameAndAddress(Connection connection,String name,String address) throws SQLException;
 }

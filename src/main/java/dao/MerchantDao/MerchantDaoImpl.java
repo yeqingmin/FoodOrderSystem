@@ -52,7 +52,7 @@ public class MerchantDaoImpl implements MerchantDao{
         Merchant merchant=null;
         ResultSet resultSet=null;
         if(null != connection){
-            String sql="select * from Merchant where id = ?";
+            String sql="select * from Merchant where merchantId = ?";
             Object argms[]={id};
             resultSet=BaseDao.execute(connection,preparedStatement,resultSet,sql,argms);
             if(resultSet.next()){
@@ -119,6 +119,26 @@ public class MerchantDaoImpl implements MerchantDao{
             BaseDao.closeResource(null, pstm, null);
         }
         return flag;
+    }
+
+    public Merchant getMerchantByNameAndAddress(Connection connection,String name,String address) throws SQLException{
+        PreparedStatement preparedStatement=null;
+        Merchant merchant=null;
+        ResultSet resultSet=null;
+        if(null != connection){
+            String sql="select * from Merchant where merchantAddr = ? and merchantName = ?";
+            Object argms[]={address,name};
+            resultSet=BaseDao.execute(connection,preparedStatement,resultSet,sql,argms);
+            if(resultSet.next()){
+                merchant=new Merchant();
+                merchant.setMerchantId(resultSet.getInt("merchantId"));
+                merchant.setMerchantName(resultSet.getString("merchantName"));
+                merchant.setMerchantAddr(resultSet.getString("merchantAddr"));
+                merchant.setFeatureDish(resultSet.getString("featureDish"));
+            }
+            BaseDao.closeResource(connection,preparedStatement,resultSet);
+        }
+        return merchant;
     }
 
 }
