@@ -2,7 +2,9 @@ package service.Merchant;
 
 import dao.BaseDao;
 import dao.DishDao.DishDao;
+import dao.DishDao.DishDaoImpl;
 import dao.MerchantDao.MerchantDao;
+import dao.MerchantDao.MerchantDaoImpl;
 import pojo.Dish;
 import pojo.Merchant;
 import pojo.MerchantDetail;
@@ -13,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MerchantServiceImpl implements MerchantService {
-    private MerchantDao merchantDao;
-    private DishDao dishDao;
+    private final MerchantDao merchantDao=new MerchantDaoImpl();
+    private final DishDao dishDao=new DishDaoImpl();
     @Override
     public ArrayList<Merchant> getSimpleMerchantByName(String name){
         return null;
