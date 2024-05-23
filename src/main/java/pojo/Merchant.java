@@ -6,6 +6,15 @@ public class Merchant {
     private String merchantName;
     private Boolean isDelete;
 
+    public String getFeatureDish() {
+        return featureDish;
+    }
+
+    public void setFeatureDish(String featureDish) {
+        this.featureDish = featureDish;
+    }
+
+    private String featureDish;
     public void setMerchantName(String merchantName) {
         this.merchantName = merchantName;
     }
@@ -37,4 +46,5 @@ public class Merchant {
     public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
     }
+
 }

@@ -2,11 +2,13 @@ package dao.DishDao;
 
 import dao.BaseDao;
 import pojo.Dish;
+import pojo.Merchant;
 import pojo.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class DishDaoImpl implements DishDao{
@@ -58,9 +60,10 @@ public class DishDaoImpl implements DishDao{
                     "where dishId=? ";
             Object[] params = {price,id};
             flag = BaseDao.execute(connection, pstm, sql, params);
-            String sql2 = "INSERT INTO DishPrice (isDelete, dishId, price, validStartTime) VALUES (0, ?, ?, ?)";
-            Object[] params2 = {id,price, Calendar.getInstance().getTime()};
-            BaseDao.execute(connection, pstm, sql2, params2);
+            //todo 这段逻辑应该放在service里面来完成
+//            String sql2 = "INSERT INTO DishPrice (isDelete, dishId, price, validStartTime) VALUES (0, ?, ?, ?)";
+//            Object[] params2 = {id,price, Calendar.getInstance().getTime()};
+//            BaseDao.execute(connection, pstm, sql2, params2);
             BaseDao.closeResource(null, pstm, null);
         }
         return flag;
@@ -89,6 +92,39 @@ public class DishDaoImpl implements DishDao{
             BaseDao.closeResource(null, pstm, null);
         }
         return flag;
+    }
+
+    /**
+     * 获取对应merchant的菜单
+     * @param connection
+     * @param merchantId
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public ArrayList<Dish> getDishByMerchantId(Connection connection, int merchantId) throws Exception {
+        ArrayList<Dish> menu=new ArrayList<>();
+        PreparedStatement preparedStatement=null;
+        ResultSet rs=null;
+        if(null != connection){
+            String sql="select * from Dish where merchantId=?";
+            Object[] params ={merchantId};
+            rs=BaseDao.execute(connection,preparedStatement,rs,sql,params);
+            if(rs.next()){
+                Dish dish=new Dish();
+                dish.setDishName(rs.getString("dishName"));
+                dish.setDishPrice(rs.getFloat("dishPrice"));
+                dish.setDishCategory(rs.getString("dishCategory"));
+                dish.setDishDescription(rs.getString("dishDescription"));
+                dish.setDishImage(rs.getBytes("dishImage"));
+                dish.setMerchantId(rs.getInt("merchantId"));
+                dish.setIsDelete(rs.getBoolean("isDeleted"));
+                menu.add(dish);
+            }
+            BaseDao.closeResource(connection,preparedStatement,rs);
+        }
+        return menu;
+
     }
 
 }

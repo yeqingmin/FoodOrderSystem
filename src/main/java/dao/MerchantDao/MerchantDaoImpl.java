@@ -1,42 +1,124 @@
 package dao.MerchantDao;
 
+import dao.BaseDao;
 import pojo.Merchant;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MerchantDaoImpl implements MerchantDao{
-    @Override
-    public ArrayList<Merchant> getSimpleMerchantByName(String name) {
-        /**
-         * 根据用户输入的商户信息查询所有重名的商家
-         */
 
-        return null;
+    /**
+     * 根据商户名查看不同的商户简略信息
+     * 简略信息包括商户名称和主打菜品
+     * @param connection
+     * @param name
+     * @return
+     * @throws SQLException
+     */
+    @Override
+    public ArrayList<Merchant> getSimpleMerchantByName(Connection connection, String name) throws SQLException {
+        ArrayList<Merchant> merchants=new ArrayList<>();
+        PreparedStatement preparedStatement=null;
+        ResultSet resultSet=null;
+        if(null != connection){
+            String sql="select * from Merchant where merchantName=?";
+            Object params[]={name};
+            resultSet=BaseDao.execute(connection,preparedStatement,resultSet,sql,params);
+            if(resultSet.next()){
+                Merchant merchant =new Merchant();
+                merchant.setMerchantName(resultSet.getString("merchantName"));
+                merchant.setMerchantAddr(resultSet.getString("merchantAddr"));
+                merchant.setFeatureDish(resultSet.getString("featureDish"));
+                merchants.add(merchant);
+            }
+            BaseDao.closeResource(connection,preparedStatement,resultSet);
+        }
+        return merchants;
     }
 
+    /**
+     * 根据id查询一个商家的详细信息,包括菜单、菜品概要
+     * @param connection
+     * @param id
+     * @return
+     */
     @Override
-    public Merchant getDetailedMerchantByName() {
-        return null;
+    public Merchant getMerchantById(Connection connection, int id) throws SQLException {
+        PreparedStatement preparedStatement=null;
+        Merchant merchant=null;
+        ResultSet resultSet=null;
+        if(null != connection){
+            String sql="select * from Merchant where id = ?";
+            Object argms[]={id};
+            resultSet=BaseDao.execute(connection,preparedStatement,resultSet,sql,argms);
+            if(resultSet.next()){
+                merchant=new Merchant();
+                merchant.setMerchantId(id);
+                merchant.setMerchantName(resultSet.getString("merchantName"));
+                merchant.setMerchantAddr(resultSet.getString("merchantAddr"));
+                merchant.setFeatureDish(resultSet.getString("featureDish"));
+            }
+            BaseDao.closeResource(connection,preparedStatement,resultSet);
+        }
+        return merchant;
     }
 
+    /**
+     * 管理员调用增加商家
+     * @param connection
+     * @param merchant
+     * @return
+     * @throws Exception
+     */
     @Override
-    public boolean addMerchant() {
+    public boolean addMerchant(Connection connection, Merchant merchant) throws Exception {
+        PreparedStatement preparedStatement= null;
+        int flag=0;
+        if(null != connection){
+            String sql= "insert into Merchant (merchantName,merchantAddr) values(?)";
+            Object params[]={merchant.getMerchantName(), merchant.getMerchantAddr()};
+            flag= BaseDao.execute(connection,preparedStatement,sql,params);
+            BaseDao.closeResource(null,preparedStatement,null);
+        }
+        if(flag!=0){
+            System.out.println("add Merchant succeed!");
+            return true;
+        }
         return false;
     }
 
     @Override
-    public boolean deleteMerchantById(int id) {
+    public boolean deleteMerchantById(Connection connection, int id) throws Exception {
+        PreparedStatement pstm = null;
+        int flag = 0;
+        if(null != connection){
+            String sql = "delete from Merchant where id=?";
+            Object[] params = {id};
+            flag = BaseDao.execute(connection, pstm, sql, params);
+            BaseDao.closeResource(null, pstm, null);
+        }
+        if(flag!=0){
+            System.out.println("delete Merchant succeed！");
+            return true;
+        }
         return false;
     }
 
     @Override
-    public int modifyMerchantById(Merchant merchant) {
-        return 0;
-    }
-
-    @Override
-    public Merchant getMerchantById(int id) {
-        return null;
+    public int modifyMerchantById(Connection connection, Merchant merchant) throws Exception {
+        int flag = 0;
+        PreparedStatement pstm = null;
+        if(null != connection){
+            String sql = "update Merchant set merchantAddr=?,merchantName=?";
+            Object[] params = {merchant.getMerchantAddr(),merchant.getMerchantName()};
+            flag = BaseDao.execute(connection, pstm, sql, params);
+            BaseDao.closeResource(null, pstm, null);
+        }
+        return flag;
     }
 
 }

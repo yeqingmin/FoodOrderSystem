@@ -2,6 +2,8 @@ package dao.MerchantDao;
 
 import pojo.Merchant;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface MerchantDao {
@@ -10,15 +12,13 @@ public interface MerchantDao {
      *
      * @return
      */
-    public ArrayList<Merchant> getSimpleMerchantByName(String name);
+    public ArrayList<Merchant> getSimpleMerchantByName(Connection connection,String name) throws SQLException;
 
-    public Merchant getDetailedMerchantByName();
+    public boolean addMerchant(Connection connection,Merchant merchant) throws Exception;
 
-    public boolean addMerchant();
+    public boolean deleteMerchantById(Connection connection,int id) throws Exception;
 
-    public boolean deleteMerchantById(int id);
+    public int modifyMerchantById(Connection connection,Merchant merchant) throws Exception;
 
-    public int modifyMerchantById(Merchant merchant);
-
-    public Merchant getMerchantById(int id);
+    public Merchant getMerchantById(Connection connection,int id) throws SQLException;
 }

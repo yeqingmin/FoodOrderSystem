@@ -56,23 +56,23 @@ create table if not exists `UDFavor`
     foreign key (dishId) references Dish (dishId)
 );
 
-create table if not exists `Sale`
-(
-    `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
-    `isFeature` tinyint default 0 comment '表示是否主打，0为非主打，1为主打，默认为0',
-    `type` varchar(50) comment '菜品分类',
-    `dishId` INT NOT NULL comment '菜品id',
-    `merchantId` INT NOT NULL comment '商家' ,
-    foreign key (merchantId) references Merchant (merchantId),
-    foreign key (dishId) references Dish (dishId)
-);
+# create table if not exists `Sale`
+# (
+#     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
+#     `isFeature` tinyint default 0 comment '表示是否主打，0为非主打，1为主打，默认为0',
+#     `type` varchar(50) comment '菜品分类',
+#     `dishId` INT NOT NULL comment '菜品id',
+#     `merchantId` INT NOT NULL comment '商家' ,
+#     foreign key (merchantId) references Merchant (merchantId),
+#     foreign key (dishId) references Dish (dishId)
+# );
 
 CREATE TABLE if not exists `DishPrice` (
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
     `id` INT AUTO_INCREMENT comment '历史价格id' PRIMARY KEY,
     `dishId` INT NOT NULL comment '菜品id',
-    `price` DECIMAL(10, 2) NOT NULL comment '价格',
-    `validStartTime` DATETIME NOT NULL comment '当前价格有效的开始时间',
+    `price` float NOT NULL comment '价格',
+    `validTime` DATETIME NOT NULL comment '当前价格有效的开始时间',
     FOREIGN KEY (dishId) REFERENCES Dish(dishId) -- 假设菜品表名为Dish，且主键为id
 );
 

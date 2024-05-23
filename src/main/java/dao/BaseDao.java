@@ -10,42 +10,47 @@ import java.util.Properties;
  * 该类实现一些基本的数据库操作，连接数据库和基础的增删改查包括关闭资源
  */
 public class BaseDao {
-    private static final String driver;
-    private static final String url;
-    private static final String userName;
-    private static final String password;
+    private static  String driver;
+    private static  String url;
+    private static String userName;
+    private static  String password;
 
-    /*
-     * 静态代码块，读取配置文件
-     */
-    static {
-        //读取二进制文件
-        //先读取配置文件
+    //静态代码块,在类加载的时候执行
+    static{
+        init();
+    }
+
+
+    //初始化连接参数,从配置文件里获得
+    public static void init(){
         Properties params=new Properties();
-        String configFile="db.properties";
-        InputStream inputStream= BaseDao.class.getResourceAsStream(configFile);
-        try{
-            params.load(inputStream);
+        String configFile = "db.properties";
+        InputStream is= BaseDao.class.getClassLoader().getResourceAsStream(configFile);
+        try {
+            params.load(is);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         driver=params.getProperty("driver");
         url=params.getProperty("url");
-        userName=params.getProperty("userName");
+        userName=params.getProperty("user");
         password=params.getProperty("password");
+
     }
 
     /**
      * @return 获取数据库连接
      */
-    public static Connection getConnection() {
+    public static Connection getConnection(){
         Connection connection = null;
         try {
             Class.forName(driver);
-            connection = DriverManager.getConnection(url,userName, password);
+            connection = DriverManager.getConnection(url, userName, password);
         } catch (Exception e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
         return connection;
     }
 

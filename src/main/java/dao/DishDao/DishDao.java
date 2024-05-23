@@ -4,11 +4,12 @@ import pojo.Dish;
 import pojo.User;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 public interface DishDao {
     /**
      * 通过dishId获取dish
-     * @author:liuying
+     * @author liuying
      * @param connection
      * @param name
      * @return
@@ -19,4 +20,5 @@ public interface DishDao {
     public int modifyPrice(Connection connection, int id , float price)throws Exception;
     public int modifyCategory(Connection connection, int id , String dishCategory)throws Exception;
     public int deleteDishById(Connection connection, int id)throws Exception;
+    public ArrayList<Dish> getDishByMerchantId(Connection connection,int merchantId) throws Exception;
 }
