@@ -30,13 +30,13 @@ public class LoginDaoImpl implements LoginDao{
         ResultSet rs = null;
         Login login = null;
         if(null != connection){
-            String sql = "select * from Login where name=? and password=?";
+            String sql = "select * from login where name=? and password=?";
             Object[] params = {name,password};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if(rs.next()){
                 login = new Login();
                 login.setRole(rs.getString("role"));
-                login.setCorrespondingID((rs.getInt("id")));
+                login.setCorrespondingID((rs.getInt("correspondingId")));
             }
             BaseDao.closeResource(null, pstm, rs);
         }
@@ -44,7 +44,6 @@ public class LoginDaoImpl implements LoginDao{
     }
     @Override
     public int deleteUserById(Connection connection,Integer delId) throws Exception {
-        // TODO Auto-generated method stub
         PreparedStatement pstm = null;
         int flag = 0;
         if (null != connection) {

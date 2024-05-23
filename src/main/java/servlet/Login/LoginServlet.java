@@ -23,7 +23,9 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
     //获取用户名和密码，从前端的标签内容
         String name=request.getParameter("userCode");
+       // System.out.println("name"+name);
         String password=request.getParameter("userPassword");
+        //System.out.println("password"+password);
         //调用Service方法，进行用户匹配
         LoginService loginService=new LoginServiceImpl();
         Login login=loginService.getLoginUser(name,password);

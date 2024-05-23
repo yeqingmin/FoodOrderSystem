@@ -10,58 +10,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b5d2a6a-612e-4175-b6b7-f8acd1ef54e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/Login/LoginService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/Login/LoginServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/Login/LoginServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/public.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/buy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/clock.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/formBg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/gys.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/home.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/leftBg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/loginBg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/login_bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/login_img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/mm.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/read.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/schu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/tc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/tianjia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/time.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/xiugai.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/y.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/yh.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/zd.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/billadd.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/billlist.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/billmodify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/billview.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/common.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/jquery-1.8.3.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/provideradd.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/providerlist.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/providermodify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/providerview.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/pwdmodify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/rollpage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/time.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/useradd.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/userlist.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/usermodify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/userview.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/billadd.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/billlist.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/billmodify.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/billview.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/common/foot.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/common/head.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/error.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/frame.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/provideradd.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/providerlist.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/providermodify.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/providerview.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/pwdmodify.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/rollpage.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/useradd.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/userlist.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/usermodify.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/userview.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/BaseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/BaseDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/Merchant/MerchantServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Merchant/MerchantServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/LoginDao/LoginDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/LoginDao/LoginDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Login/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Login/LoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Login/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Login/LoginServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/public.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +85,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/lenovo/Desktop/WorkLearning/techframe/Smbms-Spring-Mybatis",
+    "last_opened_file_path": "E:/Courses/DataBase/FoodOrderSystem/src/main/webapp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -248,7 +220,7 @@
       <workItem from="1716381041722" duration="1395000" />
       <workItem from="1716435748383" duration="8067000" />
       <workItem from="1716450041531" duration="1912000" />
-      <workItem from="1716457385428" duration="1831000" />
+      <workItem from="1716457385428" duration="6877000" />
     </task>
     <servers />
   </component>

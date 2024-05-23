@@ -32,7 +32,6 @@ public class LoginServiceImpl implements LoginService{
                 System.out.println("rollback==================");
                 connection.rollback();
             } catch (SQLException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         }finally {
