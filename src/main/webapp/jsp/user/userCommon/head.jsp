@@ -16,7 +16,7 @@
         <h1>食堂点单系统</h1>
         <div class="publicHeaderR">
             <p>欢迎你！</p>
-            <a href="${pageContext.request.contextPath }/jsp/logout.do">退出</a>
+            <a href="${pageContext.request.contextPath }/jsp/logout">退出</a>
         </div>
     </header>
 <!--时间-->
@@ -30,13 +30,11 @@
          <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
          <nav>
              <ul class="list">
-                 <li ><a href="${pageContext.request.contextPath }/jsp/bill.do?method=query">订单管理</a></li>
-              <li><a href="${pageContext.request.contextPath }/jsp/provider.do?method=query">商户操作</a></li>
-                 <li><a href="${pageContext.request.contextPath }/jsp/dish.do?method=query">菜品操作</a></li>
-                 <li><a href="${pageContext.request.contextPath }/jsp/user.do?method=query">个人中心</a></li>
-                 <li><a href="${pageContext.request.contextPath }/jsp/user.do?method=query">系统消息</a></li>
-<%--              <li><a href="${pageContext.request.contextPath }/jsp/pwdmodify.jsp">密码修改</a></li>--%>
-              <li><a href="${pageContext.request.contextPath }/jsp/logout.do">退出系统</a></li>
+                 <li ><a href="${pageContext.request.contextPath }/jsp/order?method=query">订单管理</a></li>
+              <li><a href="${pageContext.request.contextPath }/jsp/merchant?method=query">商户操作</a></li>
+                 <li><a href="${pageContext.request.contextPath }/jsp/dish?method=query">菜品操作</a></li>
+                 <li><a href="${pageContext.request.contextPath }/jsp/user?method=view">个人中心</a></li>
+                 <li><a href="${pageContext.request.contextPath }/jsp/system?method=query">系统消息</a></li>
              </ul>
          </nav>
      </div>

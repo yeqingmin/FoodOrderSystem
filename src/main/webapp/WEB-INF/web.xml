@@ -11,9 +11,49 @@
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>servlet.Login.LoginServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>MerchantServlet</servlet-name>
+    <servlet-class>servlet.Merchant.merchantServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>servlet.User.userServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DishServlet</servlet-name>
+    <servlet-class>servlet.Dish.dishServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OrderServlet</servlet-name>
+    <servlet-class>servlet.Order.OrderServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MessageServlet</servlet-name>
+    <servlet-class>servlet.Message.MessageServlet</servlet-class>
+  </servlet>
   
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DishServlet</servlet-name>
+    <url-pattern>/jsp/dish</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MerchantServlet</servlet-name>
+    <url-pattern>/jsp/merchant</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/jsp/user</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OrderServlet</servlet-name>
+    <url-pattern>/jsp/order</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MessageServlet</servlet-name>
+    <url-pattern>/jsp/system</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -4,16 +4,17 @@
  <div class="right">
         <div class="location">
             <strong>你现在所在的位置是:</strong>
-            <span>用户管理页面 >> 用户信息查看页面</span>
+            <span>个人中心 >> 用户信息查看页面</span>
         </div>
         <div class="providerView">
-            <p><strong>用户编号：</strong><span>${user.userCode }</span></p>
+<%--            <p><strong>用户编号：</strong><span>${user.userCode }</span></p>--%>
             <p><strong>用户名称：</strong><span>${user.userName }</span></p>
             <p><strong>用户性别：</strong>
-            	<span>
-            		<c:if test="${user.gender == 1 }">男</c:if>
-					<c:if test="${user.gender == 2 }">女</c:if>
-				</span>
+<%--            	<span>--%>
+<%--            		<c:if test="${user.gender == 1 }">男</c:if>--%>
+<%--					<c:if test="${user.gender == 2 }">女</c:if>--%>
+<%--				</span>--%>
+                ${user.userGender}
 			</p>
             <p><strong>出生日期：</strong><span>${user.birthday }</span></p>
             <p><strong>用户电话：</strong><span>${user.phone }</span></p>

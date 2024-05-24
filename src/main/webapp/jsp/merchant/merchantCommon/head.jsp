@@ -30,11 +30,9 @@
          <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
          <nav>
              <ul class="list">
-                 <li><a href="${pageContext.request.contextPath }/jsp/user.do?method=query">商户中心</a></li>
-                 <li><a href="${pageContext.request.contextPath }/jsp/dish.do?method=query">菜单管理</a></li>
+                 <li><a href="${pageContext.request.contextPath }/jsp/merchant?method=view">商户中心</a></li>
+                 <li><a href="${pageContext.request.contextPath }/jsp/dish?method=merchantManage">菜单管理</a></li>
                  <li ><a href="${pageContext.request.contextPath }/jsp/bill.do?method=query">数据分析</a></li>
-<%--              <li><a href="${pageContext.request.contextPath }/jsp/pwdmodify.jsp">密码修改</a></li>--%>
-              <li><a href="${pageContext.request.contextPath }/jsp/logout.do">退出系统</a></li>
              </ul>
          </nav>
      </div>

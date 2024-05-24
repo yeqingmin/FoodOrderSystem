@@ -15,31 +15,31 @@
         <span>商户操作</span>
     </div>
     <div class="search">
-        <form method="get" action="${pageContext.request.contextPath }/jsp/merchant.do">
+        <form method="get" action="${pageContext.request.contextPath }/jsp/merchant">
             <input name="method" value="query" class="input-text" type="hidden">
-            <span>商品名称：</span>
-            <input name="queryProductName" type="text" value="${queryProductName }">
+            <span>商家名称：</span>
+            <input name="merchantName" type="text" value="${merchantName }">
 
-            <span>商户：</span>
-            <select name="queryMerchantId">
-                <c:if test="${merchantList != null }">
-                    <option value="0">--请选择--</option>
-                    <c:forEach var="merchant" items="${merchantList}">
-                        <option <c:if test="${merchant.id == queryMerchantId }">selected="selected"</c:if>
-                                value="${merchant.id}">${merchant.name}</option>
-                    </c:forEach>
-                </c:if>
-            </select>
+<%--            <span>商户：</span>--%>
+<%--            <select name="queryMerchantId">--%>
+<%--                <c:if test="${merchantList != null }">--%>
+<%--                    <option value="0">--请选择--</option>--%>
+<%--                    <c:forEach var="merchant" items="${merchantList}">--%>
+<%--                        <option <c:if test="${merchant.id == queryMerchantId }">selected="selected"</c:if>--%>
+<%--                                value="${merchant.id}">${merchant.name}</option>--%>
+<%--                    </c:forEach>--%>
+<%--                </c:if>--%>
+<%--            </select>--%>
 
-            <span>是否付款：</span>
-            <select name="queryIsPayment">
-                <option value="0">--请选择--</option>
-                <option value="1" ${queryIsPayment == 1 ? "selected=\"selected\"":"" }>未付款</option>
-                <option value="2" ${queryIsPayment == 2 ? "selected=\"selected\"":"" }>已付款</option>
-            </select>
+<%--            <span>是否付款：</span>--%>
+<%--            <select name="queryIsPayment">--%>
+<%--                <option value="0">--请选择--</option>--%>
+<%--                <option value="1" ${queryIsPayment == 1 ? "selected=\"selected\"":"" }>未付款</option>--%>
+<%--                <option value="2" ${queryIsPayment == 2 ? "selected=\"selected\"":"" }>已付款</option>--%>
+<%--            </select>--%>
 
             <input value="查 询" type="submit" id="searchbutton">
-            <a href="${pageContext.request.contextPath }/jsp/merchantadd.jsp">添加商户</a>
+<%--            <a href="${pageContext.request.contextPath }/jsp/merchantadd.jsp">添加商户</a>这个是在管理员页面里面看见的东西--%>
         </form>
     </div>
     <!--商户表格样式-->

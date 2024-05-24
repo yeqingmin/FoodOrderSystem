@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class DishDaoImpl implements DishDao{
-    public Dish getDishById(Connection connection, String name) throws Exception {
+    public Dish getDishByName(Connection connection, String name) throws Exception {
         Dish dish = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -124,6 +124,34 @@ public class DishDaoImpl implements DishDao{
             BaseDao.closeResource(connection,preparedStatement,rs);
         }
         return menu;
+
+    }
+    public Dish getDishByNameAndMerchant(Connection connection, String name,int id)throws Exception{
+        Dish dish = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if(null != connection){
+            String sql = "SELECT * FROM Dish WHERE dishName= ? and merchantId=?";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {name,id};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            if(rs.next()){
+                dish = new Dish();
+                dish.setDishId(rs.getInt("dishId"));
+                dish.setDishName(rs.getString("dishName"));
+                dish.setDishPrice(rs.getFloat("dishPrice"));
+                dish.setDishCategory(rs.getString("dishCategory"));
+                dish.setDishDescription(rs.getString("dishDescription"));
+                dish.setDishImage(rs.getBytes("dishImage"));
+                dish.setMerchantId(rs.getInt("merchantId"));
+                dish.setIsDelete(rs.getBoolean("isDeleted"));
+                if(rs.getBoolean("isDelete")){
+                    dish=null;
+                }
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return dish;
 
     }
 

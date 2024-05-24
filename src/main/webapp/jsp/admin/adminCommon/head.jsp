@@ -30,9 +30,8 @@
          <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
          <nav>
              <ul class="list">
-                 <li ><a href="${pageContext.request.contextPath }/jsp/user.do?method=query">用户管理</a></li>
-                 <li><a href="${pageContext.request.contextPath }/jsp/provider.do?method=query">商户管理</a></li>
-                 <li><a href="${pageContext.request.contextPath }/jsp/logout.do">退出系统</a></li>
+                 <li ><a href="${pageContext.request.contextPath }/jsp/user?method=adminManage">用户管理</a></li>
+                 <li><a href="${pageContext.request.contextPath }/jsp/merchant?method=adminManage">商户管理</a></li>
              </ul>
          </nav>
      </div>
