@@ -4,7 +4,7 @@
 }
 body{
     font-size: 12px;
-    background: #4287c2;
+    background: #c7d9e8; 
 }
 .clear:after{
     content: '';
@@ -159,7 +159,7 @@ li{
 
 /*右边*/
 .right{
-    width: 85%;
+    width: 100%;
 }
 /*右边所在位置栏*/
 .location{
@@ -263,3 +263,12 @@ li{
     outline: none;
     background-color: #5d8410;
 }
+
+
+
+
+
+
+
+
+

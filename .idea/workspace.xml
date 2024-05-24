@@ -10,30 +10,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b5d2a6a-612e-4175-b6b7-f8acd1ef54e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/billadd.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/billlist.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/billmodify.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/billview.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/common/foot.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/common/head.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/error.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/frame.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/provideradd.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/providerlist.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/providermodify.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/providerview.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/pwdmodify.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/rollpage.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/useradd.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/userlist.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/usermodify.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/userview.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminIndex.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/login_bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantCommon/foot.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantCommon/head.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/dish/dishList.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/merchant/merchantList.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/userCommon/foot.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/userCommon/head.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/merchantIndex.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/userIndex.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/LoginDao/LoginDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/LoginDao/LoginDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/Login/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Login/LoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Login/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Login/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/META-INF/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/public.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/login_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/common/foot.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/admin/adminCommon/foot.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/common/head.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/admin/adminCommon/head.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/frame.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/frame.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/provideradd.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/providerlist.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/providermodify.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/providerview.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/userview.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/userview.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,9 +45,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="Class" />
         <option value="Interface" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -85,7 +87,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "E:/Courses/DataBase/FoodOrderSystem/src/main/webapp",
+    "last_opened_file_path": "F:/project/OpenAPI/YQMAPI_backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -110,23 +112,31 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\admin" />
+      <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\merchant" />
       <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp" />
       <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\java\dao" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\user\merchant" />
+      <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\user\dish" />
+      <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\user" />
+      <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\user\merchantManage" />
+      <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\user\userCommon" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="Tomcat9" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat9" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="BROWSER_ID" value="37cae5b9-e8b2-4949-9172-aafa37fbc09c" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="FoodOrderSystem:war">
           <settings>
-            <option name="CONTEXT_PATH" value="/FoodOrderSystem_war" />
+            <option name="CONTEXT_PATH" value="/FoodOrderSystem" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="00d38f6c-24b2-4e74-b366-2fe7a625cea9" />
+        <option name="BASE_DIRECTORY_NAME" value="69e5c19f-3cd0-45ef-8719-c3249ea8e68a" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -134,7 +144,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="11850" />
+        <option name="DEBUG_PORT" value="8956" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -220,7 +230,10 @@
       <workItem from="1716381041722" duration="1395000" />
       <workItem from="1716435748383" duration="8067000" />
       <workItem from="1716450041531" duration="1912000" />
-      <workItem from="1716457385428" duration="6877000" />
+      <workItem from="1716457385428" duration="7936000" />
+      <workItem from="1716465958721" duration="383000" />
+      <workItem from="1716518917225" duration="661000" />
+      <workItem from="1716522293454" duration="9142000" />
     </task>
     <servers />
   </component>
@@ -229,5 +242,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/FoodOrderSystem$Tomcat9.ic" NAME="Tomcat9 Coverage Results" MODIFIED="1716523509528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

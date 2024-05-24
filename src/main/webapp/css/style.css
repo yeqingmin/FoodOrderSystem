@@ -233,14 +233,11 @@ input[type='reset']:active, input[type='reset']:focus, .providerView a:hover, .p
 
 /*供应商管理页面-->供应商添加页面*/
 .providerAdd {
-    border: 1px solid #9ac70f;
+    /* border: 1px solid #9ac70f; */
     padding: 20px;
     margin: 20px;
 }
 
-.providerAdd form {
-
-}
 
 .providerAdd div {
     margin-top: 12px;
@@ -265,8 +262,8 @@ input[type='reset']:active, input[type='reset']:focus, .providerView a:hover, .p
 }
 
 .providerAdd input:focus,.providerAdd select:focus {
-    border: 1px solid #0e56a8;
-    background: rgba(238, 236, 240, 0.2);
+    border: 1px solid #1d71d1;
+    background: rgba(238, 236, 240, 0.6);
     -webkit-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
     -moz-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
     box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
@@ -288,11 +285,11 @@ input[type='reset']:active, input[type='reset']:focus, .providerView a:hover, .p
 
 /*验证成功*/
 .providerAdd .ok span {
-    color: green;
+    color: rgb(0, 128, 87);
 }
 
 .providerAdd .ok input {
-    border: 1px solid green;
+    border: 1px solid rgb(0, 128, 87);
 }
 
 .providerAddBtn {
@@ -308,9 +305,10 @@ input[type='reset']:active, input[type='reset']:focus, .providerView a:hover, .p
     height: 30px;
     line-height: 30px;
     text-align: center;
-    border-radius: 4px;
+    border-radius: 2px;
     border: transparent;
-    background: linear-gradient(to bottom, #85c0ec, #6aa7d6, #508dc6, #306fb4, #17559e);
+    /* background: linear-gradient(to bottom, #85c0ec, #6aa7d6, #508dc6, #306fb4, #17559e); */
+    background:  #17559e;
     color: #fff;
     cursor: pointer;
     font-weight: bold;
@@ -323,7 +321,8 @@ input[type='reset']:active, input[type='reset']:focus, .providerView a:hover, .p
 .providerAddBtn a:hover,
 .providerAddBtn input[type='submit']:hover,
 .providerAddBtn input[type='submit']:focus{
-    background: linear-gradient(to bottom, #7aaed4, #578bb4, #406e99, #225792, #0d2d54);
+    /* background: linear-gradient(to bottom, #7aaed4, #578bb4, #406e99, #225792, #0d2d54); */
+    background: #85c0ec;
 }
 
 .providerAdd input[type='radio']{
@@ -443,5 +442,25 @@ input[type='reset']:active, input[type='reset']:focus, .providerView a:hover, .p
 	margin:0px 5px;
 }
 
+.errorPage {
+    width: 400px;
+    margin: 0 auto;
+}
 
-
+.errorPageBtn {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 2px;
+    border: transparent;
+    /* background: linear-gradient(to bottom, #85c0ec, #6aa7d6, #508dc6, #306fb4, #17559e); */
+    background:  #17559e;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    vertical-align: top;
+    margin: 0 auto;
+}

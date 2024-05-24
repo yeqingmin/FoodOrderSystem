@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Objects;
 
 public class LoginServlet extends HttpServlet {
     @Override
@@ -35,7 +36,14 @@ public class LoginServlet extends HttpServlet {
             //若登录成功
             //放入Session
             request.getSession().setAttribute(Constants.USER_SESSION,login);
-            response.sendRedirect("jsp/frame.jsp");
+            if(Objects.equals(login.getRole(), "user")){
+                response.sendRedirect("userIndex.jsp");
+            }else if(login.getRole().equals("admin")){
+                response.sendRedirect("adminIndex.jsp");
+            }else if(login.getRole().equals("merchant")){
+                response.sendRedirect("merchantIndex.jsp");
+            }
+
         }else{
             //若登录失败
             request.setAttribute("error", "用户名或密码不正确");
