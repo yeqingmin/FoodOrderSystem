@@ -55,14 +55,32 @@ document.getElementById('favor').addEventListener('click', function() {
 //     });
 
     // 处理预订点餐按钮点击事件
-    $("#book").on("click", function() {
-        // 重定向到预订点餐页面
-        // var obj=$(this);
-        window.location.href = path+ '/jsp/user/orderPage.jsp'; // 替换为实际的预订点餐页面URL
+    $("#orderOnline").on("click", function() {
+        //先提交隐藏表单交给后端merchantServlet进行一个方法：createOrder先插入一条Order数据（获取merchantId通过表单提交,userId通过获取session），然后重定向到orderPage.jsp页面
+        // window.location.href = path+ '/jsp/user/orderPage.jsp'; // 替换为实际的预订点餐页面URL
+        $('#orderForm').submit();
     });
 
-    backBtn = $("#back");
-    backBtn.on("click",function(){
+    //book按钮添加ajax响应，提交隐藏表单之后交给后端merchantServlet进行一个方法：creatBook插入一条预订信息，并且当前的预订按钮变成取消预订的按钮
+     // $("#bookOffline").on("click", function() {
+     //     //先提交隐藏表单交给后端merchantServlet进行一个方法：createOrder先插入一条Order数据，然后重定向到
+     //     window.location.href = path+ '/jsp/user/orderPage.jsp'; // 替换为实际的预订点餐页面URL
+     // });
+
+
+     $("#review").on("click", function() {
+         window.location.href = path+ '/jsp/merchant/merchantReviewView.jsp';
+     });
+
+
+
+     $("#menu").on("click", function() {
+         // 提交隐藏表单
+         $('#menuForm').submit();
+     });
+
+
+     $("#back").on("click",function(){
         //alert("view : "+referer);
         if(referer !== undefined
             && null != referer
@@ -74,4 +92,5 @@ document.getElementById('favor').addEventListener('click', function() {
             history.back(-1);
         }
     });
+
 });

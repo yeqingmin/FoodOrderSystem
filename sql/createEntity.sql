@@ -1,3 +1,4 @@
+use food_order_sys;
 CREATE TABLE if not exists User (
     `userId` INT AUTO_INCREMENT comment '用户id' PRIMARY KEY,
     `userName` VARCHAR(255) NOT NULL comment '用户姓名',

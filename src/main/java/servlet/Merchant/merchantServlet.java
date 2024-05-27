@@ -2,18 +2,41 @@ package servlet.Merchant;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mysql.cj.util.StringUtils;
-import pojo.Merchant;
-import pojo.MerchantDetail;
+import pojo.*;
+import service.Dish.DishService;
+import service.Dish.DishServiceImpl;
 import service.Merchant.MerchantService;
 import service.Merchant.MerchantServiceImpl;
+import service.Order.OrderService;
+import service.Order.OrderServiceImpl;
+import utils.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+/*
+    如何根据session获取当前用户/商户的id
+    HttpSession session = request.getSession();
+        System.out.println("session "+session);
+        if (session != null) {
+            // 从session中获取Constants.USER_SESSION属性
+            Login userSession = (Login) session.getAttribute(Constants.USER_SESSION);
+
+            // 检查userSession是否为null，然后根据需要处理
+            if (userSession != null) {
+                // 处理userSession对象
+                // 例如，将其转发到JSP页面
+                request.setAttribute("userId", userSession.getCorrespondingID());
+                System.out.println("userId:"+userSession.getCorrespondingID());
+            }
+        }
+ */
 public class merchantServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,10 +59,7 @@ public class merchantServlet extends HttpServlet {
         String method = request.getParameter("method");
         if (method != null && method.equals("query")) {
             this.query(request, response);
-        }
-//        }else if(method != null && method.equals("add")){
-//            this.add(request,response);
-        else if (method != null && method.equals("view")) {
+        }else if (method != null && method.equals("view")) {
             this.getMerchantById(request, response, "merchant/merchantView.jsp");
         }else if(method != null && method.equals("adminManage")){
             this.adminManage(request, response, "admin/adminToMerchantList.jsp");
@@ -47,17 +67,78 @@ public class merchantServlet extends HttpServlet {
             this.getMerchantById(request,response,"merchant/merchantUserView.jsp");
         }else if(method!=null && method.equals("queryJSON")){
             this.queryJSON(request, response);
+        }else if(method!=null && method.equals("queryMenu")){
+            this.queryMenu(request,response,"merchant/merchantMenuViewToUser.jsp");
+        }else if(method!=null && method.equals("createOrderAndListMenu")){
+            this.createOrderAndListMenu(request,response,"user/orderPage.jsp");
         }
-//        }else if(method != null && method.equals("modify")){
-//            this.getBillById(request,response,"billmodify.jsp");
-//        }else if(method != null && method.equals("modifysave")){
-//            this.modify(request,response);
-//        }else if(method != null && method.equals("delbill")){
-//            this.delBill(request,response);
-//        }else if(method != null && method.equals("getproviderlist")){
-//            this.getProviderlist(request,response);
-//        }
 
+    }
+
+    private void createOrderAndListMenu(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
+        //todo 恢复注释
+
+//        //调用orderDao根据session得到userId，根据前端Parameter发送名字为orderMerchantId参数的值，获取当前创建时间，然后新建order，并返回新建的order的id
+//
+//        //首先，根据session获得当前登录的用户/商户的id
+//        HttpSession session = request.getSession();
+//        Integer userId = 0;
+//        int orderId = 0;
+//        if (session != null) {
+//            // 从session中获取Constants.USER_SESSION属性
+//            Login userSession = (Login) session.getAttribute(Constants.USER_SESSION);
+//
+//            // 检查userSession是否为null，然后根据需要处理
+//            if (userSession != null) {
+//                // 处理userSession对象
+//                // 例如，将其转发到JSP页面
+//                userId = userSession.getCorrespondingID();
+//                System.out.println("userId: " + userId);
+//            }
+//        }
+//
+        //然后根据前端传参获取merchantId
+        String merchantId = request.getParameter("merchantId");
+        System.out.println("merchantId: " + merchantId);
+//
+//        //新建orderService对象
+//        OrderService orderService = new OrderServiceImpl();
+//        if (!StringUtils.isNullOrEmpty(merchantId)) {
+//            //新建一个Order对象
+//            Order order = new Order();
+//            order.setMerchantId(Integer.parseInt(merchantId));
+//            order.setUserId(userId);
+//            orderId = orderService.addOrder(order);
+//            System.out.println("New orderId = "+orderId);
+//            //设置转发请求的参数orderId，以方便选择指定菜品向orderDetail表里面增加新的数据的时候对应正确的orderId
+//            request.setAttribute("orderId",orderId);
+//        }
+//
+        //以上全部搞完之后还要设置dishList，获取到当前merchantId对应的dishList设置在转发的请求中
+        ArrayList<Dish> dishList=null;
+        if(!StringUtils.isNullOrEmpty(merchantId)){
+            DishService dishService=new DishServiceImpl();
+            dishList= dishService.getDishByMerchantId(Integer.parseInt(merchantId));
+            request.setAttribute("dishList",dishList);
+        }
+
+        request.getRequestDispatcher(url).forward(request,response);
+    }
+
+    /**
+     * 该方法用于根据对应的merchantId来查询菜单
+     * @param request
+     * @param response
+     */
+    private void queryMenu(HttpServletRequest request, HttpServletResponse response,String url) throws ServletException, IOException {
+        String merchantId=request.getParameter("merchantId");
+        ArrayList<Dish> dishList=null;
+        if(!StringUtils.isNullOrEmpty(merchantId)){
+            DishService dishService=new DishServiceImpl();
+            dishList= dishService.getDishByMerchantId(Integer.parseInt(merchantId));
+            request.setAttribute("dishList",dishList);
+        }
+        request.getRequestDispatcher(url).forward(request,response);
     }
 
     public void queryJSON(HttpServletRequest request, HttpServletResponse response) {
@@ -105,11 +186,25 @@ public class merchantServlet extends HttpServlet {
 
     private void getMerchantById(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
         String id=request.getParameter("merchantId");
+//        HttpSession session = request.getSession();
+//        System.out.println("session "+session);
+//        if (session != null) {
+//            // 从session中获取Constants.USER_SESSION属性
+//            Login userSession = (Login) session.getAttribute(Constants.USER_SESSION);
+//
+//            // 检查userSession是否为null，然后根据需要处理
+//            if (userSession != null) {
+//                // 处理userSession对象
+//                // 例如，将其转发到JSP页面
+//                request.setAttribute("userId", userSession.getCorrespondingID());
+//                System.out.println("userId:"+userSession.getCorrespondingID());
+//            }
+//        }
         if(!StringUtils.isNullOrEmpty(id)){
             MerchantService merchantService=new MerchantServiceImpl();
-            MerchantDetail merchantDetail=null;
-            merchantDetail=merchantService.getDetailedMerchantById(Integer.parseInt(id));
-            request.setAttribute("merchantDetail",merchantDetail);
+            Merchant merchant=null;
+            merchant=merchantService.getMerchantById(Integer.parseInt(id));
+            request.setAttribute("merchant",merchant);
         }
         request.getRequestDispatcher(url).forward(request,response);
     }

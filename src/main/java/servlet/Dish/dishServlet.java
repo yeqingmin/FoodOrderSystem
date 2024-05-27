@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class dishServlet extends HttpServlet {
@@ -32,6 +33,55 @@ public class dishServlet extends HttpServlet {
             this.manage(request,response);
         }else if(method != null && method.equals("userView")){
             this.getDishByIdToUser(request, response);
+        }else if(method != null && method.equals("addDishToOrder")){
+            this.addDishToOrder(request,response);
+        }else if(method != null &&method.equals("deleteDishFromOrder")){
+            this.deleteDishFromOrder(request,response);
+        }
+    }
+
+    /**
+     * 当前方法
+     * @param request
+     * @param response
+     */
+    private void deleteDishFromOrder(HttpServletRequest request, HttpServletResponse response) {
+        int quantity=0;
+
+//todo 重要的逻辑：我们需要判断一下是否没得删了然后给前端传消息,调用OrderDetail的count方法得到quantity
+
+        //发送响应到前端（json响应数据)
+        response.setContentType("application/json");
+        PrintWriter out = null;
+        try {
+            out = response.getWriter();
+            out.write("{\"success\": true, \"quantity\": " + quantity + "}");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (out != null) {
+                out.close();
+            }
+        }
+
+    }
+
+    private void addDishToOrder(HttpServletRequest request, HttpServletResponse response) {
+        int quantity=0;
+
+
+        //发送响应到前端（json响应数据)
+        response.setContentType("application/json");
+        PrintWriter out = null;
+        try {
+            out = response.getWriter();
+            out.write("{\"success\": true, \"quantity\": " + quantity + "}");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (out != null) {
+                out.close();
+            }
         }
     }
 
