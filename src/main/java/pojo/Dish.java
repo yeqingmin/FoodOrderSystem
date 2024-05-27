@@ -1,5 +1,7 @@
 package pojo;
 
+import java.util.Arrays;
+
 public class Dish {
     private Integer dishId;
     private String dishName;
@@ -8,6 +10,9 @@ public class Dish {
     private String dishDescription;
     private byte[] dishImage; // Using byte array to represent BLOB data
     private Integer merchantId;
+    private String dishAllergens;
+    private String dishIngredients;
+    private String dishNutrition;
     private Boolean isDelete;
 
     // Constructors, Getters, and Setters
@@ -88,5 +93,43 @@ public class Dish {
 
     public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
+    }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "dishId=" + dishId +
+                ", dishName='" + dishName + '\'' +
+                ", dishPrice=" + dishPrice +
+                ", dishCategory='" + dishCategory + '\'' +
+                ", dishDescription='" + dishDescription + '\'' +
+                ", dishImage=" + Arrays.toString(dishImage) +
+                ", merchantId=" + merchantId +
+                ", isDelete=" + isDelete +
+                '}';
+    }
+
+    public String getDishAllergens() {
+        return dishAllergens;
+    }
+
+    public void setDishAllergens(String dishAllergens) {
+        this.dishAllergens = dishAllergens;
+    }
+
+    public String getDishIngredients() {
+        return dishIngredients;
+    }
+
+    public void setDishIngredients(String dishIngredients) {
+        this.dishIngredients = dishIngredients;
+    }
+
+    public String getDishNutrition() {
+        return dishNutrition;
+    }
+
+    public void setDishNutrition(String dishNutrition) {
+        this.dishNutrition = dishNutrition;
     }
 }

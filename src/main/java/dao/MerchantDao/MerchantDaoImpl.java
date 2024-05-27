@@ -25,18 +25,20 @@ public class MerchantDaoImpl implements MerchantDao{
         PreparedStatement preparedStatement=null;
         ResultSet resultSet=null;
         if(null != connection){
-            String sql="select * from Merchant where merchantName=?";
+            String sql="select * from merchant where merchantName= ?";
             Object params[]={name};
             resultSet=BaseDao.execute(connection,preparedStatement,resultSet,sql,params);
-            if(resultSet.next()){
+            while(resultSet.next()){
                 Merchant merchant =new Merchant();
+                merchant.setMerchantId(Integer.valueOf(resultSet.getString("merchantId")));
                 merchant.setMerchantName(resultSet.getString("merchantName"));
                 merchant.setMerchantAddr(resultSet.getString("merchantAddr"));
-                merchant.setFeatureDish(resultSet.getString("featureDish"));
+//                merchant.setFeatureDish(resultSet.getString("featureDish"));
                 merchants.add(merchant);
             }
-            BaseDao.closeResource(connection,preparedStatement,resultSet);
+            BaseDao.closeResource(null,preparedStatement,resultSet);
         }
+//        System.out.println("In MerchantDao,merchantList's size"+merchants.size());
         return merchants;
     }
 
@@ -55,7 +57,7 @@ public class MerchantDaoImpl implements MerchantDao{
             String sql="select * from Merchant where merchantId = ?";
             Object argms[]={id};
             resultSet=BaseDao.execute(connection,preparedStatement,resultSet,sql,argms);
-            if(resultSet.next()){
+            while(resultSet.next()){
                 merchant=new Merchant();
                 merchant.setMerchantId(id);
                 merchant.setMerchantName(resultSet.getString("merchantName"));
@@ -129,7 +131,7 @@ public class MerchantDaoImpl implements MerchantDao{
             String sql="select * from Merchant where merchantAddr = ? and merchantName = ?";
             Object argms[]={address,name};
             resultSet=BaseDao.execute(connection,preparedStatement,resultSet,sql,argms);
-            if(resultSet.next()){
+            while(resultSet.next()){
                 merchant=new Merchant();
                 merchant.setMerchantId(resultSet.getInt("merchantId"));
                 merchant.setMerchantName(resultSet.getString("merchantName"));

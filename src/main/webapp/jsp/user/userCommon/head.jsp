@@ -30,7 +30,7 @@
          <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
          <nav>
              <ul class="list">
-                 <li ><a href="${pageContext.request.contextPath }/jsp/order?method=query">订单管理</a></li>
+                 <li ><a href="${pageContext.request.contextPath }/jsp/order?method=query">历史订单</a></li>
               <li><a href="${pageContext.request.contextPath }/jsp/merchant?method=query">商户操作</a></li>
                  <li><a href="${pageContext.request.contextPath }/jsp/dish?method=query">菜品操作</a></li>
                  <li><a href="${pageContext.request.contextPath }/jsp/user?method=view">个人中心</a></li>
