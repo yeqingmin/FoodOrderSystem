@@ -8,6 +8,7 @@ import dao.MerchantDao.MerchantDaoImpl;
 import pojo.Dish;
 import pojo.Merchant;
 import pojo.MerchantDetail;
+import pojo.User;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -132,5 +133,26 @@ public class MerchantServiceImpl implements MerchantService {
     @Override
     public boolean deleteDishByMerchantId(int merchantId) {
         return false;
+    }
+
+    @Override
+    public ArrayList<Merchant> getAllMerchantList() {
+        Connection connection=null;
+        ArrayList<Merchant> merchantList=null;
+        try{
+            connection= BaseDao.getConnection();
+            merchantList= merchantDao.getAllMerchantList(connection);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return merchantList;
     }
 }

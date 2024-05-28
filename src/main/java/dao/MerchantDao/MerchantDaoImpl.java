@@ -2,11 +2,9 @@ package dao.MerchantDao;
 
 import dao.BaseDao;
 import pojo.Merchant;
+import pojo.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class MerchantDaoImpl implements MerchantDao{
@@ -141,6 +139,32 @@ public class MerchantDaoImpl implements MerchantDao{
             BaseDao.closeResource(connection,preparedStatement,resultSet);
         }
         return merchant;
+    }
+
+    @Override
+    public ArrayList<Merchant> getAllMerchantList(Connection connection) {
+        ArrayList<Merchant> merchantList = new ArrayList<>();
+        PreparedStatement pstm = null;
+        if (null != connection) {
+            String sql = "select * from `merchant`";
+            //因为这里没有参数，所以不用预编译
+            // 执行SQL语句
+            try (Statement statement = connection.createStatement();
+                 ResultSet rs = statement.executeQuery(sql)) {
+                // 遍历结果集
+                while (rs.next()) {
+                    Merchant merchant = new Merchant();
+                    merchant.setMerchantId(rs.getInt("merchantId"));
+                    merchant.setMerchantName(rs.getString("merchantName"));
+                    merchant.setMerchantAddr(rs.getString("merchantAddr"));
+                    merchantList.add(merchant);
+                }
+                BaseDao.closeResource(null, pstm, rs);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return merchantList;
     }
 
 }

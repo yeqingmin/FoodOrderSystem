@@ -10,36 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b5d2a6a-612e-4175-b6b7-f8acd1ef54e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/Session.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/orderList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/orderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDetailDao/OrderDetailDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDetailDao/OrderDetailDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UserDao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UserDao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/MerchantDao/MerchantDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/MerchantDao/MerchantDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/MerchantDao/MerchantDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/MerchantDao/MerchantDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/UserDao/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UserDao/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/Dish/DishService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Dish/DishService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/Dish/DishServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Dish/DishServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/Order/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Order/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/Order/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Order/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/User/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/User/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/User/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/User/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Dish/dishServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Dish/dishServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Merchant/MerchantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Merchant/MerchantService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Merchant/MerchantServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Merchant/MerchantServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Merchant/merchantServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Merchant/merchantServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Order/OrderServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Order/OrderServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/User/userServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/User/userServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/billadd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/billmodify.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/billview.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/orderPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/orderPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/userlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/userlist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/admin/adminToUserList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/admin/adminToUserList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/QueryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/QueryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/admin/adminToMerchantList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/admin/adminToMerchantList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/userCommon/head.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/userCommon/head.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/userview.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/userview.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,11 +124,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QueryTest.dish_getDishByNameAndMerchantTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="QueryTest.user_getUserListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FoodOrderSystem" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="QueryTest" />
-      <option name="METHOD_NAME" value="dish_getDishByNameAndMerchantTest" />
+      <option name="METHOD_NAME" value="user_getUserListTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -270,20 +252,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.QueryTest.user_getUserListTest" />
       <item itemvalue="JUnit.orderTest.addDishToOrderTest" />
       <item itemvalue="JUnit.orderTest.deleteDishFromOrderTest" />
       <item itemvalue="JUnit.BaseDaoTest.addTest" />
       <item itemvalue="JUnit.addTest.addOrderTest" />
-      <item itemvalue="JUnit.QueryTest.dish_getDishByNameAndMerchantTest" />
       <item itemvalue="Tomcat Server.Tomcat9" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.QueryTest.user_getUserListTest" />
         <item itemvalue="JUnit.orderTest.deleteDishFromOrderTest" />
         <item itemvalue="JUnit.orderTest.addDishToOrderTest" />
         <item itemvalue="JUnit.addTest.addOrderTest" />
         <item itemvalue="JUnit.BaseDaoTest.addTest" />
-        <item itemvalue="JUnit.QueryTest.dish_getDishByNameAndMerchantTest" />
       </list>
     </recent_temporary>
   </component>
@@ -314,7 +296,7 @@
       <workItem from="1716615053046" duration="1350000" />
       <workItem from="1716696565146" duration="25091000" />
       <workItem from="1716768831148" duration="30263000" />
-      <workItem from="1716861219123" duration="8655000" />
+      <workItem from="1716861219123" duration="12966000" />
     </task>
     <servers />
   </component>

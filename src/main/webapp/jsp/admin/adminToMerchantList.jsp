@@ -17,7 +17,7 @@
         <form method="get" action="${pageContext.request.contextPath }/jsp/merchant">
             <input name="method" value="query" class="input-text" type="hidden">
             <span>商家名称：</span>
-            <input name="merchantName" type="text" value="${merchantName }">
+            <input name="merchantName" type="text" value="${merchantName}">
 
             <input value="查 询" type="submit" id="searchbutton">
         </form>
@@ -27,38 +27,23 @@
         <tr class="firstTr">
             <th width="10%">商户编码</th>
             <th width="20%">商品名称</th>
-            <th width="10%">商户名称</th>
+            <th width="20%">商品地址</th>
             <th width="30%">操作</th>
         </tr>
         <c:forEach var="merchant" items="${merchantList}" varStatus="status">
             <tr>
                 <td>
-                    <span>${merchant.code }</span>
+                    <span>${merchant.merchantId}</span>
                 </td>
                 <td>
-                    <span>${merchant.productName }</span>
+                    <span>${merchant.merchantName}</span>
                 </td>
                 <td>
-                    <span>${merchant.name}</span>
+                    <span>${merchant.merchantAddr}</span>
                 </td>
                 <td>
-                    <span>${merchant.totalPrice}</span>
-                </td>
-                <td>
-					<span>
-						<c:if test="${merchant.isPayment == 1}">未付款</c:if>
-						<c:if test="${merchant.isPayment == 2}">已付款</c:if>
-					</span>
-                </td>
-                <td>
-					<span>
-					<fmt:formatDate value="${merchant.creationDate}" pattern="yyyy-MM-dd"/>
-					</span>
-                </td>
-                <td>
-                    <span><a class="viewMerchant" href="javascript:;" merchantid=${merchant.id } merchantcc=${merchant.code }><img src="${pageContext.request.contextPath }/images/read.png" alt="查看" title="查看"/></a></span>
-                    <span><a class="modifyMerchant" href="javascript:;" merchantid=${merchant.id } merchantcc=${merchant.code }><img src="${pageContext.request.contextPath }/images/xiugai.png" alt="修改" title="修改"/></a></span>
-                    <span><a class="deleteMerchant" href="javascript:;" merchantid=${merchant.id } merchantcc=${merchant.code }><img src="${pageContext.request.contextPath }/images/schu.png" alt="删除" title="删除"/></a></span>
+                    <span><a class="viewDish" href="javascript:;" userId=${user.userId}><div class="providerAddBtn"><input type="button" value="删除商户"></div></a></span>
+                    <span><a class="viewDish" href="javascript:;" userId=${user.userId}><div class="providerAddBtn"><input type="button" value="修改商户"></div></a></span>
                 </td>
             </tr>
         </c:forEach>

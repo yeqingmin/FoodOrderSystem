@@ -9,6 +9,8 @@ import service.Merchant.MerchantService;
 import service.Merchant.MerchantServiceImpl;
 import service.Order.OrderService;
 import service.Order.OrderServiceImpl;
+import service.User.UserService;
+import service.User.UserServiceImpl;
 import utils.Constants;
 import utils.Session;
 
@@ -49,14 +51,6 @@ public class merchantServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-		/*String totalPrice = request.getParameter("totalPrice");
-		//23.234   45
-		BigDecimal totalPriceBigDecimal =
-				//设置规则，小数点保留两位，多出部分，ROUND_DOWN 舍弃
-				//ROUND_HALF_UP 四舍五入(5入) ROUND_UP 进位
-				//ROUND_HALF_DOWN 四舍五入（5不入）
-				new BigDecimal(totalPrice).setScale(2,BigDecimal.ROUND_DOWN);*/
-
         String method = request.getParameter("method");
         if (method != null && method.equals("query")) {
             this.query(request, response);
@@ -77,26 +71,8 @@ public class merchantServlet extends HttpServlet {
     }
 
     private void createOrderAndListMenu(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
-        //todo 恢复注释
 
         //调用orderDao根据session得到userId，根据前端Parameter发送名字为orderMerchantId参数的值，获取当前创建时间，然后新建order，并返回新建的order的id
-
-        //首先，根据session获得当前登录的用户/商户的id
-//        HttpSession session = request.getSession();
-//        Integer userId = 0;
-
-//        if (session != null) {
-//            // 从session中获取Constants.USER_SESSION属性
-//            Login userSession = (Login) session.getAttribute(Constants.USER_SESSION);
-//
-//            // 检查userSession是否为null，然后根据需要处理
-//            if (userSession != null) {
-//                // 处理userSession对象
-//                // 例如，将其转发到JSP页面
-//                userId = userSession.getCorrespondingID();
-//                System.out.println("userId: " + userId);
-//            }
-//        }
         int orderId = 0;
         Integer userId=Session.getCurrentId(request);
 
@@ -184,6 +160,10 @@ public class merchantServlet extends HttpServlet {
 
 
     private void adminManage(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
+        //查出所有的merchant
+        MerchantService merchantService=new MerchantServiceImpl();
+        ArrayList<Merchant> merchantList=merchantService.getAllMerchantList();
+        request.setAttribute("merchantList",merchantList);
         request.getRequestDispatcher(url).forward(request,response);
     }
 
