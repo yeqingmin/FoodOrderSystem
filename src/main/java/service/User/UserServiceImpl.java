@@ -65,6 +65,27 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    @Override
+    public ArrayList<User> getAllUserList() {
+        Connection connection=null;
+        ArrayList<User> userList=null;
+        try{
+            connection= BaseDao.getConnection();
+            userList= userDao.getUserList(connection);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return userList;
+    }
+
     //用户通过商户名字搜索商户简略信息
     public ArrayList<Merchant> getSeriesMerchantByName(String merchantName){
         Connection connection=null;
@@ -167,7 +188,7 @@ public class UserServiceImpl implements UserService {
         order.setMerchantId(merchantId);
         order.setUserId(userId);
         order.setTotalPrice(price);
-        order.setOrderStatus(state);
+//        order.setOrderStatus(state);
 
         try{
             connection= BaseDao.getConnection();
@@ -186,27 +207,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    //查看自己的所有订单信息
-    public List<Order> getOrder(int userId){
-        Connection connection=null;
-        List<Order> orders = new ArrayList<>();
-        try{
-            connection= BaseDao.getConnection();
-            orders=orderDao.getOrdersByUserId(connection,userId);
-        }catch (Exception e){
-            e.printStackTrace();
-            try {
-                System.out.println("rollback==================");
-                connection.rollback();
-            } catch (SQLException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-        }finally {
-            BaseDao.closeResource(connection,null,null);
-        }
-        return orders;
-    }
 
     //收藏菜品
     public void favouriteDish(int userId , int dishId){

@@ -16,7 +16,7 @@ public class DishPriceDaoImpl implements DishPriceDao {
         PreparedStatement pstm = null;
         int flag = 0;
         if(null != connection){
-            String sql = "INSERT INTO DishPrice (dishId, price, validStartTime) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO dishprice (dishId, price, validTime) VALUES (?, ?, ?)";
             Object[] params ={dishPrice.getDishId(),dishPrice.getPrice(),dishPrice.getValidTime()};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
@@ -29,7 +29,7 @@ public class DishPriceDaoImpl implements DishPriceDao {
         ResultSet resultSet=null;
         ArrayList<DishPrice> historyPrice=new ArrayList<>();
         if(null != connection){
-            String sql= "select price from DishPrice where dishId=?";
+            String sql= "select price from dishprice where dishId=?";
             Object[] params={dishId};
             resultSet=BaseDao.execute(connection,preparedStatement,resultSet,sql,params);
             if(resultSet.next()){

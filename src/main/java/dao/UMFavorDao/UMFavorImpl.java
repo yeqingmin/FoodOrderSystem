@@ -12,7 +12,7 @@ public class UMFavorImpl implements UMFavorDao{
         PreparedStatement pstm = null;
         int updateRows = 0;
         if(null != connection){
-            String sql = "insert into UMFavor (userId,merchantId) " +
+            String sql = "insert into umfavor (userId,merchantId) " +
                     "values(?,?)";
             Object[] params = {umFavor.getUserId(),umFavor.getMerchantId()};
             updateRows = BaseDao.execute(connection, pstm, sql, params);
@@ -26,13 +26,11 @@ public class UMFavorImpl implements UMFavorDao{
         PreparedStatement pstm = null;
         int flag = 0;
         if(null != connection){
-            String sql = "delete from UMFavor where userId=? and merchantId=?";
+            String sql = "delete from umfavor where userId=? and merchantId=?";
             Object[] params = {userId,merchantId};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
         }
         return flag;
     }
-
-
 }

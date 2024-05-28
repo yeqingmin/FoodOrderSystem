@@ -23,7 +23,7 @@ create table if not exists `UMFavor`
     foreign key (merchantId) references Merchant (merchantId)
 );
 
-use food_order_sys;
+
 create table if not exists `order`
 (
     `orderId`  int auto_increment  primary key comment '订单id',
@@ -88,7 +88,7 @@ CREATE TABLE if not exists `Book` (
     FOREIGN KEY (merchantId) REFERENCES Merchant(merchantId),
     CHECK (bookStartTime <= bookEndTime)
 );
-use food_order_sys;
+
 create table if not exists `orderDetail`(
       `id` INT AUTO_INCREMENT comment '订单细节表的主键id' PRIMARY KEY,
       `dishId` INT NOT NULL comment '菜品id',
@@ -116,5 +116,5 @@ CREATE TABLE if not exists `ordermessage`
     orderStatusMessage VARCHAR(255) comment '订单状态信息', -- 订单状态消息，假设最大长度为255字符
     orderId            INT NOT NULL comment '订单id',
     FOREIGN KEY (userId) REFERENCES User (userId),         -- 假设用户表名为User，用户ID字段名为userId
-    FOREIGN KEY (orderId) REFERENCES Order (orderId)
+    FOREIGN KEY (orderId) REFERENCES `Order` (orderId)
 );

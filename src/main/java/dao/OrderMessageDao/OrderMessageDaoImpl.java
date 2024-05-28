@@ -14,7 +14,7 @@ public class OrderMessageDaoImpl implements OrderMessageDao{
         PreparedStatement pstm = null;
         int flag = 0;
         if(null != connection){
-            String sql = "INSERT INTO ordermessage (messageId, userId, orderStatusMessage, orderId) VALUES (?, ?, ?, ?,)";
+            String sql = "INSERT INTO `ordermessage` (messageId, userId, orderStatusMessage, orderId) VALUES (?, ?, ?, ?,)";
             Object[] params ={orderMessage.getMessageId(),orderMessage.getUserId(),orderMessage.getOrderStatusMessage(),orderMessage.getOrderId()};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
@@ -26,7 +26,7 @@ public class OrderMessageDaoImpl implements OrderMessageDao{
         ArrayList<OrderMessage> orderMessageList = new ArrayList<>();
         ResultSet rs=null;
         if(null != connection){
-            String sql="select * from ordermessage where userId=?";
+            String sql="select * from `ordermessage` where userId=?";
             Object[] params ={userId};
             rs=BaseDao.execute(connection,preparedStatement,rs,sql,params);
             while(rs.next()){

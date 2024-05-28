@@ -3,19 +3,15 @@ import dao.DishDao.DishDao;
 import dao.DishDao.DishDaoImpl;
 import dao.MerchantDao.MerchantDao;
 import dao.MerchantDao.MerchantDaoImpl;
-import dao.UMReviewDao.UMReviewDao;
-import dao.UMReviewDao.UMReviewDaoImpl;
 import org.junit.Test;
 import pojo.Dish;
 import pojo.Merchant;
-import pojo.UMReview;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class QueryTest {
     @Test
@@ -33,13 +29,5 @@ public class QueryTest {
         Connection connection=BaseDao.getConnection();
         Dish dish= dishDao.getDishByNameAndMerchant(connection,"燕麦拿铁",1);
         System.out.println(dish);
-    }
-    @Test
-    public void getReviewsByBusinessNameAndAddressTest() throws Exception {
-        List<UMReview> reviews=new ArrayList<>();
-        Connection connection=BaseDao.getConnection();
-        UMReviewDao umReviewDao=new UMReviewDaoImpl();
-        reviews=umReviewDao.getReviewsByBusinessNameAndAddress(connection,"肯德基","政通路");
-        System.out.println(reviews);
     }
 }

@@ -12,17 +12,18 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DishServiceImpl implements DishService{
-    private final DishDao dishDao=new DishDaoImpl();
-    private final OrderDetailDao orderDetailDao=new OrderDetailDaoImpl();
+public class DishServiceImpl implements DishService {
+    private final DishDao dishDao = new DishDaoImpl();
+    private final OrderDetailDao orderDetailDao = new OrderDetailDaoImpl();
+
     @Override
-    public Dish getDishByNameAndMerchant(String dishName, int merchantId){
-        Connection connection=null;
-        Dish dish=null;
-        try{
-            connection= BaseDao.getConnection();
-            dish=dishDao.getDishByNameAndMerchant(connection,dishName,merchantId);
-        }catch (Exception e){
+    public Dish getDishByNameAndMerchant(String dishName, int merchantId) {
+        Connection connection = null;
+        Dish dish = null;
+        try {
+            connection = BaseDao.getConnection();
+            dish = dishDao.getDishByNameAndMerchant(connection, dishName, merchantId);
+        } catch (Exception e) {
             e.printStackTrace();
             try {
                 System.out.println("rollback==================");
@@ -30,20 +31,20 @@ public class DishServiceImpl implements DishService{
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
-        }finally {
-            BaseDao.closeResource(connection,null,null);
+        } finally {
+            BaseDao.closeResource(connection, null, null);
         }
         return dish;
     }
 
     @Override
     public Dish getDishById(int id) {
-        Connection connection=null;
-        Dish dish=null;
-        try{
-            connection= BaseDao.getConnection();
-            dish=dishDao.getDishById(connection,id);
-        }catch (Exception e){
+        Connection connection = null;
+        Dish dish = null;
+        try {
+            connection = BaseDao.getConnection();
+            dish = dishDao.getDishById(connection, id);
+        } catch (Exception e) {
             e.printStackTrace();
             try {
                 System.out.println("rollback==================");
@@ -51,20 +52,21 @@ public class DishServiceImpl implements DishService{
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
-        }finally {
-            BaseDao.closeResource(connection,null,null);
+        } finally {
+            BaseDao.closeResource(connection, null, null);
         }
         return dish;
     }
 
     @Override
     public ArrayList<Dish> getDishByMerchantId(int merchantId) {
-        Connection connection=null;
-        ArrayList<Dish> menu=null;
-        try{
-            connection= BaseDao.getConnection();
-            menu=dishDao.getDishByMerchantId(connection,merchantId);;
-        }catch (Exception e){
+        Connection connection = null;
+        ArrayList<Dish> menu = null;
+        try {
+            connection = BaseDao.getConnection();
+            menu = dishDao.getDishByMerchantId(connection, merchantId);
+            ;
+        } catch (Exception e) {
             e.printStackTrace();
             try {
                 System.out.println("rollback==================");
@@ -72,20 +74,28 @@ public class DishServiceImpl implements DishService{
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
-        }finally {
-            BaseDao.closeResource(connection,null,null);
+        } finally {
+            BaseDao.closeResource(connection, null, null);
         }
         return menu;
     }
 
+    /**
+     * 当前方法不仅向orderDetail表里面插入了一条对应dishId，orderId的数据，同时调用countDishQuantity的方法，返回当前该菜的个数
+     *
+     * @param dishId
+     * @param orderId
+     * @return 返回值为当前订单当前菜品的数量
+     */
     @Override
     public int addDishToOrder(Integer dishId, Integer orderId) {
-        Connection connection=null;
-        int updatedRows=0;
-        try{
-            connection= BaseDao.getConnection();
-            updatedRows=orderDetailDao.addDishToOrder(connection,dishId,orderId);
-        }catch (Exception e){
+        Connection connection = null;
+        int quantity = 0;
+        try {
+            connection = BaseDao.getConnection();
+            orderDetailDao.addDishToOrder(connection, dishId, orderId);
+            quantity = orderDetailDao.countDishInOrderQuantities(connection, dishId, orderId);
+        } catch (Exception e) {
             e.printStackTrace();
             try {
                 System.out.println("rollback==================");
@@ -93,20 +103,21 @@ public class DishServiceImpl implements DishService{
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
-        }finally {
-            BaseDao.closeResource(connection,null,null);
+        } finally {
+            BaseDao.closeResource(connection, null, null);
         }
-        return updatedRows;
+        return quantity;
     }
 
     @Override
     public int deleteDishFromOrder(Integer dishId, Integer orderId) {
-        Connection connection=null;
-        int updatedRows=0;
-        try{
-            connection= BaseDao.getConnection();
-            updatedRows=orderDetailDao.deleteDishFromOrder(connection,dishId,orderId);
-        }catch (Exception e){
+        Connection connection = null;
+        int quantity = 0;
+        try {
+            connection = BaseDao.getConnection();
+            orderDetailDao.deleteDishFromOrder(connection, dishId, orderId);
+            quantity = orderDetailDao.countDishInOrderQuantities(connection, dishId, orderId);
+        } catch (Exception e) {
             e.printStackTrace();
             try {
                 System.out.println("rollback==================");
@@ -114,9 +125,30 @@ public class DishServiceImpl implements DishService{
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
-        }finally {
-            BaseDao.closeResource(connection,null,null);
+        } finally {
+            BaseDao.closeResource(connection, null, null);
         }
-        return updatedRows;
+        return quantity;
+    }
+
+    @Override
+    public int countDishQuantity(Integer dishId, Integer orderId) {
+        Connection connection = null;
+        int quantity = 0;
+        try {
+            connection = BaseDao.getConnection();
+            quantity = orderDetailDao.countDishInOrderQuantities(connection, dishId, orderId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        } finally {
+            BaseDao.closeResource(connection, null, null);
+        }
+        return quantity;
     }
 }

@@ -15,7 +15,7 @@ public class UMReviewDaoImpl implements UMReviewDao{
         PreparedStatement pstm = null;
         int flag = 0;
         if(null != connection){
-            String sql = "INSERT INTO `UMReview` (`merchantRating`, `merchantComment`, `isDelete`, `userId`, `merchantId`) " +
+            String sql = "INSERT INTO `umreview` (`merchantRating`, `merchantComment`, `isDelete`, `userId`, `merchantId`) " +
                     "VALUES (?, ?, ?, ?, ?)";
             Object[] params ={review.getMerchantRating(),review.getMerchantComment(),review.getIsDelete(),review.getUserId(),review.getMerchantId()};
             flag = BaseDao.execute(connection, pstm, sql, params);
@@ -31,9 +31,9 @@ public class UMReviewDaoImpl implements UMReviewDao{
         // 准备SQL查询
         if(connection != null){
             String sql = "SELECT *\n" +
-                    "FROM Merchant\n" +
-                    "NATURAL JOIN UMReview\n" +
-                    "WHERE Merchant.merchantName = ?";
+                    "FROM merchant\n" +
+                    "NATURAL JOIN umreview\n" +
+                    "WHERE merchant.merchantName = ?";
             Object[] params ={merchantName};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             while(rs.next()){
@@ -56,7 +56,7 @@ public class UMReviewDaoImpl implements UMReviewDao{
         int flag = 0;
         if(null != connection){
             int id=review.getReviewId();
-            String sql = "delete from UMReview where reviewId=?";
+            String sql = "delete from umreview where reviewId=?";
             Object[] params = {id};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
@@ -69,7 +69,7 @@ public class UMReviewDaoImpl implements UMReviewDao{
         int id =review.getReviewId();
         PreparedStatement pstm = null;
         if(null != connection){
-            String sql = "UPDATE `UMReview` " +
+            String sql = "UPDATE `umreview` " +
                     "SET `merchantRating` = ?, " +
                     "`merchantComment` = ?, " +
                     "`isDelete` = ?, " +

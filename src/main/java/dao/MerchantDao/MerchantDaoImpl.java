@@ -2,11 +2,9 @@ package dao.MerchantDao;
 
 import dao.BaseDao;
 import pojo.Merchant;
+import pojo.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class MerchantDaoImpl implements MerchantDao{
@@ -81,7 +79,7 @@ public class MerchantDaoImpl implements MerchantDao{
         PreparedStatement preparedStatement= null;
         int flag=0;
         if(null != connection){
-            String sql= "insert into Merchant (merchantName,merchantAddr) values(?)";
+            String sql= "insert into merchant (merchantName,merchantAddr) values(?,?)";
             Object params[]={merchant.getMerchantName(), merchant.getMerchantAddr()};
             flag= BaseDao.execute(connection,preparedStatement,sql,params);
             BaseDao.closeResource(null,preparedStatement,null);
@@ -98,7 +96,7 @@ public class MerchantDaoImpl implements MerchantDao{
         PreparedStatement pstm = null;
         int flag = 0;
         if(null != connection){
-            String sql = "delete from Merchant where id=?";
+            String sql = "delete from merchant where merchantId=?";
             Object[] params = {id};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
@@ -115,7 +113,7 @@ public class MerchantDaoImpl implements MerchantDao{
         int flag = 0;
         PreparedStatement pstm = null;
         if(null != connection){
-            String sql = "update Merchant set merchantAddr=?,merchantName=?";
+            String sql = "update merchant set merchantAddr=?,merchantName=?";
             Object[] params = {merchant.getMerchantAddr(),merchant.getMerchantName()};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
@@ -128,7 +126,7 @@ public class MerchantDaoImpl implements MerchantDao{
         Merchant merchant=null;
         ResultSet resultSet=null;
         if(null != connection){
-            String sql="select * from Merchant where merchantAddr = ? and merchantName = ?";
+            String sql="select * from merchant where merchantAddr = ? and merchantName = ?";
             Object argms[]={address,name};
             resultSet=BaseDao.execute(connection,preparedStatement,resultSet,sql,argms);
             while(resultSet.next()){
@@ -141,6 +139,32 @@ public class MerchantDaoImpl implements MerchantDao{
             BaseDao.closeResource(connection,preparedStatement,resultSet);
         }
         return merchant;
+    }
+
+    @Override
+    public ArrayList<Merchant> getAllMerchantList(Connection connection) {
+        ArrayList<Merchant> merchantList = new ArrayList<>();
+        PreparedStatement pstm = null;
+        if (null != connection) {
+            String sql = "select * from `merchant`";
+            //因为这里没有参数，所以不用预编译
+            // 执行SQL语句
+            try (Statement statement = connection.createStatement();
+                 ResultSet rs = statement.executeQuery(sql)) {
+                // 遍历结果集
+                while (rs.next()) {
+                    Merchant merchant = new Merchant();
+                    merchant.setMerchantId(rs.getInt("merchantId"));
+                    merchant.setMerchantName(rs.getString("merchantName"));
+                    merchant.setMerchantAddr(rs.getString("merchantAddr"));
+                    merchantList.add(merchant);
+                }
+                BaseDao.closeResource(null, pstm, rs);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return merchantList;
     }
 
 }

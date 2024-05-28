@@ -49,4 +49,14 @@ public class User {
     public void setDelete(boolean delete) {
         isDelete = delete;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userGender='" + userGender + '\'' +
+                ", isDelete=" + isDelete +
+                '}';
+    }
 }

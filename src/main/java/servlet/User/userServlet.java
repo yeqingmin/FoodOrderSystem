@@ -2,17 +2,20 @@ package servlet.User;
 
 import com.mysql.cj.util.StringUtils;
 import pojo.Login;
+import pojo.User;
 import service.Login.LoginService;
 import service.Login.LoginServiceImpl;
 import service.User.UserService;
 import service.User.UserServiceImpl;
 import utils.Constants;
+import utils.Session;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class userServlet extends HttpServlet {
     @Override
@@ -36,29 +39,20 @@ public class userServlet extends HttpServlet {
     }
 
     private void adminManage(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
+       //得到整个用户的列表
+        UserService userService=new UserServiceImpl();
+        ArrayList<User> userList=userService.getAllUserList();
+        request.setAttribute("userList",userList);
         request.getRequestDispatcher(url).forward(request,response);
     }
 
     private void getUserById(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
-        //String id=request.getParameter("correspondingId");   //获取的是前端请求传过来
-//        String name=request.getParameter("name");
-//        String password=request.getParameter("password");
-        Login loginSession=(Login)request.getSession().getAttribute(Constants.USER_SESSION);
-        String name=loginSession.getName();
-        String password=loginSession.getPassword();
-        System.out.println("name: "+name);
-        System.out.println("password: "+password);
-        if(!StringUtils.isNullOrEmpty(name)&&!(StringUtils.isNullOrEmpty(password))){
-
-            System.out.println("zhixing1");
-
-            //下面写的是为了现在能跑通的代码
-            LoginService loginService=new LoginServiceImpl();
-            Login login=null;
-            login = loginService.getLoginUser(name,password);
-            request.setAttribute("login",login);
-            request.getRequestDispatcher(url).forward(request,response);
-        }
+        //由session得到userId的信息
+        Integer userId= Session.getCurrentId(request);
+        //根据userId查到对应的user
+        UserService userService=new UserServiceImpl();
+        User user=userService.getUserById(userId);
+        request.setAttribute("user",user);
         request.getRequestDispatcher(url).forward(request,response);
 
 

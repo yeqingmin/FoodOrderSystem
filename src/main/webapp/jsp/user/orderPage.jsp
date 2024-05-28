@@ -53,11 +53,8 @@
                             </div>
                         </a>
                     </span>
-                </td>
-                <td>
                     <span>
-                        <a class="deleteDishFromOrder" href="javascript:;"
-                           dishId=${dish.dishId} orderId=${orderId} dishName=${dish.dishName}>
+                        <a class="deleteDishFromOrder" href="javascript:;" dishId=${dish.dishId} orderId=${orderId} dishName=${dish.dishName}>
                             <div class="providerAddBtn">
                                 <input type="button" value="移出餐单">
                             </div>

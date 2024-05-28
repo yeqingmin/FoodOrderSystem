@@ -7,8 +7,8 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>食堂点单系统</title>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css" />
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/public.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/public.css" />
 </head>
 <body>
 <!--头部-->
@@ -16,7 +16,7 @@
         <h1>食堂点单系统</h1>
         <div class="publicHeaderR">
             <p>欢迎你！</p>
-            <a href="${pageContext.request.contextPath }/jsp/logout">退出</a>
+            <a href="${pageContext.request.contextPath}/jsp/logout">退出</a>
         </div>
     </header>
 <!--时间-->
