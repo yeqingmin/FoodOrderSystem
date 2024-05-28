@@ -10,6 +10,7 @@ import service.Merchant.MerchantServiceImpl;
 import service.Order.OrderService;
 import service.Order.OrderServiceImpl;
 import utils.Constants;
+import utils.Session;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -78,12 +79,12 @@ public class merchantServlet extends HttpServlet {
     private void createOrderAndListMenu(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
         //todo 恢复注释
 
-//        //调用orderDao根据session得到userId，根据前端Parameter发送名字为orderMerchantId参数的值，获取当前创建时间，然后新建order，并返回新建的order的id
-//
-//        //首先，根据session获得当前登录的用户/商户的id
+        //调用orderDao根据session得到userId，根据前端Parameter发送名字为orderMerchantId参数的值，获取当前创建时间，然后新建order，并返回新建的order的id
+
+        //首先，根据session获得当前登录的用户/商户的id
 //        HttpSession session = request.getSession();
 //        Integer userId = 0;
-//        int orderId = 0;
+
 //        if (session != null) {
 //            // 从session中获取Constants.USER_SESSION属性
 //            Login userSession = (Login) session.getAttribute(Constants.USER_SESSION);
@@ -96,24 +97,26 @@ public class merchantServlet extends HttpServlet {
 //                System.out.println("userId: " + userId);
 //            }
 //        }
-//
+        int orderId = 0;
+        Integer userId=Session.getCurrentId(request);
+
         //然后根据前端传参获取merchantId
         String merchantId = request.getParameter("merchantId");
         System.out.println("merchantId: " + merchantId);
-//
-//        //新建orderService对象
-//        OrderService orderService = new OrderServiceImpl();
-//        if (!StringUtils.isNullOrEmpty(merchantId)) {
-//            //新建一个Order对象
-//            Order order = new Order();
-//            order.setMerchantId(Integer.parseInt(merchantId));
-//            order.setUserId(userId);
-//            orderId = orderService.addOrder(order);
-//            System.out.println("New orderId = "+orderId);
-//            //设置转发请求的参数orderId，以方便选择指定菜品向orderDetail表里面增加新的数据的时候对应正确的orderId
-//            request.setAttribute("orderId",orderId);
-//        }
-//
+
+        //新建orderService对象
+        OrderService orderService = new OrderServiceImpl();
+        if (!StringUtils.isNullOrEmpty(merchantId)) {
+            //新建一个Order对象
+            Order order = new Order();
+            order.setMerchantId(Integer.parseInt(merchantId));
+            order.setUserId(userId);
+            orderId = orderService.addOrder(order);
+            System.out.println("New orderId = "+orderId);
+            //设置转发请求的参数orderId，以方便选择指定菜品向orderDetail表里面增加新的数据的时候对应正确的orderId
+            request.setAttribute("orderId",orderId);
+        }
+
         //以上全部搞完之后还要设置dishList，获取到当前merchantId对应的dishList设置在转发的请求中
         ArrayList<Dish> dishList=null;
         if(!StringUtils.isNullOrEmpty(merchantId)){

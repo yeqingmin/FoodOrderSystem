@@ -26,7 +26,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         PreparedStatement pstm = null;
         int flag = 0;
         if (null != connection) {
-            String sql = "delete from orderdetail where dishId=? and orderId=?";
+            String sql = "delete from orderdetail where dishId=? and orderId=? limit 1";
             Object[] params = {dishId,orderId};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
@@ -49,6 +49,6 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
             }
             BaseDao.closeResource(null, pstm, null);
         }
-        return flag;
+        return quantity;
     }
 }

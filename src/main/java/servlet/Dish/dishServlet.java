@@ -48,34 +48,48 @@ public class dishServlet extends HttpServlet {
     private void deleteDishFromOrder(HttpServletRequest request, HttpServletResponse response) {
         int quantity=0;
 
-//todo 重要的逻辑：我们需要判断一下是否没得删了然后给前端传消息,调用OrderDetail的count方法得到quantity
+        //从前端获得dishId和orderId
+        String dishId=request.getParameter("dishId");
+        String orderId=request.getParameter("orderId");
 
-        //发送响应到前端（json响应数据)
-        response.setContentType("application/json");
-        PrintWriter out = null;
-        try {
-            out = response.getWriter();
-            out.write("{\"success\": true, \"quantity\": " + quantity + "}");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (out != null) {
-                out.close();
+        //todo 重要的逻辑：我们需要判断一下是否没得删了然后给前端传消息,调用OrderDetail的count方法得到quantity
+        int oldquantity= dishService.countDishQuantity(Integer.parseInt(dishId),Integer.parseInt(orderId));
+        System.out.println(oldquantity);
+        if(oldquantity>0) {
+
+            if (!StringUtils.isNullOrEmpty(dishId) && !StringUtils.isNullOrEmpty(orderId)) {
+                quantity = dishService.deleteDishFromOrder(Integer.parseInt(dishId), Integer.parseInt(orderId));
+                System.out.println("quantity=============" + quantity);
             }
+            //发送响应到前端（json响应数据)
+            jsonToJSP(response, quantity,true);
+        }else {
+            jsonToJSP(response,0,false);
         }
-
     }
 
     private void addDishToOrder(HttpServletRequest request, HttpServletResponse response) {
         int quantity=0;
 
+        //从前端获得dishId和orderId
+        String dishId=request.getParameter("dishId");
+        String orderId=request.getParameter("orderId");
+
+        if (!StringUtils.isNullOrEmpty(dishId) && !StringUtils.isNullOrEmpty(orderId)) {
+            quantity = dishService.addDishToOrder(Integer.parseInt(dishId), Integer.parseInt(orderId));
+            System.out.println("quantity=============" + quantity);
+        }
 
         //发送响应到前端（json响应数据)
+        jsonToJSP(response, quantity,true);
+    }
+
+    private void jsonToJSP(HttpServletResponse response, int quantity,boolean isSucess) {
         response.setContentType("application/json");
         PrintWriter out = null;
         try {
             out = response.getWriter();
-            out.write("{\"success\": true, \"quantity\": " + quantity + "}");
+            out.write("{\"success\": "+isSucess+", \"quantity\": " + quantity + "}");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

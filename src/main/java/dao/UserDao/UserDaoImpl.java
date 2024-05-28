@@ -6,6 +6,8 @@ import pojo.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UserDaoImpl implements UserDao{
     public User getUserById(Connection connection, int id) throws Exception {
@@ -70,5 +72,28 @@ public class UserDaoImpl implements UserDao{
             BaseDao.closeResource(null, pstm, null);
         }
         return flag;
+    }
+
+    @Override
+    public ArrayList<User> getUserList(Connection connection) throws SQLException {
+        ArrayList<User> userList = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if(null != connection){
+            String sql = "select * from user";
+            pstm = connection.prepareStatement(sql);
+            Object[] params={};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            while(rs.next()){
+                User user=new User();
+                user = new User();
+                user.setUserId(rs.getInt("userId"));
+                user.setUserName(rs.getString("userName"));
+                user.setUserGender(rs.getString("userGender"));
+                userList.add(user);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return userList;
     }
 }

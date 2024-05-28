@@ -7,7 +7,7 @@ public class Order {
     private Integer orderId; // 订单id
     private Integer userId; // 用户id
     private Integer merchantId; // 商家id
-    private Integer orderStatus; // 订单状态
+    private String orderStatus; // 订单状态
     private Float totalPrice; // 订单总价
     private Date orderTime; // 订单时间
 
@@ -48,11 +48,11 @@ public class Order {
         this.merchantId = merchantId;
     }
 
-    public Integer getOrderStatus() {
+    public String getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(Integer orderStatus) {
+    public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
     }
 

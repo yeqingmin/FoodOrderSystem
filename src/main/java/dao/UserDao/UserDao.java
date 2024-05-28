@@ -3,6 +3,8 @@ package dao.UserDao;
 import pojo.User;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public interface UserDao {
     /**
@@ -41,4 +43,6 @@ public interface UserDao {
      * @throws Exception
      */
     public int modify(Connection connection, User user)throws Exception;
+
+    public ArrayList<User> getUserList(Connection connection) throws SQLException;
 }

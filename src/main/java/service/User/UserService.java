@@ -9,6 +9,8 @@ import java.util.List;
 public interface UserService {
     public User getUserById(int id);
 
+    public ArrayList<User> getAllUserList();
+
     public ArrayList<Merchant> getSeriesMerchantByName(String merchantName);
 
     public MerchantDetail getMerchantDetailByNameAndAddress(String merchantName , String address);
@@ -19,7 +21,7 @@ public interface UserService {
 
     public void Order(int merchantId , int userId , Date orderTime,int state,ArrayList<Dish> dishes ,float price);
 
-    public List<Order> getOrder(int userId);
+//    public List<Order> getOrder(int userId);
 
     public void favouriteDish(int userId , int dishId);
 

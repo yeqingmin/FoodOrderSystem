@@ -2,6 +2,7 @@ package servlet.User;
 
 import com.mysql.cj.util.StringUtils;
 import pojo.Login;
+import pojo.User;
 import service.Login.LoginService;
 import service.Login.LoginServiceImpl;
 import service.User.UserService;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class userServlet extends HttpServlet {
     @Override
@@ -36,6 +38,10 @@ public class userServlet extends HttpServlet {
     }
 
     private void adminManage(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
+       //得到整个用户的列表
+        UserService userService=new UserServiceImpl();
+        ArrayList<User> userList=userService.getAllUserList();
+        request.setAttribute("userList",userList);
         request.getRequestDispatcher(url).forward(request,response);
     }
 

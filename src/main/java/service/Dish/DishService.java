@@ -15,4 +15,6 @@ public interface DishService {
     public int addDishToOrder(Integer dishId,Integer orderId);
 
     public int deleteDishFromOrder(Integer dishId,Integer orderId);
+
+    public int countDishQuantity(Integer dishId,Integer orderId);
 }

@@ -1,10 +1,16 @@
 package servlet.Order;
 
+import pojo.Order;
+import service.Order.OrderService;
+import service.Order.OrderServiceImpl;
+import utils.Session;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class OrderServlet extends HttpServlet {
     @Override
@@ -27,6 +33,10 @@ public class OrderServlet extends HttpServlet {
     }
 
     private void query(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Integer userId= Session.getCurrentId(request);
+        OrderService orderService=new OrderServiceImpl();
+        ArrayList<Order> orderList=orderService.getOrderListByUserId(userId);
+        request.setAttribute("orderList",orderList);
         request.getRequestDispatcher("user/orderList.jsp").forward(request, response);
     }
 }
