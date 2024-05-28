@@ -45,7 +45,7 @@ public interface UMReviewDao {
      */
     public int modifyReview(Connection connection, UMReview review) throws Exception;
 
-    public UMReview getReviewsByBusinessNameAndAddress(Connection connection, String merchantName , String address) throws Exception;
+    public List<UMReview> getReviewsByBusinessNameAndAddress(Connection connection, String merchantName , String address) throws Exception;
 
 }
 

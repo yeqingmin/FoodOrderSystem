@@ -8,6 +8,7 @@ import pojo.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -39,6 +40,39 @@ public class DishDaoImpl implements DishDao{
         }
         return dish;
     }
+
+    @Override
+    public Dish getDishById(Connection connection, Integer id) throws SQLException {
+        Dish dish = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if(null != connection){
+            String sql = "SELECT * FROM dish WHERE dishId=?";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {id};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            while(rs.next()){
+                dish = new Dish();
+                dish.setDishId(rs.getInt("dishId"));
+                dish.setDishName(rs.getString("dishName"));
+                dish.setDishPrice(rs.getFloat("dishPrice"));
+                dish.setDishCategory(rs.getString("dishCategory"));
+                dish.setDishDescription(rs.getString("dishDescription"));
+                dish.setDishAllergens(rs.getString("dishAllergens"));
+                dish.setDishIngredients(rs.getString("dishIngredients"));
+                dish.setDishNutrition(rs.getString("dishNutrition"));
+//                dish.setDishImage(rs.getBytes("dishImage"));
+                dish.setMerchantId(rs.getInt("merchantId"));
+//                dish.setIsDelete(rs.getBoolean("isDeleted"));
+//                if(rs.getBoolean("isDelete")){
+//                    dish=null;
+//                }
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return dish;
+    }
+
     public int add(Connection connection, Dish dish)
             throws Exception {
         PreparedStatement pstm = null;
@@ -107,18 +141,18 @@ public class DishDaoImpl implements DishDao{
         PreparedStatement preparedStatement=null;
         ResultSet rs=null;
         if(null != connection){
-            String sql="select * from Dish where merchantId=?";
+            String sql="select * from dish where merchantId=?";
             Object[] params ={merchantId};
             rs=BaseDao.execute(connection,preparedStatement,rs,sql,params);
-            if(rs.next()){
+            while(rs.next()){
                 Dish dish=new Dish();
                 dish.setDishName(rs.getString("dishName"));
                 dish.setDishPrice(rs.getFloat("dishPrice"));
                 dish.setDishCategory(rs.getString("dishCategory"));
                 dish.setDishDescription(rs.getString("dishDescription"));
-                dish.setDishImage(rs.getBytes("dishImage"));
-                dish.setMerchantId(rs.getInt("merchantId"));
-                dish.setIsDelete(rs.getBoolean("isDeleted"));
+//                dish.setDishImage(rs.getBytes("dishImage"));
+//                dish.setMerchantId(rs.getInt("merchantId"));
+//                dish.setIsDelete(rs.getBoolean("isDeleted"));
                 menu.add(dish);
             }
             BaseDao.closeResource(connection,preparedStatement,rs);
@@ -131,23 +165,23 @@ public class DishDaoImpl implements DishDao{
         PreparedStatement pstm = null;
         ResultSet rs = null;
         if(null != connection){
-            String sql = "SELECT * FROM Dish WHERE dishName= ? and merchantId=?";
+            String sql = "SELECT * FROM dish WHERE dishName= ? and merchantId=?";
             pstm = connection.prepareStatement(sql);
             Object[] params = {name,id};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
-            if(rs.next()){
+            while(rs.next()){
                 dish = new Dish();
                 dish.setDishId(rs.getInt("dishId"));
                 dish.setDishName(rs.getString("dishName"));
                 dish.setDishPrice(rs.getFloat("dishPrice"));
                 dish.setDishCategory(rs.getString("dishCategory"));
                 dish.setDishDescription(rs.getString("dishDescription"));
-                dish.setDishImage(rs.getBytes("dishImage"));
+//                dish.setDishImage(rs.getBytes("dishImage"));
                 dish.setMerchantId(rs.getInt("merchantId"));
-                dish.setIsDelete(rs.getBoolean("isDeleted"));
-                if(rs.getBoolean("isDelete")){
-                    dish=null;
-                }
+//                dish.setIsDelete(rs.getBoolean("isDeleted"));
+//                if(rs.getBoolean("isDelete")){
+//                    dish=null;
+//                }
             }
             BaseDao.closeResource(null, pstm, rs);
         }

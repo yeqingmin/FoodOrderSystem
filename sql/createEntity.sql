@@ -4,13 +4,17 @@ CREATE TABLE if not exists User (
     `userGender` ENUM('male', 'female', 'other') NOT NULL comment '用户性别',
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除'
 );
-CREATE TABLE if not exists Merchant (
+
+
+use food_order_sys;
+CREATE TABLE if not exists merchant (
     `merchantId` INT AUTO_INCREMENT comment '商户id' PRIMARY KEY,
     `merchantAddr` VARCHAR(255) NOT NULL comment '商户地址',
     `merchantName` VARCHAR(255) NOT NULL comment '商户名称',
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除'
 );
 
+use food_order_sys;
 CREATE TABLE if not exists Dish (
      `dishId` INT AUTO_INCREMENT comment '菜品id' PRIMARY KEY,
      `dishName` VARCHAR(255) NOT NULL comment '菜品名称',
@@ -18,6 +22,9 @@ CREATE TABLE if not exists Dish (
      `dishCategory` VARCHAR(255) NOT NULL comment '菜品分类',
      `dishDescription` varchar(255) comment '菜品描述',
      `dishImage` BLOB comment '菜品图片', -- BLOB用于存储二进制数据，如图片
+     `dishAllergens` varchar(255) comment  '菜品过敏源',
+     `dishIngredients` varchar(255) comment '菜品成分',
+     `dishNutrition` varchar(255) comment '菜品营养信息',
      `merchantId` INT comment '商户名称',
      `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
      FOREIGN KEY (merchantId) REFERENCES Merchant(merchantId) -- 假设商户表名为merchants，商户ID字段名为merchantId

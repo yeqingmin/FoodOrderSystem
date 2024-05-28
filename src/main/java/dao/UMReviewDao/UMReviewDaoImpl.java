@@ -83,10 +83,10 @@ public class UMReviewDaoImpl implements UMReviewDao{
         return flag;
     }
 
-    public UMReview getReviewsByBusinessNameAndAddress(Connection connection, String merchantName , String address) throws Exception{
+    public List<UMReview> getReviewsByBusinessNameAndAddress(Connection connection, String merchantName , String address) throws Exception{
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        UMReview review = new UMReview();
+        List<UMReview> reviews = new ArrayList<>();
         if(connection != null){
             String sql = "SELECT *\n" +
                     "FROM Merchant\n" +
@@ -94,16 +94,18 @@ public class UMReviewDaoImpl implements UMReviewDao{
                     "WHERE Merchant.merchantName = ? and Merchant.address = ?";
             Object[] params ={merchantName,address};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
-            if(rs.next()){
+            while(rs.next()){
+                UMReview review = new UMReview();
                 review.setMerchantRating(rs.getInt("merchantRating"));
                 review.setMerchantComment(rs.getString("merchantComment"));
                 review.setIsDelete(rs.getBoolean("isDelete"));
                 review.setUserId(rs.getInt("userId"));
                 review.setMerchantId(rs.getInt("MerchantId"));
+                reviews.add(review);
             }
             BaseDao.closeResource(null, pstm, rs);
             BaseDao.closeResource(null, pstm, rs);
         }
-        return review;
+        return reviews;
     }
 }

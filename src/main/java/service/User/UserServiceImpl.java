@@ -116,9 +116,10 @@ public class UserServiceImpl implements UserService {
     }
 
     //根据商户地址和名称获得商户评价
-    public UMReview getReviewByMerchantNameAndMerchantAddress( String merchantName,String address){
+    public List<UMReview> getReviewByMerchantNameAndMerchantAddress( String merchantName,String address){
+        //todo 使用SQL
         Connection connection=null;
-        UMReview umReview=new UMReview();
+        List<UMReview> umReview=new ArrayList<>();
         try{
             connection= BaseDao.getConnection();
             umReview= umReviewDao.getReviewsByBusinessNameAndAddress(connection,merchantName,address);
@@ -128,7 +129,6 @@ public class UserServiceImpl implements UserService {
                 System.out.println("rollback==================");
                 connection.rollback();
             } catch (SQLException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         }finally {

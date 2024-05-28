@@ -22,7 +22,7 @@ public interface MerchantService {
      * @return
      * @throws SQLException
      */
-    public MerchantDetail getDetailedMerchantById(int id);
+    public MerchantDetail getDetailedMerchantById(Integer id);
 
     public boolean addMerchant(Merchant merchant);
 

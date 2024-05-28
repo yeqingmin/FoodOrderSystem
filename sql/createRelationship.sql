@@ -88,3 +88,8 @@ CREATE TABLE if not exists `Book` (
     FOREIGN KEY (merchantId) REFERENCES Merchant(merchantId),
     CHECK (bookStartTime <= bookEndTime)
 );
+
+
+
+
+

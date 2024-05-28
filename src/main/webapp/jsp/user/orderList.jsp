@@ -10,36 +10,36 @@
 <div class="right">
     <div class="location">
         <strong>你现在所在的位置是:</strong>
-        <span>订单管理页面</span>
+        <span>历史订单页面</span>
     </div>
-    <div class="search">
-        <form method="get" action="${pageContext.request.contextPath }/jsp/order.do">
-            <input name="method" value="query" class="input-text" type="hidden">
-            <span>商品名称：</span>
-            <input name="queryProductName" type="text" value="${queryProductName }">
+<%--    <div class="search">--%>
+<%--        <form method="get" action="${pageContext.request.contextPath }/jsp/order.do">--%>
+<%--            <input name="method" value="query" class="input-text" type="hidden">--%>
+<%--            <span>商品名称：</span>--%>
+<%--            <input name="queryProductName" type="text" value="${queryProductName }">--%>
 
-            <span>供应商：</span>
-            <select name="queryProviderId">
-                <c:if test="${providerList != null }">
-                    <option value="0">--请选择--</option>
-                    <c:forEach var="provider" items="${providerList}">
-                        <option <c:if test="${provider.id == queryProviderId }">selected="selected"</c:if>
-                                value="${provider.id}">${provider.proName}</option>
-                    </c:forEach>
-                </c:if>
-            </select>
+<%--            <span>供应商：</span>--%>
+<%--            <select name="queryProviderId">--%>
+<%--                <c:if test="${providerList != null }">--%>
+<%--                    <option value="0">--请选择--</option>--%>
+<%--                    <c:forEach var="provider" items="${providerList}">--%>
+<%--                        <option <c:if test="${provider.id == queryProviderId }">selected="selected"</c:if>--%>
+<%--                                value="${provider.id}">${provider.proName}</option>--%>
+<%--                    </c:forEach>--%>
+<%--                </c:if>--%>
+<%--            </select>--%>
 
-            <span>是否付款：</span>
-            <select name="queryIsPayment">
-                <option value="0">--请选择--</option>
-                <option value="1" ${queryIsPayment == 1 ? "selected=\"selected\"":"" }>未付款</option>
-                <option value="2" ${queryIsPayment == 2 ? "selected=\"selected\"":"" }>已付款</option>
-            </select>
+<%--            <span>是否付款：</span>--%>
+<%--            <select name="queryIsPayment">--%>
+<%--                <option value="0">--请选择--</option>--%>
+<%--                <option value="1" ${queryIsPayment == 1 ? "selected=\"selected\"":"" }>未付款</option>--%>
+<%--                <option value="2" ${queryIsPayment == 2 ? "selected=\"selected\"":"" }>已付款</option>--%>
+<%--            </select>--%>
 
-            <input	value="查 询" type="submit" id="searchbutton">
-            <a href="${pageContext.request.contextPath }/jsp/orderadd.jsp">添加订单</a>
-        </form>
-    </div>
+<%--            <input	value="查 询" type="submit" id="searchbutton">--%>
+<%--            <a href="${pageContext.request.contextPath }/jsp/orderadd.jsp">添加订单</a>--%>
+<%--        </form>--%>
+<%--    </div>--%>
     <!--账单表格 样式和供应商公用-->
     <table class="providerTable" cellpadding="0" cellspacing="0">
         <tr class="firstTr">
@@ -76,11 +76,11 @@
 					<fmt:formatDate value="${order.creationDate}" pattern="yyyy-MM-dd"/>
 					</span>
                 </td>
-                <td>
-                    <span><a class="vieworder" href="javascript:;" orderid=${order.id } ordercc=${order.orderCode }><img src="${pageContext.request.contextPath }/images/read.png" alt="查看" title="查看"/></a></span>
-                    <span><a class="modifyorder" href="javascript:;" orderid=${order.id } ordercc=${order.orderCode }><img src="${pageContext.request.contextPath }/images/xiugai.png" alt="修改" title="修改"/></a></span>
-                    <span><a class="deleteorder" href="javascript:;" orderid=${order.id } ordercc=${order.orderCode }><img src="${pageContext.request.contextPath }/images/schu.png" alt="删除" title="删除"/></a></span>
-                </td>
+<%--                <td>--%>
+<%--                    <span><a class="vieworder" href="javascript:;" orderid=${order.id } ordercc=${order.orderCode }><img src="${pageContext.request.contextPath }/images/read.png" alt="查看" title="查看"/></a></span>--%>
+<%--                    <span><a class="modifyorder" href="javascript:;" orderid=${order.id } ordercc=${order.orderCode }><img src="${pageContext.request.contextPath }/images/xiugai.png" alt="修改" title="修改"/></a></span>--%>
+<%--                    <span><a class="deleteorder" href="javascript:;" orderid=${order.id } ordercc=${order.orderCode }><img src="${pageContext.request.contextPath }/images/schu.png" alt="删除" title="删除"/></a></span>--%>
+<%--                </td>--%>
             </tr>
         </c:forEach>
     </table>

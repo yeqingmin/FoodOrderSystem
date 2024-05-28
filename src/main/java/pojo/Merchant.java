@@ -47,4 +47,14 @@ public class Merchant {
         this.isDelete = isDelete;
     }
 
+    @Override
+    public String toString() {
+        return "Merchant{" +
+                "merchantId=" + merchantId +
+                ", merchantAddr='" + merchantAddr + '\'' +
+                ", merchantName='" + merchantName + '\'' +
+                ", isDelete=" + isDelete +
+                ", featureDish='" + featureDish + '\'' +
+                '}';
+    }
 }

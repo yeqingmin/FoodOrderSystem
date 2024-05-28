@@ -13,7 +13,7 @@ public interface UserService {
 
     public MerchantDetail getMerchantDetailByNameAndAddress(String merchantName , String address);
 
-    public UMReview getReviewByMerchantNameAndMerchantAddress(String merchantName,String address);
+    public List<UMReview> getReviewByMerchantNameAndMerchantAddress(String merchantName,String address);
 
     public Dish getInterestedDishInMerchant(String dishName , int id);
 

@@ -30,7 +30,7 @@
             <th width="10%">商户名称</th>
             <th width="30%">操作</th>
         </tr>
-        <c:forEach var="merchant" items="${merchantList }" varStatus="status">
+        <c:forEach var="merchant" items="${merchantList}" varStatus="status">
             <tr>
                 <td>
                     <span>${merchant.code }</span>
