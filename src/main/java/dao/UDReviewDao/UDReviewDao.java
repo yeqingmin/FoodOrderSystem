@@ -20,12 +20,11 @@ public interface UDReviewDao {
     /**
      * 根据菜名查询菜品的评分和评价
      * @author:liuying
-     * @param connection 数据库连接
-     * @param dishName 商户名
+     * @param connection 数据库
      * @return 包含评分和评价的商户列表，如果未找到则返回空列表
      * @throws Exception 如果数据库操作出错
      */
-    public List<UDReview> getReviewsByBusinessName(Connection connection, String dishName) throws Exception;
+    public List<UDReview> getReviewsById(Connection connection, int id) throws Exception;
 
     /**
      * 用户删除指定评价
