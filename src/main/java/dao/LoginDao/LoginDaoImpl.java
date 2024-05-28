@@ -15,7 +15,7 @@ public class LoginDaoImpl implements LoginDao{
         PreparedStatement pstm = null;
         int updateRows = 0;
         if(null != connection){
-            String sql = "insert into Login (password, name, correspondingID, role) VALUES (?, ?, ?, ?)";
+            String sql = "insert into login (password, name, correspondingID, role) VALUES (?, ?, ?, ?)";
             Object[] params = {login.getPassword(),login.getName(),login.getCorrespondingID(),login.getRole()};
             updateRows = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
@@ -43,12 +43,12 @@ public class LoginDaoImpl implements LoginDao{
         return login;
     }
     @Override
-    public int deleteUserById(Connection connection,Integer delId) throws Exception {
+    public int deleteUserById(Connection connection,String name , String password) throws Exception {
         PreparedStatement pstm = null;
         int flag = 0;
         if (null != connection) {
-            String sql = "delete from login where id=?";
-            Object[] params = {delId};
+            String sql = "delete from login where password=? and name = ?";
+            Object[] params = {password,name};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
         }

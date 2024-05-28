@@ -58,7 +58,7 @@ public class OrderDaoImpl implements OrderDao{
         ResultSet rs = null;
         if(connection != null){
             String sql = "SELECT *\n" +
-                    "FROM Order\n" +
+                    "FROM 'order'\n" +
                     "WHERE userId = ? and orderStatus=1";
             Object[] params ={userId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);

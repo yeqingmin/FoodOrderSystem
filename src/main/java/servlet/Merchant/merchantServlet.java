@@ -12,6 +12,7 @@ import service.Order.OrderServiceImpl;
 import service.User.UserService;
 import service.User.UserServiceImpl;
 import utils.Constants;
+import utils.PageSupport;
 import utils.Session;
 
 import javax.servlet.ServletException;
@@ -160,10 +161,56 @@ public class merchantServlet extends HttpServlet {
 
 
     private void adminManage(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
-        //查出所有的merchant
-        MerchantService merchantService=new MerchantServiceImpl();
-        ArrayList<Merchant> merchantList=merchantService.getAllMerchantList();
-        request.setAttribute("merchantList",merchantList);
+        //以下是参考代码
+        //查询用户列表
+
+        //获取分页查询下标
+        String pageIndex = request.getParameter("pageIndex");
+
+        MerchantService merchantService = new MerchantServiceImpl();
+
+        //第一次走页面一定是第一页,页面大小固定的
+        ArrayList<Merchant> merchantList = null;
+        //设置页面容量
+        int pageSize = Constants.pageSize;
+        //当前页码
+        int currentPageNo = 1;
+
+        System.out.println("query pageIndex--------- > " + pageIndex);
+
+        if (pageIndex != null) {
+            try {
+                currentPageNo = Integer.valueOf(pageIndex);
+            } catch (NumberFormatException e) {
+                response.sendRedirect("error.jsp");
+            }
+        }
+        //获取总数
+        int totalCount = merchantService.getMerchantTotalCount();
+
+        //总页数
+        PageSupport pages = new PageSupport();
+
+        pages.setCurrentPageNo(currentPageNo);
+
+        pages.setPageSize(pageSize);
+
+        pages.setTotalCount(totalCount);
+
+        int totalPageCount = pages.getTotalPageCount();
+
+        //控制首页和尾页
+        if (currentPageNo < 1) {
+            currentPageNo = 1;
+        } else if (currentPageNo > totalPageCount) {
+            currentPageNo = totalPageCount;
+        }
+
+        merchantList = merchantService.getAllMerchantList(currentPageNo, pageSize);
+        request.setAttribute("merchantList", merchantList);
+        request.setAttribute("totalPageCount", totalPageCount);
+        request.setAttribute("totalCount", totalCount);
+        request.setAttribute("currentPageNo", currentPageNo);
         request.getRequestDispatcher(url).forward(request,response);
     }
 

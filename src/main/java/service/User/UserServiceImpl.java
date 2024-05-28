@@ -66,12 +66,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ArrayList<User> getAllUserList() {
+    public ArrayList<User> getAllUserList(int currentPageNo, int pageSize) {
         Connection connection=null;
         ArrayList<User> userList=null;
         try{
             connection= BaseDao.getConnection();
-            userList= userDao.getUserList(connection);
+            userList= userDao.getUserList(connection,currentPageNo, pageSize);
         }catch (Exception e){
             e.printStackTrace();
             try {
@@ -137,9 +137,10 @@ public class UserServiceImpl implements UserService {
     }
 
     //根据商户地址和名称获得商户评价
-    public UMReview getReviewByMerchantNameAndMerchantAddress( String merchantName,String address){
+    public List<UMReview> getReviewByMerchantNameAndMerchantAddress( String merchantName,String address){
+        //todo 使用SQL
         Connection connection=null;
-        UMReview umReview=new UMReview();
+        List<UMReview> umReview=new ArrayList<>();
         try{
             connection= BaseDao.getConnection();
             umReview= umReviewDao.getReviewsByBusinessNameAndAddress(connection,merchantName,address);
@@ -149,7 +150,6 @@ public class UserServiceImpl implements UserService {
                 System.out.println("rollback==================");
                 connection.rollback();
             } catch (SQLException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         }finally {
@@ -303,6 +303,28 @@ public class UserServiceImpl implements UserService {
         }finally {
             BaseDao.closeResource(connection,null,null);
         }
+    }
+
+    @Override
+    public int getUserTotalCount() {
+        Connection connection=null;
+        int result=0;
+        try{
+            connection= BaseDao.getConnection();
+            result=userDao.getUserTotalCount(connection);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
     }
 
 }

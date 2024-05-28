@@ -12,7 +12,7 @@ public class UDFavorDaoImpl implements UDFavorDao{
         PreparedStatement pstm = null;
         int updateRows = 0;
         if(null != connection){
-            String sql = "insert into UDFavor (userId,dishId) " +
+            String sql = "insert into udfavor (userId,dishId) " +
                     "values(?,?)";
             Object[] params = {udFavor.getUserId(),udFavor.getDishId()};
             updateRows = BaseDao.execute(connection, pstm, sql, params);
@@ -26,7 +26,7 @@ public class UDFavorDaoImpl implements UDFavorDao{
         PreparedStatement pstm = null;
         int flag = 0;
         if(null != connection){
-            String sql = "delete from UMFavor where userId=? and merchantId=?";
+            String sql = "delete from udfavor where userId=? and dishId=?";
             Object[] params = {userId,dishId};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);

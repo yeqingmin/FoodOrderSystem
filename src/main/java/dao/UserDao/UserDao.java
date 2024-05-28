@@ -44,5 +44,7 @@ public interface UserDao {
      */
     public int modify(Connection connection, User user)throws Exception;
 
-    public ArrayList<User> getUserList(Connection connection) throws SQLException;
+    public ArrayList<User> getUserList(Connection connection,int currentPageNo, int pageSize) throws SQLException;
+
+    public int getUserTotalCount(Connection connection) throws SQLException;
 }

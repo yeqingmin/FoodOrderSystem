@@ -23,7 +23,7 @@ create table if not exists `UMFavor`
     foreign key (merchantId) references Merchant (merchantId)
 );
 
-use food_order_sys;
+
 create table if not exists `order`
 (
     `orderId`  int auto_increment  primary key comment '订单id',
@@ -88,11 +88,33 @@ CREATE TABLE if not exists `Book` (
     FOREIGN KEY (merchantId) REFERENCES Merchant(merchantId),
     CHECK (bookStartTime <= bookEndTime)
 );
-use food_order_sys;
+
 create table if not exists `orderDetail`(
       `id` INT AUTO_INCREMENT comment '订单细节表的主键id' PRIMARY KEY,
       `dishId` INT NOT NULL comment '菜品id',
       `orderId` INT NOT NULL comment '订单id',
       FOREIGN KEY (dishId) REFERENCES dish(dishId),
       FOREIGN KEY (orderId)REFERENCES `order`(orderId)
+);
+
+CREATE TABLE if not exists `bookmessage`
+(
+    `isDelete`         tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
+    messageId          INT PRIMARY KEY AUTO_INCREMENT,      -- 消息ID，设为主键并自动增长
+    userId             INT NOT NULL comment '用户id',       -- 用户ID，外键关联用户表
+    bookStatusMessage  VARCHAR(255) comment '预定确认信息', -- 预订确认消息，假设最大长度为255字符
+    bookId            INT NOT NULL comment '订单id',
+    FOREIGN KEY (userId) REFERENCES User (userId) ,          -- 假设用户表名为User，用户ID字段名为userId
+    FOREIGN KEY (bookId) REFERENCES Book (bookId)
+);
+
+CREATE TABLE if not exists `ordermessage`
+(
+    `isDelete`         tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
+    messageId          INT PRIMARY KEY AUTO_INCREMENT,      -- 消息ID，设为主键并自动增长
+    userId             INT NOT NULL comment '用户id',       -- 用户ID，外键关联用户表
+    orderStatusMessage VARCHAR(255) comment '订单状态信息', -- 订单状态消息，假设最大长度为255字符
+    orderId            INT NOT NULL comment '订单id',
+    FOREIGN KEY (userId) REFERENCES User (userId),         -- 假设用户表名为User，用户ID字段名为userId
+    FOREIGN KEY (orderId) REFERENCES `Order` (orderId)
 );

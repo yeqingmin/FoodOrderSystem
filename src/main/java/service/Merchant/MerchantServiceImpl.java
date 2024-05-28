@@ -136,12 +136,12 @@ public class MerchantServiceImpl implements MerchantService {
     }
 
     @Override
-    public ArrayList<Merchant> getAllMerchantList() {
+    public ArrayList<Merchant> getAllMerchantList(int currentPageNo,int pageSize) {
         Connection connection=null;
         ArrayList<Merchant> merchantList=null;
         try{
             connection= BaseDao.getConnection();
-            merchantList= merchantDao.getAllMerchantList(connection);
+            merchantList= merchantDao.getMerchantList(connection,currentPageNo, pageSize);
         }catch (Exception e){
             e.printStackTrace();
             try {
@@ -154,5 +154,27 @@ public class MerchantServiceImpl implements MerchantService {
             BaseDao.closeResource(connection,null,null);
         }
         return merchantList;
+    }
+
+    @Override
+    public int getMerchantTotalCount() {
+        Connection connection=null;
+        int result=0;
+        try{
+            connection= BaseDao.getConnection();
+            result=merchantDao.getMerchantTotalCount(connection);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
     }
 }

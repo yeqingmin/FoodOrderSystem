@@ -46,6 +46,8 @@ public interface MerchantService {
      */
     public boolean deleteDishByMerchantId(int merchantId);
 
-    public ArrayList<Merchant> getAllMerchantList();
+    public ArrayList<Merchant> getAllMerchantList(int currentPageNo,int pageSize);
+
+    public int getMerchantTotalCount();
 
 }

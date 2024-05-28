@@ -15,10 +15,10 @@
     </div>
     <div class="search">
         <form method="get" action="${pageContext.request.contextPath }/jsp/merchant">
-            <input name="method" value="query" class="input-text" type="hidden">
+            <input name="method" value="adminManage" class="input-text" type="hidden">
             <span>商家名称：</span>
             <input name="merchantName" type="text" value="${merchantName}">
-
+            <input type="hidden" name="pageIndex" value="1"/>
             <input value="查 询" type="submit" id="searchbutton">
         </form>
     </div>
@@ -42,8 +42,8 @@
                     <span>${merchant.merchantAddr}</span>
                 </td>
                 <td>
-                    <span><a class="viewDish" href="javascript:;" userId=${user.userId}><div class="providerAddBtn"><input type="button" value="删除商户"></div></a></span>
-                    <span><a class="viewDish" href="javascript:;" userId=${user.userId}><div class="providerAddBtn"><input type="button" value="修改商户"></div></a></span>
+                    <span><a class="viewDish" href="javascript:;" userId=${user.userId}><div class="providerAddBtn"><input type="button" value="删除"></div></a></span>
+                    <span><a class="viewDish" href="javascript:;" userId=${user.userId}><div class="providerAddBtn"><input type="button" value="修改"></div></a></span>
                 </td>
             </tr>
         </c:forEach>

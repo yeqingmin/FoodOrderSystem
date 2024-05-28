@@ -9,7 +9,7 @@ import java.util.List;
 public interface OrderDao {
     int addOrder(Connection connection, Order order) throws Exception;
 
-    ArrayList<Order> getOrdersByUserId(Connection connection, int userId) throws Exception;
+    public ArrayList<Order> getOrdersByUserId(Connection connection,int userId,int currentPageNo, int pageSize) throws Exception;
 
     List<Order> getUserOrderHistory(Connection connection, int userId) throws Exception;
 }

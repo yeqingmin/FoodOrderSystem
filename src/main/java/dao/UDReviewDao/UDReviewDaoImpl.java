@@ -15,9 +15,9 @@ public class UDReviewDaoImpl implements UDReviewDao{
         PreparedStatement pstm = null;
         int flag = 0;
         if(null != connection){
-            String sql = "INSERT INTO `UDReview` (`isDelete`, `dishRating`, `dishComment`, `dishId`, `userId`) " +
-                    "VALUES (?, ?, ?, ?, ?)";
-            Object[] params ={review.getIsDelete(),review.getDishRating(),review.getDishComment(),review.getDishId(),review.getUserId()};
+            String sql = "INSERT INTO `udreview` (`dishRating`, `dishComment`, `dishId`, `userId`) " +
+                    "VALUES ( ?, ?, ?, ?)";
+            Object[] params ={review.getDishRating(),review.getDishComment(),review.getDishId(),review.getUserId()};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
         }
@@ -31,9 +31,9 @@ public class UDReviewDaoImpl implements UDReviewDao{
         // 准备SQL查询
         if(connection != null){
             String sql = "SELECT *\n" +
-                    "FROM Dish\n" +
-                    "NATURAL JOIN UDReview\n" +
-                    "WHERE Dish.dishName = ?";
+                    "FROM dish\n" +
+                    "NATURAL JOIN udreview\n" +
+                    "WHERE dish.dishName = ?";
             Object[] params ={dishName};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             while(rs.next()){
@@ -56,7 +56,7 @@ public class UDReviewDaoImpl implements UDReviewDao{
         int flag = 0;
         if(null != connection){
             int id=review.getReviewId();
-            String sql = "delete from UDReview where reviewId=?";
+            String sql = "delete from udreview where reviewId=?";
             Object[] params = {id};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
@@ -69,7 +69,7 @@ public class UDReviewDaoImpl implements UDReviewDao{
         int id =review.getReviewId();
         PreparedStatement pstm = null;
         if(null != connection){
-            String sql = "UPDATE `UDReview` " +
+            String sql = "UPDATE `udreview` " +
                     "SET `dishRating` = ?, " +
                     "`dishComment` = ?, " +
                     "`isDelete` = ?, " +

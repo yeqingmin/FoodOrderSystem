@@ -18,7 +18,7 @@ public class DishDaoImpl implements DishDao{
         PreparedStatement pstm = null;
         ResultSet rs = null;
         if(null != connection){
-            String sql = "SELECT * FROM Dish WHERE dishName= ?";
+            String sql = "SELECT * FROM dish WHERE dishName= ?";
             pstm = connection.prepareStatement(sql);
             Object[] params = {name};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
@@ -78,7 +78,7 @@ public class DishDaoImpl implements DishDao{
         PreparedStatement pstm = null;
         int flag = 0;
         if(null != connection){
-            String sql = "INSERT INTO Dish (dishId,dishName, dishPrice, dishCategory, dishDescription, dishImage, merchantId, isDelete) VALUES (?,?, ?, ?,?,?,?,?)";
+            String sql = "INSERT INTO dish (dishId,dishName, dishPrice, dishCategory, dishDescription, dishImage, merchantId, isDelete) VALUES (?,?, ?, ?,?,?,?,?)";
             Object[] params ={dish.getDishId(),dish.getDishName(),dish.getDishPrice(),dish.getDishCategory(),dish.getDishDescription(),dish.getDishImage(),dish.getMerchantId(),dish.getIsDelete()};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
@@ -90,7 +90,7 @@ public class DishDaoImpl implements DishDao{
         int flag = 0;
         PreparedStatement pstm = null;
         if(null != connection){
-            String sql = "update Dish set dishPrice=?" +
+            String sql = "update dish set dishPrice=?" +
                     "where dishId=? ";
             Object[] params = {price,id};
             flag = BaseDao.execute(connection, pstm, sql, params);
@@ -107,7 +107,7 @@ public class DishDaoImpl implements DishDao{
         int flag = 0;
         PreparedStatement pstm = null;
         if(null != connection){
-            String sql = "update Dish set dishCategory=?" +
+            String sql = "update dish set dishCategory=?" +
                     "where dishId=? ";
             Object[] params = {dishCategory,id};
             flag = BaseDao.execute(connection, pstm, sql, params);
@@ -120,7 +120,7 @@ public class DishDaoImpl implements DishDao{
         PreparedStatement pstm = null;
         int flag = 0;
         if(null != connection){
-            String sql = "delete from Dish where dishId=?";
+            String sql = "delete from dish where dishId=?";
             Object[] params = {id};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);

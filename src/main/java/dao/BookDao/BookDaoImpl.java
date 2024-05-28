@@ -17,7 +17,7 @@ public class BookDaoImpl implements BookDao{
         PreparedStatement pstm = null;
         int flag = 0;
         if(null != connection){
-            String sql = "INSERT INTO `Book` (`userId`, `merchantId`, `bookStartTime`,`bookEndTime`, `bookStatus`) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO `book` (`userId`, `merchantId`, `bookStartTime`,`bookEndTime`, `bookStatus`) VALUES (?, ?, ?, ?, ?)";
             Object[] params ={book.getUserId(),book.getMerchantId(),book.getBookStartTime(),book.getBookEndTime(),book.getBookStatus()};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
@@ -30,7 +30,7 @@ public class BookDaoImpl implements BookDao{
         int flag = 0;
         if(null != connection){
             int id=book.getBookId();
-            String sql = "delete from Book where bookId=?";
+            String sql = "delete from `book` where bookId=?";
             Object[] params = {id};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
@@ -43,7 +43,7 @@ public class BookDaoImpl implements BookDao{
         ResultSet rs = null;
         if(connection != null){
             String sql = "SELECT *\n" +
-                    "FROM Book\n" +
+                    "FROM book\n" +
                     "WHERE userId = ? and bookStatus=valid";
             Object[] params ={userId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
@@ -69,13 +69,13 @@ public class BookDaoImpl implements BookDao{
         int id =book.getBookId();
         PreparedStatement pstm = null;
         if(null != connection){
-            String sql = "UPDATE `Book` " +
+            String sql = "UPDATE `book` " +
                     "SET `userId` = ?, " +
                     "`merchantId` = ?, " +
                     "`bookEndTime` = ?, " +
                     "`bookStatus` = ?, " +
                     "`bookStartTime` = ? " +
-                    "WHERE `reviewId` = ?";
+                    "WHERE `bookId` = ?";
             Object[] params = {book.getUserId(),book.getMerchantId(),book.getBookEndTime(),book.getBookStatus(),book.getBookStartTime(),id};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
