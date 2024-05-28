@@ -146,6 +146,7 @@ public class DishDaoImpl implements DishDao{
             rs=BaseDao.execute(connection,preparedStatement,rs,sql,params);
             while(rs.next()){
                 Dish dish=new Dish();
+                dish.setDishId(rs.getInt("dishId"));
                 dish.setDishName(rs.getString("dishName"));
                 dish.setDishPrice(rs.getFloat("dishPrice"));
                 dish.setDishCategory(rs.getString("dishCategory"));

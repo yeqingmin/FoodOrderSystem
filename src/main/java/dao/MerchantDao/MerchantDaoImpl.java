@@ -54,7 +54,7 @@ public class MerchantDaoImpl implements MerchantDao{
         Merchant merchant=null;
         ResultSet resultSet=null;
         if(null != connection){
-            String sql="select * from Merchant where merchantId = ?";
+            String sql="select * from merchant where merchantId = ?";
             Object argms[]={id};
             resultSet=BaseDao.execute(connection,preparedStatement,resultSet,sql,argms);
             while(resultSet.next()){
@@ -62,7 +62,7 @@ public class MerchantDaoImpl implements MerchantDao{
                 merchant.setMerchantId(id);
                 merchant.setMerchantName(resultSet.getString("merchantName"));
                 merchant.setMerchantAddr(resultSet.getString("merchantAddr"));
-                merchant.setFeatureDish(resultSet.getString("featureDish"));
+//                merchant.setFeatureDish(resultSet.getString("featureDish"));
             }
             BaseDao.closeResource(connection,preparedStatement,resultSet);
         }

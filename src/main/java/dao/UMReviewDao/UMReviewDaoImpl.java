@@ -89,9 +89,9 @@ public class UMReviewDaoImpl implements UMReviewDao{
         List<UMReview> reviews = new ArrayList<>();
         if(connection != null){
             String sql = "SELECT *\n" +
-                    "FROM Merchant\n" +
-                    "NATURAL JOIN UMReview\n" +
-                    "WHERE Merchant.merchantName = ? and Merchant.address = ?";
+                    "FROM merchant\n" +
+                    "NATURAL JOIN umreview\n" +
+                    "WHERE merchant.merchantName = ? and Merchant.merchantAddr = ?";
             Object[] params ={merchantName,address};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             while(rs.next()){

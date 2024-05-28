@@ -103,7 +103,25 @@ public class MerchantServiceImpl implements MerchantService {
 
     @Override
     public Merchant getMerchantById(int id) {
-        return null;
+        Connection connection=null;
+        Merchant merchant=null;
+        try{
+            connection= BaseDao.getConnection();
+            merchant= merchantDao.getMerchantById(connection,id);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+
+        return merchant;
     }
 
     @Override

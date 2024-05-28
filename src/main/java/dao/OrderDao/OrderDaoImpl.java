@@ -13,14 +13,14 @@ import java.util.List;
 public class OrderDaoImpl implements OrderDao{
     public int addOrder(Connection connection, Order order) throws Exception{
         PreparedStatement pstm = null;
-        int flag = 0;
+        int affectedRows = 0;
         if(null != connection){
-            String sql = "INSERT INTO `Order` (`userId`, `merchantId`, `orderStatus`, `totalPrice`, `orderTime`) VALUES (?, ?, ?, ?, ?)";
-            Object[] params ={order.getUserId(),order.getMerchantId(),order.getOrderStatus(),order.getTotalPrice(),order.getOrderTime()};
-            flag = BaseDao.execute(connection, pstm, sql, params);
+            String sql = "insert into `order` (userId, merchantId) values (?, ?)";
+            Object[] params ={order.getUserId(),order.getMerchantId()};
+            affectedRows = BaseDao.executeAdd(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
         }
-        return flag;
+        return affectedRows;
     }
 
     public List<Order> getOrdersByUserId(Connection connection,int userId) throws Exception{

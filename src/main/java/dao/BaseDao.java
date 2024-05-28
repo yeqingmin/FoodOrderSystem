@@ -95,6 +95,35 @@ public class BaseDao {
         return updateRows;
     }
 
+    /**
+     * 这里仅用于新增订单的时候需要返回以下newId
+     * @param connection
+     * @param pstm
+     * @param sql
+     * @param params
+     * @return 返回更新的行数(如果更新的行数不是0,就返回新增的数据的id值)
+     * @throws SQLException
+     */
+    public static int executeAdd(Connection connection,PreparedStatement pstm,
+                                 String sql,Object[] params) throws Exception{
+        int updateRows = 0;
+        int newId =0;
+        pstm = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+        for(int i = 0; i < params.length; i++){
+            pstm.setObject(i+1, params[i]);
+        }
+        updateRows = pstm.executeUpdate();
+        // 检索自增ID
+        ResultSet rs = null;
+        if (updateRows > 0) {
+            rs = pstm.getGeneratedKeys();
+            if (rs.next()) {
+                newId = rs.getInt(1);
+            }
+        }
+        return newId;
+    }
+
     public static boolean closeResource(Connection connection,PreparedStatement pstm,ResultSet resultSet){
         boolean flag = true;
         if(resultSet != null){

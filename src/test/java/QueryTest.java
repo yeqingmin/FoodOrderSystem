@@ -34,7 +34,7 @@ public class QueryTest {
         Dish dish= dishDao.getDishByNameAndMerchant(connection,"燕麦拿铁",1);
         System.out.println(dish);
     }
-
+    @Test
     public void getReviewsByBusinessNameAndAddressTest() throws Exception {
         List<UMReview> reviews=new ArrayList<>();
         Connection connection=BaseDao.getConnection();

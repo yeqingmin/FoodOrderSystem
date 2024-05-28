@@ -7,30 +7,48 @@
   当前是用户看到的商户详情页，包含点餐按钮和预订餐厅按钮
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@include file="/jsp/user/userCommon/head.jsp"%>
+         pageEncoding="UTF-8" %>
+<%@include file="/jsp/user/userCommon/head.jsp" %>
 <div class="right">
     <div class="location">
         <strong>你现在所在的位置是:</strong>
-        <span>商户详情页</span>
+        <span>商户操作 >> 商户详情页</span>
     </div>
     <div class="providerView">
         <%--            <p><strong>用户编号：</strong><span>${user.userCode }</span></p>--%>
-        <p><strong>商户名称：</strong><span>${merchantDetail.merchant.merchantName }</span></p>
-        <p><strong>商户地址：</strong><span>${merchantDetail.merchant.merchantAddr }</span></p>
+        <p><strong>商户名称：</strong><span>${merchant.merchantName }</span></p>
+        <p><strong>商户地址：</strong><span>${merchant.merchantAddr }</span></p>
         <p>
             <strong>商户菜单：</strong>
+        <form id="menuForm" method="get" action="${pageContext.request.contextPath }/jsp/merchant">
+            <input name="method" value="queryMenu" class="input-text" type="hidden">
+            <input type="hidden" name="merchantId" id="merchantId" value="${merchant.merchantId}"/>
+        </form>
+        <div class="providerAddBtn">
+            <input type="button" id="menu" name="menu" value="查看菜单">
+        </div>
         </p>
         <%--        <p><strong>用户地址：</strong><span>${user.address }</span></p>--%>
         <%--        <p><strong>用户角色：</strong><span>${user.userRoleName}</span></p>--%>
         <div class="providerAddBtn">
-            <input type="button" id="favor" name="favor" value="收藏" >
+            <input type="button" id="favor" name="favor" value="收藏">
         </div>
         <div class="providerAddBtn">
-            <input type="button" id="book" name="book" value="预订点餐" >
+            <%--            先提交隐藏表单交给后端merchantServlet进行一个方法：createOrder先插入一条Order数据（获取merchantId通过表单提交,userId通过获取session），然后重定向到orderPage.jsp页面--%>
+            <form id="orderForm" method="get" action="${pageContext.request.contextPath }/jsp/merchant">
+                <input name="method" value="createOrderAndListMenu" class="input-text" type="hidden">
+                <input type="hidden" name="merchantId" id="orderMerchantId" value="${merchant.merchantId}"/>
+            </form>
+            <input type="button" id="orderOnline" name="book" value="线上点餐">
         </div>
         <div class="providerAddBtn">
-            <input type="button" id="back" name="back" value="返回" >
+            <input type="button" id="book" name="review" value="预订">
+        </div>
+        <div class="providerAddBtn">
+            <input type="button" id="review" name="review" value="查看评价和评分">
+        </div>
+        <div class="providerAddBtn">
+            <input type="button" id="back" name="back" value="返回">
         </div>
     </div>
 </div>
