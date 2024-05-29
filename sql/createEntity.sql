@@ -22,6 +22,7 @@ CREATE TABLE if not exists Dish (
      `dishPrice` float NOT NULL comment '菜品价格', -- 假设价格最多有10位数字，其中2位是小数
      `dishCategory` VARCHAR(255) NOT NULL comment '菜品分类',
      `dishDescription` varchar(255) comment '菜品描述',
+    `dishFavourNumber` int(20) default 0 comment '菜品收藏量',
      `dishImage` BLOB comment '菜品图片', -- BLOB用于存储二进制数据，如图片
      `dishAllergens` varchar(255) comment  '菜品过敏源',
      `dishIngredients` varchar(255) comment '菜品成分',

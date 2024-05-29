@@ -50,4 +50,6 @@ public interface MerchantService {
 
     public int getMerchantTotalCount();
 
+
+
 }

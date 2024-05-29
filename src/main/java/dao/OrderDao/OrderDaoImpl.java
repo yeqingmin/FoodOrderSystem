@@ -18,8 +18,8 @@ public class OrderDaoImpl implements OrderDao{
         PreparedStatement pstm = null;
         int affectedRows = 0;
         if(null != connection){
-            String sql = "insert into `order` (userId, merchantId) values (?, ?)";
-            Object[] params ={order.getUserId(),order.getMerchantId()};
+            String sql = "insert into `order` (userId, merchantId,isOnline) values (?, ?,?)";
+            Object[] params ={order.getUserId(),order.getMerchantId(),order.getOnline()};
             affectedRows = BaseDao.executeAdd(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
         }
@@ -67,6 +67,7 @@ public class OrderDaoImpl implements OrderDao{
             while (rs.next()) {
                 Order order = new Order();
                 order.setOrderId(rs.getInt("orderId"));
+                order.setOnline(rs.getBoolean("isOnline"));
                 order.setMerchantId(rs.getInt("merchantId"));
                 order.setUserId(rs.getInt("userId"));
                 if(rs.getInt("orderStatus")==0){
@@ -115,6 +116,40 @@ public class OrderDaoImpl implements OrderDao{
             String sql = "select count(*) from `order` where userId= ?";
             pstm = connection.prepareStatement(sql);
             Object[] params = {userId};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return count;
+    }
+
+    public int getDishOnlineNumber(Connection connection,int dishId) throws SQLException{
+        int count=0;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if (null != connection) {
+            String sql = "select count(*) from `orderdetail` as d ,`order` as o where o.orderId=d.orderId and o.isOnline=0 and d.dishId = ?";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {dishId};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return count;
+    }
+
+    public int getDisOfflineNumber(Connection connection,int dishId) throws SQLException{
+        int count=0;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if (null != connection) {
+            String sql = "select count(*) from `orderdetail` as d ,`order` as o where o.orderId=d.orderId and o.isOnline=1 and d.dishId = ?";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if(rs.next()){
                 count = rs.getInt(1);

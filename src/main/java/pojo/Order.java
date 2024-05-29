@@ -10,6 +10,7 @@ public class Order {
     private String orderStatus; // 订单状态
     private Float totalPrice; // 订单总价
     private Date orderTime; // 订单时间
+    private Boolean isOnline;
 
     // 构造函数
     public Order() {
@@ -84,5 +85,13 @@ public class Order {
                 ", totalPrice=" + totalPrice +
                 ", orderTime=" + orderTime +
                 '}';
+    }
+
+    public Boolean getOnline() {
+        return isOnline;
+    }
+
+    public void setOnline(Boolean online) {
+        isOnline = online;
     }
 }

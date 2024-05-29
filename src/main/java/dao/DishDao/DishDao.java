@@ -25,6 +25,7 @@ public interface DishDao {
     public int logicDeleteDishById(Connection connection, int id)throws Exception;
     public ArrayList<Dish> getDishByMerchantId(Connection connection,int merchantId) throws Exception;
     public Dish getDishByNameAndMerchant(Connection connection, String name,int id)throws Exception;
+    public void increaseFavourNumber(Connection connection , Dish dish) throws Exception;
 
     public int getDishTotalCountByMerchantId(Connection connection,int merchantId)throws Exception;
 

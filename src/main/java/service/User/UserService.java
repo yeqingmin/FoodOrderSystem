@@ -36,5 +36,6 @@ public interface UserService {
     public void reviewMerchant(int userId,int merchantId , int rate , String comment);
 
     public void reviewDish(int userId,int dishId , int rate , String comment);
+
     public int getUserTotalCount();
 }

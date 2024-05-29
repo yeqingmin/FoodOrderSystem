@@ -25,4 +25,5 @@ public interface DishService {
     public int modifyDishById(Dish dish);
 
     public int deleteDishById(int dishId);
+
 }

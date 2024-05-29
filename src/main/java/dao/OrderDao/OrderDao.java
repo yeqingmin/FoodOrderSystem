@@ -15,4 +15,8 @@ public interface OrderDao {
     List<Order> getUserOrderHistory(Connection connection, int userId) throws Exception;
 
     public int getOrderTotalCountByUserId(Connection connection,int userId) throws SQLException;
+
+    public int getDishOnlineNumber(Connection connection,int dishId) throws SQLException;
+
+    public int getDisOfflineNumber(Connection connection,int dishId) throws SQLException;
 }

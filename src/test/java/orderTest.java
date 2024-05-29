@@ -35,4 +35,7 @@ public class orderTest {
         int result=orderService.getOrderTotalCountById(2);
         System.out.println(result);
     }
+
+
+
 }

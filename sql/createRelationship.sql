@@ -30,6 +30,7 @@ create table if not exists `order`
     `userId` INT NOT NULL comment '用户' ,
     `merchantId` INT NOT NULL comment '商家' ,
     `orderStatus` tinyint default 0 comment '订单状态，0表示已确认未完成（默认情况），1表示已完成',
+    `isOnline` tinyint default 0 comment '是否线上点单 ， 0表示线上 ，1 表示线下',
     `orderTime` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '订单时间',
     foreign key (userId) references user(userId),
     foreign key (merchantId) references merchant(merchantId)
