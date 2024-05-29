@@ -10,16 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b5d2a6a-612e-4175-b6b7-f8acd1ef54e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/Favor/FavourService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/Favor/FavourServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/Review/ReviewService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/Review/ReviewServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UMReviewDao/UMReviewDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UMReviewDao/UMReviewDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/User/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/User/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/QueryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/QueryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,11 +57,13 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "JUnit.QueryTest.dishFavourTest.executor": "Run",
     "JUnit.QueryTest.dish_getDishByNameAndMerchantTest.executor": "Run",
     "JUnit.QueryTest.getDishReviewTest.executor": "Run",
     "JUnit.QueryTest.getMerchantReviewTest.executor": "Run",
     "JUnit.QueryTest.getMessageTest.executor": "Run",
     "JUnit.QueryTest.reviewDishTest.executor": "Run",
+    "JUnit.QueryTest.reviewMerchantTest.executor": "Run",
     "JUnit.QueryTest.test1.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -118,7 +111,7 @@
       <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\user\merchantManage" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.QueryTest.reviewMerchantTest">
+  <component name="RunManager" selected="Tomcat Server.Tomcat9">
     <configuration name="QueryTest.dishFavourTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FoodOrderSystem" />
       <option name="PACKAGE_NAME" value="" />
@@ -310,30 +303,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/test/java/QueryTest.java</url>
-          <line>65</line>
-          <properties class="QueryTest" method="getMerchantReviewTest">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/test/java/QueryTest.java</url>
-          <line>73</line>
-          <properties class="QueryTest" method="reviewDishTest">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FoodOrderSystem$Tomcat9.ic" NAME="Tomcat9 Coverage Results" MODIFIED="1716523509528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
