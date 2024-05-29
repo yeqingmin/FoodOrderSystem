@@ -14,17 +14,20 @@ public class Dish {
     private String dishIngredients;
     private String dishNutrition;
     private Boolean isDelete;
-
+    private Integer dishFavourNumber;
     // Constructors, Getters, and Setters
     public Dish() {}
 
     public Dish(Integer dishId, String dishName, Float dishPrice, String dishCategory, String dishDescription,
-                byte[] dishImage, Integer merchantId, Boolean isDelete) {
+                Integer dishFavourNumber,
+                byte[] dishImage, Integer merchantId, Boolean isDelete  ) {
         this.dishId = dishId;
         this.dishName = dishName;
         this.dishPrice = dishPrice;
         this.dishCategory = dishCategory;
         this.dishDescription = dishDescription;
+        System.out.println(this.dishFavourNumber);
+        this.dishFavourNumber=dishFavourNumber;
         this.dishImage = dishImage;
         this.merchantId = merchantId;
         this.isDelete = isDelete;
@@ -131,5 +134,13 @@ public class Dish {
 
     public void setDishNutrition(String dishNutrition) {
         this.dishNutrition = dishNutrition;
+    }
+
+    public int getFavourNumber() {
+        return dishFavourNumber;
+    }
+
+    public void setFavourNumber(int favourNumber) {
+        this.dishFavourNumber = favourNumber;
     }
 }

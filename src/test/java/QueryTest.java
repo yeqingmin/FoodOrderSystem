@@ -14,8 +14,12 @@ import dao.UMReviewDao.UMReviewDao;
 import dao.UMReviewDao.UMReviewDaoImpl;
 import org.junit.Test;
 import pojo.*;
+import service.Dish.DishService;
+import service.Dish.DishServiceImpl;
 import service.Favor.FavourService;
 import service.Favor.FavourServiceImpl;
+import service.Order.OrderService;
+import service.Order.OrderServiceImpl;
 import service.Review.ReviewService;
 import service.Review.ReviewServiceImpl;
 import service.User.UserService;
@@ -88,7 +92,41 @@ public class QueryTest {
     @Test
    public void FavourTest(){
        FavourService f=new FavourServiceImpl();
-       f.favouriteMerchant(1,1);
+       //f.favouriteMerchant(1,1);
        f.favouriteDish(1,1);
+   }
+
+   @Test
+    public void orderTest(){
+        OrderService o=new OrderServiceImpl();
+        Order o1=new Order();
+        o1.setMerchantId(1);
+        o1.setUserId(2);
+        o1.setOnline(true);
+        o.addOrder(o1);
+   }
+
+   @Test
+    public void getOfflineNumberTest(){
+        int result=0;
+       OrderService o=new OrderServiceImpl();
+       result=o.getOfflineNumberByDishId(1);
+       System.out.println(result);
+   }
+
+   @Test
+    public void BiggestBuyers(){
+       int result=0;
+       OrderService o=new OrderServiceImpl();
+       result=o.getBiggestBuyer(1);
+       System.out.println(result);
+   }
+
+   @Test
+    public void WeeklyTest(){
+       int result=0;
+       OrderService o=new OrderServiceImpl();
+       result=o.getWeeklyOfflineNumber(1);
+       System.out.println(result);
    }
 }

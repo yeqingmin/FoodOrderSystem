@@ -1,10 +1,13 @@
 package service.Favor;
 
 import dao.BaseDao;
+import dao.DishDao.DishDao;
+import dao.DishDao.DishDaoImpl;
 import dao.UDFavorDao.UDFavorDao;
 import dao.UDFavorDao.UDFavorDaoImpl;
 import dao.UMFavorDao.UMFavorDao;
 import dao.UMFavorDao.UMFavorImpl;
+import pojo.Dish;
 import pojo.UDFavor;
 import pojo.UMFavor;
 
@@ -17,6 +20,8 @@ public class FavourServiceImpl implements FavourService{
 
     private final UMFavorDao umFavorDao=new UMFavorImpl();
 
+    private final DishDao dishDao = new DishDaoImpl();
+
     //收藏菜品
     public void favouriteDish(int userId , int dishId){
         Connection connection=null;
@@ -25,7 +30,9 @@ public class FavourServiceImpl implements FavourService{
         udFavor.setUserId(userId);
         try{
             connection= BaseDao.getConnection();
+            Dish dish=dishDao.getDishById(connection,dishId);
             udFavorDao.addUDFavor(connection,udFavor);
+            dishDao.increaseFavourNumber(connection,dish);
         }catch (Exception e){
             e.printStackTrace();
             try {

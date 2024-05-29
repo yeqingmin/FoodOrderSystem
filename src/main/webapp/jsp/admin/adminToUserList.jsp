@@ -15,7 +15,7 @@
     </div>
     <div class="search">
         <form method="get" action="${pageContext.request.contextPath }/jsp/user">
-            <input name="method" value="query" class="input-text" type="hidden">
+            <input name="method" value="adminManage" class="input-text" type="hidden">
             <span>用户名：</span>
             <input name="queryname" class="input-text"	type="text" value="${queryUserName}">
             <input type="hidden" name="pageIndex" value="1"/>
@@ -31,7 +31,7 @@
             <th width="10%">性别</th>
             <th width="60%">操作</th>
         </tr>
-        <c:forEach var="user" items="${userList }" varStatus="status">
+        <c:forEach var="user" items="${userList}" varStatus="status">
             <tr>
                 <td>
                     <span>${user.userId}</span>

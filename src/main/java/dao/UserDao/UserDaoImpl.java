@@ -72,27 +72,48 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public ArrayList<User> getUserList(Connection connection) throws SQLException {
-        ArrayList<User> userList = new ArrayList<>();
+    public ArrayList<User> getUserList(Connection connection, int currentPageNo, int pageSize) throws SQLException {
+        //todo 原来的代码
+        //分页查询的代码
+
         PreparedStatement pstm = null;
-        if (null != connection) {
-            String sql = "select * from `user`";
-            //因为这里没有参数，所以不用预编译
-            // 执行SQL语句
-            try (Statement statement = connection.createStatement();
-                 ResultSet rs = statement.executeQuery(sql)) {
-                // 遍历结果集
-                while (rs.next()) {
-                    User user = new User();
-                    user = new User();
-                    user.setUserId(rs.getInt("userId"));
-                    user.setUserName(rs.getString("userName"));
-                    user.setUserGender(rs.getString("userGender"));
-                    userList.add(user);
-                }
-                BaseDao.closeResource(null, pstm, rs);
+        ResultSet rs = null;
+        ArrayList<User> userList = new ArrayList<User>();
+        if (connection != null) {
+            String sql="select * from user order by userId limit ?,?";
+            currentPageNo = (currentPageNo - 1) * pageSize;
+
+            Object[] params = {currentPageNo,pageSize};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            while (rs.next()) {
+                User user = new User();
+                user.setUserId(rs.getInt("userId"));
+                user.setUserName(rs.getString("userName"));
+                user.setUserGender(rs.getString("userGender"));
+                userList.add(user);
             }
+            BaseDao.closeResource(null, pstm, rs);
         }
         return userList;
     }
+
+    @Override
+    public int getUserTotalCount(Connection connection) throws SQLException {
+        int count=0;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if (null != connection) {
+            String sql = "select count(*) from user";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return count;
+    }
+
 }
+

@@ -12,6 +12,12 @@
         <strong>你现在所在的位置是:</strong>
         <span>历史订单页面</span>
     </div>
+    <div class="search">
+        <form method="get" action="${pageContext.request.contextPath }/jsp/order">
+            <input name="method" value="query" class="input-text" type="hidden">
+            <input type="hidden" name="pageIndex" value="1"/>
+        </form>
+    </div>
     <!--账单表格 样式和供应商公用-->
     <table class="providerTable" cellpadding="0" cellspacing="0">
         <tr class="firstTr">
@@ -41,6 +47,12 @@
             </tr>
         </c:forEach>
     </table>
+    <input type="hidden" id="totalPageCount" value="${totalPageCount}"/>
+    <c:import url="rollpage.jsp">
+        <c:param name="totalCount" value="${totalCount}"/>
+        <c:param name="currentPageNo" value="${currentPageNo}"/>
+        <c:param name="totalPageCount" value="${totalPageCount}"/>
+    </c:import>
 </div>
 </section>
 

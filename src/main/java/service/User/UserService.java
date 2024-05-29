@@ -2,6 +2,7 @@ package service.User;
 
 import pojo.*;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public interface UserService {
     public User getUserById(int id);
 
-    public ArrayList<User> getAllUserList();
+    public ArrayList<User> getAllUserList(int currentPageNo, int pageSize);
 
     public ArrayList<Merchant> getSeriesMerchantByName(String merchantName);
 
@@ -30,4 +31,6 @@ public interface UserService {
     public void reviewMerchant(int userId,int merchantId , int rate , String comment);
 
     public void reviewDish(int userId,int dishId , int rate , String comment);
+
+    public int getUserTotalCount();
 }

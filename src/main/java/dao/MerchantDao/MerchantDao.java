@@ -24,5 +24,6 @@ public interface MerchantDao {
 
     public Merchant getMerchantByNameAndAddress(Connection connection,String name,String address) throws SQLException;
 
-    public ArrayList<Merchant> getAllMerchantList(Connection connection);
+    public ArrayList<Merchant> getMerchantList(Connection connection, int currentPageNo, int pageSize) throws SQLException;
+    public int getMerchantTotalCount(Connection connection) throws SQLException;
 }
