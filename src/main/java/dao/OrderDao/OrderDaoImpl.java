@@ -1,12 +1,15 @@
 package dao.OrderDao;
 
+import com.mysql.cj.util.StringUtils;
 import dao.BaseDao;
 import pojo.Order;
 import pojo.UDReview;
+import pojo.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,34 +26,60 @@ public class OrderDaoImpl implements OrderDao{
         return affectedRows;
     }
 
-    public ArrayList<Order> getOrdersByUserId(Connection connection,int userId) throws Exception{
-        ArrayList<Order> orders = new ArrayList<>();
+    public ArrayList<Order> getOrdersByUserId(Connection connection,int userId,int currentPageNo, int pageSize) throws Exception{
+//        ArrayList<Order> orders = new ArrayList<>();
+//        PreparedStatement pstm = null;
+//        ResultSet rs = null;
+//        if(connection != null){
+//            String sql = "SELECT * from `order` WHERE userId = ?";
+//            Object[] params ={userId};
+//            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+//            while(rs.next()){
+//                Order order=new Order();
+//                order.setOrderId(rs.getInt("orderId"));
+//                order.setUserId(rs.getInt("userId"));
+//                order.setMerchantId(rs.getInt("merchantId"));
+////                order.setOrderStatus(rs.getInt("orderStatus"));
+//                if(rs.getInt("orderStatus")==0){
+//                    order.setOrderStatus("未完成");
+//                }else{
+//                    order.setOrderStatus("已完成");
+//                }
+//                //todo 这里可能需要一些互相调用的逻辑
+////                order.setTotalPrice(rs.getFloat("totalPrice"));
+//                order.setOrderTime(rs.getDate("orderTime"));
+//                orders.add(order);
+//            }
+//            BaseDao.closeResource(null, pstm, rs);
+//        }
+//        return orders;
+
+
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        if(connection != null){
-            String sql = "SELECT * from `order` WHERE userId = ?";
-            Object[] params ={userId};
+        ArrayList<Order> orderList = new ArrayList<Order>();
+        if (connection != null) {
+            String sql="select * from `order` where userId= ? order by OrderId limit ?,?";
+            currentPageNo = (currentPageNo - 1) * pageSize;
+
+            Object[] params = {userId, currentPageNo,pageSize};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
-            while(rs.next()){
-                Order order=new Order();
+            while (rs.next()) {
+                Order order = new Order();
                 order.setOrderId(rs.getInt("orderId"));
-                order.setUserId(rs.getInt("userId"));
                 order.setMerchantId(rs.getInt("merchantId"));
-//                order.setOrderStatus(rs.getInt("orderStatus"));
+                order.setUserId(rs.getInt("userId"));
                 if(rs.getInt("orderStatus")==0){
                     order.setOrderStatus("未完成");
                 }else{
                     order.setOrderStatus("已完成");
                 }
-                //todo 这里可能需要一些互相调用的逻辑
-//                order.setTotalPrice(rs.getFloat("totalPrice"));
                 order.setOrderTime(rs.getDate("orderTime"));
-                orders.add(order);
+                orderList.add(order);
             }
             BaseDao.closeResource(null, pstm, rs);
-            BaseDao.closeResource(null, pstm, rs);
         }
-        return orders;
+        return orderList;
     }
     public List<Order> getUserOrderHistory(Connection connection,int userId) throws Exception{
         List<Order> orders = new ArrayList<>();
@@ -69,13 +98,30 @@ public class OrderDaoImpl implements OrderDao{
                 order.setMerchantId(rs.getInt("merchantId"));
 //                order.setOrderStatus(rs.getInt("orderStatus"));
 //                order.setTotalPrice(rs.getFloat("totalPrice"));
-                order.setOrderTime(rs.getTime("orderTime"));
+                order.setOrderTime(rs.getDate("orderTime"));
                 orders.add(order);
             }
             BaseDao.closeResource(null, pstm, rs);
-            BaseDao.closeResource(null, pstm, rs);
         }
         return orders;
+    }
+
+    @Override
+    public int getOrderTotalCountByUserId(Connection connection,int userId) throws SQLException {
+        int count=0;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if (null != connection) {
+            String sql = "select count(*) from `order` where userId= ?";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {userId};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return count;
     }
 
 }

@@ -258,7 +258,7 @@ public class UserServiceImpl implements UserService {
     public void reviewMerchant(int userId,int merchantId , int rate , String comment){
         Connection connection=null;
         UMReview umReview =new UMReview();
-        umReview.setMerchantRating(merchantId);
+        umReview.setMerchantId(merchantId);
         umReview.setUserId(userId);
         umReview.setMerchantRating(rate);
         umReview.setMerchantComment(comment);

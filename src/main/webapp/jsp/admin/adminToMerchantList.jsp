@@ -20,6 +20,7 @@
             <input name="merchantName" type="text" value="${merchantName}">
             <input type="hidden" name="pageIndex" value="1"/>
             <input value="查 询" type="submit" id="searchbutton">
+            <a href="${pageContext.request.contextPath}/jsp/admin/merchantadd.jsp" >添加商户</a>
         </form>
     </div>
     <!--商户表格样式-->

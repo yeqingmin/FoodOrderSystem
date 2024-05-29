@@ -8,5 +8,7 @@ import java.util.ArrayList;
 public interface OrderService {
     public int addOrder(Order order);
 
-    public ArrayList<Order> getOrderListByUserId(Integer userId);
+    public ArrayList<Order> getOrderListByUserId(Integer userId,int currentPageNo, int pageSize);
+    public int getOrderTotalCountById(int userId);
+
 }

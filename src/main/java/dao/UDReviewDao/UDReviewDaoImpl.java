@@ -24,17 +24,16 @@ public class UDReviewDaoImpl implements UDReviewDao{
         return flag;
     }
 
-    public List<UDReview> getReviewsByBusinessName(Connection connection, String dishName) throws Exception {
+    public List<UDReview> getReviewsById(Connection connection, int id) throws Exception {
         List<UDReview> reviews = new ArrayList<>();
         PreparedStatement pstm = null;
         ResultSet rs = null;
         // 准备SQL查询
         if(connection != null){
             String sql = "SELECT *\n" +
-                    "FROM dish\n" +
-                    "NATURAL JOIN udreview\n" +
-                    "WHERE dish.dishName = ?";
-            Object[] params ={dishName};
+                    "FROM udreview\n" +
+                    "WHERE dishId = ?";
+            Object[] params ={id};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             while(rs.next()){
                 UDReview review = new UDReview();

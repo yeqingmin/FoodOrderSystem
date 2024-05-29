@@ -68,4 +68,4 @@
 </div>
 
 <%@include file="/jsp/user/userCommon/foot.jsp" %>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/merchantlist.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/adminMerchantList.js"></script>

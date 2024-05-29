@@ -15,9 +15,8 @@ public class UMReviewDaoImpl implements UMReviewDao{
         PreparedStatement pstm = null;
         int flag = 0;
         if(null != connection){
-            String sql = "INSERT INTO `umreview` (`merchantRating`, `merchantComment`, `isDelete`, `userId`, `merchantId`) " +
-                    "VALUES (?, ?, ?, ?, ?)";
-            Object[] params ={review.getMerchantRating(),review.getMerchantComment(),review.getIsDelete(),review.getUserId(),review.getMerchantId()};
+            String sql = "INSERT INTO `umreview` (merchantRating, merchantComment, userId, merchantId) VALUES (?, ?, ?, ?)";
+            Object[] params ={review.getMerchantRating(),review.getMerchantComment(),review.getUserId(),review.getMerchantId()};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
         }
