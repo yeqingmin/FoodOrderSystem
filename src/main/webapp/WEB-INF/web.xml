@@ -56,4 +56,13 @@
     <servlet-name>MessageServlet</servlet-name>
     <url-pattern>/jsp/system</url-pattern>
   </servlet-mapping>
+
+  <filter>
+    <filter-name>CharacterEncoding</filter-name>
+    <filter-class>filter.CharacterEncoding</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

@@ -43,8 +43,8 @@
                     <span>${merchant.merchantAddr}</span>
                 </td>
                 <td>
-                    <span><a class="viewDish" href="javascript:;" userId=${user.userId}><div class="providerAddBtn"><input type="button" value="删除"></div></a></span>
-                    <span><a class="viewDish" href="javascript:;" userId=${user.userId}><div class="providerAddBtn"><input type="button" value="修改"></div></a></span>
+                    <span><a class="deleteMerchant" href="javascript:;" merchantId=${merchant.merchantId} merchantName=${merchant.merchantName}><div class="providerAddBtn"><input type="button" value="删除"></div></a></span>
+                    <span><a class="modifyMerchant" href="javascript:;" merchantId=${merchant.merchantId} merchantName=${merchant.merchantName}><div class="providerAddBtn"><input type="button" value="修改"></div></a></span>
                 </td>
             </tr>
         </c:forEach>
@@ -72,4 +72,4 @@
 </div>
 
 <%@include file="/jsp/admin/adminCommon/foot.jsp" %>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/merchantlist.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/adminMerchantList.js"></script>

@@ -24,7 +24,7 @@ public interface MerchantService {
      */
     public MerchantDetail getDetailedMerchantById(Integer id);
 
-    public boolean addMerchant(Merchant merchant);
+    public int addMerchant(Merchant merchant);
 
     public boolean deleteMerchantById(int id);
 

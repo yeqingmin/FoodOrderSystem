@@ -1,5 +1,6 @@
 package servlet.Dish;
 
+import com.alibaba.fastjson.JSONArray;
 import com.mysql.cj.util.StringUtils;
 import pojo.Dish;
 import pojo.Merchant;
@@ -7,6 +8,9 @@ import service.Dish.DishService;
 import service.Dish.DishServiceImpl;
 import service.Merchant.MerchantService;
 import service.Merchant.MerchantServiceImpl;
+import utils.Constants;
+import utils.PageSupport;
+import utils.Session;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class dishServlet extends HttpServlet {
     DishService dishService=new DishServiceImpl();
@@ -37,7 +42,79 @@ public class dishServlet extends HttpServlet {
             this.addDishToOrder(request,response);
         }else if(method != null &&method.equals("deleteDishFromOrder")){
             this.deleteDishFromOrder(request,response);
+        }else if(method != null && method.equals("modifyDish")){
+            this.getDishById(request,response,"merchant/dishmodify.jsp");
+        }else if(method != null && method.equals("deleteDish")){
+            this.deleteDish(request,response);
+        }else if(method != null && method.equals("modifyExecute")){
+            this.modifyDish(request,response);
         }
+    }
+    private void deleteDish(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String id = request.getParameter("dishId");
+        Integer delId = 0;
+        try{
+            delId = Integer.parseInt(id);
+        }catch (Exception e) {
+            delId = 0;
+        }
+        HashMap<String, String> resultMap = new HashMap<String, String>();
+        if(delId <= 0){
+            resultMap.put("deleteResult", "notexist");
+        }else{
+            DishService dishService=new DishServiceImpl();
+            if(dishService.deleteDishById(delId)!=0){
+                resultMap.put("deleteResult", "true");
+            }else{
+                resultMap.put("deleteResult", "false");
+            }
+        }
+
+        //把resultMap转换成json对象输出
+        response.setContentType("application/json");
+        PrintWriter outPrintWriter = response.getWriter();
+        outPrintWriter.write(JSONArray.toJSONString(resultMap));
+        outPrintWriter.flush();
+        outPrintWriter.close();
+    }
+
+    private void modifyDish(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String dishId=request.getParameter("dishId");
+        String dishName = request.getParameter("dishName");
+        String dishPrice=request.getParameter("dishPrice");
+        String dishCategory=request.getParameter("dishCategory");
+        String dishDescription=request.getParameter("dishDescription");
+        String dishAllergens=request.getParameter("dishAllergens");
+        String dishIngredients=request.getParameter("dishIngredients");
+        String dishNutrition=request.getParameter("dishNutrition");
+
+        Dish dish=new Dish();
+        dish.setDishId(Integer.parseInt(dishId));
+        dish.setDishName(dishName);
+        dish.setDishPrice(Float.parseFloat(dishPrice));
+        dish.setDishCategory(dishCategory);
+        dish.setDishAllergens(dishAllergens);
+        dish.setDishDescription(dishDescription);
+        dish.setDishIngredients(dishIngredients);
+        dish.setDishNutrition(dishNutrition);
+
+
+        DishService dishService=new DishServiceImpl();
+        if(dishService.modifyDishById(dish)!=0){
+            response.sendRedirect(request.getContextPath()+"/jsp/dish?method=merchantManage");
+        }else{
+            request.getRequestDispatcher("admin/dishmodify.jsp").forward(request, response);
+        }
+    }
+    private void getDishById(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
+        String id = request.getParameter("dishId");
+        if (!StringUtils.isNullOrEmpty(id)) {
+            DishService dishService = new DishServiceImpl();
+            Dish dish = null;
+            dish = dishService.getDishById(Integer.parseInt(id));
+            request.setAttribute("dish", dish);
+        }
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     /**
@@ -110,11 +187,66 @@ public class dishServlet extends HttpServlet {
 
     private void manage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //商户管理菜单；对对应merchantId而select出来的dish进行增删改查
+
+        //获取分页查询下标
+
+        String pageIndex = request.getParameter("pageIndex");
+
+        //根据session获取到merchantid
+        Integer merchantId= Session.getCurrentId(request);
+
+        DishService dishService = new DishServiceImpl();
+
+        //第一次走页面一定是第一页,页面大小固定的
+        ArrayList<Dish> dishList = null;
+        //设置页面容量
+        int pageSize = Constants.pageSize;
+        //当前页码
+        int currentPageNo = 1;
+
+        System.out.println("query pageIndex--------- > " + pageIndex);
+
+        if (pageIndex != null) {
+            try {
+                currentPageNo = Integer.valueOf(pageIndex);
+            } catch (NumberFormatException e) {
+                response.sendRedirect("error.jsp");
+            }
+        }
+        //获取总数
+        int totalCount = dishService.getDishTotalCountByMerchantId(merchantId);
+
+        //总页数
+        PageSupport pages = new PageSupport();
+
+        pages.setCurrentPageNo(currentPageNo);
+
+        pages.setPageSize(pageSize);
+
+        pages.setTotalCount(totalCount);
+
+        int totalPageCount = pages.getTotalPageCount();
+
+        //控制首页和尾页
+        if (currentPageNo < 1) {
+            currentPageNo = 1;
+        } else if (currentPageNo > totalPageCount) {
+            currentPageNo = totalPageCount;
+        }
+
+        dishList = dishService.getDishListByMerchantId(merchantId,currentPageNo, pageSize);
+        request.setAttribute("dishList", dishList);
+        request.setAttribute("totalPageCount", totalPageCount);
+        request.setAttribute("totalCount", totalCount);
+        request.setAttribute("currentPageNo", currentPageNo);
+        //request.getRequestDispatcher(url).forward(request, response);
+
         request.getRequestDispatcher("merchant/dishManage.jsp").forward(request, response);
     }
 
     private void query(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        //实现分页查询
         DishService dishService=new DishServiceImpl();
 
 //        //先接收dishName的参数

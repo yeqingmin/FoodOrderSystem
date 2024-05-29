@@ -42,6 +42,28 @@ public class UserServiceImpl implements UserService {
     private final UMFavorDao umFavorDao=new UMFavorImpl();
 
     private final UDReviewDao udReviewDao=new UDReviewDaoImpl();
+
+    @Override
+    public int add(User user) {
+        Connection connection=null;
+        int newId=0;
+        try{
+            connection= BaseDao.getConnection();
+            newId=userDao.add(connection,user);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return newId;
+    }
+
     @Override
     //获取用户信息
     public User getUserById(int id) {
@@ -63,6 +85,50 @@ public class UserServiceImpl implements UserService {
             BaseDao.closeResource(connection,null,null);
         }
         return user;
+    }
+
+    @Override
+    public int modify(User user) {
+        Connection connection=null;
+        int flag=0;
+        try{
+            connection= BaseDao.getConnection();
+            flag= userDao.modify(connection,user);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return flag;
+    }
+
+    @Override
+    public int deleteUserById(int id) {
+        Connection connection=null;
+        int flag=0;
+        try{
+            connection= BaseDao.getConnection();
+            flag= userDao.logicDeleteUserById(connection,id);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return flag;
     }
 
     @Override

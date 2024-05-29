@@ -1,18 +1,19 @@
 //实现对商户的增删改三个操作
-var merchantObj;
+var dishObj;
 
-function deleteMerchant(obj){
+//订单管理页面上点击删除按钮弹出删除框(dishlist.jsp)
+function deleteDish(obj){
     $.ajax({
         type:"GET",
-        url:path+"/jsp/merchant",
-        data:{method:"deleteMerchant",merchantId:obj.attr("merchantId")},
+        url:path+"/jsp/dish",
+        data:{method:"deleteDish",dishId:obj.attr("dishId")},
         dataType:"json",
         success:function(data){
             if(data.deleteResult === "true"){//删除成功：移除删除行
                 cancelBtn();
                 obj.parents("tr").remove();
             }else if(data.deleteResult === "false"){//删除失败
-                changeDLGContent("对不起，删除商户【"+obj.attr("merchantName")+"】失败");
+                changeDLGContent("对不起，删除菜品【"+obj.attr("dishName")+"】失败");
             }
         },
         error:function(data){
@@ -23,12 +24,12 @@ function deleteMerchant(obj){
 
 function openYesOrNoDLG(){
     $('.zhezhao').css('display', 'block');
-    $('#removeMerchant').fadeIn();
+    $('#removeDish').fadeIn();
 }
 
 function cancelBtn(){
     $('.zhezhao').css('display', 'none');
-    $('#removeMerchant').fadeOut();
+    $('#removeDish').fadeOut();
 }
 function changeDLGContent(contentStr){
     var p = $(".removeMain").find("p");
@@ -37,21 +38,21 @@ function changeDLGContent(contentStr){
 
 $(function(){
 
-    $(".modifyMerchant").on("click",function(){
-    	var obj = $(this);
-    	window.location.href=path+"/jsp/merchant?method=modifyMerchant&merchantId="+ obj.attr("merchantId");
+    $(".modifyDish").on("click",function(){
+        var obj = $(this);
+        window.location.href=path+"/jsp/dish?method=modifyDish&dishId="+ obj.attr("dishId");
     });
     $('#no').click(function () {
-    	cancelBtn();
+        cancelBtn();
     });
 
     $('#yes').click(function () {
-    	deleteMerchant(merchantObj);
+        deleteDish(dishObj);
     });
 
-    $(".deleteMerchant").on("click",function(){
-    	merchantObj = $(this);
-    	changeDLGContent("你确定要删除商户【"+merchantObj.attr("merchantName")+"】吗？");
-    	openYesOrNoDLG();
+    $(".deleteDish").on("click",function(){
+        dishObj = $(this);
+        changeDLGContent("你确定要删除菜品【"+dishObj.attr("dishName")+"】吗？");
+        openYesOrNoDLG();
     });
 });

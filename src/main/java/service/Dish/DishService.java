@@ -17,4 +17,12 @@ public interface DishService {
     public int deleteDishFromOrder(Integer dishId,Integer orderId);
 
     public int countDishQuantity(Integer dishId,Integer orderId);
+
+    public int getDishTotalCountByMerchantId(int merchantId);
+
+    public ArrayList<Dish> getDishListByMerchantId(int merchantId,int currentPageNo,int pageSize);
+
+    public int modifyDishById(Dish dish);
+
+    public int deleteDishById(int dishId);
 }
