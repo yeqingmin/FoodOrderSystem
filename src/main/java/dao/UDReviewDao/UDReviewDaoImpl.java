@@ -1,6 +1,7 @@
 package dao.UDReviewDao;
 
 import dao.BaseDao;
+import pojo.UDFavor;
 import pojo.UDReview;
 import pojo.UMReview;
 
@@ -80,5 +81,29 @@ public class UDReviewDaoImpl implements UDReviewDao{
             BaseDao.closeResource(null, pstm, null);
         }
         return flag;
+    }
+
+    public ArrayList<UDReview> getUDReviewsByDishId(Connection connection, int dishId, int currentPageNo, int pageSize) throws Exception{
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        ArrayList<UDReview> udReviewArrayList = new ArrayList<UDReview>();
+        if (connection != null) {
+            String sql="select * from `udreview` where dishId= ? order by OrderId limit ?,?";
+            currentPageNo = (currentPageNo - 1) * pageSize;
+
+            Object[] params = {dishId, currentPageNo,pageSize};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            while (rs.next()) {
+                UDReview udReview = new UDReview();
+                udReview.setReviewId(rs.getInt("reviewId"));
+                udReview.setDishId(rs.getInt("dishId"));
+                udReview.setUserId(rs.getInt("userId"));
+                udReview.setDishRating(rs.getInt("dishRating"));
+                udReview.setDishComment(rs.getString("DISHComment"));
+                udReviewArrayList.add(udReview);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return udReviewArrayList;
     }
 }

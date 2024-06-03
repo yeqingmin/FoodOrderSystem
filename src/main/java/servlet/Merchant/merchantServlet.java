@@ -2,17 +2,22 @@ package servlet.Merchant;
 
 import clojure.lang.IFn;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mysql.cj.util.StringUtils;
 import pojo.*;
 import service.Dish.DishService;
 import service.Dish.DishServiceImpl;
+import service.Favor.FavourService;
+import service.Favor.FavourServiceImpl;
 import service.Login.LoginService;
 import service.Login.LoginServiceImpl;
 import service.Merchant.MerchantService;
 import service.Merchant.MerchantServiceImpl;
 import service.Order.OrderService;
 import service.Order.OrderServiceImpl;
+import service.Review.ReviewService;
+import service.Review.ReviewServiceImpl;
 import service.User.UserService;
 import service.User.UserServiceImpl;
 import utils.Constants;
@@ -63,11 +68,63 @@ public class merchantServlet extends HttpServlet {
             this.deleteMerchant(request, response);
         } else if (method != null && method.equals("modifyExecute")) {
             this.modifyMerchant(request, response);
+        }else if (method != null && method.equals("review")) {
+            this.reviewMerchant(request, response);
+        } else if (method != null && method.equals("reviewMerchantBegin")) {
+            this.getMerchantById(request,response,"merchant/merchantReview.jsp");
+        }else if (method != null && method.equals("favorMerchant")) {
+            this.favorMerchant(request, response);
         }
 //        }else if (method!=null && method.equals("isMerchantExist")){
 //            this.isMerchantExist(request,response);
 //        }
 
+    }
+
+    private void favorMerchant(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String merchantId = request.getParameter("merchantId");
+        //根据session获取userId
+        Integer userId = Session.getCurrentId(request);
+
+        FavourService favourService = new FavourServiceImpl();
+        favourService.favouriteMerchant(userId, Integer.parseInt(merchantId));
+
+        response.setContentType("application/json");
+        PrintWriter out = null;
+        out = response.getWriter();
+        out.write("{\"success\": " + true + "}");
+    }
+
+    private void reviewMerchant(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // 设置响应类型和编码
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        // 从请求中获取参数
+        String merchantId = request.getParameter("merchantId");
+        String merchantComment = request.getParameter("reviewText");
+        String merchantRating = request.getParameter("rating");
+
+        // 假设userId是从登录信息中获取的
+        Integer userId = Session.getCurrentId(request); // 你需要实现这个方法来获取当前登录用户的ID
+
+        // 使用UDReviewService添加评论
+        ReviewService reviewService = new ReviewServiceImpl();
+        int result = reviewService.reviewMerchant(userId, Integer.parseInt(merchantId), Integer.parseInt(merchantRating), merchantComment);
+
+
+        // 构建响应结果
+        JSONObject jsonResponse = new JSONObject();
+        if (result != 0) {
+            jsonResponse.put("status", "success");
+            jsonResponse.put("message", "评价成功！");
+        } else {
+            jsonResponse.put("status", "error");
+            jsonResponse.put("message", "评价失败！");
+        }
+
+        // 输出响应结果
+        response.getWriter().print(jsonResponse.toString());
     }
 
     private void viewMerchantById(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {

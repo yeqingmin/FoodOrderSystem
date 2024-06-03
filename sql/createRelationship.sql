@@ -2,7 +2,7 @@ create database if not exists food_order_sys;
 
 use food_order_sys;
 
-create table if not exists `UMReview`
+create table if not exists `umreview`
 (
     `reviewId`        int  auto_increment primary key comment '评价id',
     `merchantRating`  int          not null default 0 comment '对商家的评分',
@@ -14,7 +14,7 @@ create table if not exists `UMReview`
     FOREIGN KEY (merchantId) REFERENCES merchant (merchantId)
 );
 
-create table if not exists `UMFavor`
+create table if not exists `umfavor`
 (
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
     `userId` INT NOT NULL comment '用户' ,
@@ -35,8 +35,8 @@ create table if not exists `order`
     foreign key (userId) references user(userId),
     foreign key (merchantId) references merchant(merchantId)
 );
-
-create table if not exists `UDReview`
+use food_order_sys;
+create table if not exists `udreview`
 (
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
     `reviewId`        int  auto_increment primary key comment '评价id',
@@ -44,8 +44,8 @@ create table if not exists `UDReview`
     `dishComment` varchar(256) null comment '用户对于菜品的评价',
     `dishId` INT NOT NULL comment '菜品id',
     `userId` INT NOT NULL comment '用户' ,
-    FOREIGN KEY (userId) REFERENCES User (userId),
-    FOREIGN KEY (dishId) REFERENCES Dish (dishId)
+    FOREIGN KEY (userId) REFERENCES user (userId),
+    FOREIGN KEY (dishId) REFERENCES dish (dishId)
 );
 use food_order_sys;
 create table if not exists `udfavor`

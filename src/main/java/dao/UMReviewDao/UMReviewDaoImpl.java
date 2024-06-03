@@ -1,6 +1,7 @@
 package dao.UMReviewDao;
 
 import dao.BaseDao;
+import pojo.UDReview;
 import pojo.UMReview;
 import pojo.User;
 
@@ -106,5 +107,30 @@ public class UMReviewDaoImpl implements UMReviewDao{
             BaseDao.closeResource(null, pstm, rs);
         }
         return reviews;
+    }
+
+    public ArrayList<UMReview> getUMReviewByMerchantId(Connection connection, int merchantId, int currentPageNo, int pageSize) throws Exception{
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        ArrayList<UMReview> umReviewArrayList = new ArrayList<UMReview>();
+        if (connection != null) {
+            String sql="select * from `umreview` where merchantId= ? order by OrderId limit ?,?";
+            currentPageNo = (currentPageNo - 1) * pageSize;
+
+            Object[] params = {merchantId, currentPageNo,pageSize};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            while (rs.next()) {
+                UMReview review = new UMReview();
+                review.setMerchantRating(rs.getInt("merchantRating"));
+                review.setMerchantComment(rs.getString("merchantComment"));
+                review.setIsDelete(rs.getBoolean("isDelete"));
+                review.setUserId(rs.getInt("userId"));
+                review.setMerchantId(rs.getInt("MerchantId"));
+                review.setReviewId(rs.getInt("reviewId"));
+                umReviewArrayList.add(review);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return umReviewArrayList;
     }
 }

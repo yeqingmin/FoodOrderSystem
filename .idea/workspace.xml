@@ -10,14 +10,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b5d2a6a-612e-4175-b6b7-f8acd1ef54e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishReview.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/reviewPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/dishReview.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/dishReviewView.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/merchantReview.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantReview.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishReviewView.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/createEntity.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/createEntity.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sql/createRelationship.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/createRelationship.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/DishDao/DishDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DishDao/DishDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/filter/CharacterEncoding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/filter/CharacterEncoding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UMFavorDao/UMFavorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UMFavorDao/UMFavorDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UMFavorDao/UMFavorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UMFavorDao/UMFavorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UMReviewDao/UMReviewDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UMReviewDao/UMReviewDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UMReviewDao/UMReviewDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UMReviewDao/UMReviewDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/Dish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/UDReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/UDReview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Favor/FavourService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Favor/FavourService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Favor/FavourServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Favor/FavourServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Review/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Review/ReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Review/ReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Review/ReviewServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Dish/dishServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Dish/dishServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Merchant/merchantServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Merchant/merchantServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/dishview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/dishview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/userMerchantView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/userMerchantView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantUserView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantUserView.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishReview.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishReview.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishView.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -380,7 +404,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/service/Favor/FavourService.java</url>
-          <line>3</line>
+          <line>9</line>
           <properties class="service.Favor.FavourService" method="favouriteDish">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

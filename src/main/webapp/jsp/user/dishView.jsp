@@ -28,12 +28,11 @@
 
         <div class="providerAddBtn">
             <input type="button" id="back" name="back" value="返回">
+            <input type="button" class="favor" dishId=${dish.dishId} dishName=${dish.dishName} value="收藏菜品">
+            <input type="button" class="review" dishId=${dish.dishId} dishName=${dish.dishName} value="评价菜品">
         </div>
         <div class="providerAddBtn">
-            <a class="favor" href="javascript:;" dishId=${dish.dishId} dishName=${dish.dishName}>收藏菜品</a>
-        </div>
-        <div class="providerAddBtn">
-            <a class="review" href="javascript:;" dishId=${dish.dishId} dishName=${dish.dishName}>评价菜品</a>
+            <input type="button" class="queryReview" dishId=${dish.dishId}  value="查看菜品评价评分">
         </div>
     </div>
 </div>

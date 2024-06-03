@@ -8,11 +8,13 @@ import dao.UDFavorDao.UDFavorDaoImpl;
 import dao.UMFavorDao.UMFavorDao;
 import dao.UMFavorDao.UMFavorImpl;
 import pojo.Dish;
+import pojo.Order;
 import pojo.UDFavor;
 import pojo.UMFavor;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class FavourServiceImpl implements FavourService{
 
@@ -68,5 +70,46 @@ public class FavourServiceImpl implements FavourService{
         }finally {
             BaseDao.closeResource(connection,null,null);
         }
+    }
+
+    public ArrayList<UDFavor> getUDFavorListByDishId(Integer dishId, int currentPageNo, int pageSize){
+        Connection connection=null;
+        ArrayList<UDFavor> udFavors = new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            udFavors=udFavorDao.getUDFavorsByUserId(connection,dishId,currentPageNo,pageSize);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return udFavors;
+
+    }
+
+    public ArrayList<UMFavor> getUMFavorListByMerchantId(Integer merchantId, int currentPageNo, int pageSize){
+        Connection connection=null;
+        ArrayList<UMFavor> umFavors = new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            umFavors=umFavorDao.getUMFavorsByMerchantId(connection,merchantId,currentPageNo,pageSize);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return umFavors;
     }
 }

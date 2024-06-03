@@ -41,7 +41,8 @@ function favorDishFromOrder(obj){
 }
 $(function(){
 	$(".review").on("click",function(){
-
+		var obj = $(this);
+		window.location.href = path + "/jsp/dish?method=reviewDishBegin&dishId="+obj.attr("dishId");
 	});
 
 	$('#no').click(function () {

@@ -1,0 +1,45 @@
+.review-container {
+    max-width: 600px;
+    margin: 50px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dish-name {
+    color: #005f73;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.review-text {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #005f73;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.rating {
+    margin-bottom: 20px;
+}
+
+.rating select {
+    padding: 10px;
+    border: 1px solid #005f73;
+    margin-left: 10px;
+}
+
+.submit-review {
+    background-color: #005f73;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-review:hover {
+    background-color: #00a0af;
+}

@@ -61,8 +61,8 @@ public class DishDaoImpl implements DishDao {
                 dish.setDishAllergens(rs.getString("dishAllergens"));
                 dish.setDishIngredients(rs.getString("dishIngredients"));
                 dish.setDishNutrition(rs.getString("dishNutrition"));
+                dish.setDishFavourNumber(rs.getInt("dishFavourNumber"));
                 dish.setMerchantId(rs.getInt("merchantId"));
-                dish.setFavourNumber(rs.getInt("dishFavourNumber"));
 
             }
             BaseDao.closeResource(null, pstm, rs);
@@ -262,7 +262,7 @@ public class DishDaoImpl implements DishDao {
             String sql = "UPDATE dish SET dishFavourNumber=? WHERE dishId=?";
 
             pstm = connection.prepareStatement(sql);
-            int number=dish.getFavourNumber()+1;
+            int number=dish.getDishFavourNumber()+1;
             Object[] params = {number,dish.getDishId()};
             flag = BaseDao.execute(connection, pstm, sql, params);
             }

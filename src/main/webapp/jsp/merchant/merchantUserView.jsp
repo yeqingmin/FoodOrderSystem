@@ -31,7 +31,8 @@
         <%--        <p><strong>用户地址：</strong><span>${user.address }</span></p>--%>
         <%--        <p><strong>用户角色：</strong><span>${user.userRoleName}</span></p>--%>
         <div class="providerAddBtn">
-            <input type="button" id="favor" name="favor" value="收藏">
+            <input type="button" class="favor" merchantId=${merchant.merchantId} merchantName=${merchant.merchantName} value="收藏商家">
+            <input type="button" class="review" merchantId=${merchant.merchantId} merchantName=${merchant.merchantName} value="评价商家">
         </div>
         <div class="providerAddBtn">
             <%--            先提交隐藏表单交给后端merchantServlet进行一个方法：createOrder先插入一条Order数据（获取merchantId通过表单提交,userId通过获取session），然后重定向到orderPage.jsp页面--%>
@@ -45,10 +46,21 @@
             <input type="button" id="book" name="review" value="预订">
         </div>
         <div class="providerAddBtn">
-            <input type="button" id="review" name="review" value="查看评价和评分">
+            <input type="button" class="queryReview" name="queryReview"  merchantId=${merchant.merchantId} value="查看评价和评分">
         </div>
         <div class="providerAddBtn">
             <input type="button" id="back" name="back" value="返回">
+        </div>
+    </div>
+</div>
+<div class="zhezhao"></div>
+<div class="remove" id="favorMerchant">
+    <div class="removerChid">
+        <h2>提示</h2>
+        <div class="removeMain">
+            <p>你确定要收藏该商家吗？</p>
+            <a href="#" id="yes">确定</a>
+            <a href="#" id="no">取消</a>
         </div>
     </div>
 </div>
