@@ -17,6 +17,10 @@ public class CharacterEncoding implements Filter {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		// 确保响应的头信息也包含正确的字符编码
+		if (response.getContentType() != null && !response.getContentType().toLowerCase().contains("charset=")) {
+			response.setContentType(response.getContentType() + "; charset=UTF-8");
+		}
 		chain.doFilter(request, response);
 	}
 

@@ -61,13 +61,9 @@ public class DishDaoImpl implements DishDao {
                 dish.setDishAllergens(rs.getString("dishAllergens"));
                 dish.setDishIngredients(rs.getString("dishIngredients"));
                 dish.setDishNutrition(rs.getString("dishNutrition"));
-                dish.setFavourNumber(rs.getInt("dishFavourNumber"));
-//                dish.setDishImage(rs.getBytes("dishImage"));
                 dish.setMerchantId(rs.getInt("merchantId"));
-//                dish.setIsDelete(rs.getBoolean("isDeleted"));
-//                if(rs.getBoolean("isDelete")){
-//                    dish=null;
-//                }
+                dish.setFavourNumber(rs.getInt("dishFavourNumber"));
+
             }
             BaseDao.closeResource(null, pstm, rs);
         }

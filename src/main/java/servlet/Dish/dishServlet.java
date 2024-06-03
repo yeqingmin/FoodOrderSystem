@@ -6,6 +6,8 @@ import pojo.Dish;
 import pojo.Merchant;
 import service.Dish.DishService;
 import service.Dish.DishServiceImpl;
+import service.Favor.FavourService;
+import service.Favor.FavourServiceImpl;
 import service.Merchant.MerchantService;
 import service.Merchant.MerchantServiceImpl;
 import utils.Constants;
@@ -48,8 +50,25 @@ public class dishServlet extends HttpServlet {
             this.deleteDish(request,response);
         }else if(method != null && method.equals("modifyExecute")){
             this.modifyDish(request,response);
+        }else if(method != null && method.equals("favorDishFromOrder")){
+            this.favorDishFromOrder(request,response);
         }
     }
+
+    private void favorDishFromOrder(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String dishId=request.getParameter("dishId");
+        //根据session获取userId
+        Integer userId=Session.getCurrentId(request);
+
+        FavourService favourService=new FavourServiceImpl();
+        favourService.favouriteDish(userId,Integer.parseInt(dishId));
+
+        response.setContentType("application/json");
+        PrintWriter out = null;
+        out = response.getWriter();
+        out.write("{\"success\": "+true+"}");
+    }
+
     private void deleteDish(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String id = request.getParameter("dishId");
         Integer delId = 0;
