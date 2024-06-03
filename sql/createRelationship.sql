@@ -47,8 +47,8 @@ create table if not exists `UDReview`
     FOREIGN KEY (userId) REFERENCES User (userId),
     FOREIGN KEY (dishId) REFERENCES Dish (dishId)
 );
-
-create table if not exists `UDFavor`
+use food_order_sys;
+create table if not exists `udfavor`
 (
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
     `dishId` INT NOT NULL comment '菜品id',

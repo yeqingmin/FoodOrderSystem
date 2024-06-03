@@ -6,8 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@include file="/jsp/user/userCommon/head.jsp"%>
+         pageEncoding="UTF-8" %>
+<%@include file="/jsp/user/userCommon/head.jsp" %>
 <div class="right">
     <div class="location">
         <strong>你现在所在的位置是:</strong>
@@ -22,13 +22,33 @@
         <p><strong>菜品过敏源：</strong><span>${dish.dishAllergens}</span></p>
         <p><strong>菜品成分：</strong><span>${dish.dishIngredients }</span></p>
         <p><strong>菜品营养信息：</strong><span>${dish.dishNutrition }</span></p>
-<%--        <p><strong>菜品描述：</strong><span>${user.address }</span></p>--%>
+<%--        <p><strong>菜品收藏量：</strong><span>${dish.dishFavourNumber }</span></p>--%>
+
+        <%--        <p><strong>菜品描述：</strong><span>${user.address }</span></p>--%>
 
         <div class="providerAddBtn">
-            <input type="button" id="back" name="back" value="返回" >
+            <input type="button" id="back" name="back" value="返回">
+        </div>
+        <div class="providerAddBtn">
+            <a class="favor" href="javascript:;" dishId=${dish.dishId} dishName=${dish.dishName}>收藏菜品</a>
+        </div>
+        <div class="providerAddBtn">
+            <a class="review" href="javascript:;" dishId=${dish.dishId} dishName=${dish.dishName}>评价菜品</a>
         </div>
     </div>
 </div>
 </section>
+<!--点击收藏按钮后弹出的页面-->
+<div class="zhezhao"></div>
+<div class="remove" id="favorDish">
+    <div class="removerChid">
+        <h2>提示</h2>
+        <div class="removeMain">
+            <p>你确定要收藏该菜品吗？</p>
+            <a href="#" id="yes">确定</a>
+            <a href="#" id="no">取消</a>
+        </div>
+    </div>
+</div>
 <%@include file="/jsp/user/userCommon/foot.jsp" %>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/dishview.js"></script>
