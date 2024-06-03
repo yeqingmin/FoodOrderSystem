@@ -14,9 +14,9 @@ public interface MerchantDao {
      */
     public ArrayList<Merchant> getSimpleMerchantByName(Connection connection,String name) throws SQLException;
 
-    public boolean addMerchant(Connection connection,Merchant merchant) throws Exception;
+    public int addMerchant(Connection connection,Merchant merchant) throws Exception;
 
-    public boolean deleteMerchantById(Connection connection,int id) throws Exception;
+    public boolean logicDeleteMerchantById(Connection connection,int id) throws Exception;
 
     public int modifyMerchantById(Connection connection,Merchant merchant) throws Exception;
 

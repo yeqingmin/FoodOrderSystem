@@ -33,7 +33,7 @@ public interface UserDao {
      * @return
      * @throws Exception
      */
-    public int deleteUserById(Connection connection, int id)throws Exception;
+    public int logicDeleteUserById(Connection connection, int id) throws Exception;
 
     /**
      * 修改用户信息

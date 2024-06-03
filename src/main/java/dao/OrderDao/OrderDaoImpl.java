@@ -159,4 +159,38 @@ public class OrderDaoImpl implements OrderDao{
         return count;
     }
 
+    public ArrayList<Integer> getLoyalBuyers(Connection connection,int merchantId) throws SQLException{
+        ArrayList<Integer> buyers = new ArrayList<>();
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if (null != connection) {
+            String sql = "select distinct o.userId from `order` as o where (select count(*) from `order` as o1 where o1.merchantId= ? and o.userId=userId and orderTime >= CURDATE() - INTERVAL 30 DAY) >10";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {merchantId};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            while (rs.next()){
+                int userId = rs.getInt("userId");
+                buyers.add(userId);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return buyers;
+    }
+
+    public int LoyalUserDIshOrderNumbers(Connection connection,int userId,int dishId) throws SQLException{
+        int count=0;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if (null != connection) {
+            String sql = "select count(*) from `order` as o ,`orderdetail` as d where o.orderId=d.orderId and o.userId=? and d.dishId = ?";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {userId,dishId};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            if (rs.next()){
+                count = rs.getInt(1);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return count;
+    }
 }

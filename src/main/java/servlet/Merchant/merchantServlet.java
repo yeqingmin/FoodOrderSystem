@@ -1,10 +1,14 @@
 package servlet.Merchant;
 
+import clojure.lang.IFn;
+import com.alibaba.fastjson.JSONArray;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mysql.cj.util.StringUtils;
 import pojo.*;
 import service.Dish.DishService;
 import service.Dish.DishServiceImpl;
+import service.Login.LoginService;
+import service.Login.LoginServiceImpl;
 import service.Merchant.MerchantService;
 import service.Merchant.MerchantServiceImpl;
 import service.Order.OrderService;
@@ -21,26 +25,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 
-
-/*
-    如何根据session获取当前用户/商户的id
-    HttpSession session = request.getSession();
-        System.out.println("session "+session);
-        if (session != null) {
-            // 从session中获取Constants.USER_SESSION属性
-            Login userSession = (Login) session.getAttribute(Constants.USER_SESSION);
-
-            // 检查userSession是否为null，然后根据需要处理
-            if (userSession != null) {
-                // 处理userSession对象
-                // 例如，将其转发到JSP页面
-                request.setAttribute("userId", userSession.getCorrespondingID());
-                System.out.println("userId:"+userSession.getCorrespondingID());
-            }
-        }
- */
 public class merchantServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -55,27 +43,156 @@ public class merchantServlet extends HttpServlet {
         String method = request.getParameter("method");
         if (method != null && method.equals("query")) {
             this.query(request, response);
-        }else if (method != null && method.equals("view")) {
-            this.getMerchantById(request, response, "merchant/merchantView.jsp");
-        }else if(method != null && method.equals("adminManage")){
+        } else if (method != null && method.equals("view")) {
+            this.viewMerchantById(request, response, "merchant/merchantView.jsp");
+        } else if (method != null && method.equals("adminManage")) {
             this.adminManage(request, response, "admin/adminToMerchantList.jsp");
-        }else if(method!=null && method.equals("userView")){
-            this.getMerchantById(request,response,"merchant/merchantUserView.jsp");
-        }else if(method!=null && method.equals("queryJSON")){
+        } else if (method != null && method.equals("userView")) {
+            this.getMerchantById(request, response, "merchant/merchantUserView.jsp");
+        } else if (method != null && method.equals("queryJSON")) {
             this.queryJSON(request, response);
-        }else if(method!=null && method.equals("queryMenu")){
-            this.queryMenu(request,response,"merchant/merchantMenuViewToUser.jsp");
-        }else if(method!=null && method.equals("createOrderAndListMenu")){
-            this.createOrderAndListMenu(request,response,"user/orderPage.jsp");
+        } else if (method != null && method.equals("queryMenu")) {
+            this.queryMenu(request, response, "merchant/merchantMenuViewToUser.jsp");
+        } else if (method != null && method.equals("createOrderAndListMenu")) {
+            this.createOrderAndListMenu(request, response, "user/orderPage.jsp");
+        } else if (method != null && method.equals("add")) {
+            this.add(request, response);
+        } else if (method != null && method.equals("modifyMerchant")) {
+            this.getMerchantById(request, response, "admin/merchantmodify.jsp");
+        } else if (method != null && method.equals("deleteMerchant")) {
+            this.deleteMerchant(request, response);
+        } else if (method != null && method.equals("modifyExecute")) {
+            this.modifyMerchant(request, response);
         }
+//        }else if (method!=null && method.equals("isMerchantExist")){
+//            this.isMerchantExist(request,response);
+//        }
 
     }
+
+    private void viewMerchantById(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
+        Integer id = Session.getCurrentId(request);
+        MerchantService merchantService = new MerchantServiceImpl();
+        Merchant merchant = null;
+        merchant = merchantService.getMerchantById(id);
+        System.out.println("merchantId:"+id);
+        request.setAttribute("merchant", merchant);
+        request.getRequestDispatcher(url).forward(request, response);
+    }
+
+    private void deleteMerchant(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String id = request.getParameter("merchantId");
+        Integer delId = 0;
+        try {
+            delId = Integer.parseInt(id);
+        } catch (Exception e) {
+            // TODO: handle exception
+            delId = 0;
+        }
+        HashMap<String, String> resultMap = new HashMap<String, String>();
+        if (delId <= 0) {
+            resultMap.put("deleteResult", "notexist");
+        } else {
+            MerchantService merchantService = new MerchantServiceImpl();
+            if (merchantService.deleteMerchantById(delId)) {
+                resultMap.put("deleteResult", "true");
+            } else {
+                resultMap.put("deleteResult", "false");
+            }
+        }
+
+        //把resultMap转换成json对象输出
+        response.setContentType("application/json");
+        PrintWriter outPrintWriter = response.getWriter();
+        outPrintWriter.write(JSONArray.toJSONString(resultMap));
+        outPrintWriter.flush();
+        outPrintWriter.close();
+    }
+
+    private void modifyMerchant(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String merchantId = request.getParameter("merchantId");
+        String merchantName = request.getParameter("merchantName");
+        String merchantAddr = request.getParameter("merchantAddr");
+
+        Merchant merchant = new Merchant();
+        merchant.setMerchantId(Integer.parseInt(merchantId));
+        merchant.setMerchantAddr(merchantAddr);
+        merchant.setMerchantName(merchantName);
+        MerchantService merchantService = new MerchantServiceImpl();
+        if (merchantService.modifyMerchantById(merchant) != 0) {
+            response.sendRedirect(request.getContextPath() + "/jsp/merchant?method=adminManage");
+        } else {
+            request.getRequestDispatcher("admin/merchantmodify.jsp").forward(request, response);
+        }
+    }
+
+    private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("add()================");
+        String merchantName = request.getParameter("merchantName");
+        String merchantPassword = request.getParameter("merchantPassword");
+        String merchantAddr = request.getParameter("merchantAddr");
+
+        //创建两个Service
+        LoginService loginService = new LoginServiceImpl();
+        MerchantService merchantService = new MerchantServiceImpl();
+
+        //新建一个Login对象
+        //新建一个merchant对象
+        Login merchantLogin = new Login();
+        merchantLogin.setRole("merchant");
+        merchantLogin.setName(merchantName);
+        merchantLogin.setPassword(merchantPassword);
+        Merchant merchant = new Merchant();
+        merchant.setMerchantName(merchantName);
+        merchant.setMerchantAddr(merchantAddr);
+
+        //先插入一条新的merchant数据，然后获取到当前新建的merchantId，然后新建login对象
+        int newMerchantId = merchantService.addMerchant(merchant);
+        //设置login对应的merchantId
+        merchantLogin.setCorrespondingID(newMerchantId);
+
+        //给login表插入数据
+        loginService.addLogin(merchantLogin);
+
+        //然后重定向到不同页面
+        response.sendRedirect(request.getContextPath() + "/jsp/merchant?method=adminManage");
+        //request.getRequestDispatcher("admin/adminToMerchantList.jsp").forward(request, response);
+
+    }
+
+//    private void isMerchantExist(HttpServletRequest request, HttpServletResponse response) {
+//        String merchantId = request.getParameter("merchantId");
+//
+//        HashMap<String, String> resultMap = new HashMap<String, String>();
+//        if(StringUtils.isNullOrEmpty(merchantId)){
+//            //userCode == null || userCode.equals("")
+//            resultMap.put("merchantId", "exist");
+//        }else{
+//            MerchantService merchantService = new MerchantServiceImpl();
+//            Merchant merchant = merchantService.getSimpleMerchantByName(merchantId);
+//            if(null != user){
+//                resultMap.put("userCode","exist");
+//            }else{
+//                resultMap.put("userCode", "notexist");
+//            }
+//        }
+//
+//        //把resultMap转为json字符串以json的形式输出
+//        //配置上下文的输出类型
+//        response.setContentType("application/json");
+//        //从response对象中获取往外输出的writer对象
+//        PrintWriter outPrintWriter = response.getWriter();
+//        //把resultMap转为json字符串 输出
+//        outPrintWriter.write(JSONArray.toJSONString(resultMap));
+//        outPrintWriter.flush();//刷新
+//        outPrintWriter.close();//关闭流
+//    }
 
     private void createOrderAndListMenu(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
 
         //调用orderDao根据session得到userId，根据前端Parameter发送名字为orderMerchantId参数的值，获取当前创建时间，然后新建order，并返回新建的order的id
         int orderId = 0;
-        Integer userId=Session.getCurrentId(request);
+        Integer userId = Session.getCurrentId(request);
 
         //然后根据前端传参获取merchantId
         String merchantId = request.getParameter("merchantId");
@@ -89,36 +206,37 @@ public class merchantServlet extends HttpServlet {
             order.setMerchantId(Integer.parseInt(merchantId));
             order.setUserId(userId);
             orderId = orderService.addOrder(order);
-            System.out.println("New orderId = "+orderId);
+            System.out.println("New orderId = " + orderId);
             //设置转发请求的参数orderId，以方便选择指定菜品向orderDetail表里面增加新的数据的时候对应正确的orderId
-            request.setAttribute("orderId",orderId);
+            request.setAttribute("orderId", orderId);
         }
 
         //以上全部搞完之后还要设置dishList，获取到当前merchantId对应的dishList设置在转发的请求中
-        ArrayList<Dish> dishList=null;
-        if(!StringUtils.isNullOrEmpty(merchantId)){
-            DishService dishService=new DishServiceImpl();
-            dishList= dishService.getDishByMerchantId(Integer.parseInt(merchantId));
-            request.setAttribute("dishList",dishList);
+        ArrayList<Dish> dishList = null;
+        if (!StringUtils.isNullOrEmpty(merchantId)) {
+            DishService dishService = new DishServiceImpl();
+            dishList = dishService.getDishByMerchantId(Integer.parseInt(merchantId));
+            request.setAttribute("dishList", dishList);
         }
 
-        request.getRequestDispatcher(url).forward(request,response);
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     /**
      * 该方法用于根据对应的merchantId来查询菜单
+     *
      * @param request
      * @param response
      */
-    private void queryMenu(HttpServletRequest request, HttpServletResponse response,String url) throws ServletException, IOException {
-        String merchantId=request.getParameter("merchantId");
-        ArrayList<Dish> dishList=null;
-        if(!StringUtils.isNullOrEmpty(merchantId)){
-            DishService dishService=new DishServiceImpl();
-            dishList= dishService.getDishByMerchantId(Integer.parseInt(merchantId));
-            request.setAttribute("dishList",dishList);
+    private void queryMenu(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
+        String merchantId = request.getParameter("merchantId");
+        ArrayList<Dish> dishList = null;
+        if (!StringUtils.isNullOrEmpty(merchantId)) {
+            DishService dishService = new DishServiceImpl();
+            dishList = dishService.getDishByMerchantId(Integer.parseInt(merchantId));
+            request.setAttribute("dishList", dishList);
         }
-        request.getRequestDispatcher(url).forward(request,response);
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     public void queryJSON(HttpServletRequest request, HttpServletResponse response) {
@@ -211,32 +329,18 @@ public class merchantServlet extends HttpServlet {
         request.setAttribute("totalPageCount", totalPageCount);
         request.setAttribute("totalCount", totalCount);
         request.setAttribute("currentPageNo", currentPageNo);
-        request.getRequestDispatcher(url).forward(request,response);
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     private void getMerchantById(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
-        String id=request.getParameter("merchantId");
-//        HttpSession session = request.getSession();
-//        System.out.println("session "+session);
-//        if (session != null) {
-//            // 从session中获取Constants.USER_SESSION属性
-//            Login userSession = (Login) session.getAttribute(Constants.USER_SESSION);
-//
-//            // 检查userSession是否为null，然后根据需要处理
-//            if (userSession != null) {
-//                // 处理userSession对象
-//                // 例如，将其转发到JSP页面
-//                request.setAttribute("userId", userSession.getCorrespondingID());
-//                System.out.println("userId:"+userSession.getCorrespondingID());
-//            }
-//        }
-        if(!StringUtils.isNullOrEmpty(id)){
-            MerchantService merchantService=new MerchantServiceImpl();
-            Merchant merchant=null;
-            merchant=merchantService.getMerchantById(Integer.parseInt(id));
-            request.setAttribute("merchant",merchant);
+        String id = request.getParameter("merchantId");
+        if (!StringUtils.isNullOrEmpty(id)) {
+            MerchantService merchantService = new MerchantServiceImpl();
+            Merchant merchant = null;
+            merchant = merchantService.getMerchantById(Integer.parseInt(id));
+            request.setAttribute("merchant", merchant);
         }
-        request.getRequestDispatcher(url).forward(request,response);
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     private void query(HttpServletRequest request, HttpServletResponse response)
@@ -258,7 +362,7 @@ public class merchantServlet extends HttpServlet {
             merchantName = "";
         }
         //根据前端传给我们的merchantName搜索对应的merchant列表
-        merchantList=merchantService.getSimpleMerchantByName(merchantName);
+        merchantList = merchantService.getSimpleMerchantByName(merchantName);
 
 
         //这里设置的属性是后端数据库查出来的内容，然后转发给merchantList.jsp（下一个跳转页面的请求属性，让他来渲染我们查到的信息）

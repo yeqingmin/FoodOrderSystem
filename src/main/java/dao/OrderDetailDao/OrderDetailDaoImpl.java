@@ -71,8 +71,16 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
                     "        GROUP BY o1.userId\n" +
                     "    ) AS subquery\n" +
                     ")";
+            /*String sql="    SELECT MAX(count_orders)\n" +
+                    "    FROM (\n" +
+                    "        SELECT o.userId, COUNT(*) AS count_orders\n" +
+                    "        FROM `order` AS o1\n" +
+                    "        JOIN `orderdetail` AS d1 where d1.orderId = o1.orderId and d1.dishId = ?" +
+                    "        GROUP BY o1.userId\n" +
+                    "    ) AS subquery\n"
+                   ;*/
             pstm = connection.prepareStatement(sql);
-            Object[] params = {dishId ,dishId};
+            Object[] params = {dishId,dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if(rs.next()){
                 System.out.println("!!!!!");
@@ -168,7 +176,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         ResultSet rs=null;
         int number=0;
         if (null != connection) {
-            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 1 YEAR and o.isOnline=0";
+            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 1 YEAR and o.isOnline=10";
             Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if (rs.next()) {

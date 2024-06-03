@@ -152,5 +152,89 @@ public class DishServiceImpl implements DishService {
         return quantity;
     }
 
+    @Override
+    public int getDishTotalCountByMerchantId(int merchantId) {
+        Connection connection = null;
+        int quantity = 0;
+        try {
+            connection = BaseDao.getConnection();
+            quantity = dishDao.getDishTotalCountByMerchantId(connection,merchantId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        } finally {
+            BaseDao.closeResource(connection, null, null);
+        }
+        return quantity;
+    }
+
+    @Override
+    public ArrayList<Dish> getDishListByMerchantId(int merchantId, int currentPageNo, int pageSize) {
+        Connection connection = null;
+        ArrayList<Dish> menu = null;
+        try {
+            connection = BaseDao.getConnection();
+            menu = dishDao.getDishListByMerchantId(connection, merchantId,currentPageNo,pageSize);
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        } finally {
+            BaseDao.closeResource(connection, null, null);
+        }
+        return menu;
+    }
+
+    @Override
+    public int modifyDishById(Dish dish) {
+        Connection connection = null;
+        int quantity = 0;
+        try {
+            connection = BaseDao.getConnection();
+            quantity = dishDao.modifyDishById(connection,dish);
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        } finally {
+            BaseDao.closeResource(connection, null, null);
+        }
+        return quantity;
+    }
+
+    @Override
+    public int deleteDishById(int dishId) {
+        Connection connection = null;
+        int quantity = 0;
+        try {
+            connection = BaseDao.getConnection();
+            quantity = dishDao.logicDeleteDishById(connection,dishId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        } finally {
+            BaseDao.closeResource(connection, null, null);
+        }
+        return quantity;
+    }
+
 
 }

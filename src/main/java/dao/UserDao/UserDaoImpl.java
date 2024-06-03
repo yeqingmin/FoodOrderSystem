@@ -12,7 +12,7 @@ public class UserDaoImpl implements UserDao {
         PreparedStatement pstm = null;
         ResultSet rs = null;
         if (null != connection) {
-            String sql = "SELECT * FROM user WHERE userId = ?";
+            String sql = "SELECT * FROM user WHERE isDelete=0 and userId = ?";
             pstm = connection.prepareStatement(sql);
             Object[] params = {id};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
@@ -32,22 +32,21 @@ public class UserDaoImpl implements UserDao {
         PreparedStatement pstm = null;
         int flag = 0;
         if (null != connection) {
-            String sql = "INSERT INTO user (userId ,username, gender, isDelete) VALUES (?, ?, ?,?)";
-            Object[] params = {user.getUserId(), user.getUserName(), user.getUserGender(),
-                    user.isDelete()};
-            flag = BaseDao.execute(connection, pstm, sql, params);
+            String sql = "INSERT INTO user (userName, userGender) VALUES (?, ?)";
+            Object[] params = {user.getUserName(), user.getUserGender()};
+            flag = BaseDao.executeAdd(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
         }
         return flag;
     }
 
-    public int deleteUserById(Connection connection, int id)
+    public int logicDeleteUserById(Connection connection, int id)
             throws Exception {
         // TODO Auto-generated method stub
         PreparedStatement pstm = null;
         int flag = 0;
         if (null != connection) {
-            String sql = "delete from user where userId=?";
+            String sql = "update user set isDelete=1 where userId=?";
             Object[] params = {id};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
@@ -57,14 +56,11 @@ public class UserDaoImpl implements UserDao {
 
     public int modify(Connection connection, User user)
             throws Exception {
-        // TODO Auto-generated method stub
         int flag = 0;
         PreparedStatement pstm = null;
         if (null != connection) {
-            String sql = "update user set userId=?,userName=?,userGender=?," +
-                    "userIsDelete=? where userId=? ";
-            Object[] params = {user.getUserId(), user.getUserName(), user.getUserGender(),
-                    user.isDelete(), user.getUserId()};
+            String sql = "update user set userName=?,userGender=? where userId=? ";
+            Object[] params = {user.getUserName(), user.getUserGender(), user.getUserId()};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
         }
@@ -80,10 +76,10 @@ public class UserDaoImpl implements UserDao {
         ResultSet rs = null;
         ArrayList<User> userList = new ArrayList<User>();
         if (connection != null) {
-            String sql="select * from user order by userId limit ?,?";
+            String sql = "select * from user where isDelete=0 order by userId limit ?,?";
             currentPageNo = (currentPageNo - 1) * pageSize;
 
-            Object[] params = {currentPageNo,pageSize};
+            Object[] params = {currentPageNo, pageSize};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             while (rs.next()) {
                 User user = new User();
@@ -99,15 +95,15 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int getUserTotalCount(Connection connection) throws SQLException {
-        int count=0;
+        int count = 0;
         PreparedStatement pstm = null;
         ResultSet rs = null;
         if (null != connection) {
-            String sql = "select count(*) from user";
+            String sql = "select count(*) from user where isDelete=0";
             pstm = connection.prepareStatement(sql);
             Object[] params = {};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
-            if(rs.next()){
+            if (rs.next()) {
                 count = rs.getInt(1);
             }
             BaseDao.closeResource(null, pstm, rs);

@@ -16,7 +16,7 @@
         <h1>食堂点单系统</h1>
         <div class="publicHeaderR">
             <p>欢迎你！</p>
-            <a href="${pageContext.request.contextPath }/jsp/logout.do">退出</a>
+            <a href="${pageContext.request.contextPath }/jsp/logout">退出</a>
         </div>
     </header>
 <!--时间-->
@@ -32,7 +32,7 @@
              <ul class="list">
                  <li><a href="${pageContext.request.contextPath }/jsp/merchant?method=view">商户中心</a></li>
                  <li><a href="${pageContext.request.contextPath }/jsp/dish?method=merchantManage">菜单管理</a></li>
-                 <li ><a href="${pageContext.request.contextPath }/jsp/bill.do?method=query">数据分析</a></li>
+                 <li ><a href="${pageContext.request.contextPath }/jsp/?method=query">数据分析</a></li>
              </ul>
          </nav>
      </div>

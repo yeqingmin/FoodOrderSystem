@@ -22,4 +22,6 @@ public interface OrderDetailDao {
     public int yearlyOfflineDishNumber(Connection connection,int dishId) throws Exception;
 
     public int yearlyOnlineDishNumber(Connection connection,int dishId) throws Exception;
+
+
 }

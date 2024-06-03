@@ -20,7 +20,7 @@
             <input name="queryname" class="input-text"	type="text" value="${queryUserName}">
             <input type="hidden" name="pageIndex" value="1"/>
             <input	value="查 询" type="submit" id="searchbutton">
-            <a href="${pageContext.request.contextPath}/jsp/useradd.jsp" >添加用户</a>
+            <a href="${pageContext.request.contextPath}/jsp/admin/useradd.jsp" >添加用户</a>
         </form>
     </div>
     <!--用户-->
@@ -43,8 +43,8 @@
 					<span>${user.userGender}</span>
                 </td>
                 <td>
-                    <span><a class="viewDish" href="javascript:;" userId=${user.userId}><div class="providerAddBtn"><input type="button" value="删除用户"></div></a></span>
-                    <span><a class="viewDish" href="javascript:;" userId=${user.userId}><div class="providerAddBtn"><input type="button" value="修改用户"></div></a></span>
+                    <span><a class="modifyUser" href="javascript:;" userId=${user.userId} userName=${user.userName} userGender=${userGender}><div class="providerAddBtn"><input type="button" value="修改用户"></div></a></span>
+                    <span><a class="deleteUser" href="javascript:;" userId=${user.userId} userName=${user.userName} userGender=${userGender}><div class="providerAddBtn"><input type="button" value="删除用户"></div></a></span>
                 </td>
             </tr>
         </c:forEach>
@@ -60,7 +60,7 @@
 
 <!--点击删除按钮后弹出的页面-->
 <div class="zhezhao"></div>
-<div class="remove" id="removeUse">
+<div class="remove" id="removeUser">
     <div class="removerChid">
         <h2>提示</h2>
         <div class="removeMain">
@@ -72,4 +72,4 @@
 </div>
 
 <%@include file="/jsp/admin/adminCommon/foot.jsp" %>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/userlist.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/adminUserList.js"></script>

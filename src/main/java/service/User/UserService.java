@@ -8,7 +8,12 @@ import java.util.Date;
 import java.util.List;
 
 public interface UserService {
+    public int add(User user);
     public User getUserById(int id);
+
+    public int modify(User user);
+
+    public int deleteUserById(int id);
 
     public ArrayList<User> getAllUserList(int currentPageNo, int pageSize);
 

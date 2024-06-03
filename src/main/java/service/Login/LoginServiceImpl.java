@@ -16,7 +16,24 @@ public class LoginServiceImpl implements LoginService{
     private final LoginDao loginDao=new LoginDaoImpl();
     @Override
     public int addLogin(Login login) {
-        return 0;
+        Connection connection=null;
+        int flag=0;
+        try{
+            connection= BaseDao.getConnection();
+            flag=loginDao.addLogin(connection,login);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+
+        return flag;
     }
 
     @Override

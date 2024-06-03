@@ -22,9 +22,15 @@ public interface DishDao {
     public int add(Connection connection, Dish dish)throws Exception;
     public int modifyPrice(Connection connection, int id , float price)throws Exception;
     public int modifyCategory(Connection connection, int id , String dishCategory)throws Exception;
-    public int deleteDishById(Connection connection, int id)throws Exception;
+    public int logicDeleteDishById(Connection connection, int id)throws Exception;
     public ArrayList<Dish> getDishByMerchantId(Connection connection,int merchantId) throws Exception;
     public Dish getDishByNameAndMerchant(Connection connection, String name,int id)throws Exception;
     public void increaseFavourNumber(Connection connection , Dish dish) throws Exception;
+
+    public int getDishTotalCountByMerchantId(Connection connection,int merchantId)throws Exception;
+
+    public ArrayList<Dish> getDishListByMerchantId(Connection connection,int merchantId,int currentPageNo,int pageSize)throws Exception;
+
+    public int modifyDishById(Connection connection,Dish dish)throws Exception;
 
 }

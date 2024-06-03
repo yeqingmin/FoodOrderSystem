@@ -87,19 +87,71 @@ public class MerchantServiceImpl implements MerchantService {
         return merchantDetail;
     }
 
+    /**
+     * @param merchant
+     * @return 返回的是新建的merchant的id
+     */
     @Override
-    public boolean addMerchant(Merchant merchant){
-        return false;
+    public int addMerchant(Merchant merchant){
+        Connection connection=null;
+        int newId=0;
+        try{
+            connection= BaseDao.getConnection();
+            newId=merchantDao.addMerchant(connection,merchant);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return newId;
     }
 
     @Override
     public boolean deleteMerchantById(int id){
-        return false;
+        Connection connection=null;
+        boolean result=false;
+        try{
+            connection= BaseDao.getConnection();
+            result=merchantDao.logicDeleteMerchantById(connection,id);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
     }
 
     @Override
     public int modifyMerchantById(Merchant merchant) {
-        return 0;
+        Connection connection=null;
+        int result=0;
+        try{
+            connection= BaseDao.getConnection();
+            result=merchantDao.modifyMerchantById(connection,merchant);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
     }
 
     @Override

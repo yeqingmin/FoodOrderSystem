@@ -26,7 +26,6 @@ public class Dish {
         this.dishPrice = dishPrice;
         this.dishCategory = dishCategory;
         this.dishDescription = dishDescription;
-        System.out.println(this.dishFavourNumber);
         this.dishFavourNumber=dishFavourNumber;
         this.dishImage = dishImage;
         this.merchantId = merchantId;
