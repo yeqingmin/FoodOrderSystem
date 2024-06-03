@@ -44,16 +44,17 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     //对菜品打分
-    public void reviewDish(int userId,int dishId , int rate , String comment){
+    public int reviewDish(int userId,int dishId , int rate , String comment){
         Connection connection=null;
         UDReview udReview =new UDReview();
         udReview.setDishId(dishId);
         udReview.setUserId(userId);
         udReview.setDishRating(rate);
         udReview.setDishComment(comment);
+        int result=0;
         try{
             connection= BaseDao.getConnection();
-            udReviewDao.addReview(connection,udReview);
+            result=udReviewDao.addReview(connection,udReview);
         }catch (Exception e){
             e.printStackTrace();
             try {
@@ -66,6 +67,7 @@ public class ReviewServiceImpl implements ReviewService {
         }finally {
             BaseDao.closeResource(connection,null,null);
         }
+        return result;
     }
 
     //根据商户地址和名称获得商户评价

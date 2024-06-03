@@ -18,20 +18,7 @@ public class Dish {
     // Constructors, Getters, and Setters
     public Dish() {}
 
-    public Dish(Integer dishId, String dishName, Float dishPrice, String dishCategory, String dishDescription,
-                Integer dishFavourNumber,
-                byte[] dishImage, Integer merchantId, Boolean isDelete  ) {
-        this.dishId = dishId;
-        this.dishName = dishName;
-        this.dishPrice = dishPrice;
-        this.dishCategory = dishCategory;
-        this.dishDescription = dishDescription;
-        System.out.println(this.dishFavourNumber);
-        this.dishFavourNumber=dishFavourNumber;
-        this.dishImage = dishImage;
-        this.merchantId = merchantId;
-        this.isDelete = isDelete;
-    }
+
 
     public Integer getDishId() {
         return dishId;
@@ -98,19 +85,6 @@ public class Dish {
         this.isDelete = isDelete;
     }
 
-    @Override
-    public String toString() {
-        return "Dish{" +
-                "dishId=" + dishId +
-                ", dishName='" + dishName + '\'' +
-                ", dishPrice=" + dishPrice +
-                ", dishCategory='" + dishCategory + '\'' +
-                ", dishDescription='" + dishDescription + '\'' +
-                ", dishImage=" + Arrays.toString(dishImage) +
-                ", merchantId=" + merchantId +
-                ", isDelete=" + isDelete +
-                '}';
-    }
 
     public String getDishAllergens() {
         return dishAllergens;
@@ -136,11 +110,30 @@ public class Dish {
         this.dishNutrition = dishNutrition;
     }
 
-    public int getFavourNumber() {
+
+    public Integer getDishFavourNumber() {
         return dishFavourNumber;
     }
 
-    public void setFavourNumber(int favourNumber) {
-        this.dishFavourNumber = favourNumber;
+    public void setDishFavourNumber(Integer dishFavourNumber) {
+        this.dishFavourNumber = dishFavourNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "dishId=" + dishId +
+                ", dishName='" + dishName + '\'' +
+                ", dishPrice=" + dishPrice +
+                ", dishCategory='" + dishCategory + '\'' +
+                ", dishDescription='" + dishDescription + '\'' +
+                ", dishImage=" + Arrays.toString(dishImage) +
+                ", merchantId=" + merchantId +
+                ", dishAllergens='" + dishAllergens + '\'' +
+                ", dishIngredients='" + dishIngredients + '\'' +
+                ", dishNutrition='" + dishNutrition + '\'' +
+                ", isDelete=" + isDelete +
+                ", dishFavourNumber=" + dishFavourNumber +
+                '}';
     }
 }

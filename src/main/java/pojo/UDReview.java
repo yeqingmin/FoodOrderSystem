@@ -8,6 +8,13 @@ public class UDReview {
     private Integer dishId; // 菜品id
     private Integer userId; // 用户id
 
+    public UDReview(Integer dishRating, String dishComment, Integer dishId, Integer userId) {
+        this.dishRating = dishRating;
+        this.dishComment = dishComment;
+        this.dishId = dishId;
+        this.userId = userId;
+    }
+
     // 构造函数
     public UDReview() {
     }
