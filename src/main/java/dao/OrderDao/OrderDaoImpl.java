@@ -67,7 +67,7 @@ public class OrderDaoImpl implements OrderDao{
             while (rs.next()) {
                 Order order = new Order();
                 order.setOrderId(rs.getInt("orderId"));
-                order.setOnline(rs.getBoolean("isOnline"));
+//                order.setOnline(rs.getBoolean("isOnline"));
                 order.setMerchantId(rs.getInt("merchantId"));
                 order.setUserId(rs.getInt("userId"));
                 if(rs.getInt("orderStatus")==0){

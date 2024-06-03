@@ -31,6 +31,9 @@
             <input type="button" class="favor" dishId=${dish.dishId} dishName=${dish.dishName} value="收藏菜品">
             <input type="button" class="review" dishId=${dish.dishId} dishName=${dish.dishName} value="评价菜品">
         </div>
+        <div class="providerAddBtn">
+            <input type="button" class="queryReview" dishId=${dish.dishId}  value="查看菜品评价评分">
+        </div>
     </div>
 </div>
 </section>

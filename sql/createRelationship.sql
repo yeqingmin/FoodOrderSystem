@@ -2,7 +2,7 @@ create database if not exists food_order_sys;
 
 use food_order_sys;
 
-create table if not exists `UMReview`
+create table if not exists `umreview`
 (
     `reviewId`        int  auto_increment primary key comment '评价id',
     `merchantRating`  int          not null default 0 comment '对商家的评分',
@@ -14,7 +14,7 @@ create table if not exists `UMReview`
     FOREIGN KEY (merchantId) REFERENCES merchant (merchantId)
 );
 
-create table if not exists `UMFavor`
+create table if not exists `umfavor`
 (
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
     `userId` INT NOT NULL comment '用户' ,
