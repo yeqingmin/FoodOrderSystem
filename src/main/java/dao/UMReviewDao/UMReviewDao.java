@@ -1,7 +1,10 @@
 package dao.UMReviewDao;
+import pojo.UMFavor;
 import pojo.UMReview;
 import pojo.User;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface UMReviewDao {
@@ -47,5 +50,8 @@ public interface UMReviewDao {
 
     public List<UMReview> getReviewsByBusinessNameAndAddress(Connection connection, String merchantName , String address) throws Exception;
 
-}
+    public ArrayList<UMReview> getUMReviewByMerchantId(Connection connection, int merchantId, int currentPageNo, int pageSize) throws Exception;
+    public int getUMReviewTotalCountByMerchantId(Connection connection,int merchantId) throws SQLException;
+
+    }
 

@@ -19,4 +19,9 @@ public interface OrderDao {
     public int getDishOnlineNumber(Connection connection,int dishId) throws SQLException;
 
     public int getDisOfflineNumber(Connection connection,int dishId) throws SQLException;
+
+    public ArrayList<Integer> getLoyalBuyers(Connection connection,int merchantId) throws SQLException;
+
+    //  忠实用户的菜品购买分布
+    public int LoyalUserDIshOrderNumbers(Connection connection,int userId,int dishId) throws SQLException;
 }

@@ -267,4 +267,45 @@ public class OrderServiceImpl implements OrderService{
         }
         return result;
     }
+
+    public ArrayList<Integer> getLoyalBuyers(int merchantId){
+        Connection connection=null;
+        ArrayList<Integer> result=new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            result=orderDao.getLoyalBuyers(connection,merchantId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
+    }
+
+    public int getLoyalBuyersDishNumber(int userId ,int dishId){
+        Connection connection=null;
+        int result=0;
+        try{
+            connection= BaseDao.getConnection();
+            result=orderDao.LoyalUserDIshOrderNumbers(connection,userId,dishId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
+    }
 }

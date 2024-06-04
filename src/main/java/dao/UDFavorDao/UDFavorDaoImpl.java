@@ -1,10 +1,14 @@
 package dao.UDFavorDao;
 
 import dao.BaseDao;
+import pojo.Order;
 import pojo.UDFavor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UDFavorDaoImpl implements UDFavorDao{
     @Override
@@ -32,5 +36,42 @@ public class UDFavorDaoImpl implements UDFavorDao{
             BaseDao.closeResource(null, pstm, null);
         }
         return flag;
+    }
+
+    public ArrayList<UDFavor> getUDFavorsByUserId(Connection connection, int dishId, int currentPageNo, int pageSize) throws Exception{
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        ArrayList<UDFavor> udFavorsList = new ArrayList<UDFavor>();
+        if (connection != null) {
+            String sql="select * from `udfavor` where dishId= ?  limit ?,?";
+            currentPageNo = (currentPageNo - 1) * pageSize;
+
+            Object[] params = {dishId, currentPageNo,pageSize};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            while (rs.next()) {
+                UDFavor udFavor = new UDFavor();
+                udFavor.setUserId(rs.getInt("userId"));
+                udFavor.setDishId(rs.getInt("dishId"));
+                udFavorsList.add(udFavor);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return udFavorsList;
+    }
+    public int getUDFavorTotalCountByDishId(Connection connection,int dishId) throws SQLException {
+        int count=0;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if (null != connection) {
+            String sql = "select count(*) from `udfavor` where dishId=?";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {dishId};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return count;
     }
 }

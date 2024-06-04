@@ -19,4 +19,6 @@ public interface OrderService {
     public int getMonthlyOfflineNumber(int dishId);
     public int getYearlyOnlineNumber(int dishId);
     public int getYearlyOfflineNumber(int dishId);
+    public ArrayList<Integer> getLoyalBuyers(int merchantId);
+    public int getLoyalBuyersDishNumber(int userId ,int dishId);
 }

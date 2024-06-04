@@ -13,6 +13,11 @@
         <strong>你现在所在的位置是:</strong>
         <span>商户操作 >> 当前商户的所有评价列表</span>
     </div>
+    <form method="get" action="${pageContext.request.contextPath }/jsp/merchant">
+        <input name="method" value="queryReview" class="input-text" type="hidden">
+        <input name="merchantId" value="${merchantId}" type="hidden">
+        <input type="hidden" name="pageIndex" value="1"/>
+    </form>
     <!--账单表格 样式和供应商公用-->
     <table class="providerTable" cellpadding="0" cellspacing="0">
         <tr class="firstTr">
@@ -20,7 +25,7 @@
             <th width="10%">评分</th>
             <th width="80%">评价内容</th>
         </tr>
-        <c:forEach var="review" items="${reviewList}" varStatus="status">
+        <c:forEach var="review" items="${umReviewList}" varStatus="status">
             <tr>
                 <td>
                     <span>${review.userId}</span>
@@ -33,6 +38,11 @@
                 </td>
         </c:forEach>
     </table>
+    <c:import url="rollpage.jsp">
+        <c:param name="totalCount" value="${totalCount}"/>
+        <c:param name="currentPageNo" value="${currentPageNo}"/>
+        <c:param name="totalPageCount" value="${totalPageCount}"/>
+    </c:import>
 </div>
 </section>
 

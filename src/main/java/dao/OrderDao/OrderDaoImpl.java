@@ -27,39 +27,11 @@ public class OrderDaoImpl implements OrderDao{
     }
 
     public ArrayList<Order> getOrdersByUserId(Connection connection,int userId,int currentPageNo, int pageSize) throws Exception{
-//        ArrayList<Order> orders = new ArrayList<>();
-//        PreparedStatement pstm = null;
-//        ResultSet rs = null;
-//        if(connection != null){
-//            String sql = "SELECT * from `order` WHERE userId = ?";
-//            Object[] params ={userId};
-//            rs = BaseDao.execute(connection, pstm, rs, sql, params);
-//            while(rs.next()){
-//                Order order=new Order();
-//                order.setOrderId(rs.getInt("orderId"));
-//                order.setUserId(rs.getInt("userId"));
-//                order.setMerchantId(rs.getInt("merchantId"));
-////                order.setOrderStatus(rs.getInt("orderStatus"));
-//                if(rs.getInt("orderStatus")==0){
-//                    order.setOrderStatus("未完成");
-//                }else{
-//                    order.setOrderStatus("已完成");
-//                }
-//                //todo 这里可能需要一些互相调用的逻辑
-////                order.setTotalPrice(rs.getFloat("totalPrice"));
-//                order.setOrderTime(rs.getDate("orderTime"));
-//                orders.add(order);
-//            }
-//            BaseDao.closeResource(null, pstm, rs);
-//        }
-//        return orders;
-
-
-        PreparedStatement pstm = null;
+       PreparedStatement pstm = null;
         ResultSet rs = null;
         ArrayList<Order> orderList = new ArrayList<Order>();
         if (connection != null) {
-            String sql="select * from `order` where userId= ? order by OrderId limit ?,?";
+            String sql="select * from `order` where userId= ? order by orderId limit ?,?";
             currentPageNo = (currentPageNo - 1) * pageSize;
 
             Object[] params = {userId, currentPageNo,pageSize};
@@ -159,4 +131,38 @@ public class OrderDaoImpl implements OrderDao{
         return count;
     }
 
+    public ArrayList<Integer> getLoyalBuyers(Connection connection,int merchantId) throws SQLException{
+        ArrayList<Integer> buyers = new ArrayList<>();
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if (null != connection) {
+            String sql = "select distinct o.userId from `order` as o where (select count(*) from `order` as o1 where o1.merchantId= ? and o.userId=userId and orderTime >= CURDATE() - INTERVAL 30 DAY) >10";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {merchantId};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            while (rs.next()){
+                int userId = rs.getInt("userId");
+                buyers.add(userId);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return buyers;
+    }
+
+    public int LoyalUserDIshOrderNumbers(Connection connection,int userId,int dishId) throws SQLException{
+        int count=0;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if (null != connection) {
+            String sql = "select count(*) from `order` as o ,`orderdetail` as d where o.orderId=d.orderId and o.userId=? and d.dishId = ?";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {userId,dishId};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            if (rs.next()){
+                count = rs.getInt(1);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return count;
+    }
 }

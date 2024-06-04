@@ -1,12 +1,13 @@
 package service.Review;
 
 import dao.BaseDao;
-import dao.UDFavorDao.UDFavorDao;
-import dao.UDFavorDao.UDFavorDaoImpl;
+import dao.UDReviewDao.UDReviewDao;
+import dao.UDReviewDao.UDReviewDaoImpl;
 import dao.UDReviewDao.UDReviewDao;
 import dao.UDReviewDao.UDReviewDaoImpl;
 import dao.UMReviewDao.UMReviewDao;
 import dao.UMReviewDao.UMReviewDaoImpl;
+import pojo.UDReview;
 import pojo.UDReview;
 import pojo.UMReview;
 
@@ -114,5 +115,84 @@ public class ReviewServiceImpl implements ReviewService {
         return udReview;
     }
 
+    public ArrayList<UDReview> getUDReviewListByDishId(Integer dishId, int currentPageNo, int pageSize){
+        Connection connection=null;
+        ArrayList<UDReview> udReviews = new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            udReviews=udReviewDao.getUDReviewsByDishId(connection,dishId,currentPageNo,pageSize);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return udReviews;
+    }
 
+    public ArrayList<UMReview> getUMReviewListByMerchantId(Integer merchantId, int currentPageNo, int pageSize){
+        Connection connection=null;
+        ArrayList<UMReview> umReviews = new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            umReviews=umReviewDao.getUMReviewByMerchantId(connection,merchantId,currentPageNo,pageSize);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return umReviews;
+
+    }
+    public int getUDReviewTotalCountByDishId(Integer dishId) {
+        Connection connection=null;
+        int count=0;
+        try{
+            connection= BaseDao.getConnection();
+            count=udReviewDao.getUDReviewTotalCountByDishId(connection,dishId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return count;
+    }
+    public int getUMReviewTotalCountByMerchantId(Integer merchantId) {
+        Connection connection=null;
+        int count=0;
+        try{
+            connection= BaseDao.getConnection();
+            count=umReviewDao.getUMReviewTotalCountByMerchantId(connection,merchantId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return count;
+    }
 }

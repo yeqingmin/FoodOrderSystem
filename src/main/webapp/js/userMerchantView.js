@@ -42,8 +42,12 @@ function favorDishFromOrder(obj){
  $(function() {
 
      $(".review").on("click",function(){
-         var obj = $(this);
+         const obj = $(this);
          window.location.href = path + "/jsp/merchant?method=reviewMerchantBegin&merchantId="+obj.attr("merchantId");
+     });
+     $(".queryReview").on("click",function(){
+         const obj = $(this);
+         window.location.href = path + "/jsp/merchant?method=queryReview&merchantId="+obj.attr("merchantId");
      });
 
      $('#no').click(function () {

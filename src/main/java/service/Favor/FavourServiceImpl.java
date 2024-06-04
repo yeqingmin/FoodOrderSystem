@@ -8,11 +8,13 @@ import dao.UDFavorDao.UDFavorDaoImpl;
 import dao.UMFavorDao.UMFavorDao;
 import dao.UMFavorDao.UMFavorImpl;
 import pojo.Dish;
+import pojo.Order;
 import pojo.UDFavor;
 import pojo.UMFavor;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class FavourServiceImpl implements FavourService{
 
@@ -68,5 +70,87 @@ public class FavourServiceImpl implements FavourService{
         }finally {
             BaseDao.closeResource(connection,null,null);
         }
+    }
+
+    @Override
+    public int getUDFavorTotalCountByDishId(Integer dishId) {
+        Connection connection=null;
+        int count=0;
+        try{
+            connection= BaseDao.getConnection();
+            count=udFavorDao.getUDFavorTotalCountByDishId(connection,dishId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return count;
+    }
+    public int getUMFavorTotalCountByMerchantId(Integer merchantId) {
+        Connection connection=null;
+        int count=0;
+        try{
+            connection= BaseDao.getConnection();
+            count=umFavorDao.getUMFavorTotalCountByMerchantId(connection,merchantId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return count;
+    }
+    public ArrayList<UDFavor> getUDFavorListByDishId(Integer dishId, int currentPageNo, int pageSize){
+        Connection connection=null;
+        ArrayList<UDFavor> udFavors = new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            udFavors=udFavorDao.getUDFavorsByUserId(connection,dishId,currentPageNo,pageSize);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return udFavors;
+
+    }
+
+    public ArrayList<UMFavor> getUMFavorListByMerchantId(Integer merchantId, int currentPageNo, int pageSize){
+        Connection connection=null;
+        ArrayList<UMFavor> umFavors = new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            umFavors=umFavorDao.getUMFavorsByMerchantId(connection,merchantId,currentPageNo,pageSize);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return umFavors;
     }
 }

@@ -129,4 +129,20 @@ public class QueryTest {
        result=o.getWeeklyOfflineNumber(1);
        System.out.println(result);
    }
+
+    @Test
+    public void LoyalBuyersTest(){
+        ArrayList<Integer> list=new ArrayList<>();
+        OrderService o=new OrderServiceImpl();
+        list=o.getLoyalBuyers(1);
+        System.out.println(list);
+    }
+
+    @Test
+    public void LoyalBuyersDishNumbersTest(){
+        int result=0;
+        OrderService o=new OrderServiceImpl();
+        result=o.getLoyalBuyersDishNumber(1,1);
+        System.out.println(result);
+    }
 }

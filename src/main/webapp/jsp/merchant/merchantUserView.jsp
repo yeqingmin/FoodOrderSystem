@@ -33,6 +33,7 @@
         <div class="providerAddBtn">
             <input type="button" class="favor" merchantId=${merchant.merchantId} merchantName=${merchant.merchantName} value="收藏商家">
             <input type="button" class="review" merchantId=${merchant.merchantId} merchantName=${merchant.merchantName} value="评价商家">
+            <input type="button" class="queryReview" merchantId=${merchant.merchantId} merchantName=${merchant.merchantName} value="查看评价和评分">
         </div>
         <div class="providerAddBtn">
             <%--            先提交隐藏表单交给后端merchantServlet进行一个方法：createOrder先插入一条Order数据（获取merchantId通过表单提交,userId通过获取session），然后重定向到orderPage.jsp页面--%>
@@ -44,9 +45,6 @@
         </div>
         <div class="providerAddBtn">
             <input type="button" id="book" name="review" value="预订">
-        </div>
-        <div class="providerAddBtn">
-            <input type="button" class="queryReview" name="queryReview"  merchantId=${merchant.merchantId} value="查看评价和评分">
         </div>
         <div class="providerAddBtn">
             <input type="button" id="back" name="back" value="返回">

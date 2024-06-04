@@ -1,9 +1,12 @@
 package dao.UDReviewDao;
 
+import pojo.UDFavor;
 import pojo.UDReview;
 import pojo.UMReview;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface UDReviewDao {
@@ -45,4 +48,9 @@ public interface UDReviewDao {
      * @throws Exception 如果数据库操作出错
      */
     public int modifyReview(Connection connection, UDReview review) throws Exception;
-}
+
+    public ArrayList<UDReview> getUDReviewsByDishId(Connection connection, int dishId, int currentPageNo, int pageSize) throws Exception;
+
+    public int getUDReviewTotalCountByDishId(Connection connection,int dishId) throws SQLException;
+
+    }

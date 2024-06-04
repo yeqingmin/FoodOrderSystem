@@ -22,7 +22,7 @@
         <p><strong>菜品过敏源：</strong><span>${dish.dishAllergens}</span></p>
         <p><strong>菜品成分：</strong><span>${dish.dishIngredients }</span></p>
         <p><strong>菜品营养信息：</strong><span>${dish.dishNutrition }</span></p>
-        <p><strong>菜品收藏量：</strong><span>${dish.dishFavourNumber }</span></p>
+<%--        <p><strong>菜品收藏量：</strong><span>${dish.dishFavourNumber }</span></p>--%>
 
         <%--        <p><strong>菜品描述：</strong><span>${user.address }</span></p>--%>
 
