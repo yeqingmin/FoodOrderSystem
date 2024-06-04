@@ -7,7 +7,7 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@include file="/jsp/merchant/merchantCommon/head.jsp" %>
+<%@include file="/jsp/user/userCommon/head.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reviewPage.css" type="text/css">
 <div class="right">
     <div class="location">
@@ -34,5 +34,5 @@
 </div>
 </section>
 
-<%@include file="/jsp/merchant/merchantCommon/foot.jsp" %>
+<%@include file="/jsp/user/userCommon/foot.jsp" %>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/merchantReview.js"></script>
