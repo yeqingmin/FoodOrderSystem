@@ -110,6 +110,27 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
+    public int countQuantityByDishId(int dishId,int orderId) {
+        Connection connection = null;
+        int quantity = 0;
+        try {
+            connection = BaseDao.getConnection();
+            quantity = orderDetailDao.countDishInOrderQuantities(connection, dishId, orderId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        } finally {
+            BaseDao.closeResource(connection, null, null);
+        }
+        return quantity;
+    }
+
+    @Override
     public int deleteDishFromOrder(Integer dishId, Integer orderId) {
         Connection connection = null;
         int quantity = 0;

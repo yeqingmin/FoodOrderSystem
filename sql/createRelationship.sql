@@ -77,7 +77,7 @@ CREATE TABLE if not exists `DishPrice` (
     FOREIGN KEY (dishId) REFERENCES Dish(dishId) -- 假设菜品表名为Dish，且主键为id
 );
 
-CREATE TABLE if not exists `Book` (
+CREATE TABLE if not exists `book` (
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
     `bookId` INT AUTO_INCREMENT comment '预定单号' PRIMARY KEY,
     `userId` INT NOT NULL comment '下单用户' ,
@@ -98,6 +98,7 @@ create table if not exists `orderDetail`(
       FOREIGN KEY (orderId)REFERENCES `order`(orderId)
 );
 
+use food_order_sys;
 CREATE TABLE if not exists `bookmessage`
 (
     `isDelete`         tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
@@ -105,6 +106,7 @@ CREATE TABLE if not exists `bookmessage`
     userId             INT NOT NULL comment '用户id',       -- 用户ID，外键关联用户表
     bookStatusMessage  VARCHAR(255) comment '预定确认信息', -- 预订确认消息，假设最大长度为255字符
     bookId            INT NOT NULL comment '订单id',
+    createTime DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '消息发送时间',
     FOREIGN KEY (userId) REFERENCES User (userId) ,          -- 假设用户表名为User，用户ID字段名为userId
     FOREIGN KEY (bookId) REFERENCES Book (bookId)
 );
@@ -116,6 +118,7 @@ CREATE TABLE if not exists `ordermessage`
     userId             INT NOT NULL comment '用户id',       -- 用户ID，外键关联用户表
     orderStatusMessage VARCHAR(255) comment '订单状态信息', -- 订单状态消息，假设最大长度为255字符
     orderId            INT NOT NULL comment '订单id',
+    createTime DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '消息发送时间',
     FOREIGN KEY (userId) REFERENCES User (userId),         -- 假设用户表名为User，用户ID字段名为userId
     FOREIGN KEY (orderId) REFERENCES `Order` (orderId)
 );

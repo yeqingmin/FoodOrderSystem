@@ -1,7 +1,15 @@
 package servlet.Order;
 
-import pojo.Order;
-import pojo.User;
+import com.mysql.cj.util.StringUtils;
+import dao.OrderDetailDao.OrderDetailDao;
+import dao.OrderDetailDao.OrderDetailDaoImpl;
+import pojo.*;
+import service.Dish.DishService;
+import service.Dish.DishServiceImpl;
+import service.Merchant.MerchantService;
+import service.Merchant.MerchantServiceImpl;
+import service.Message.MessageService;
+import service.Message.MessageServiceImpl;
 import service.Order.OrderService;
 import service.Order.OrderServiceImpl;
 import service.User.UserService;
@@ -31,7 +39,59 @@ public class OrderServlet extends HttpServlet {
             this.query(request, response);
         }else if(method != null && method.equals("add")){
             this.add(request,response);
+        }else if(method != null && method.equals("orderView")){
+            this.orderView(request,response);
         }
+    }
+
+    /**
+     * 当前方法发送一条下单成功的系统消息，并且跳转到订单详细查看的页面
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    private void orderView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        Integer userId = Session.getCurrentId(request);
+
+        String orderId=request.getParameter("orderId");
+        String merchantId=request.getParameter("merchantId");
+
+
+        //新建orderService对象
+        OrderService orderService = new OrderServiceImpl();
+        MessageService messageService=new MessageServiceImpl();
+        MerchantService merchantService=new MerchantServiceImpl();
+        DishService dishService=new DishServiceImpl();
+        if (!StringUtils.isNullOrEmpty(merchantId)) {
+            //根据orderId新建一条订单消息,先给merchantService让他查出merchantName和merchantAddr拼接消息
+            Merchant merchant=merchantService.getMerchantById(Integer.parseInt(merchantId));
+            String orderMessage="您在"+merchant.getMerchantAddr()+"的"+merchant.getMerchantName()+"下的订单号为"+orderId+"的订单已下单成功";
+            messageService.addOrderMessage(userId,Integer.parseInt(orderId),orderMessage);
+        }
+
+        //获取当前的orderId然后查出orderDetail中对应orderId的菜品id显示在上面，整个网页显示的是点菜的菜名，菜品数量，和订单创建时间
+        ArrayList<OrderDetail> details=orderService.getDetailsByOrderId(Integer.parseInt(orderId));
+        ArrayList<Dish> orderedDishes=new ArrayList<>();
+        float sumPrice=0;
+        Dish prevDish=null;
+        for(OrderDetail detail:details){
+            int dishId=detail.getDishId();
+            Dish dish=dishService.getDishById(dishId);
+            sumPrice+=dish.getDishPrice();
+            dish.setTotalCount(dishService.countDishQuantity(dishId,Integer.parseInt(orderId)));
+            if(prevDish!=null&&prevDish.getDishName().equals(dish.getDishName())){
+                continue;
+            }else{
+                orderedDishes.add(dish);
+            }
+            prevDish=dish;
+        }
+        request.setAttribute("dishList",orderedDishes);
+        request.setAttribute("dishSumPrice",sumPrice);
+
+        request.getRequestDispatcher("user/orderDetailView.jsp").forward(request, response);
     }
 
     private void add(HttpServletRequest request, HttpServletResponse response) {

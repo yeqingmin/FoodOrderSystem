@@ -1,5 +1,7 @@
 package pojo;
 
+import java.util.Date;
+
 public class OrderMessage {
 
     private Integer messageId; // 消息ID
@@ -7,6 +9,8 @@ public class OrderMessage {
     private String orderStatusMessage; // 订单状态信息
     private Integer orderId; // 订单ID
     private Boolean isDelete; // 是否删除
+
+    private Date createTime;
 
     // 无参构造函数
     public OrderMessage() {
@@ -53,4 +57,11 @@ public class OrderMessage {
         this.isDelete = isDelete;
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 }

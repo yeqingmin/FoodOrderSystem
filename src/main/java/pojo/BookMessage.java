@@ -1,5 +1,7 @@
 package pojo;
 
+import java.util.Date;
+
 public class BookMessage {
 
     private Integer messageId; // 消息ID
@@ -7,6 +9,7 @@ public class BookMessage {
     private String bookStatusMessage; // 预订确认信息
     private Integer bookId; // 预订ID
     private Boolean isDelete; // 是否删除
+    private Date createTime;
 
     public BookMessage() {
     }
@@ -49,5 +52,13 @@ public class BookMessage {
 
     public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

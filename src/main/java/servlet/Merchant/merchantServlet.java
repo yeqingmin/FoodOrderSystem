@@ -14,6 +14,8 @@ import service.Login.LoginService;
 import service.Login.LoginServiceImpl;
 import service.Merchant.MerchantService;
 import service.Merchant.MerchantServiceImpl;
+import service.Message.MessageService;
+import service.Message.MessageServiceImpl;
 import service.Order.OrderService;
 import service.Order.OrderServiceImpl;
 import service.Review.ReviewService;
@@ -113,7 +115,7 @@ public class merchantServlet extends HttpServlet {
         }
         ArrayList<UMReview> umReviewList = null;
         umReviewList = reviewService.getUMReviewListByMerchantId(Integer.parseInt(merchantId), currentPageNo, pageSize);
-        request.setAttribute("merchantId",merchantId);
+        request.setAttribute("merchantId", merchantId);
         request.setAttribute("umReviewList", umReviewList);
         request.setAttribute("totalPageCount", totalPageCount);
         request.setAttribute("totalCount", totalCount);
@@ -266,10 +268,11 @@ public class merchantServlet extends HttpServlet {
 
         //然后根据前端传参获取merchantId
         String merchantId = request.getParameter("merchantId");
-        System.out.println("merchantId: " + merchantId);
 
         //新建orderService对象
         OrderService orderService = new OrderServiceImpl();
+//        MessageService messageService=new MessageServiceImpl();
+//        MerchantService merchantService=new MerchantServiceImpl();
         if (!StringUtils.isNullOrEmpty(merchantId)) {
             //新建一个Order对象
             Order order = new Order();
@@ -279,6 +282,10 @@ public class merchantServlet extends HttpServlet {
             System.out.println("New orderId = " + orderId);
             //设置转发请求的参数orderId，以方便选择指定菜品向orderDetail表里面增加新的数据的时候对应正确的orderId
             request.setAttribute("orderId", orderId);
+//            //根据orderId新建一条订单消息,先给merchantService让他查出merchantName和merchantAddr拼接消息
+//            Merchant merchant=merchantService.getMerchantById(Integer.parseInt(merchantId));
+//            String orderMessage="您在"+merchant.getMerchantAddr()+"的"+merchant.getMerchantName()+"下的订单号为"+orderId+"的订单已下单成功";
+//            messageService.addOrderMessage(userId,orderId,orderMessage);
         }
 
         //以上全部搞完之后还要设置dishList，获取到当前merchantId对应的dishList设置在转发的请求中
@@ -288,7 +295,7 @@ public class merchantServlet extends HttpServlet {
             dishList = dishService.getDishByMerchantId(Integer.parseInt(merchantId));
             request.setAttribute("dishList", dishList);
         }
-
+        request.setAttribute("merchantId", merchantId);
         request.getRequestDispatcher(url).forward(request, response);
     }
 

@@ -6,6 +6,7 @@ import dao.OrderDao.OrderDaoImpl;
 import dao.OrderDetailDao.OrderDetailDao;
 import dao.OrderDetailDao.OrderDetailDaoImpl;
 import pojo.Order;
+import pojo.OrderDetail;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -307,5 +308,26 @@ public class OrderServiceImpl implements OrderService{
             BaseDao.closeResource(connection,null,null);
         }
         return result;
+    }
+
+    @Override
+    public ArrayList<OrderDetail> getDetailsByOrderId(int orderId) {
+        Connection connection=null;
+       ArrayList<OrderDetail> details=null;
+        try{
+            connection= BaseDao.getConnection();
+            details=orderDetailDao.getDetailsByOrderId(connection,orderId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return details;
     }
 }

@@ -14,16 +14,23 @@
         <strong>你现在所在的位置是:</strong>
         <span>商户操作 >> 商户详细信息 >> 线上点餐页面</span>
     </div>
+    <div class="search">
+        <form method="get" action="${pageContext.request.contextPath }/jsp/order">
+            <input name="method" value="orderView" class="input-text" type="hidden">
+            <input name="merchantId" value="${merchantId}" class="input-text" type="hidden">
+            <input name="orderId" value="${orderId}" type="hidden">
+            <input type="hidden" name="pageIndex" value="1"/>
+            <input value="提交" type="submit" id="searchbutton">
+        </form>
+    </div>
     <!--账单表格 样式和供应商公用-->
     <table class="providerTable" cellpadding="0" cellspacing="0">
         <tr class="firstTr">
-            <%--            <th width="10%">商户编码</th>--%>
             <th width="10%">菜品名称</th>
             <th width="10%">菜品价格</th>
             <th width="10%">菜品分类</th>
             <th width="20%">菜品描述</th>
             <th width="10%">菜品数量</th>
-            <%--            <th width="10%">创建时间</th>--%>
             <th width="40%">操作</th>
         </tr>
         <c:forEach var="dish" items="${dishList}" varStatus="status">
@@ -48,16 +55,12 @@
                 <td>
                     <span>
                         <a class="addDishToOrder" href="javascript:;" dishId=${dish.dishId} orderId=${orderId} dishName=${dish.dishName}>
-                            <div class="providerAddBtn">
-                                <input type="button" value="加入餐单">
-                            </div>
+                            <div class="providerAddBtn"><input type="button" value="加入餐单"></div>
                         </a>
                     </span>
                     <span>
                         <a class="deleteDishFromOrder" href="javascript:;" dishId=${dish.dishId} orderId=${orderId} dishName=${dish.dishName}>
-                            <div class="providerAddBtn">
-                                <input type="button" value="移出餐单">
-                            </div>
+                            <div class="providerAddBtn"><input type="button" value="移出餐单"></div>
                         </a>
                     </span>
                 </td>

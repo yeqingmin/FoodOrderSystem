@@ -10,36 +10,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b5d2a6a-612e-4175-b6b7-f8acd1ef54e7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/message.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/bookMessage.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderDetailView.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderMessage.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/dishTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/createRelationship.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/createRelationship.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/BookMessageDao/BookMessageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/BookMessageDao/BookMessageDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/BookMessageDao/BookMessageDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/BookMessageDao/BookMessageDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDetailDao/OrderDetailDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDetailDao/OrderDetailDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDetailDao/OrderDetailDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDetailDao/OrderDetailDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UMFavorDao/UMFavorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UMFavorDao/UMFavorDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UMFavorDao/UMFavorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UMFavorDao/UMFavorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UMReviewDao/UMReviewDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UMReviewDao/UMReviewDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UMReviewDao/UMReviewDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UMReviewDao/UMReviewDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/Favor/FavourService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Favor/FavourService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/Favor/FavourServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Favor/FavourServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderMessageDao/OrderMessageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderMessageDao/OrderMessageDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderMessageDao/OrderMessageDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderMessageDao/OrderMessageDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/BookMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/BookMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/Dish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/OrderMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/OrderMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Dish/DishService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Dish/DishService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Dish/DishServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Dish/DishServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Message/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Message/MessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Message/MessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Message/MessageServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/Order/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Order/OrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/Order/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Order/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/Review/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Review/ReviewService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/Review/ReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Review/ReviewServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Dish/dishServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Dish/dishServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Merchant/merchantServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Merchant/merchantServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/dishview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/dishview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Message/MessageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Message/MessageServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Order/OrderServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Order/OrderServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/userMerchantView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/userMerchantView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/admin/adminToMerchantList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/admin/adminToMerchantList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantReviewView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantReviewView.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantUserView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantUserView.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishReviewView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishReviewView.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishView.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/QueryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/QueryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/systemMessage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/systemMessage.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,9 +48,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="JavaScript File" />
         <option value="Interface" />
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
@@ -83,40 +82,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat9.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "E:/Courses/DataBase/FoodOrderSystem/src/main/webapp/jsp/merchant",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat9.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Courses/DataBase/FoodOrderSystem/src/main/webapp/jsp/merchant&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
-      "MySQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;MySQL&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
-      "MySQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
+      &quot;MySQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\css" />
@@ -174,11 +173,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QueryTest.WeeklyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="dishTest.testGetOrderedDish" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FoodOrderSystem" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="QueryTest" />
-      <option name="METHOD_NAME" value="WeeklyTest" />
+      <option name="MAIN_CLASS_NAME" value="dishTest" />
+      <option name="METHOD_NAME" value="testGetOrderedDish" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -273,20 +272,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.dishTest.testGetOrderedDish" />
       <item itemvalue="JUnit.QueryTest.LoyalBuyers" />
       <item itemvalue="JUnit.QueryTest.LoyalBuyersDishNumbersTest" />
       <item itemvalue="JUnit.QueryTest.LoyalBuyersTest" />
       <item itemvalue="JUnit.QueryTest.BiggestBuyers" />
-      <item itemvalue="JUnit.QueryTest.WeeklyTest" />
       <item itemvalue="Tomcat Server.Tomcat9" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.dishTest.testGetOrderedDish" />
         <item itemvalue="JUnit.QueryTest.LoyalBuyersTest" />
         <item itemvalue="JUnit.QueryTest.LoyalBuyersDishNumbersTest" />
         <item itemvalue="JUnit.QueryTest.LoyalBuyers" />
         <item itemvalue="JUnit.QueryTest.BiggestBuyers" />
-        <item itemvalue="JUnit.QueryTest.WeeklyTest" />
       </list>
     </recent_temporary>
   </component>
@@ -339,6 +338,7 @@
       <workItem from="1717302108924" duration="608000" />
       <workItem from="1717380640504" duration="17056000" />
       <workItem from="1717464882673" duration="828000" />
+      <workItem from="1717472644421" duration="18506000" />
     </task>
     <servers />
   </component>
@@ -355,11 +355,6 @@
           <url>file://$PROJECT_DIR$/src/test/java/orderTest.java</url>
           <line>11</line>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/OrderDetailDao/OrderDetailDaoImpl.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/QueryTest.java</url>
