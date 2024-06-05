@@ -1,5 +1,6 @@
 package pojo;
 
+
 import java.util.Date;
 
 public class Book {
@@ -9,7 +10,7 @@ public class Book {
     private Integer merchantId;
     private Date bookStartTime;
     private Date bookEndTime;
-    private String bookStatus; // ENUM类型在Java中通常映射为String
+    private Boolean bookStatus; // ENUM类型在Java中通常映射为String
 
     // 构造函数
     public Book() {
@@ -64,11 +65,11 @@ public class Book {
         this.bookEndTime = bookEndTime;
     }
 
-    public String getBookStatus() {
+    public Boolean getBookStatus() {
         return bookStatus;
     }
 
-    public void setBookStatus(String bookStatus) {
+    public void setBookStatus(Boolean bookStatus) {
         this.bookStatus = bookStatus;
     }
 }

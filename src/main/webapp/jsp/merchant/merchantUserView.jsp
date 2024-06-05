@@ -44,7 +44,7 @@
             <input type="button" id="orderOnline" name="book" value="线上点餐">
         </div>
         <div class="providerAddBtn">
-            <input type="button" id="book" name="review" value="预订">
+            <input type="button" id="book" value="预订" merchantId="${merchant.merchantId}">
         </div>
         <div class="providerAddBtn">
             <input type="button" id="back" name="back" value="返回">
