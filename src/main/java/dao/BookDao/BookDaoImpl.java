@@ -19,7 +19,7 @@ public class BookDaoImpl implements BookDao{
         if(null != connection){
             String sql = "INSERT INTO `book` (`userId`, `merchantId`, `bookStartTime`,`bookEndTime`, `bookStatus`) VALUES (?, ?, ?, ?, ?)";
             Object[] params ={book.getUserId(),book.getMerchantId(),book.getBookStartTime(),book.getBookEndTime(),book.getBookStatus()};
-            flag = BaseDao.execute(connection, pstm, sql, params);
+            flag = BaseDao.executeAdd(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
         }
         return flag;
@@ -52,7 +52,7 @@ public class BookDaoImpl implements BookDao{
                 book.setBookId(rs.getInt("bookId"));
                 book.setUserId(rs.getInt("userId"));
                 book.setMerchantId(rs.getInt("merchantId"));
-                book.setBookStatus(rs.getString("orderStatus"));
+                book.setBookStatus(rs.getBoolean("bookStatus"));
                 book.setBookStartTime(rs.getTime("bookStartTime"));
                 book.setBookEndTime(rs.getTime("bookEndTime"));
                 books.add(book);

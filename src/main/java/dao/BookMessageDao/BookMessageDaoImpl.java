@@ -15,8 +15,8 @@ public class BookMessageDaoImpl implements BookMessageDao{
         PreparedStatement pstm = null;
         int flag = 0;
         if(null != connection){
-            String sql = "INSERT INTO bookmessage (messageId, userId, bookStatusMessage, bookId) VALUES (?, ?, ?, ?,)";
-            Object[] params ={bookMessage.getMessageId(),bookMessage.getUserId(),bookMessage.getBookStatusMessage(),bookMessage.getBookId()};
+            String sql = "INSERT INTO bookmessage (userId, bookStatusMessage, bookId) VALUES (?, ?, ?)";
+            Object[] params ={bookMessage.getUserId(),bookMessage.getBookStatusMessage(),bookMessage.getBookId()};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
         }

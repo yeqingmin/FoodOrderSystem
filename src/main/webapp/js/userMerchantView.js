@@ -91,8 +91,9 @@ function favorDishFromOrder(obj){
      //     window.location.href = path+ '/jsp/user/orderPage.jsp'; // 替换为实际的预订点餐页面URL
      // });
     $("#book").on("click",function (){
+        const obj = $(this);
         //预订按钮跳转预订页面
-
+        window.location.href = path+ '/jsp/order?method=bookBegin&merchantId='+obj.attr("merchantId"); // 替换为实际的预订点餐页面URL
     });
 
 
