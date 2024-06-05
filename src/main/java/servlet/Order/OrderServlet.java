@@ -41,7 +41,51 @@ public class OrderServlet extends HttpServlet {
             this.add(request,response);
         }else if(method != null && method.equals("orderView")){
             this.orderView(request,response);
+        }else if (method != null && method.equals("orderDetail")){
+            this.orderDetail(request,response);
         }
+    }
+
+    /**
+     * 当前方法和orderView类似，但是不发系统消息
+     * @param request
+     * @param response
+     */
+    private void orderDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+        String orderId=request.getParameter("orderId");
+
+        //新建orderService对象
+        OrderService orderService = new OrderServiceImpl();
+        DishService dishService=new DishServiceImpl();
+        String url="user/orderView.jsp";
+
+        //获取当前的orderId然后查出orderDetail中对应orderId的菜品id显示在上面，整个网页显示的是点菜的菜名，菜品数量，和订单创建时间
+        queryOrderDetails(request, response, orderId, orderService, dishService,url);
+    }
+
+    private void queryOrderDetails(HttpServletRequest request, HttpServletResponse response, String orderId, OrderService orderService, DishService dishService,String url) throws ServletException, IOException {
+        ArrayList<OrderDetail> details=orderService.getDetailsByOrderId(Integer.parseInt(orderId));
+        ArrayList<Dish> orderedDishes=new ArrayList<>();
+        float sumPrice=0;
+        Dish prevDish=null;
+        for(OrderDetail detail:details){
+            int dishId=detail.getDishId();
+            Dish dish=dishService.getDishById(dishId);
+            sumPrice+=dish.getDishPrice();
+            dish.setTotalCount(dishService.countDishQuantity(dishId,Integer.parseInt(orderId)));
+            if(prevDish!=null&&prevDish.getDishName().equals(dish.getDishName())){
+                continue;
+            }else{
+                orderedDishes.add(dish);
+            }
+            prevDish=dish;
+        }
+        request.setAttribute("dishList",orderedDishes);
+        request.setAttribute("dishSumPrice",sumPrice);
+
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     /**
@@ -72,26 +116,7 @@ public class OrderServlet extends HttpServlet {
         }
 
         //获取当前的orderId然后查出orderDetail中对应orderId的菜品id显示在上面，整个网页显示的是点菜的菜名，菜品数量，和订单创建时间
-        ArrayList<OrderDetail> details=orderService.getDetailsByOrderId(Integer.parseInt(orderId));
-        ArrayList<Dish> orderedDishes=new ArrayList<>();
-        float sumPrice=0;
-        Dish prevDish=null;
-        for(OrderDetail detail:details){
-            int dishId=detail.getDishId();
-            Dish dish=dishService.getDishById(dishId);
-            sumPrice+=dish.getDishPrice();
-            dish.setTotalCount(dishService.countDishQuantity(dishId,Integer.parseInt(orderId)));
-            if(prevDish!=null&&prevDish.getDishName().equals(dish.getDishName())){
-                continue;
-            }else{
-                orderedDishes.add(dish);
-            }
-            prevDish=dish;
-        }
-        request.setAttribute("dishList",orderedDishes);
-        request.setAttribute("dishSumPrice",sumPrice);
-
-        request.getRequestDispatcher("user/orderDetailView.jsp").forward(request, response);
+        queryOrderDetails(request, response, orderId, orderService, dishService,"user/orderDetailView.jsp");
     }
 
     private void add(HttpServletRequest request, HttpServletResponse response) {

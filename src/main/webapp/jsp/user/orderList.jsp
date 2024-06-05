@@ -13,8 +13,8 @@
         <span>历史订单页面</span>
     </div>
     <div class="search">
-        <form method="get" action="${pageContext.request.contextPath }/jsp/order">
-            <input name="method" value="query" class="input-text" type="hidden">
+        <form method="get" action="${pageContext.request.contextPath }/jsp/system">
+            <input name="method" value="queryOrderMessage" class="input-text" type="hidden">
             <input type="hidden" name="pageIndex" value="1"/>
         </form>
     </div>
@@ -23,9 +23,8 @@
         <tr class="firstTr">
             <th width="15%">下单商家</th>
             <th width="15%">订单状态</th>
-            <th width="20%">下单时间</th>
-            <th width="15%">订单金额</th>
-<%--            <th width="40%">操作</th>--%>
+            <th width="30%">下单时间</th>
+            <th width="40%">查看详情</th>
         </tr>
         <c:forEach var="order" items="${orderList}" varStatus="status">
             <tr>
@@ -40,10 +39,13 @@
 					    <fmt:formatDate value="${order.orderTime}" pattern="yyyy-MM-dd"/>
 					</span>
                 </td>
-                <td>
-<%--                    <span>${order.totalPrice}</span>--%>
-                    <span>0</span>
-                </td>
+               <td>
+                    <span>
+                        <a class="orderDetailView" href="javascript:;" orderId=${order.orderId}>
+                            <div class="providerAddBtn"><input type="button" value="查看详情"></div>
+                        </a>
+                    </span>
+               </td>
             </tr>
         </c:forEach>
     </table>

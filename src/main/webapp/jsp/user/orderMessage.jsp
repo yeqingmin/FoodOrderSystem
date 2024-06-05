@@ -13,8 +13,8 @@
         <span>系统消息 >> 订单历史消息</span>
     </div>
     <div class="search">
-        <form method="get" action="${pageContext.request.contextPath }/jsp/order">
-            <input name="method" value="query" class="input-text" type="hidden">
+        <form method="get" action="${pageContext.request.contextPath }/jsp/system">
+            <input name="method" value="queryOrderMessage" class="input-text" type="hidden">
             <input type="hidden" name="pageIndex" value="1"/>
         </form>
     </div>

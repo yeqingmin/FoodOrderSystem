@@ -90,7 +90,10 @@ function favorDishFromOrder(obj){
      //     //先提交隐藏表单交给后端merchantServlet进行一个方法：createOrder先插入一条Order数据，然后重定向到
      //     window.location.href = path+ '/jsp/user/orderPage.jsp'; // 替换为实际的预订点餐页面URL
      // });
+    $("#book").on("click",function (){
+        //预订按钮跳转预订页面
 
+    });
 
 
 
