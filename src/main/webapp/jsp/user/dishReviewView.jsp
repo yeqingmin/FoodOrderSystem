@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="/jsp/admin/adminCommon/head.jsp"%>
+<%@include file="/jsp/merchant/merchantCommon/head.jsp"%>
 
 <div class="right">
     <div class="location">
@@ -20,7 +20,7 @@
             <input type="hidden" name="pageIndex" value="1"/>
         </form>
     </div>
-    <table class="dishTable" cellpadding="0" cellspacing="0">
+    <table class="providerTable" cellpadding="0" cellspacing="0">
         <tr class="firstTr">
             <th width="10%">评价用户</th>
             <th width="80%">评价内容</th>
@@ -50,5 +50,5 @@
 </section>
 
 
-<%@include file="/jsp/admin/adminCommon/foot.jsp" %>
+<%@include file="/jsp/merchant/merchantCommon/foot.jsp" %>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/dishReviewView.js"></script>

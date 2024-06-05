@@ -12,21 +12,11 @@
         <strong>你现在所在的位置是:</strong>
         <span>系统消息</span>
     </div>
-    <table class="providerTable">
-        <tr class="firstTrr">
-            <th class="messageTh">商家名称</th>
-            <th class="messageTh">评价内容</th>
-            <th class="messageTh">评分</th>
-            <th class="messageTh">评价时间</th>
-        </tr>
-        <c:forEach var="order" items="${orderMessages}">
-            <tr class="firstTr">
-                <td class="messageTd">${order.merchantName}</td>
-                <td class="messageTd">${order.reviewContent == null ? "未评价" : order.reviewContent}</td>
-                <td class="messageTd">${order.rating == null ? "未评分" : order.rating}</td>
-                <td class="messageTd">${order.rating == null ? "未评分" : order.rating}</td>
-            </tr>
-        </c:forEach>
-    </table>
+    <div class="providerAddBtn">
+        <input type="button" class="order" userId=${userId} value="查看订单消息">
+        <input type="button" class="book" userId=${userId} value="查看预订消息">
+    </div>
 </div>
+</section>
 <%@include file="/jsp/user/userCommon/foot.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/message.js"></script>

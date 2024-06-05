@@ -24,7 +24,7 @@
         </form>
     </div>
     <!--商户表格样式-->
-    <table class="merchantTable" cellpadding="0" cellspacing="0">
+    <table class="providerTable" cellpadding="0" cellspacing="0">
         <tr class="firstTr">
             <th width="10%">商户编码</th>
             <th width="20%">商品名称</th>

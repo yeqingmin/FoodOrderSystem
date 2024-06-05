@@ -16,6 +16,7 @@ public class Dish {
     private Boolean isDelete;
     private Integer dishFavourNumber;
     // Constructors, Getters, and Setters
+    private Integer totalCount;
     public Dish() {}
 
 
@@ -119,21 +120,22 @@ public class Dish {
         this.dishFavourNumber = dishFavourNumber;
     }
 
+
+
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
+    }
+
     @Override
     public String toString() {
         return "Dish{" +
                 "dishId=" + dishId +
                 ", dishName='" + dishName + '\'' +
-                ", dishPrice=" + dishPrice +
-                ", dishCategory='" + dishCategory + '\'' +
-                ", dishDescription='" + dishDescription + '\'' +
-                ", dishImage=" + Arrays.toString(dishImage) +
-                ", merchantId=" + merchantId +
-                ", dishAllergens='" + dishAllergens + '\'' +
-                ", dishIngredients='" + dishIngredients + '\'' +
-                ", dishNutrition='" + dishNutrition + '\'' +
-                ", isDelete=" + isDelete +
-                ", dishFavourNumber=" + dishFavourNumber +
+                ", totalCount=" + totalCount +
                 '}';
     }
 }

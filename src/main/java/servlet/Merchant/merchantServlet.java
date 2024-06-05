@@ -14,6 +14,8 @@ import service.Login.LoginService;
 import service.Login.LoginServiceImpl;
 import service.Merchant.MerchantService;
 import service.Merchant.MerchantServiceImpl;
+import service.Message.MessageService;
+import service.Message.MessageServiceImpl;
 import service.Order.OrderService;
 import service.Order.OrderServiceImpl;
 import service.Review.ReviewService;
@@ -68,17 +70,57 @@ public class merchantServlet extends HttpServlet {
             this.deleteMerchant(request, response);
         } else if (method != null && method.equals("modifyExecute")) {
             this.modifyMerchant(request, response);
-        }else if (method != null && method.equals("review")) {
+        } else if (method != null && method.equals("review")) {
             this.reviewMerchant(request, response);
         } else if (method != null && method.equals("reviewMerchantBegin")) {
-            this.getMerchantById(request,response,"merchant/merchantReview.jsp");
-        }else if (method != null && method.equals("favorMerchant")) {
+            this.getMerchantById(request, response, "merchant/merchantReview.jsp");
+        } else if (method != null && method.equals("favorMerchant")) {
             this.favorMerchant(request, response);
+        } else if (method != null && method.equals("queryReview")) {
+            this.queryReview(request, response);
         }
-//        }else if (method!=null && method.equals("isMerchantExist")){
-//            this.isMerchantExist(request,response);
-//        }
 
+    }
+
+    private void queryReview(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String merchantId = request.getParameter("merchantId");
+        String pageIndex = request.getParameter("pageIndex");
+        ReviewService reviewService = new ReviewServiceImpl();
+        //设置页面容量
+        int pageSize = Constants.pageSize;
+        //当前页码
+        int currentPageNo = 1;
+        System.out.println("query pageIndex--------- > " + pageIndex);
+
+        if (pageIndex != null) {
+            try {
+                currentPageNo = Integer.valueOf(pageIndex);
+            } catch (NumberFormatException e) {
+                response.sendRedirect("error.jsp");
+            }
+        }
+        //获取总数
+        int totalCount = reviewService.getUMReviewTotalCountByMerchantId(Integer.parseInt(merchantId));
+        //总页数
+        PageSupport pages = new PageSupport();
+        pages.setCurrentPageNo(currentPageNo);
+        pages.setPageSize(pageSize);
+        pages.setTotalCount(totalCount);
+        int totalPageCount = pages.getTotalPageCount();
+        //控制首页和尾页
+        if (currentPageNo < 1) {
+            currentPageNo = 1;
+        } else if (currentPageNo > totalPageCount) {
+            currentPageNo = totalPageCount;
+        }
+        ArrayList<UMReview> umReviewList = null;
+        umReviewList = reviewService.getUMReviewListByMerchantId(Integer.parseInt(merchantId), currentPageNo, pageSize);
+        request.setAttribute("merchantId", merchantId);
+        request.setAttribute("umReviewList", umReviewList);
+        request.setAttribute("totalPageCount", totalPageCount);
+        request.setAttribute("totalCount", totalCount);
+        request.setAttribute("currentPageNo", currentPageNo);
+        request.getRequestDispatcher("merchant/merchantReviewView.jsp").forward(request, response);
     }
 
     private void favorMerchant(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -132,7 +174,7 @@ public class merchantServlet extends HttpServlet {
         MerchantService merchantService = new MerchantServiceImpl();
         Merchant merchant = null;
         merchant = merchantService.getMerchantById(id);
-        System.out.println("merchantId:"+id);
+        System.out.println("merchantId:" + id);
         request.setAttribute("merchant", merchant);
         request.getRequestDispatcher(url).forward(request, response);
     }
@@ -217,33 +259,6 @@ public class merchantServlet extends HttpServlet {
 
     }
 
-//    private void isMerchantExist(HttpServletRequest request, HttpServletResponse response) {
-//        String merchantId = request.getParameter("merchantId");
-//
-//        HashMap<String, String> resultMap = new HashMap<String, String>();
-//        if(StringUtils.isNullOrEmpty(merchantId)){
-//            //userCode == null || userCode.equals("")
-//            resultMap.put("merchantId", "exist");
-//        }else{
-//            MerchantService merchantService = new MerchantServiceImpl();
-//            Merchant merchant = merchantService.getSimpleMerchantByName(merchantId);
-//            if(null != user){
-//                resultMap.put("userCode","exist");
-//            }else{
-//                resultMap.put("userCode", "notexist");
-//            }
-//        }
-//
-//        //把resultMap转为json字符串以json的形式输出
-//        //配置上下文的输出类型
-//        response.setContentType("application/json");
-//        //从response对象中获取往外输出的writer对象
-//        PrintWriter outPrintWriter = response.getWriter();
-//        //把resultMap转为json字符串 输出
-//        outPrintWriter.write(JSONArray.toJSONString(resultMap));
-//        outPrintWriter.flush();//刷新
-//        outPrintWriter.close();//关闭流
-//    }
 
     private void createOrderAndListMenu(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
 
@@ -253,10 +268,11 @@ public class merchantServlet extends HttpServlet {
 
         //然后根据前端传参获取merchantId
         String merchantId = request.getParameter("merchantId");
-        System.out.println("merchantId: " + merchantId);
 
         //新建orderService对象
         OrderService orderService = new OrderServiceImpl();
+//        MessageService messageService=new MessageServiceImpl();
+//        MerchantService merchantService=new MerchantServiceImpl();
         if (!StringUtils.isNullOrEmpty(merchantId)) {
             //新建一个Order对象
             Order order = new Order();
@@ -266,6 +282,10 @@ public class merchantServlet extends HttpServlet {
             System.out.println("New orderId = " + orderId);
             //设置转发请求的参数orderId，以方便选择指定菜品向orderDetail表里面增加新的数据的时候对应正确的orderId
             request.setAttribute("orderId", orderId);
+//            //根据orderId新建一条订单消息,先给merchantService让他查出merchantName和merchantAddr拼接消息
+//            Merchant merchant=merchantService.getMerchantById(Integer.parseInt(merchantId));
+//            String orderMessage="您在"+merchant.getMerchantAddr()+"的"+merchant.getMerchantName()+"下的订单号为"+orderId+"的订单已下单成功";
+//            messageService.addOrderMessage(userId,orderId,orderMessage);
         }
 
         //以上全部搞完之后还要设置dishList，获取到当前merchantId对应的dishList设置在转发的请求中
@@ -275,7 +295,7 @@ public class merchantServlet extends HttpServlet {
             dishList = dishService.getDishByMerchantId(Integer.parseInt(merchantId));
             request.setAttribute("dishList", dishList);
         }
-
+        request.setAttribute("merchantId", merchantId);
         request.getRequestDispatcher(url).forward(request, response);
     }
 
@@ -402,17 +422,10 @@ public class merchantServlet extends HttpServlet {
 
     private void query(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-//        List<Provider> providerList = new ArrayList<Provider>();
-//        ProviderService providerService = new ProviderServiceImpl();
-//        providerList = providerService.getProviderList("","");
-//        request.setAttribute("providerList", providerList);
         ArrayList<Merchant> merchantList = null;
         MerchantService merchantService = new MerchantServiceImpl();
 
-//        String queryProductName = request.getParameter("queryProductName");
-//        String queryProviderId = request.getParameter("queryProviderId");
-//        String queryIsPayment = request.getParameter("queryIsPayment");
+
         //得到前端传来的数据
         String merchantName = request.getParameter("merchantName");
         if (StringUtils.isNullOrEmpty(merchantName)) {
@@ -425,8 +438,6 @@ public class merchantServlet extends HttpServlet {
         //这里设置的属性是后端数据库查出来的内容，然后转发给merchantList.jsp（下一个跳转页面的请求属性，让他来渲染我们查到的信息）
         request.setAttribute("merchantList", merchantList);
 
-//        request.setAttribute("queryProviderId", queryProviderId);
-//        request.setAttribute("queryIsPayment", queryIsPayment);
         request.getRequestDispatcher("user/merchantList.jsp").forward(request, response);
 
     }

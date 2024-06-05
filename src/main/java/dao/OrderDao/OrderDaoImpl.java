@@ -27,39 +27,11 @@ public class OrderDaoImpl implements OrderDao{
     }
 
     public ArrayList<Order> getOrdersByUserId(Connection connection,int userId,int currentPageNo, int pageSize) throws Exception{
-//        ArrayList<Order> orders = new ArrayList<>();
-//        PreparedStatement pstm = null;
-//        ResultSet rs = null;
-//        if(connection != null){
-//            String sql = "SELECT * from `order` WHERE userId = ?";
-//            Object[] params ={userId};
-//            rs = BaseDao.execute(connection, pstm, rs, sql, params);
-//            while(rs.next()){
-//                Order order=new Order();
-//                order.setOrderId(rs.getInt("orderId"));
-//                order.setUserId(rs.getInt("userId"));
-//                order.setMerchantId(rs.getInt("merchantId"));
-////                order.setOrderStatus(rs.getInt("orderStatus"));
-//                if(rs.getInt("orderStatus")==0){
-//                    order.setOrderStatus("未完成");
-//                }else{
-//                    order.setOrderStatus("已完成");
-//                }
-//                //todo 这里可能需要一些互相调用的逻辑
-////                order.setTotalPrice(rs.getFloat("totalPrice"));
-//                order.setOrderTime(rs.getDate("orderTime"));
-//                orders.add(order);
-//            }
-//            BaseDao.closeResource(null, pstm, rs);
-//        }
-//        return orders;
-
-
-        PreparedStatement pstm = null;
+       PreparedStatement pstm = null;
         ResultSet rs = null;
         ArrayList<Order> orderList = new ArrayList<Order>();
         if (connection != null) {
-            String sql="select * from `order` where userId= ? order by OrderId limit ?,?";
+            String sql="select * from `order` where userId= ? order by orderId limit ?,?";
             currentPageNo = (currentPageNo - 1) * pageSize;
 
             Object[] params = {userId, currentPageNo,pageSize};

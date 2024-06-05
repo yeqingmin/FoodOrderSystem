@@ -1,6 +1,7 @@
 package service.Order;
 
 import pojo.Order;
+import pojo.OrderDetail;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -21,4 +22,6 @@ public interface OrderService {
     public int getYearlyOfflineNumber(int dishId);
     public ArrayList<Integer> getLoyalBuyers(int merchantId);
     public int getLoyalBuyersDishNumber(int userId ,int dishId);
+
+    public ArrayList<OrderDetail> getDetailsByOrderId(int orderId);
 }

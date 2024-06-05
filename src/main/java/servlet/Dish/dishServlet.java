@@ -71,57 +71,47 @@ public class dishServlet extends HttpServlet {
 
     }
 
-    private void queryReview(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void queryReview(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String dishId=request.getParameter("dishId");
-
         String pageIndex = request.getParameter("pageIndex");
-
-       FavourService favourService=new FavourServiceImpl();
-
-        //第一次走页面一定是第一页,页面大小固定的
-        ArrayList<Order> orderList = null;
+        ReviewService reviewService=new ReviewServiceImpl();
         //设置页面容量
         int pageSize = Constants.pageSize;
         //当前页码
         int currentPageNo = 1;
-
         System.out.println("query pageIndex--------- > " + pageIndex);
-//
-//        if (pageIndex != null) {
-//            try {
-//                currentPageNo = Integer.valueOf(pageIndex);
-//            } catch (NumberFormatException e) {
-//                response.sendRedirect("error.jsp");
-//            }
-//        }
-//        //获取总数
-//        int totalCount = FavourService;
-//
-//        //总页数
-//        PageSupport pages = new PageSupport();
-//
-//        pages.setCurrentPageNo(currentPageNo);
-//
-//        pages.setPageSize(pageSize);
-//
-//        pages.setTotalCount(totalCount);
-//
-//        int totalPageCount = pages.getTotalPageCount();
-//
-//        //控制首页和尾页
-//        if (currentPageNo < 1) {
-//            currentPageNo = 1;
-//        } else if (currentPageNo > totalPageCount) {
-//            currentPageNo = totalPageCount;
-//        }
-//
-//        orderList = orderService.getOrderListByUserId(userId,currentPageNo, pageSize);
-//        request.setAttribute("orderList", orderList);
-//        request.setAttribute("totalPageCount", totalPageCount);
-//        request.setAttribute("totalCount", totalCount);
-//        request.setAttribute("currentPageNo", currentPageNo);
-//        request.getRequestDispatcher("user/orderList.jsp").forward(request, response);
+
+        if (pageIndex != null) {
+            try {
+                currentPageNo = Integer.valueOf(pageIndex);
+            } catch (NumberFormatException e) {
+                response.sendRedirect("error.jsp");
+            }
+        }
+        //获取总数
+        int totalCount = reviewService.getUDReviewTotalCountByDishId(Integer.parseInt(dishId));
+        //总页数
+        PageSupport pages = new PageSupport();
+        pages.setCurrentPageNo(currentPageNo);
+        pages.setPageSize(pageSize);
+        pages.setTotalCount(totalCount);
+        int totalPageCount = pages.getTotalPageCount();
+        //控制首页和尾页
+        if (currentPageNo < 1) {
+            currentPageNo = 1;
+        } else if (currentPageNo > totalPageCount) {
+            currentPageNo = totalPageCount;
+        }
+        ArrayList<UDReview> udReviewList = null;
+        udReviewList = reviewService.getUDReviewListByDishId(Integer.parseInt(dishId),currentPageNo,pageSize);
+        request.setAttribute("dishId",dishId);
+        request.setAttribute("udReviewList", udReviewList);
+        request.setAttribute("totalPageCount", totalPageCount);
+        request.setAttribute("totalCount", totalCount);
+        request.setAttribute("currentPageNo", currentPageNo);
+        request.getRequestDispatcher("user/dishReviewView.jsp").forward(request, response);
     }
+
 
     private void reviewDish(HttpServletRequest request, HttpServletResponse response) throws IOException {
 

@@ -8,6 +8,7 @@ import pojo.UMReview;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,7 +89,7 @@ public class UDReviewDaoImpl implements UDReviewDao{
         ResultSet rs = null;
         ArrayList<UDReview> udReviewArrayList = new ArrayList<UDReview>();
         if (connection != null) {
-            String sql="select * from `udreview` where dishId= ? order by OrderId limit ?,?";
+            String sql="select * from `udreview` where dishId= ? order by reviewId limit ?,?";
             currentPageNo = (currentPageNo - 1) * pageSize;
 
             Object[] params = {dishId, currentPageNo,pageSize};
@@ -99,11 +100,28 @@ public class UDReviewDaoImpl implements UDReviewDao{
                 udReview.setDishId(rs.getInt("dishId"));
                 udReview.setUserId(rs.getInt("userId"));
                 udReview.setDishRating(rs.getInt("dishRating"));
-                udReview.setDishComment(rs.getString("DISHComment"));
+                udReview.setDishComment(rs.getString("dishComment"));
                 udReviewArrayList.add(udReview);
             }
             BaseDao.closeResource(null, pstm, rs);
         }
         return udReviewArrayList;
     }
+    public int getUDReviewTotalCountByDishId(Connection connection,int dishId) throws SQLException {
+        int count=0;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if (null != connection) {
+            String sql = "select count(*) from `udreview` where dishId=?";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {dishId};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return count;
+    }
+
 }

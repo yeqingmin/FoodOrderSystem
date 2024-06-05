@@ -19,4 +19,7 @@ public interface ReviewService {
     public ArrayList<UDReview> getUDReviewListByDishId(Integer dishId, int currentPageNo, int pageSize);
 
     public ArrayList<UMReview> getUMReviewListByMerchantId(Integer merchantId, int currentPageNo, int pageSize);
+
+    public int getUDReviewTotalCountByDishId(Integer dishId);
+    public int getUMReviewTotalCountByMerchantId(Integer merchantId);
 }

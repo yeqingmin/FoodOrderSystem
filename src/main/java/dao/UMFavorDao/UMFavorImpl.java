@@ -7,6 +7,7 @@ import pojo.UMFavor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UMFavorImpl implements UMFavorDao{
@@ -42,7 +43,7 @@ public class UMFavorImpl implements UMFavorDao{
         ResultSet rs = null;
         ArrayList<UMFavor> umFavorsList = new ArrayList<UMFavor>();
         if (connection != null) {
-            String sql="select * from `umfavor` where merchantId= ? order by OrderId limit ?,?";
+            String sql="select * from `umfavor` where merchantId= ?  limit ?,?";
             currentPageNo = (currentPageNo - 1) * pageSize;
 
             Object[] params = {merchantId, currentPageNo,pageSize};
@@ -57,4 +58,21 @@ public class UMFavorImpl implements UMFavorDao{
         }
         return umFavorsList;
     }
+    public int getUMFavorTotalCountByMerchantId(Connection connection,int merchantId) throws SQLException {
+        int count=0;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if (null != connection) {
+            String sql = "select count(*) from `umfavor` where merchantId=?";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {merchantId};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return count;
+    }
+
 }

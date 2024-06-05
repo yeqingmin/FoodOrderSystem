@@ -44,6 +44,11 @@ $(function(){
 		var obj = $(this);
 		window.location.href = path + "/jsp/dish?method=reviewDishBegin&dishId="+obj.attr("dishId");
 	});
+	$(".queryReview").on("click",function(){
+		var obj = $(this);
+		window.location.href = path + "/jsp/dish?method=queryReview&dishId="+obj.attr("dishId");
+	});
+
 
 	$('#no').click(function () {
 		cancelBtn();

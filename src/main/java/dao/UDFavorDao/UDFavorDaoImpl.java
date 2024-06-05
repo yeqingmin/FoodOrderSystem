@@ -7,6 +7,7 @@ import pojo.UDFavor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UDFavorDaoImpl implements UDFavorDao{
@@ -42,7 +43,7 @@ public class UDFavorDaoImpl implements UDFavorDao{
         ResultSet rs = null;
         ArrayList<UDFavor> udFavorsList = new ArrayList<UDFavor>();
         if (connection != null) {
-            String sql="select * from `udfavor` where dishId= ? order by OrderId limit ?,?";
+            String sql="select * from `udfavor` where dishId= ?  limit ?,?";
             currentPageNo = (currentPageNo - 1) * pageSize;
 
             Object[] params = {dishId, currentPageNo,pageSize};
@@ -56,6 +57,21 @@ public class UDFavorDaoImpl implements UDFavorDao{
             BaseDao.closeResource(null, pstm, rs);
         }
         return udFavorsList;
-
+    }
+    public int getUDFavorTotalCountByDishId(Connection connection,int dishId) throws SQLException {
+        int count=0;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if (null != connection) {
+            String sql = "select count(*) from `udfavor` where dishId=?";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {dishId};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return count;
     }
 }

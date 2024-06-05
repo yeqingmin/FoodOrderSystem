@@ -72,6 +72,47 @@ public class FavourServiceImpl implements FavourService{
         }
     }
 
+    @Override
+    public int getUDFavorTotalCountByDishId(Integer dishId) {
+        Connection connection=null;
+        int count=0;
+        try{
+            connection= BaseDao.getConnection();
+            count=udFavorDao.getUDFavorTotalCountByDishId(connection,dishId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return count;
+    }
+    public int getUMFavorTotalCountByMerchantId(Integer merchantId) {
+        Connection connection=null;
+        int count=0;
+        try{
+            connection= BaseDao.getConnection();
+            count=umFavorDao.getUMFavorTotalCountByMerchantId(connection,merchantId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return count;
+    }
     public ArrayList<UDFavor> getUDFavorListByDishId(Integer dishId, int currentPageNo, int pageSize){
         Connection connection=null;
         ArrayList<UDFavor> udFavors = new ArrayList<>();

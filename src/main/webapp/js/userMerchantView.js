@@ -42,8 +42,12 @@ function favorDishFromOrder(obj){
  $(function() {
 
      $(".review").on("click",function(){
-         var obj = $(this);
+         const obj = $(this);
          window.location.href = path + "/jsp/merchant?method=reviewMerchantBegin&merchantId="+obj.attr("merchantId");
+     });
+     $(".queryReview").on("click",function(){
+         const obj = $(this);
+         window.location.href = path + "/jsp/merchant?method=queryReview&merchantId="+obj.attr("merchantId");
      });
 
      $('#no').click(function () {
@@ -86,7 +90,10 @@ function favorDishFromOrder(obj){
      //     //先提交隐藏表单交给后端merchantServlet进行一个方法：createOrder先插入一条Order数据，然后重定向到
      //     window.location.href = path+ '/jsp/user/orderPage.jsp'; // 替换为实际的预订点餐页面URL
      // });
+    $("#book").on("click",function (){
+        //预订按钮跳转预订页面
 
+    });
 
 
 
@@ -95,18 +102,5 @@ function favorDishFromOrder(obj){
          $('#menuForm').submit();
      });
 
-
-     $("#back").on("click",function(){
-        //alert("view : "+referer);
-        if(referer !== undefined
-            && null != referer
-            && "" !== referer
-            && "null" !== referer
-            && referer.length > 4){
-            window.location.href = referer;
-        }else{
-            history.back(-1);
-        }
-    });
 
 });

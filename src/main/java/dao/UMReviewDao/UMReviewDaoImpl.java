@@ -8,6 +8,7 @@ import pojo.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,7 +115,7 @@ public class UMReviewDaoImpl implements UMReviewDao{
         ResultSet rs = null;
         ArrayList<UMReview> umReviewArrayList = new ArrayList<UMReview>();
         if (connection != null) {
-            String sql="select * from `umreview` where merchantId= ? order by OrderId limit ?,?";
+            String sql="select * from `umreview` where merchantId= ? order by reviewId limit ?,?";
             currentPageNo = (currentPageNo - 1) * pageSize;
 
             Object[] params = {merchantId, currentPageNo,pageSize};
@@ -132,5 +133,21 @@ public class UMReviewDaoImpl implements UMReviewDao{
             BaseDao.closeResource(null, pstm, rs);
         }
         return umReviewArrayList;
+    }
+    public int getUMReviewTotalCountByMerchantId(Connection connection,int merchantId) throws SQLException {
+        int count=0;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if (null != connection) {
+            String sql = "select count(*) from `umreview` where merchantId=?";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {merchantId};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return count;
     }
 }

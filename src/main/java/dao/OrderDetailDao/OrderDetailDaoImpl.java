@@ -1,10 +1,13 @@
 package dao.OrderDetailDao;
 
 import dao.BaseDao;
+import pojo.OrderDetail;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class OrderDetailDaoImpl implements OrderDetailDao{
 
@@ -187,4 +190,23 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         return number;
     }
 
+    public ArrayList<OrderDetail> getDetailsByOrderId(Connection connection,int orderId) throws SQLException {
+        PreparedStatement pstm = null;
+        ResultSet rs=null;
+        ArrayList<OrderDetail> details=new ArrayList<>();
+        int number=0;
+        if (null != connection) {
+            String sql = "select * from `orderdetail` where orderId=?";
+            Object[] params = {orderId};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            while(rs.next()){
+                OrderDetail orderDetail=new OrderDetail();
+                orderDetail.setOrderId(orderId);
+                orderDetail.setDishId(rs.getInt("dishId"));
+                details.add(orderDetail);
+            }
+            BaseDao.closeResource(null, pstm, null);
+        }
+        return details;
+    }
 }

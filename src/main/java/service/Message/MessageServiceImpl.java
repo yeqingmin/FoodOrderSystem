@@ -3,10 +3,13 @@ package service.Message;
 import dao.BaseDao;
 import dao.BookMessageDao.BookMessageDao;
 import dao.BookMessageDao.BookMessageDaoImpl;
+import dao.OrderDao.OrderDao;
+import dao.OrderDao.OrderDaoImpl;
 import dao.OrderMessageDao.OrderMessageDao;
 import dao.OrderMessageDao.OrderMessageDaoImpl;
 import pojo.BookMessage;
 import pojo.OrderMessage;
+import pojo.UDReview;
 import pojo.UMReview;
 
 import java.sql.Connection;
@@ -19,6 +22,9 @@ public class MessageServiceImpl implements MessageService {
     OrderMessageDao orderMessageDao=new OrderMessageDaoImpl();
 
     public void addBookMessage(int userId , int bookId ,String bookMessage){
+        //添加信息需要调用orderDao查看订单状态等拼接信息
+        OrderDao orderDao=new OrderDaoImpl();
+
         Connection connection=null;
         BookMessage bookMessage1=new BookMessage();
         bookMessage1.setUserId(userId);
@@ -100,5 +106,89 @@ public class MessageServiceImpl implements MessageService {
             BaseDao.closeResource(connection,null,null);
         }
         return orderMessages;
+    }
+
+
+    public ArrayList<OrderMessage> getOrderMessageListByUserId(Integer userId, int currentPageNo, int pageSize){
+        Connection connection=null;
+        ArrayList<OrderMessage> orderMessages = new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            orderMessages=orderMessageDao.getOrderMessageByUserId(connection,userId,currentPageNo,pageSize);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return orderMessages;
+
+    }
+ 
+    public int getOrderMessageTotalCountByUserId(Integer UserId) {
+        Connection connection=null;
+        int count=0;
+        try{
+            connection= BaseDao.getConnection();
+            count=orderMessageDao.getOrderMessageCountByUserId(connection,UserId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return count;
+    }
+    public ArrayList<BookMessage> getBookMessageListByUserId(Integer userId, int currentPageNo, int pageSize){
+        Connection connection=null;
+        ArrayList<BookMessage> BookMessages = new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            BookMessages=bookMessageDao.getBookMessageByUserId(connection,userId,currentPageNo,pageSize);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return BookMessages;
+
+    }
+
+    public int getBookMessageTotalCountByUserId(Integer UserId) {
+        Connection connection=null;
+        int count=0;
+        try{
+            connection= BaseDao.getConnection();
+            count=bookMessageDao.getBookMessageCountByUserId(connection,UserId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return count;
     }
 }
