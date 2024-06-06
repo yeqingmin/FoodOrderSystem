@@ -67,8 +67,54 @@ public class dishServlet extends HttpServlet {
             this.getDishById(request,response,"user/dishReview.jsp");
         }else if(method!=null && method.equals("queryReview")){
             this.queryReview(request,response);
+        }else if(method!=null && method.equals("addDish")){
+            this.addDish(request,response);
+        }else if(method!=null && method.equals("dishPrice")){
+            this.viewDishPrice(request,response);
         }
 
+    }
+
+    private void viewDishPrice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("user/dishPrice.jsp").forward(request, response);
+    }
+
+    /**
+     * 给商户的菜单添加菜品
+     * @param request
+     * @param response
+     */
+    private void addDish(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //根据session获取当前merchant的id
+        Integer merchantId=Session.getCurrentId(request);
+
+        //获取当前所有菜品的信息
+        String dishName = request.getParameter("dishName");
+        String dishPrice = request.getParameter("dishPrice");
+        String dishCategory = request.getParameter("dishCategory");
+        String dishDescription = request.getParameter("dishDescription");
+        String dishAllergens = request.getParameter("dishAllergens");
+        String dishIngredients = request.getParameter("dishIngredients");
+        String dishNutrition = request.getParameter("dishNutrition");
+
+        Dish dish = new Dish();
+        dish.setDishName(dishName);
+        dish.setDishPrice(Float.parseFloat(dishPrice));
+        dish.setDishCategory(dishCategory);
+        dish.setDishAllergens(dishAllergens);
+        dish.setDishDescription(dishDescription);
+        dish.setDishIngredients(dishIngredients);
+        dish.setDishNutrition(dishNutrition);
+        dish.setMerchantId(merchantId);
+
+        //新建dishService
+        int flag=dishService.addDish(dish);
+
+        if (dishService.modifyDishById(dish) != 0) {
+            response.sendRedirect(request.getContextPath() + "/jsp/dish?method=merchantManage");
+        } else {
+            request.getRequestDispatcher("merchant/dishadd.jsp").forward(request, response);
+        }
     }
 
     private void queryReview(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

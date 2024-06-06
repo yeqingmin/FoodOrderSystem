@@ -1,6 +1,7 @@
 package service.Dish;
 
 import pojo.Dish;
+import pojo.DishPrice;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -27,5 +28,9 @@ public interface DishService {
     public int modifyDishById(Dish dish);
 
     public int deleteDishById(int dishId);
+
+    public ArrayList<DishPrice> getDishHistoryPriceByDishId(int dishId);
+
+    public int addDish(Dish dish);
 
 }

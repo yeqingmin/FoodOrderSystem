@@ -3,18 +3,26 @@ package service.Dish;
 import dao.BaseDao;
 import dao.DishDao.DishDao;
 import dao.DishDao.DishDaoImpl;
+import dao.DishPriceDao.DishPriceDao;
+import dao.DishPriceDao.DishPriceDaoImpl;
+import dao.OrderDao.OrderDao;
 import dao.OrderDetailDao.OrderDetailDao;
 import dao.OrderDetailDao.OrderDetailDaoImpl;
 import pojo.Dish;
+import pojo.DishPrice;
 import pojo.MerchantDetail;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Objects;
 
 public class DishServiceImpl implements DishService {
     private final DishDao dishDao = new DishDaoImpl();
     private final OrderDetailDao orderDetailDao = new OrderDetailDaoImpl();
+    private final DishPriceDao dishPriceDao = new DishPriceDaoImpl();
 
     @Override
     public Dish getDishByNameAndMerchant(String dishName, int merchantId) {
@@ -217,10 +225,22 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public int modifyDishById(Dish dish) {
+        //todo 这个dish参数是前端更新数据之后传过来的，在这里判断一下dish的price改了没，如果改了，调用dishPriceDao给dishPrice表加一条历史数据
         Connection connection = null;
         int quantity = 0;
         try {
             connection = BaseDao.getConnection();
+            //在这之前判断
+            int dishId=dish.getDishId();
+            Dish oldDish=dishDao.getDishById(connection, dishId);
+            if(!Objects.equals(dish.getDishPrice(), oldDish.getDishPrice())) {
+                Date now = new Date();
+                DishPrice dishPrice = new DishPrice();
+                dishPrice.setDishId(dishId);
+                dishPrice.setPrice(oldDish.getDishPrice());
+                //dishPrice.setValidTime(now);
+                dishPriceDao.addDishOldPrice(connection,dishPrice);
+            }
             quantity = dishDao.modifyDishById(connection,dish);
         } catch (Exception e) {
             e.printStackTrace();
@@ -257,5 +277,45 @@ public class DishServiceImpl implements DishService {
         return quantity;
     }
 
+    public ArrayList<DishPrice> getDishHistoryPriceByDishId(int dishId){
+        Connection connection = null;
+        ArrayList<DishPrice> historyPrice = null;
+        try {
+            connection = BaseDao.getConnection();
+            historyPrice = dishPriceDao.getHistoryDishPriceById(connection,dishId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        } finally {
+            BaseDao.closeResource(connection, null, null);
+        }
+        return historyPrice;
+    }
+
+    @Override
+    public int addDish(Dish dish) {
+        Connection connection = null;
+        int flag=0;
+        try {
+            connection = BaseDao.getConnection();
+            flag=dishDao.add(connection,dish);
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        } finally {
+            BaseDao.closeResource(connection, null, null);
+        }
+        return flag;
+    }
 
 }

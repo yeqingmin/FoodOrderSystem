@@ -9,9 +9,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b5d2a6a-612e-4175-b6b7-f8acd1ef54e7" name="Changes" comment="">
+    <list default="true" id="6c48bddf-91d8-4e91-92f2-97591350ca12" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/dishPrice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishPrice.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/createRelationship.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/createRelationship.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DishDao/DishDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DishDao/DishDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DishPriceDao/DishPriceDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DishPriceDao/DishPriceDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/filter/CharacterEncoding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/filter/CharacterEncoding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Dish/DishService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Dish/DishService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Dish/DishServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Dish/DishServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Dish/dishServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Dish/dishServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/dishList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/dishList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/dishadd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/dishadd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/dishManage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/dishManage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/dishadd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/dishadd.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dishTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dishTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +42,9 @@
       <list>
         <option value="JavaScript File" />
         <option value="Interface" />
-        <option value="Jsp File" />
-        <option value="CSS File" />
         <option value="Class" />
+        <option value="Jsp File" />
+        <option value="package.json" />
       </list>
     </option>
   </component>
@@ -58,36 +77,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat9.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "E:/Courses/DataBase/FoodOrderSystem/src/main/webapp/jsp/merchant",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2229885",
-    "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
-    ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
-      "MySQL"
-    ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
-      "MySQL"
-    ]
+    "git-widget-placeholder": "Merging master",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -106,7 +97,7 @@
       <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\user\merchantManage" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat9">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.85">
     <configuration name="QueryTest.LoyalBuyers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FoodOrderSystem" />
       <option name="PACKAGE_NAME" value="" />
@@ -137,28 +128,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="dateTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FoodOrderSystem" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="dateTest" />
-      <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="dishTest.testGetOrderedDish" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="dishTest.testDishHistory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FoodOrderSystem" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="dishTest" />
-      <option name="METHOD_NAME" value="testGetOrderedDish" />
+      <option name="METHOD_NAME" value="testDishHistory" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat9" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.85" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="17" nameIsGenerated="true">
-      <option name="BROWSER_ID" value="37cae5b9-e8b2-4949-9172-aafa37fbc09c" />
+    <configuration name="dishTest.testDsihPriceAdd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FoodOrderSystem" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="dishTest" />
+      <option name="METHOD_NAME" value="testDsihPriceAdd" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 9.0.85" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.85" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="FoodOrderSystem:war">
@@ -168,7 +158,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="c15a4a3b-040f-4d78-adf6-41a25cbf70f9" />
+        <option name="BASE_DIRECTORY_NAME" value="ae016f3e-b60f-468a-8cb7-37ed357e18fe" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -176,7 +166,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="14811" />
+        <option name="DEBUG_PORT" value="6613" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -246,17 +236,17 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.dateTest.test" />
-      <item itemvalue="JUnit.dishTest.testGetOrderedDish" />
+      <item itemvalue="JUnit.dishTest.testDishHistory" />
+      <item itemvalue="JUnit.dishTest.testDsihPriceAdd" />
       <item itemvalue="JUnit.QueryTest.LoyalBuyers" />
       <item itemvalue="JUnit.QueryTest.LoyalBuyersDishNumbersTest" />
       <item itemvalue="JUnit.QueryTest.LoyalBuyersTest" />
-      <item itemvalue="Tomcat Server.Tomcat9" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.85" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.dateTest.test" />
-        <item itemvalue="JUnit.dishTest.testGetOrderedDish" />
+        <item itemvalue="JUnit.dishTest.testDishHistory" />
+        <item itemvalue="JUnit.dishTest.testDsihPriceAdd" />
         <item itemvalue="JUnit.QueryTest.LoyalBuyersTest" />
         <item itemvalue="JUnit.QueryTest.LoyalBuyersDishNumbersTest" />
         <item itemvalue="JUnit.QueryTest.LoyalBuyers" />
@@ -334,6 +324,11 @@
           <line>11</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dao/OrderDetailDao/OrderDetailDaoImpl.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/QueryTest.java</url>
           <line>92</line>
@@ -362,6 +357,15 @@
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/service/Favor/FavourService.java</url>
+          <line>9</line>
+          <properties class="service.Favor.FavourService" method="favouriteDish">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/QueryTest.java</url>
           <line>141</line>
           <properties class="QueryTest" method="LoyalBuyersDishNumbersTest">
@@ -369,6 +373,24 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/dishTest.java</url>
+          <line>36</line>
+          <properties class="dishTest" method="testDsihPriceAdd">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/dishTest.java</url>
+          <line>48</line>
+          <properties class="dishTest" method="testDishHistory">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

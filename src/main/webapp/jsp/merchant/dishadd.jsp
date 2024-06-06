@@ -52,6 +52,10 @@
                 <input type="text" name="dishNutrition" id="dishNutrition" value="">
                 <font color="red"></font>
             </div>
+            <div class="providerAddBtn">
+                <input type="button" id="back" name="back" value="返回" >
+                <input type="submit" id="add" name="add" value="提交" >
+            </div>
         </form>
     </div>
 </div>

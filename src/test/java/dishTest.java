@@ -1,5 +1,6 @@
 import org.junit.Test;
 import pojo.Dish;
+import pojo.DishPrice;
 import pojo.OrderDetail;
 import service.Dish.DishService;
 import service.Dish.DishServiceImpl;
@@ -30,5 +31,25 @@ public class dishTest {
         for(Dish dish:orderedDishes){
             System.out.println(dish);
         }
+    }
+
+    @Test
+    public void testDsihPriceAdd(){
+        DishService dishService=new DishServiceImpl();
+        Dish dish=new Dish();
+        dish.setDishId(2);
+        dish.setMerchantId(1);
+        dish.setDishName("薯条");
+        dish.setDishCategory("主食");
+        dish.setDishPrice((float)19.0);
+        dishService.modifyDishById(dish);
+    }
+
+    @Test
+    public void testDishHistory(){
+        DishService dishService=new DishServiceImpl();
+        ArrayList<DishPrice> dishPrices=new ArrayList<>();
+        dishPrices=dishService.getDishHistoryPriceByDishId(2);
+        System.out.println(dishPrices.size());
     }
 }

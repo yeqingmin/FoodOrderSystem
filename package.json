@@ -1,0 +1,7 @@
+{
+  "name": "FoodOrderSystem",
+  "version": "1.0.0",
+  "dependencies": {
+    "echarts": "^5.5.0"
+  }
+}

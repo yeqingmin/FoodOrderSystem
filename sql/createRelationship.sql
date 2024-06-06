@@ -73,7 +73,7 @@ CREATE TABLE if not exists `DishPrice` (
     `id` INT AUTO_INCREMENT comment '历史价格id' PRIMARY KEY,
     `dishId` INT NOT NULL comment '菜品id',
     `price` float NOT NULL comment '价格',
-    `validTime` DATETIME NOT NULL comment '当前价格有效的开始时间',
+    `validTime` DATETIME DEFAULT CURRENT_TIMESTAMP comment '当前价格结束时间',
     FOREIGN KEY (dishId) REFERENCES Dish(dishId) -- 假设菜品表名为Dish，且主键为id
 );
 
