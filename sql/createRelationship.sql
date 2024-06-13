@@ -68,7 +68,8 @@ create table if not exists `udfavor`
 #     foreign key (dishId) references Dish (dishId)
 # );
 
-CREATE TABLE if not exists `DishPrice` (
+use food_order_sys;
+CREATE TABLE if not exists `dishprice` (
     `isDelete`  tinyint default 0 comment '是否删除，0表示已经删除了，1表示已经删除',
     `id` INT AUTO_INCREMENT comment '历史价格id' PRIMARY KEY,
     `dishId` INT NOT NULL comment '菜品id',

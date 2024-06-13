@@ -2,11 +2,9 @@ package servlet.Dish;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.google.gson.Gson;
 import com.mysql.cj.util.StringUtils;
-import pojo.Dish;
-import pojo.Merchant;
-import pojo.Order;
-import pojo.UDReview;
+import pojo.*;
 import service.Dish.DishService;
 import service.Dish.DishServiceImpl;
 import service.Favor.FavourService;
@@ -71,11 +69,35 @@ public class dishServlet extends HttpServlet {
             this.addDish(request,response);
         }else if(method!=null && method.equals("dishPrice")){
             this.viewDishPrice(request,response);
+        }else if(method!=null && method.equals("viewPrice")){
+            this.viewOldPrice(request,response);
         }
 
     }
 
+    protected void viewOldPrice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String dishId = request.getParameter("dishId");
+
+        // 假设 dishService 是你已经实现的服务类，用于获取数据
+        ArrayList<DishPrice> dishPrices = dishService.getDishHistoryPriceByDishId(Integer.parseInt(dishId));
+
+        // 创建 Gson 实例
+        Gson gson = new Gson();
+
+        // 将 ArrayList<DishPrice> 转换为 JSON 字符串
+        String json = gson.toJson(dishPrices);
+
+        // 设置响应类型和编码
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        // 将 JSON 字符串写入响应输出流
+        response.getWriter().write(json);
+    }
+
     private void viewDishPrice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String dishId=request.getParameter("dishId");
+        request.setAttribute("dishId",dishId);
         request.getRequestDispatcher("user/dishPrice.jsp").forward(request, response);
     }
 
