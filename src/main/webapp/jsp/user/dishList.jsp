@@ -66,6 +66,13 @@
                             </div>
                         </a>
                     </span>
+                    <span>
+                        <a class="viewDishPrice" href="javascript:;" dishid=${dish.dishId}>
+                            <div class="providerAddBtn">
+                                <input type="button" value="查看历史价格">
+                            </div>
+                        </a>
+                    </span>
                 </td>
             </tr>
         </c:forEach>

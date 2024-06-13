@@ -75,8 +75,8 @@ public class DishDaoImpl implements DishDao {
         PreparedStatement pstm = null;
         int flag = 0;
         if (null != connection) {
-            String sql = "INSERT INTO dish (dishName, dishPrice, dishCategory, dishDescription, dishImage, merchantId) VALUES (?, ?, ?,?,?,?)";
-            Object[] params = {dish.getDishName(), dish.getDishPrice(), dish.getDishCategory(), dish.getDishDescription(), dish.getDishImage(), dish.getMerchantId()};
+            String sql = "INSERT INTO dish (dishName, dishPrice, dishCategory, dishDescription, dishAllergens,dishIngredients,dishNutrition, merchantId) VALUES (?, ?, ?,?,?,?,?,?)";
+            Object[] params = {dish.getDishName(), dish.getDishPrice(), dish.getDishCategory(), dish.getDishDescription(), dish.getDishAllergens(), dish.getDishIngredients(),dish.getDishNutrition(),dish.getMerchantId()};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
         }

@@ -31,4 +31,6 @@ public interface DishService {
 
     public ArrayList<DishPrice> getDishHistoryPriceByDishId(int dishId);
 
+    public int addDish(Dish dish);
+
 }

@@ -19,11 +19,11 @@
             <span>菜品名称：</span>
             <input name="dishName" type="text" value="${dishName}">
             <input type="hidden" name="pageIndex" value="1"/>
-            <a href="${pageContext.request.contextPath}/jsp/merchant/dishadd.jsp" >添加菜品</a>
+            <a href="${pageContext.request.contextPath}/jsp/merchant/dishadd.jsp">添加菜品</a>
         </form>
     </div>
     <!--商户表格样式-->
-    <table class="merchantTable" cellpadding="0" cellspacing="0">
+    <table class="providerTable" cellpadding="0" cellspacing="0">
         <tr class="firstTr">
             <th width="10%">菜品名称</th>
             <th width="10%">菜品商户</th>

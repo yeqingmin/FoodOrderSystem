@@ -45,4 +45,10 @@ $(function() {
         var obj = $(this);
         window.location.href = path + "/jsp/dish?method=userView&dishId=" + obj.attr("dishid");
     });
+
+    $(".viewDishPrice").on("click",function() {
+        console.log("into viewDishPrice")
+        var obj = $(this);
+        window.location.href = path + "/jsp/dish?method=dishPrice&dishId=" + obj.attr("dishid");
+    });
 });

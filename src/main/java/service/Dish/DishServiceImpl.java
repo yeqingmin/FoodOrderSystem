@@ -297,4 +297,25 @@ public class DishServiceImpl implements DishService {
         return historyPrice;
     }
 
+    @Override
+    public int addDish(Dish dish) {
+        Connection connection = null;
+        int flag=0;
+        try {
+            connection = BaseDao.getConnection();
+            flag=dishDao.add(connection,dish);
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        } finally {
+            BaseDao.closeResource(connection, null, null);
+        }
+        return flag;
+    }
+
 }

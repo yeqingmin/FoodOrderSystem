@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/jsp/merchant/dishmodify.jsp" value="file://$PROJECT_DIR$/src/main/webapp/jsp/merchant" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/jsp/user/dishPrice.jsp" value="file://$PROJECT_DIR$/src/main/webapp/jsp/user" />
       </map>
     </option>
   </component>
