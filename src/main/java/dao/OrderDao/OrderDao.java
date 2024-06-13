@@ -24,4 +24,10 @@ public interface OrderDao {
 
     //  忠实用户的菜品购买分布
     public int LoyalUserDIshOrderNumbers(Connection connection,int userId,int dishId) throws SQLException;
+
+    public ArrayList<Integer> calculateMonthlyOrderFrequencyChanges(Connection connection,int userId) throws SQLException;
+    //每月点餐频率
+
+    public ArrayList<Integer> calculateWeeklyOrderFrequencyChanges(Connection connection,int userId) throws SQLException;
+
 }

@@ -153,4 +153,24 @@ public class FavourServiceImpl implements FavourService{
         }
         return umFavors;
     }
+
+    public ArrayList<Integer> getUserFavoriteDishIds(int userId){
+        Connection connection=null;
+        ArrayList<Integer> results = new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+           results=udFavorDao.getUserFavoriteDishIds(connection,userId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return results;
+    }
 }

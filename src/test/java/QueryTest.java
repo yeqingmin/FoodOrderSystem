@@ -145,4 +145,20 @@ public class QueryTest {
         result=o.getLoyalBuyersDishNumber(1,1);
         System.out.println(result);
     }
+
+    @Test
+    public void TestFrequency(){
+        ArrayList<Integer> list=new ArrayList<>();
+        OrderService o=new OrderServiceImpl();
+        list=o.calculateWeeklyOrderFrequencyChanges(1);
+        System.out.println(list);
+    }
+
+    @Test
+    public  void TestFavour(){
+        ArrayList<Integer> list=new ArrayList<>();
+        FavourService f=new FavourServiceImpl();
+        list=f.getUserFavoriteDishIds(1);
+        System.out.println(list);
+    }
 }

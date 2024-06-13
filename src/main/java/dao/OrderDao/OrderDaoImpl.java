@@ -165,4 +165,96 @@ public class OrderDaoImpl implements OrderDao{
         }
         return count;
     }
+
+    public ArrayList<Integer> calculateMonthlyOrderFrequencyChanges(Connection connection,int userId) throws SQLException{
+        ArrayList<Integer> frequencies = new ArrayList<>();
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        int count = 0;
+        if (null != connection) {
+            String sql1 = "select count(*) from `order`  where CURDATE() - INTERVAL 120 DAY >= orderTime >= CURDATE() - INTERVAL 90 DAY and userId=?";
+            pstm = connection.prepareStatement(sql1);
+            Object[] params1 = {userId};
+            rs = BaseDao.execute(connection, pstm, rs, sql1, params1);
+            if (rs.next()){
+                count = rs.getInt(1);
+                frequencies.add(count);
+            }
+
+            String sql2 = "select count(*) from `order`  where CURDATE() - INTERVAL 90 DAY >= orderTime >= CURDATE() - INTERVAL 60 DAY and userId=?";
+            pstm = connection.prepareStatement(sql2);
+            Object[] params2 = {userId};
+            rs = BaseDao.execute(connection, pstm, rs, sql2, params2);
+            if (rs.next()){
+                count = rs.getInt(1);
+                frequencies.add(count);
+            }
+
+            String sql3 = "select count(*) from `order`  where CURDATE() - INTERVAL 60 DAY >= orderTime >= CURDATE() - INTERVAL 30 DAY and userId=?";
+            pstm = connection.prepareStatement(sql3);
+            Object[] params3 = {userId};
+            rs = BaseDao.execute(connection, pstm, rs, sql3, params3);
+            if (rs.next()){
+                count = rs.getInt(1);
+                frequencies.add(count);
+            }
+
+            String sql4 = "select count(*) from `order`  where orderTime >= CURDATE() - INTERVAL 30 DAY and userId=?";
+            pstm = connection.prepareStatement(sql4);
+            Object[] params4 = {userId};
+            rs = BaseDao.execute(connection, pstm, rs, sql4, params4);
+            if (rs.next()){
+                count = rs.getInt(1);
+                frequencies.add(count);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return frequencies;
+    }
+
+    public ArrayList<Integer> calculateWeeklyOrderFrequencyChanges(Connection connection,int userId) throws SQLException{
+        ArrayList<Integer> frequencies = new ArrayList<>();
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        int count = 0;
+        if (null != connection) {
+            String sql1 = "select count(*) from `order`  where CURDATE() - INTERVAL 21 DAY >= orderTime >= CURDATE() - INTERVAL 28 DAY and userId=?";
+            pstm = connection.prepareStatement(sql1);
+            Object[] params1 = {userId};
+            rs = BaseDao.execute(connection, pstm, rs, sql1, params1);
+            if (rs.next()){
+                count = rs.getInt(1);
+                frequencies.add(count);
+            }
+
+            String sql2 = "select count(*) from `order`  where CURDATE() - INTERVAL 14 DAY >= orderTime >= CURDATE() - INTERVAL 21 DAY and userId=?";
+            pstm = connection.prepareStatement(sql2);
+            Object[] params2 = {userId};
+            rs = BaseDao.execute(connection, pstm, rs, sql2, params2);
+            if (rs.next()){
+                count = rs.getInt(1);
+                frequencies.add(count);
+            }
+
+            String sql3 = "select count(*) from `order`  where CURDATE() - INTERVAL 7 DAY >= orderTime >= CURDATE() - INTERVAL 14 DAY and userId=?";
+            pstm = connection.prepareStatement(sql3);
+            Object[] params3 = {userId};
+            rs = BaseDao.execute(connection, pstm, rs, sql3, params3);
+            if (rs.next()){
+                count = rs.getInt(1);
+                frequencies.add(count);
+            }
+
+            String sql4 = "select count(*) from `order`  where orderTime >= CURDATE() - INTERVAL 7 DAY and userId=?";
+            pstm = connection.prepareStatement(sql4);
+            Object[] params4 = {userId};
+            rs = BaseDao.execute(connection, pstm, rs, sql4, params4);
+            if (rs.next()){
+                count = rs.getInt(1);
+                frequencies.add(count);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return frequencies;
+    }
 }

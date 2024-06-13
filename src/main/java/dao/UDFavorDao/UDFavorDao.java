@@ -13,4 +13,7 @@ public interface UDFavorDao {
     public int deleteUDFavorById(Connection connection, int userId, int dishId)throws Exception;
     public ArrayList<UDFavor> getUDFavorsByUserId(Connection connection, int dishId, int currentPageNo, int pageSize) throws Exception;
     public int getUDFavorTotalCountByDishId(Connection connection,int dishId) throws SQLException;
+
+    //返回一个用户收藏的菜品Id
+    public ArrayList<Integer> getUserFavoriteDishIds(Connection connection,int userId) throws SQLException;
 }

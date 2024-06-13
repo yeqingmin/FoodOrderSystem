@@ -24,4 +24,9 @@ public interface OrderService {
     public int getLoyalBuyersDishNumber(int userId ,int dishId);
 
     public ArrayList<OrderDetail> getDetailsByOrderId(int orderId);
+
+    public ArrayList<Integer> calculateMonthlyOrderFrequencyChanges(int userId);
+    //每月点餐频率
+
+    public ArrayList<Integer> calculateWeeklyOrderFrequencyChanges(int userId);
 }
