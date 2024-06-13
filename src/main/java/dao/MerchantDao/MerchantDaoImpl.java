@@ -79,8 +79,8 @@ public class MerchantDaoImpl implements MerchantDao{
         PreparedStatement preparedStatement= null;
         int newId=0;
         if(null != connection){
-            String sql= "insert into merchant (merchantName,merchantAddr) values(?,?)";
-            Object params[]={merchant.getMerchantName(), merchant.getMerchantAddr()};
+            String sql= "insert into merchant (merchantName,merchantAddr,featureDish) values(?,?,?)";
+            Object params[]={merchant.getMerchantName(), merchant.getMerchantAddr() ,merchant.getFeatureDish()};
             newId= BaseDao.executeAdd(connection,preparedStatement,sql,params);
             BaseDao.closeResource(null,preparedStatement,null);
         }
@@ -110,8 +110,8 @@ public class MerchantDaoImpl implements MerchantDao{
         int flag = 0;
         PreparedStatement pstm = null;
         if(null != connection){
-            String sql = "update merchant set merchantAddr=?,merchantName=? where merchantId=?";
-            Object[] params = {merchant.getMerchantAddr(),merchant.getMerchantName(),merchant.getMerchantId()};
+            String sql = "update merchant set merchantAddr=?,merchantName=? ,featureDish=? where merchantId=?";
+            Object[] params = {merchant.getMerchantAddr(),merchant.getMerchantName(),merchant.getFeatureDish(),merchant.getMerchantId()};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
         }
@@ -157,6 +157,7 @@ public class MerchantDaoImpl implements MerchantDao{
                 merchant.setMerchantId(rs.getInt("merchantId"));
                 merchant.setMerchantName(rs.getString("merchantName"));
                 merchant.setMerchantAddr(rs.getString("merchantAddr"));
+                merchant.setFeatureDish(rs.getString("featureDish"));
                 merchantList.add(merchant);
             }
             BaseDao.closeResource(null, pstm, rs);
