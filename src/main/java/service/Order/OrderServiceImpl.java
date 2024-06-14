@@ -330,4 +330,9 @@ public class OrderServiceImpl implements OrderService{
         }
         return details;
     }
+
+    @Override
+    public String getOrderMerchantIdByOrderId(int orderId) {
+        return null;
+    }
 }

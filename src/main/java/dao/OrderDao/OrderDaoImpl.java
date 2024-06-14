@@ -102,7 +102,7 @@ public class OrderDaoImpl implements OrderDao{
         PreparedStatement pstm = null;
         ResultSet rs = null;
         if (null != connection) {
-            String sql = "select count(*) from `orderdetail` as d ,`order` as o where o.orderId=d.orderId and o.isOnline=0 and d.dishId = ?";
+            String sql = "select count(*) from `orderdetail` as d ,`order` as o where o.orderId=d.orderId and o.isOnline=1 and d.dishId = ?";
             pstm = connection.prepareStatement(sql);
             Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
@@ -119,7 +119,7 @@ public class OrderDaoImpl implements OrderDao{
         PreparedStatement pstm = null;
         ResultSet rs = null;
         if (null != connection) {
-            String sql = "select count(*) from `orderdetail` as d ,`order` as o where o.orderId=d.orderId and o.isOnline=1 and d.dishId = ?";
+            String sql = "select count(*) from `orderdetail` as d ,`order` as o where o.orderId=d.orderId and o.isOnline=0 and d.dishId = ?";
             pstm = connection.prepareStatement(sql);
             Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);

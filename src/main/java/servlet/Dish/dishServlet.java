@@ -358,12 +358,27 @@ public class dishServlet extends HttpServlet {
         }
     }
 
+    /**
+     * 根据dishService获取当前菜品的线上或者线下的销量
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     private void getDishByIdToUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String dishId = request.getParameter("dishId");
+        OrderService orderService=new OrderServiceImpl();
         if (!StringUtils.isNullOrEmpty(dishId)) {
             Dish dish = dishService.getDishById(Integer.parseInt(dishId));
             request.setAttribute("dish", dish);
         }
+        int onlineOrderNum=orderService.getOnlineNumberByDishId(Integer.parseInt(dishId));
+        int offlineOrderNum=orderService.getOfflineNumberByDishId(Integer.parseInt(dishId));
+        System.out.println("online:"+onlineOrderNum);
+        System.out.println("offline:"+offlineOrderNum);
+        //之后还要获取当前菜品的线上线下销量
+        request.setAttribute("onlineOrderNum",onlineOrderNum);
+        request.setAttribute("offlineOrderNum",offlineOrderNum);
         request.getRequestDispatcher("user/dishView.jsp").forward(request, response);
     }
 

@@ -13,20 +13,13 @@
         <span>历史订单 >> 订单详细内容查看</span>
     </div>
     <h3>下单菜品列表</h3>
-    <!--账单表格 样式和供应商公用-->
-    <%--        <div class="search">--%>
-    <%--            <form method="get" action="${pageContext.request.contextPath }/jsp/order">--%>
-    <%--                <input name="method" value="query" class="input-text" type="hidden">--%>
-    <%--                <input type="hidden" name="pageIndex" value="1"/>--%>
-    <%--            </form>--%>
-    <%--        </div>--%>
-    <!--账单表格 样式和供应商公用-->
     <table class="providerTable" cellpadding="0" cellspacing="0">
         <tr class="firstTr">
-            <th width="25%">菜品名称</th>
-            <th width="25%">菜品数量</th>
-            <th width="25%">菜品总价</th>
-            <th width="25%">菜品分类</th>
+            <th width="20%">菜品名称</th>
+            <th width="20%">菜品数量</th>
+            <th width="20%">菜品总价</th>
+            <th width="20%">菜品分类</th>
+            <th width="20%">操作</th>
         </tr>
         <c:forEach var="dish" items="${dishList}" varStatus="status">
             <c:set var="dishCount" value="${dish.totalCount}"/>
@@ -42,13 +35,18 @@
                     <span>${totalPrice}</span>
                 </td>
                 <td>
-                    <!-- 假设每个菜品对象也有一个分类属性 -->
                     <span>${dish.dishCategory}</span>
+                </td>
+                <td>
+                    <div class="providerAddBtn">
+                        <input type="button" class="dishReview" dishId=${dish.dishId} dishName=${dish.dishName} value="评价菜品">
+                    </div>
                 </td>
             </tr>
         </c:forEach>
     </table>
     <h2>菜品总价：${dishSumPrice}</h2>
+    <input type="button" class="merchantReview" merchantId=${merchant.merchantId} merchantName=${merchant.merchantName} value="评价商家">
     <input type="hidden" id="totalPageCount" value="${totalPageCount}"/>
     <c:import url="rollpage.jsp">
         <c:param name="totalCount" value="${totalCount}"/>
@@ -58,6 +56,8 @@
 </div>
 </section>
 <%@include file="/jsp/user/userCommon/foot.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/orderDetailView.js"></script>
+
 <%--<script type="text/javascript" src="${pageContext.request.contextPath }/js/orderList.js"></script>--%>
 
 

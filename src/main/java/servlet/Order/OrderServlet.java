@@ -122,6 +122,9 @@ public class OrderServlet extends HttpServlet {
         OrderService orderService = new OrderServiceImpl();
         DishService dishService = new DishServiceImpl();
         String url = "user/orderView.jsp";
+        //还需要设置merchant的Id
+        //先根据orderId获取到当前的order然后再获得order中的merchantId写评论
+
 
         //获取当前的orderId然后查出orderDetail中对应orderId的菜品id显示在上面，整个网页显示的是点菜的菜名，菜品数量，和订单创建时间
         queryOrderDetails(request, response, orderId, orderService, dishService, url);

@@ -24,4 +24,6 @@ public interface OrderService {
     public int getLoyalBuyersDishNumber(int userId ,int dishId);
 
     public ArrayList<OrderDetail> getDetailsByOrderId(int orderId);
+
+    public String getOrderMerchantIdByOrderId(int orderId);
 }
