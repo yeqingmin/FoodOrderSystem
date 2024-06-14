@@ -12,7 +12,7 @@
 <div class="right">
     <div class="location">
         <strong>你现在所在的位置是:</strong>
-        <span>商户操作 >> 商户详情页 >> 评价商户</span>
+        <span>历史订单>> 订单详情页 >> 评价商户</span>
     </div>
     <div class="review-container">
         <%--    <p class="merchantId" hidden="hidden">${merchant.merchantId}</p>--%>

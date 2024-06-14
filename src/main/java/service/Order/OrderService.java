@@ -25,5 +25,13 @@ public interface OrderService {
 
     public ArrayList<OrderDetail> getDetailsByOrderId(int orderId);
 
-    public String getOrderMerchantIdByOrderId(int orderId);
+
+    public int getOrderMerchantIdByOrderId(int orderId);
+
+    public ArrayList<Integer> calculateMonthlyOrderFrequencyChanges(int userId);
+    //每月点餐频率
+
+    public ArrayList<Integer> calculateWeeklyOrderFrequencyChanges(int userId);
+
+    public int modifyOrderOnlineOrOffline(int orderId,int isOnline);
 }

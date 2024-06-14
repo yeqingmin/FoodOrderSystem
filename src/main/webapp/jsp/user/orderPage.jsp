@@ -20,9 +20,12 @@
             <input name="merchantId" value="${merchantId}" class="input-text" type="hidden">
             <input name="orderId" value="${orderId}" type="hidden">
             <input type="hidden" name="pageIndex" value="1"/>
+            <label><input type="radio" name="orderType" value="1" checked> 线上点餐</label>
+            <label><input type="radio" name="orderType" value="0"> 线下点餐</label>
             <input value="提交" type="submit" id="searchbutton">
         </form>
     </div>
+
     <!--账单表格 样式和供应商公用-->
     <table class="providerTable" cellpadding="0" cellspacing="0">
         <tr class="firstTr">

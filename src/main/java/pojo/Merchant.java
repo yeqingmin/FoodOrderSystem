@@ -5,6 +5,7 @@ public class Merchant {
     private String merchantAddr;
     private String merchantName;
     private Boolean isDelete;
+    private String featureDish;
 
     public String getFeatureDish() {
         return featureDish;
@@ -14,7 +15,7 @@ public class Merchant {
         this.featureDish = featureDish;
     }
 
-    private String featureDish;
+    //private String featureDish;
     public void setMerchantName(String merchantName) {
         this.merchantName = merchantName;
     }
@@ -46,6 +47,7 @@ public class Merchant {
     public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
     }
+
 
     @Override
     public String toString() {

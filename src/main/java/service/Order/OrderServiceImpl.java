@@ -331,8 +331,86 @@ public class OrderServiceImpl implements OrderService{
         return details;
     }
 
+
     @Override
-    public String getOrderMerchantIdByOrderId(int orderId) {
-        return null;
+    public int getOrderMerchantIdByOrderId(int orderId) {
+        Connection connection=null;
+        int merchantId=0;
+        try{
+            connection= BaseDao.getConnection();
+            Order order= orderDao.getOrderById(connection,orderId);
+            merchantId=order.getMerchantId();
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return merchantId;
+    }
+    public ArrayList<Integer> calculateMonthlyOrderFrequencyChanges(int userId){
+        Connection connection=null;
+        ArrayList<Integer> result=new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            result=orderDao.calculateMonthlyOrderFrequencyChanges(connection,userId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
+    }
+
+    public ArrayList<Integer> calculateWeeklyOrderFrequencyChanges(int userId){
+        Connection connection=null;
+        ArrayList<Integer> result=new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            result=orderDao.calculateWeeklyOrderFrequencyChanges(connection,userId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
+    }
+
+    @Override
+    public int modifyOrderOnlineOrOffline(int orderId, int isOnline) {
+        Connection connection=null;
+        int flag=0;
+        try{
+            connection= BaseDao.getConnection();
+            flag=orderDao.modifyOrderOnlineOrOffline(connection,orderId,isOnline);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return flag;
     }
 }

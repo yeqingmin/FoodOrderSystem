@@ -12,6 +12,12 @@
         <strong>你现在所在的位置是:</strong>
         <span>菜品数据分析</span>
     </div>
+    <div class="search">
+        <form method="get" action="${pageContext.request.contextPath }/jsp/merchant">
+            <input name="method" value="analysis" class="input-text" type="hidden">
+            <input type="hidden" name="pageIndex" value="1"/>
+        </form>
+    </div>
     <!--账单表格 样式和供应商公用-->
     <table class="providerTable" cellpadding="0" cellspacing="0">
         <tr class="firstTr">
@@ -28,30 +34,22 @@
                     <span>${dish.dishName}</span>
                 </td>
                 <td>
-                    <span>${dish.merchantId}</span>
+                    <span>${dish.onlineSales}</span>
                 </td>
                 <td>
-                    <span>${dish.dishPrice}</span>
+                    <span>${dish.offlineSales}</span>
                 </td>
                 <td>
-                    <span>${dish.dishCategory}</span>
-                </td>
-
-                <td>
-                    <span>${dish.dishDescription}</span>
-                </td>
-                <td>
-                    <span>
-                        <a class="viewDish" href="javascript:;" dishid=${dish.dishId}>
-                            <div class="providerAddBtn">
-                                <input type="button" value="查看详情">
-                            </div>
-                        </a>
-                    </span>
+                    <span>${dish.mostUser}</span>
                 </td>
             </tr>
         </c:forEach>
     </table>
+    <c:import url="rollpage.jsp">
+        <c:param name="totalCount" value="${totalCount}"/>
+        <c:param name="currentPageNo" value="${currentPageNo}"/>
+        <c:param name="totalPageCount" value="${totalPageCount}"/>
+    </c:import>
 </div>
 </section>
 

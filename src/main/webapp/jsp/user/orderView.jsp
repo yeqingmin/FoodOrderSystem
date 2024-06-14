@@ -38,15 +38,17 @@
                     <span>${dish.dishCategory}</span>
                 </td>
                 <td>
-                    <div class="providerAddBtn">
+                    <span class="providerAddBtn">
                         <input type="button" class="dishReview" dishId=${dish.dishId} dishName=${dish.dishName} value="评价菜品">
-                    </div>
+                    </span>
                 </td>
             </tr>
         </c:forEach>
     </table>
     <h2>菜品总价：${dishSumPrice}</h2>
-    <input type="button" class="merchantReview" merchantId=${merchant.merchantId} merchantName=${merchant.merchantName} value="评价商家">
+    <div class="providerAddBtn">
+        <input type="button" class="merchantReview" merchantId=${merchantId}  value="评价商家">
+    </div>
     <input type="hidden" id="totalPageCount" value="${totalPageCount}"/>
     <c:import url="rollpage.jsp">
         <c:param name="totalCount" value="${totalCount}"/>

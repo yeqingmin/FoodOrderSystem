@@ -78,8 +78,61 @@ public class merchantServlet extends HttpServlet {
             this.favorMerchant(request, response);
         } else if (method != null && method.equals("queryReview")) {
             this.queryReview(request, response);
+        } else if(method !=null && method.equals("analysis")){
+            this.analysis(request,response);
         }
 
+    }
+
+    /**
+     * 该方法用于显示数据分析页面,需要根据dishId计算线上和线下的销量，然后需要得到购买其最多的用户
+     * @param request
+     * @param response
+     */
+    private void analysis(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //根据merchantId获取当前merchant的菜单
+        int merchantId=Session.getCurrentId(request);
+        String pageIndex = request.getParameter("pageIndex");
+
+        MerchantService merchantService=new MerchantServiceImpl();
+        DishService dishService=new DishServiceImpl();             //获取菜单和菜品总数
+        OrderService orderService=new OrderServiceImpl();         //获取线上线下销量和购买最多的用户
+
+        ArrayList<Dish> menu = null;
+        //设置页面容量
+        int pageSize = Constants.pageSize;
+        //当前页码
+        int currentPageNo = 1;
+        System.out.println("query pageIndex--------- > " + pageIndex);
+        if (pageIndex != null) {
+            try {
+                currentPageNo = Integer.valueOf(pageIndex);
+            } catch (NumberFormatException e) {
+                response.sendRedirect("error.jsp");
+            }
+        }
+        //获取总数
+        int totalCount = dishService.getDishTotalCountByMerchantId(merchantId);
+        //总页数
+        PageSupport pages = new PageSupport();
+        pages.setCurrentPageNo(currentPageNo);
+        pages.setPageSize(pageSize);
+        pages.setTotalCount(totalCount);
+        int totalPageCount = pages.getTotalPageCount();
+        //控制首页和尾页
+        if (currentPageNo < 1) {
+            currentPageNo = 1;
+        } else if (currentPageNo > totalPageCount) {
+            currentPageNo = totalPageCount;
+        }
+
+        menu = dishService.getDishWithSalesAndUserListByMerchantId(merchantId,currentPageNo,pageSize);
+        request.setAttribute("dishList", menu);
+        request.setAttribute("totalPageCount", totalPageCount);
+        request.setAttribute("totalCount", totalCount);
+        request.setAttribute("currentPageNo", currentPageNo);
+
+        request.getRequestDispatcher("merchant/dishAnalysis.jsp").forward(request, response);
     }
 
     private void queryReview(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

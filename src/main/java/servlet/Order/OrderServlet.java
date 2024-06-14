@@ -124,7 +124,9 @@ public class OrderServlet extends HttpServlet {
         String url = "user/orderView.jsp";
         //还需要设置merchant的Id
         //先根据orderId获取到当前的order然后再获得order中的merchantId写评论
-
+        int merchantId=orderService.getOrderMerchantIdByOrderId(Integer.parseInt(orderId));
+        System.out.println("merchantId:"+merchantId);
+        request.setAttribute("merchantId",merchantId);
 
         //获取当前的orderId然后查出orderDetail中对应orderId的菜品id显示在上面，整个网页显示的是点菜的菜名，菜品数量，和订单创建时间
         queryOrderDetails(request, response, orderId, orderService, dishService, url);
@@ -168,12 +170,17 @@ public class OrderServlet extends HttpServlet {
         String orderId = request.getParameter("orderId");
         String merchantId = request.getParameter("merchantId");
 
+        //TODO 这里添加一个修改当前order是线上还是线下的内容
+        String isOnline=request.getParameter("orderType");
 
         //新建orderService对象
         OrderService orderService = new OrderServiceImpl();
         MessageService messageService = new MessageServiceImpl();
         MerchantService merchantService = new MerchantServiceImpl();
         DishService dishService = new DishServiceImpl();
+        //先根据orderId和isOnline修改表单信息
+        orderService.modifyOrderOnlineOrOffline(Integer.parseInt(orderId),Integer.parseInt(isOnline));
+
         if (!StringUtils.isNullOrEmpty(merchantId)) {
             //根据orderId新建一条订单消息,先给merchantService让他查出merchantName和merchantAddr拼接消息
             Merchant merchant = merchantService.getMerchantById(Integer.parseInt(merchantId));

@@ -10,27 +10,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c48bddf-91d8-4e91-92f2-97591350ca12" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/System/systemServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/dataAnalysis.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/orderDetailView.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/dishAnalysis.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AdvancedQueryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/createEntity.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/createEntity.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/MerchantDao/MerchantDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/MerchantDao/MerchantDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDetailDao/OrderDetailDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDetailDao/OrderDetailDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDFavorDao/UDFavorDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UDReviewDao/UDReviewDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/Dish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/Merchant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/Merchant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Dish/DishService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Dish/DishService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Dish/DishServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Dish/DishServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Favor/FavourService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Favor/FavourService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Favor/FavourServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Favor/FavourServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/Order/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Order/OrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/Order/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Order/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Dish/dishServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Dish/dishServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Merchant/merchantServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Merchant/merchantServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Order/OrderServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Order/OrderServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/admin/adminCommon/head.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/admin/adminCommon/head.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/dataAnalysis.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/admin/dataAnalysis.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantCommon/head.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantCommon/head.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantMenuViewToUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantMenuViewToUser.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantUserView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantUserView.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishView.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderDetailView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderDetailView.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/orderDetailView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/orderDetailView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/userMerchantView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/userMerchantView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/dishAnalysis.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/dishAnalysis.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantReview.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantReview.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderPage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/orderView.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/QueryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/QueryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,11 +47,12 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Jsp File" />
         <option value="JavaScript File" />
         <option value="Interface" />
         <option value="package.json" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -75,19 +83,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/lenovo/Desktop/Courses/Soft_Engineering/SEProject",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/lenovo/Desktop/Courses/Soft_Engineering/SEProject&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\css" />
@@ -104,32 +112,42 @@
       <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\user\merchantManage" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.85">
-    <configuration name="QueryTest.LoyalBuyers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Tomcat Server.Tomcat9">
+    <configuration name="AdvancedQueryTest.dishAnalysisTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FoodOrderSystem" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="QueryTest" />
-      <option name="METHOD_NAME" value="LoyalBuyers" />
+      <option name="MAIN_CLASS_NAME" value="AdvancedQueryTest" />
+      <option name="METHOD_NAME" value="dishAnalysisTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QueryTest.LoyalBuyersDishNumbersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="QueryTest.BiggestBuyers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FoodOrderSystem" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="QueryTest" />
-      <option name="METHOD_NAME" value="LoyalBuyersDishNumbersTest" />
+      <option name="METHOD_NAME" value="BiggestBuyers" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QueryTest.LoyalBuyersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="QueryTest.TestFavour" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FoodOrderSystem" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="QueryTest" />
-      <option name="METHOD_NAME" value="LoyalBuyersTest" />
+      <option name="METHOD_NAME" value="TestFavour" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QueryTest.TestFrequency" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FoodOrderSystem" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="QueryTest" />
+      <option name="METHOD_NAME" value="TestFrequency" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -145,17 +163,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="dishTest.testDsihPriceAdd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FoodOrderSystem" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="dishTest" />
-      <option name="METHOD_NAME" value="testDsihPriceAdd" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Tomcat 9.0.85" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.85" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="Tomcat9" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.85" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="17" nameIsGenerated="true">
+      <option name="BROWSER_ID" value="37cae5b9-e8b2-4949-9172-aafa37fbc09c" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="FoodOrderSystem:war">
@@ -165,7 +174,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="35776a61-4af1-4c58-bdbb-731f94aeec60" />
+        <option name="BASE_DIRECTORY_NAME" value="c15a4a3b-040f-4d78-adf6-41a25cbf70f9" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -173,7 +182,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="5905" />
+        <option name="DEBUG_PORT" value="14811" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -243,20 +252,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.AdvancedQueryTest.dishAnalysisTest" />
+      <item itemvalue="JUnit.QueryTest.BiggestBuyers" />
+      <item itemvalue="JUnit.QueryTest.TestFavour" />
+      <item itemvalue="JUnit.QueryTest.TestFrequency" />
       <item itemvalue="JUnit.dishTest.testDishHistory" />
-      <item itemvalue="JUnit.dishTest.testDsihPriceAdd" />
-      <item itemvalue="JUnit.QueryTest.LoyalBuyers" />
-      <item itemvalue="JUnit.QueryTest.LoyalBuyersDishNumbersTest" />
-      <item itemvalue="JUnit.QueryTest.LoyalBuyersTest" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.85" />
+      <item itemvalue="Tomcat Server.Tomcat9" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AdvancedQueryTest.dishAnalysisTest" />
+        <item itemvalue="JUnit.QueryTest.BiggestBuyers" />
+        <item itemvalue="JUnit.QueryTest.TestFavour" />
+        <item itemvalue="JUnit.QueryTest.TestFrequency" />
         <item itemvalue="JUnit.dishTest.testDishHistory" />
-        <item itemvalue="JUnit.dishTest.testDsihPriceAdd" />
-        <item itemvalue="JUnit.QueryTest.LoyalBuyersTest" />
-        <item itemvalue="JUnit.QueryTest.LoyalBuyersDishNumbersTest" />
-        <item itemvalue="JUnit.QueryTest.LoyalBuyers" />
       </list>
     </recent_temporary>
   </component>
@@ -317,6 +326,7 @@
       <workItem from="1718180325757" duration="1867000" />
       <workItem from="1718257141119" duration="13716000" />
       <workItem from="1718347493749" duration="2082000" />
+      <workItem from="1718360593631" duration="8396000" />
     </task>
     <servers />
   </component>
@@ -334,11 +344,6 @@
           <line>11</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/OrderDetailDao/OrderDetailDaoImpl.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/QueryTest.java</url>
           <line>92</line>
@@ -347,24 +352,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/test/java/QueryTest.java</url>
-          <line>109</line>
-          <properties class="QueryTest" method="getOfflineNumberTest">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/test/java/QueryTest.java</url>
-          <line>117</line>
-          <properties class="QueryTest" method="BiggestBuyers">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/service/Favor/FavourService.java</url>

@@ -74,4 +74,23 @@ public class UDFavorDaoImpl implements UDFavorDao{
         }
         return count;
     }
+
+
+    public ArrayList<Integer> getUserFavoriteDishIds(Connection connection,int userId) throws SQLException{
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        ArrayList<Integer> result =new ArrayList<>();
+        if (null != connection) {
+            String sql = "select dishId from `udfavour` where userId=?";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {userId};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            while(rs.next()){
+                int count = rs.getInt(1);
+                result.add(count);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return result;
+    }
 }
