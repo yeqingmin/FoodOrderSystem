@@ -77,7 +77,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         ResultSet rs=null;
         int number=0;
         if (null != connection) {
-            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 7 DAY and o.isOnline=0";
+            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 7 DAY and o.isOnline=1";
             Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if (rs.next()) {
@@ -93,7 +93,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         ResultSet rs=null;
         int number=0;
         if (null != connection) {
-            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 7 DAY and o.isOnline=1";
+            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 7 DAY and o.isOnline=0";
             Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if (rs.next()) {
@@ -109,7 +109,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         ResultSet rs=null;
         int number=0;
         if (null != connection) {
-            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 30 DAY and o.isOnline=1";
+            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 30 DAY and o.isOnline=0";
             Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if (rs.next()) {
@@ -125,7 +125,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         ResultSet rs=null;
         int number=0;
         if (null != connection) {
-            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 30 DAY and o.isOnline=0";
+            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 30 DAY and o.isOnline=1";
             Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if (rs.next()) {
@@ -141,7 +141,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         ResultSet rs=null;
         int number=0;
         if (null != connection) {
-            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 1 YEAR and o.isOnline=1";
+            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 1 YEAR and o.isOnline=0";
             Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if (rs.next()) {
@@ -157,7 +157,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         ResultSet rs=null;
         int number=0;
         if (null != connection) {
-            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 1 YEAR and o.isOnline=10";
+            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 1 YEAR and o.isOnline=1";
             Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if (rs.next()) {
