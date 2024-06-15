@@ -25,6 +25,8 @@ public interface DishService {
 
     public ArrayList<Dish> getDishListByMerchantId(int merchantId,int currentPageNo,int pageSize);
 
+    public ArrayList<Dish> getDishWithSalesAndUserListByMerchantId(int merchantId,int currentPageNo,int pageSize);
+
     public int modifyDishById(Dish dish);
 
     public int deleteDishById(int dishId);

@@ -2,6 +2,8 @@ package servlet.Dish;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.mysql.cj.util.StringUtils;
 import pojo.*;
@@ -27,6 +29,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class dishServlet extends HttpServlet {
     DishService dishService = new DishServiceImpl();
@@ -71,8 +74,64 @@ public class dishServlet extends HttpServlet {
             this.viewDishPrice(request,response);
         }else if(method!=null && method.equals("viewPrice")){
             this.viewOldPrice(request,response);
+        }else if(method!=null &&method.equals("favorView")){
+            this.favorView(request,response);
         }
 
+    }
+    /*
+    当前方法用于显示用户收藏的菜品列表，以及其在一段时间内不同点餐方式的销量
+     */
+
+    private void favorView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //首先根据当前的userId获取其收藏列表的菜品
+        int userId=Session.getCurrentId(request);
+        FavourService favourService=new FavourServiceImpl();
+        ArrayList<Integer> favoredDishId=favourService.getUserFavoriteDishIds(userId);
+
+        ArrayList<Dish> dishList=new ArrayList<>();
+
+        String timeRange = request.getParameter("timeRange");
+        OrderService orderService=new OrderServiceImpl();
+        // 根据参数值调用不同的方法
+        if ("lastWeek".equals(timeRange)) {
+            //根据id创建列表
+            for(int id:favoredDishId){
+                Dish dish=dishService.getDishById(id);
+                //获取近一周线上线下销量赋值给dish
+                int onlineSales=orderService.getWeeklyOnlineNumber(id);
+                int offlineSales=orderService.getWeeklyOfflineNumber(id);
+                dish.setOnlineSales(onlineSales);
+                dish.setOfflineSales(offlineSales);
+                dishList.add(dish);
+            }
+
+        } else if ("lastMonth".equals(timeRange)) {
+            for(int id:favoredDishId){
+                Dish dish=dishService.getDishById(id);
+                //获取近一周线上线下销量赋值给dish
+                int onlineSales=orderService.getMonthlyOnlineNumber(id);
+                int offlineSales=orderService.getMonthlyOfflineNumber(id);
+                dish.setOnlineSales(onlineSales);
+                dish.setOfflineSales(offlineSales);
+                dishList.add(dish);
+            }
+
+        } else if ("lastYear".equals(timeRange)) {
+            for(int id:favoredDishId){
+                Dish dish=dishService.getDishById(id);
+                //获取近一周线上线下销量赋值给dish
+                int onlineSales=orderService.getYearlyOnlineNumber(id);
+                int offlineSales=orderService.getYearlyOfflineNumber(id);
+                dish.setOnlineSales(onlineSales);
+                dish.setOfflineSales(offlineSales);
+                dishList.add(dish);
+            }
+        }
+
+        request.setAttribute("dishList",dishList);
+
+        request.getRequestDispatcher("user/dishFavorView.jsp").forward(request, response);
     }
 
     protected void viewOldPrice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -358,12 +417,27 @@ public class dishServlet extends HttpServlet {
         }
     }
 
+    /**
+     * 根据dishService获取当前菜品的线上或者线下的销量
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     private void getDishByIdToUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String dishId = request.getParameter("dishId");
+        OrderService orderService=new OrderServiceImpl();
         if (!StringUtils.isNullOrEmpty(dishId)) {
             Dish dish = dishService.getDishById(Integer.parseInt(dishId));
             request.setAttribute("dish", dish);
         }
+        int onlineOrderNum=orderService.getOnlineNumberByDishId(Integer.parseInt(dishId));
+        int offlineOrderNum=orderService.getOfflineNumberByDishId(Integer.parseInt(dishId));
+        System.out.println("online:"+onlineOrderNum);
+        System.out.println("offline:"+offlineOrderNum);
+        //之后还要获取当前菜品的线上线下销量
+        request.setAttribute("onlineOrderNum",onlineOrderNum);
+        request.setAttribute("offlineOrderNum",offlineOrderNum);
         request.getRequestDispatcher("user/dishView.jsp").forward(request, response);
     }
 

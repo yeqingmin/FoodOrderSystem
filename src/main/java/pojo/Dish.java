@@ -17,6 +17,10 @@ public class Dish {
     private Integer dishFavourNumber;
     // Constructors, Getters, and Setters
     private Integer totalCount;
+
+    private int onlineSales;
+    private int offlineSales;
+    private String mostUser;
     public Dish() {}
 
 
@@ -130,12 +134,37 @@ public class Dish {
         this.totalCount = totalCount;
     }
 
+    public int getOnlineSales() {
+        return onlineSales;
+    }
+
+    public void setOnlineSales(int onlineSales) {
+        this.onlineSales = onlineSales;
+    }
+
+    public int getOfflineSales() {
+        return offlineSales;
+    }
+
+    public void setOfflineSales(int offlineSales) {
+        this.offlineSales = offlineSales;
+    }
+
+    public String getMostUser() {
+        return mostUser;
+    }
+
+    public void setMostUser(String mostUser) {
+        this.mostUser = mostUser;
+    }
+
     @Override
     public String toString() {
         return "Dish{" +
-                "dishId=" + dishId +
-                ", dishName='" + dishName + '\'' +
-                ", totalCount=" + totalCount +
+                "dishName='" + dishName + '\'' +
+                ", onlineSales=" + onlineSales +
+                ", offlineSales=" + offlineSales +
+                ", mostUser='" + mostUser + '\'' +
                 '}';
     }
 }

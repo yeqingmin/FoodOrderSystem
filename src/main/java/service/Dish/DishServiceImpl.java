@@ -5,12 +5,18 @@ import dao.DishDao.DishDao;
 import dao.DishDao.DishDaoImpl;
 import dao.DishPriceDao.DishPriceDao;
 import dao.DishPriceDao.DishPriceDaoImpl;
+import dao.MerchantDao.MerchantDao;
+import dao.MerchantDao.MerchantDaoImpl;
 import dao.OrderDao.OrderDao;
+import dao.OrderDao.OrderDaoImpl;
 import dao.OrderDetailDao.OrderDetailDao;
 import dao.OrderDetailDao.OrderDetailDaoImpl;
+import dao.UserDao.UserDao;
+import dao.UserDao.UserDaoImpl;
 import pojo.Dish;
 import pojo.DishPrice;
 import pojo.MerchantDetail;
+import pojo.User;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -209,6 +215,52 @@ public class DishServiceImpl implements DishService {
         try {
             connection = BaseDao.getConnection();
             menu = dishDao.getDishListByMerchantId(connection, merchantId,currentPageNo,pageSize);
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        } finally {
+            BaseDao.closeResource(connection, null, null);
+        }
+        return menu;
+    }
+
+    /**
+     * 当前方法需要实现复杂的逻辑，获得当前菜品的线上和线下销量，并且返回购买该菜品最多的那个人
+     * @param merchantId
+     * @param currentPageNo
+     * @param pageSize
+     * @return
+     */
+    @Override
+    public ArrayList<Dish> getDishWithSalesAndUserListByMerchantId(int merchantId, int currentPageNo, int pageSize) {
+        //需要调用多个Dao层
+        MerchantDao merchantDao=new MerchantDaoImpl();
+        OrderDao orderDao=new OrderDaoImpl();
+        UserDao userDao=new UserDaoImpl();
+
+        Connection connection = null;
+        ArrayList<Dish> menu = null;
+        try {
+            connection = BaseDao.getConnection();
+            menu = dishDao.getDishListByMerchantId(connection, merchantId,currentPageNo,pageSize);
+            //获得menu之后需要调用orderDao得到该菜品的线上线下销量
+            for(Dish dish:menu){
+                int id=dish.getDishId();
+                int onlineSales=orderDao.getDishOnlineNumber(connection,id);
+                int offlineSales=orderDao.getDisOfflineNumber(connection,id);
+                int biggestBuyerId=orderDetailDao.biggestBuyerOfDish(connection,id);
+                System.out.println("biggestBuyerId"+biggestBuyerId);
+                User buyer=userDao.getUserById(connection,biggestBuyerId);
+                String biggestBuyer="编号为"+biggestBuyerId+"的用户："+buyer.getUserName();
+                dish.setOnlineSales(onlineSales);
+                dish.setOfflineSales(offlineSales);
+                dish.setMostUser(biggestBuyer);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             try {

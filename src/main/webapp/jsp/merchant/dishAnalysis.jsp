@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: lenovo
-  Date: 2024/5/26
-  Time: 22:10
+  Date: 2024/6/13
+  Time: 19:43
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -10,21 +10,23 @@
 <div class="right">
     <div class="location">
         <strong>你现在所在的位置是:</strong>
-        <span>商户操作 >> 商户详细信息 >> 商户菜单查看</span>
+        <span>菜品数据分析</span>
+    </div>
+    <div class="search">
+        <form method="get" action="${pageContext.request.contextPath }/jsp/merchant">
+            <input name="method" value="analysis" class="input-text" type="hidden">
+            <input type="hidden" name="pageIndex" value="1"/>
+        </form>
     </div>
     <!--账单表格 样式和供应商公用-->
     <table class="providerTable" cellpadding="0" cellspacing="0">
         <tr class="firstTr">
             <%--            <th width="10%">商户编码</th>--%>
-            <th width="10%">菜品名称</th>
-            <th width="5%">菜品商户</th>
-            <th width="10%">菜品价格</th>
-            <th width="10%">菜品分类</th>
-            <th width="20%">菜品描述</th>
-            <th width="5">菜品线上销量</th>
-            <th width="5">菜品线下销量</th>
-            <%--            <th width="10%">创建时间</th>--%>
-            <th width="30%">操作</th>
+            <th width="10%">菜品评分</th>
+            <th width="10%">菜品线上销量</th>
+            <th width="10%">菜品线下销量</th>
+            <th width="20%">购买该菜品次数最多的用户</th>
+
         </tr>
         <c:forEach var="dish" items="${dishList}" varStatus="status">
             <tr>
@@ -32,30 +34,22 @@
                     <span>${dish.dishName}</span>
                 </td>
                 <td>
-                    <span>${dish.merchantId}</span>
+                    <span>${dish.onlineSales}</span>
                 </td>
                 <td>
-                    <span>${dish.dishPrice}</span>
+                    <span>${dish.offlineSales}</span>
                 </td>
                 <td>
-                    <span>${dish.dishCategory}</span>
-                </td>
-
-                <td>
-                    <span>${dish.dishDescription}</span>
-                </td>
-                <td>
-                    <span>
-                        <a class="viewDish" href="javascript:;" dishid=${dish.dishId}>
-                            <div class="providerAddBtn">
-                                <input type="button" value="查看详情">
-                            </div>
-                        </a>
-                    </span>
+                    <span>${dish.mostUser}</span>
                 </td>
             </tr>
         </c:forEach>
     </table>
+    <c:import url="rollpage.jsp">
+        <c:param name="totalCount" value="${totalCount}"/>
+        <c:param name="currentPageNo" value="${currentPageNo}"/>
+        <c:param name="totalPageCount" value="${totalPageCount}"/>
+    </c:import>
 </div>
 </section>
 
@@ -74,3 +68,4 @@
 
 <%@include file="/jsp/user/userCommon/foot.jsp" %>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/merchantMenuReviewView.js"></script>
+

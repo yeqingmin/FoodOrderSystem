@@ -81,7 +81,7 @@ public class UDFavorDaoImpl implements UDFavorDao{
         ResultSet rs = null;
         ArrayList<Integer> result =new ArrayList<>();
         if (null != connection) {
-            String sql = "select dishId from `udfavour` where userId=?";
+            String sql = "select distinct(dishId) from `udfavor` where userId=?";
             pstm = connection.prepareStatement(sql);
             Object[] params = {userId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);

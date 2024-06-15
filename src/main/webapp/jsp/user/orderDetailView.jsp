@@ -14,14 +14,6 @@
     </div>
     <h1>下单成功!</h1>
     <h3>下单菜品列表</h3>
-    <!--账单表格 样式和供应商公用-->
-    <%--        <div class="search">--%>
-    <%--            <form method="get" action="${pageContext.request.contextPath }/jsp/order">--%>
-    <%--                <input name="method" value="query" class="input-text" type="hidden">--%>
-    <%--                <input type="hidden" name="pageIndex" value="1"/>--%>
-    <%--            </form>--%>
-    <%--        </div>--%>
-    <!--账单表格 样式和供应商公用-->
     <table class="providerTable" cellpadding="0" cellspacing="0">
         <tr class="firstTr">
             <th width="25%">菜品名称</th>
@@ -59,7 +51,6 @@
 </div>
 </section>
 <%@include file="/jsp/user/userCommon/foot.jsp" %>
-<%--<script type="text/javascript" src="${pageContext.request.contextPath }/js/orderList.js"></script>--%>
 
 
 <%--    <input type="hidden" id="totalPageCount" value="${totalPageCount}"/>--%>

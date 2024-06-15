@@ -331,6 +331,28 @@ public class OrderServiceImpl implements OrderService{
         return details;
     }
 
+
+    @Override
+    public int getOrderMerchantIdByOrderId(int orderId) {
+        Connection connection=null;
+        int merchantId=0;
+        try{
+            connection= BaseDao.getConnection();
+            Order order= orderDao.getOrderById(connection,orderId);
+            merchantId=order.getMerchantId();
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return merchantId;
+    }
     public ArrayList<Integer> calculateMonthlyOrderFrequencyChanges(int userId){
         Connection connection=null;
         ArrayList<Integer> result=new ArrayList<>();
@@ -357,6 +379,211 @@ public class OrderServiceImpl implements OrderService{
         try{
             connection= BaseDao.getConnection();
             result=orderDao.calculateWeeklyOrderFrequencyChanges(connection,userId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
+    }
+
+    @Override
+    public int modifyOrderOnlineOrOffline(int orderId, int isOnline) {
+        Connection connection=null;
+        int flag=0;
+        try{
+            connection= BaseDao.getConnection();
+            flag=orderDao.modifyOrderOnlineOrOffline(connection,orderId,isOnline);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return flag;
+    }
+
+    /*一个商店的性别分布，返回男性买家个数，女性买家个数*/
+    public ArrayList<Integer> GenderConsumptionDistribution(int merchantId){
+        Connection connection=null;
+        ArrayList<Integer> result=new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            result=orderDao.GenderConsumptionDistribution(connection,merchantId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
+
+    }
+
+    //返回年龄分布，小于20 20到40 40到60 大于60
+    public ArrayList<Integer> AgeConsumptionDistribution(int merchantId){
+        Connection connection=null;
+        ArrayList<Integer> result=new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            result=orderDao.AgeConsumptionDistribution(connection,merchantId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
+    }
+
+    public ArrayList<Integer> RoleConsumptionDistribution(int merchantId){
+        Connection connection=null;
+        ArrayList<Integer> result=new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            result=orderDao.RoleConsumptionDistribution(connection,merchantId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
+
+    }
+
+    public ArrayList<Integer> dishGenderConsumptionDistribution(int dishId){
+        Connection connection=null;
+        ArrayList<Integer> result=new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            result=orderDao.dishGenderConsumptionDistribution(connection,dishId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
+    }
+
+    public ArrayList<Integer> dishAgeConsumptionDistribution(int dishId){
+        Connection connection=null;
+        ArrayList<Integer> result=new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            result=orderDao.dishAgeConsumptionDistribution(connection,dishId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
+    }
+
+    public ArrayList<Integer> dishRoleConsumptionDistribution(int dishId){
+        Connection connection=null;
+        ArrayList<Integer> result=new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            result=orderDao.dishRoleConsumptionDistribution(connection,dishId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
+    }
+
+    public ArrayList<Integer> getGenderGroupEvaluationPatterns(int merchantId){
+        Connection connection=null;
+        ArrayList<Integer> result=new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            result=orderDao.getGenderGroupEvaluationPatterns(connection,merchantId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
+    }
+
+    public ArrayList<Integer> getAgeGroupEvaluationPatterns(int merchantId){
+        Connection connection=null;
+        ArrayList<Integer> result=new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            result=orderDao.getAgeGroupEvaluationPatterns(connection,merchantId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
+    }
+
+    public ArrayList<Integer> getRoleGroupEvaluationPatterns(int merchantId){
+        Connection connection=null;
+        ArrayList<Integer> result=new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            result=orderDao.getRoleGroupEvaluationPatterns(connection,merchantId);
         }catch (Exception e){
             e.printStackTrace();
             try {

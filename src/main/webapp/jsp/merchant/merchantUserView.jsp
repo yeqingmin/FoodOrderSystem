@@ -32,7 +32,6 @@
         <%--        <p><strong>用户角色：</strong><span>${user.userRoleName}</span></p>--%>
         <div class="providerAddBtn">
             <input type="button" class="favor" merchantId=${merchant.merchantId} merchantName=${merchant.merchantName} value="收藏商家">
-            <input type="button" class="review" merchantId=${merchant.merchantId} merchantName=${merchant.merchantName} value="评价商家">
             <input type="button" class="queryReview" merchantId=${merchant.merchantId} merchantName=${merchant.merchantName} value="查看评价和评分">
         </div>
         <div class="providerAddBtn">

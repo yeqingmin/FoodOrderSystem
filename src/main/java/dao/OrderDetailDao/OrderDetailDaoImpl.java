@@ -59,31 +59,9 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         ResultSet rs=null;
         int userId=-1;
         if (null != connection) {
-            String sql = "SELECT o.userId\n" +
-                    "FROM `order` AS o\n" +
-                    "WHERE (\n" +
-                    "    SELECT COUNT(*)\n" +
-                    "    FROM `orderdetail` AS d\n" +
-                    "    WHERE d.orderId = o.orderId\n and d.dishId = ?" +
-                    ") = (\n" +
-                    "    SELECT MAX(count_orders)\n" +
-                    "    FROM (\n" +
-                    "        SELECT o.userId, COUNT(*) AS count_orders\n" +
-                    "        FROM `order` AS o1\n" +
-                    "        JOIN `orderdetail` AS d1 where d1.orderId = o1.orderId and d1.dishId = ?" +
-                    "        GROUP BY o1.userId\n" +
-                    "    ) AS subquery\n" +
-                    ")";
-            /*String sql="    SELECT MAX(count_orders)\n" +
-                    "    FROM (\n" +
-                    "        SELECT o.userId, COUNT(*) AS count_orders\n" +
-                    "        FROM `order` AS o1\n" +
-                    "        JOIN `orderdetail` AS d1 where d1.orderId = o1.orderId and d1.dishId = ?" +
-                    "        GROUP BY o1.userId\n" +
-                    "    ) AS subquery\n"
-                   ;*/
+            String sql = "select o.userId from `order` o join `orderdetail` od on o.orderId=od.orderId where od.dishId=? group by o.userId order by  count(*) desc limit 1";
             pstm = connection.prepareStatement(sql);
-            Object[] params = {dishId,dishId};
+            Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if(rs.next()){
                 System.out.println("!!!!!");
@@ -99,7 +77,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         ResultSet rs=null;
         int number=0;
         if (null != connection) {
-            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 7 DAY and o.isOnline=0";
+            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 7 DAY and o.isOnline=1";
             Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if (rs.next()) {
@@ -115,7 +93,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         ResultSet rs=null;
         int number=0;
         if (null != connection) {
-            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 7 DAY and o.isOnline=1";
+            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 7 DAY and o.isOnline=0";
             Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if (rs.next()) {
@@ -131,7 +109,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         ResultSet rs=null;
         int number=0;
         if (null != connection) {
-            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 30 DAY and o.isOnline=1";
+            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 30 DAY and o.isOnline=0";
             Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if (rs.next()) {
@@ -147,7 +125,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         ResultSet rs=null;
         int number=0;
         if (null != connection) {
-            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 30 DAY and o.isOnline=0";
+            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 30 DAY and o.isOnline=1";
             Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if (rs.next()) {
@@ -163,7 +141,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         ResultSet rs=null;
         int number=0;
         if (null != connection) {
-            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 1 YEAR and o.isOnline=1";
+            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 1 YEAR and o.isOnline=0";
             Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if (rs.next()) {
@@ -179,7 +157,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
         ResultSet rs=null;
         int number=0;
         if (null != connection) {
-            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 1 YEAR and o.isOnline=10";
+            String sql = "select count(*) from `orderdetail` as d, `order` as o where d.orderId = o.orderId and d.dishId=? and o.orderTime >= CURDATE() - INTERVAL 1 YEAR and o.isOnline=1";
             Object[] params = {dishId};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if (rs.next()) {

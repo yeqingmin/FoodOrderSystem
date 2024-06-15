@@ -31,6 +31,10 @@
     <servlet-name>MessageServlet</servlet-name>
     <servlet-class>servlet.Message.MessageServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>SystemServlet</servlet-name>
+    <servlet-class>servlet.System.systemServlet</servlet-class>
+  </servlet>
   
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
@@ -55,6 +59,10 @@
   <servlet-mapping>
     <servlet-name>MessageServlet</servlet-name>
     <url-pattern>/jsp/system</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SystemServlet</servlet-name>
+    <url-pattern>/jsp/admin</url-pattern>
   </servlet-mapping>
 
   <filter>
