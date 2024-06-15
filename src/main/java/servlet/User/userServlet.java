@@ -2,13 +2,18 @@ package servlet.User;
 
 import com.alibaba.fastjson.JSONArray;
 import com.mysql.cj.util.StringUtils;
+import pojo.Dish;
 import pojo.Login;
 import pojo.Merchant;
 import pojo.User;
+import service.Dish.DishService;
+import service.Dish.DishServiceImpl;
 import service.Login.LoginService;
 import service.Login.LoginServiceImpl;
 import service.Merchant.MerchantService;
 import service.Merchant.MerchantServiceImpl;
+import service.Order.OrderService;
+import service.Order.OrderServiceImpl;
 import service.User.UserService;
 import service.User.UserServiceImpl;
 import utils.Constants;
@@ -49,7 +54,32 @@ public class userServlet extends HttpServlet {
             this.deleteUser(request, response);
         } else if (method != null && method.equals("modifyExecute")) {
             this.modifyUser(request, response);
+        }else if(method!=null&& method.equals("buyDistribution")){
+            this.consumerDistribution(request,response);
         }
+    }
+
+    /**
+     * 显示当前用户的消费分布
+     * @param request
+     * @param response
+     */
+    private void consumerDistribution(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String userId=request.getParameter("userId");
+        DishService dishService=new DishServiceImpl();
+        OrderService orderService=new OrderServiceImpl();
+        //先根据merchantId获取当前商户的所有菜
+        int merchantId=Session.getCurrentId(request);
+        ArrayList<Dish> dishList=dishService.getDishByMerchantId(merchantId);
+        //然后调用消费次数方法给dish设置totalCount
+        for(Dish dish:dishList){
+            int dishId=dish.getDishId();
+            //根据当前的dishId和获取的userId找出购买次数
+            int num=orderService.getLoyalBuyersDishNumber(Integer.parseInt(userId),dishId);
+            dish.setTotalCount(num);
+        }
+        request.setAttribute("dishList",dishList);
+        request.getRequestDispatcher("user/consumptionDistribution.jsp").forward(request, response);
     }
 
     private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException {

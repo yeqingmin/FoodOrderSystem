@@ -80,8 +80,29 @@ public class merchantServlet extends HttpServlet {
             this.queryReview(request, response);
         } else if(method !=null && method.equals("analysis")){
             this.analysis(request,response);
+        }else if(method!=null && method.equals("loyalUser")){
+            this.getLoyalUsers(request,response);
         }
 
+    }
+
+    /**
+     * 获取当前商户的忠实用户
+     * @param request
+     * @param response
+     */
+    private void getLoyalUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int merchantId=Session.getCurrentId(request);
+        OrderService orderService=new OrderServiceImpl();
+        UserService userService=new UserServiceImpl();
+        ArrayList<Integer> userListId=orderService.getLoyalBuyers(merchantId);
+        ArrayList<User> users=new ArrayList<>();
+        for(int id:userListId){
+            User user=userService.getUserById(id);
+            users.add(user);
+        }
+        request.setAttribute("userList",users);
+        request.getRequestDispatcher("merchant/loyalUsers.jsp").forward(request, response);
     }
 
     /**
