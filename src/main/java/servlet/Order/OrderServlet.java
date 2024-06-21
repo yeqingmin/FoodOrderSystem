@@ -24,11 +24,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class OrderServlet extends HttpServlet {
     @Override
@@ -53,7 +56,102 @@ public class OrderServlet extends HttpServlet {
             this.bookBegin(request, response);
         } else if (method != null && method.equals("book")) {
             this.book(request, response);
+        }else if(method!=null && method.equals("activity")){
+            this.activityAnalysisBegin(request,response);
+        }else if(method!=null && method.equals("weekFrequency")){
+            this.userWeekFrequency(request,response);
+        }else if(method!=null && method.equals("monthFrequency")){
+            this.userMonthFrequency(request,response);
+        }else if(method!=null && method.equals("timeZone")){
+            this.activityAnalysis(request,response);
+        }else if(method!=null && method.equals("monthReact")){
+            this.monthReact(request,response);
+        }else if(method!=null && method.equals("weekReact")){
+            this.weekReact(request,response);
         }
+    }
+
+    private void weekReact(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //根据session获取userId
+        Integer userId=Session.getCurrentId(request);
+        OrderService orderService=new OrderServiceImpl();
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        // 使用PrintWriter来写入响应
+        PrintWriter out = response.getWriter();
+
+        // 获取订单总数数据
+        ArrayList<Integer> weekOrderCounts=orderService.calculateWeeklyOrderFrequencyChanges(userId);
+
+        // 将订单总数数据转换为JSON格式的字符串
+        String jsonResponse = Arrays.toString(weekOrderCounts.toArray());
+
+        // 写入响应
+        out.print(jsonResponse);
+        out.flush();
+    }
+
+    private void monthReact(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        //根据session获取userId
+        Integer userId=Session.getCurrentId(request);
+        OrderService orderService=new OrderServiceImpl();
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        // 使用PrintWriter来写入响应
+        PrintWriter out = response.getWriter();
+
+        // 获取订单总数数据
+        ArrayList<Integer> monthOrderCounts=orderService.calculateMonthlyOrderFrequencyChanges(userId);
+
+        // 将订单总数数据转换为JSON格式的字符串
+        String jsonResponse = Arrays.toString(monthOrderCounts.toArray());
+
+        // 写入响应
+        out.print(jsonResponse);
+        out.flush();
+    }
+
+    /**
+     * 该方法用于分析当前用户在不同时段的活跃程度
+     * @param request
+     * @param response
+     */
+    private void activityAnalysis(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("user/activityTimeZone.jsp").forward(request, response);
+    }
+
+    /**
+     * 该方法用于分析用户每月的点餐频率
+     * @param request
+     * @param response
+     */
+    private void userMonthFrequency(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("user/monthlyOrderFrequency.jsp").forward(request, response);
+
+    }
+
+    /**
+     * 给该方法用于分析用户每星期的点餐频率
+     * @param request
+     * @param response
+     */
+    private void userWeekFrequency(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //获取用户近4个星期的点餐数集合
+        request.getRequestDispatcher("user/weeklyOrderFrequency.jsp").forward(request, response);
+    }
+
+    /**
+     * 该方法用于分析用户的活跃度，现在主要是先转发到一个选择页面，优每周点菜频率变化趋势，每月点餐频率变化趋势和用户在不同时间段的活跃程度三个界面
+     * @param request
+     * @param response
+     */
+    private void activityAnalysisBegin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("user/activityHomePage.jsp").forward(request, response);
     }
 
     /**

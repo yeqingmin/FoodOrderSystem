@@ -35,7 +35,8 @@
                  <li><a href="${pageContext.request.contextPath }/jsp/dish?method=query">菜品操作</a></li>
                  <li><a href="${pageContext.request.contextPath }/jsp/user?method=view">个人中心</a></li>
                  <li><a href="${pageContext.request.contextPath }/jsp/system?method=query">系统消息</a></li>
-                 <li><a href="${pageContext.request.contextPath }/jsp/dish?method=favorView">收藏列表</a></li>
+                 <li><a href="${pageContext.request.contextPath }/jsp/dish?method=favorView">收藏菜品分析</a></li>
+                 <li><a href="${pageContext.request.contextPath }/jsp/order?method=activity">活跃度分析</a></li>
              </ul>
          </nav>
      </div>

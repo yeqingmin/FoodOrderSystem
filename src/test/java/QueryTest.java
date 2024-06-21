@@ -161,4 +161,20 @@ public class QueryTest {
         list=f.getUserFavoriteDishIds(1);
         System.out.println(list);
     }
+
+    @Test
+    public void TestGenderFrequency(){
+        ArrayList<Integer> list=new ArrayList<>();
+        OrderService o=new OrderServiceImpl();
+        list=o.getRoleGroupEvaluationPatterns(1);
+        System.out.println(list);
+    }
+
+    @Test
+    public void TestAgeFrequency(){
+        ArrayList<Integer> list=new ArrayList<>();
+        OrderService o=new OrderServiceImpl();
+        list=o.dishRoleConsumptionDistribution(1);
+        System.out.println(list);
+    }
 }

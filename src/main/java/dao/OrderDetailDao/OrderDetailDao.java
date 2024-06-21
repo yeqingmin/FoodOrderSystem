@@ -28,4 +28,6 @@ public interface OrderDetailDao {
     public int yearlyOnlineDishNumber(Connection connection, int dishId) throws Exception;
 
     public ArrayList<OrderDetail> getDetailsByOrderId(Connection connection, int orderId) throws SQLException;
+
+
 }
