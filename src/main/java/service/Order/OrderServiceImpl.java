@@ -11,7 +11,6 @@ import pojo.OrderDetail;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class OrderServiceImpl implements OrderService{
     OrderDao orderDao=new OrderDaoImpl();
@@ -394,7 +393,7 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public int modifyOrderOnlineOrOffline(int orderId, int isOnline) {
+    public void modifyOrderOnlineOrOffline(int orderId, int isOnline) {
         Connection connection=null;
         int flag=0;
         try{
@@ -411,7 +410,6 @@ public class OrderServiceImpl implements OrderService{
         }finally {
             BaseDao.closeResource(connection,null,null);
         }
-        return flag;
     }
 
     /*一个商店的性别分布，返回男性买家个数，女性买家个数*/
@@ -596,5 +594,46 @@ public class OrderServiceImpl implements OrderService{
             BaseDao.closeResource(connection,null,null);
         }
         return result;
+    }
+
+    public ArrayList<Integer> getUserDailyActivityLevel( int userId){
+
+        Connection connection=null;
+        ArrayList<Integer> result=new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            result=orderDao.getUserDailyActivityLevel(connection,userId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
+    }
+
+    public int getMostVisitedMerchant(String merchantName){
+        Connection connection=null;
+        int merchantId=-1;
+        try{
+            connection= BaseDao.getConnection();
+            merchantId= orderDao.getMostVisitedMerchant(connection,merchantName);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return merchantId;
     }
 }

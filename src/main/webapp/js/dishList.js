@@ -51,4 +51,8 @@ $(function() {
         var obj = $(this);
         window.location.href = path + "/jsp/dish?method=dishPrice&dishId=" + obj.attr("dishid");
     });
+    $(".viewDishToUserAnalysis").on("click",function() {
+        var obj = $(this);
+        window.location.href = path + "/jsp/dish?method=dishPrice&dishId=" + obj.attr("dishid");
+    });
 });

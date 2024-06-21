@@ -177,4 +177,20 @@ public class QueryTest {
         list=o.dishRoleConsumptionDistribution(1);
         System.out.println(list);
     }
+
+    @Test
+    public void TestActivityLevel(){
+        ArrayList<Integer> list=new ArrayList<>();
+        OrderService o=new OrderServiceImpl();
+        list=o.getUserDailyActivityLevel(1);
+        System.out.println(list);
+    }
+
+    @Test
+    public void TestStarMerchant(){
+        int i=0;
+        OrderService o=new OrderServiceImpl();
+        i=o. getMostVisitedMerchant("肯德基");
+        System.out.println(i);
+    }
 }

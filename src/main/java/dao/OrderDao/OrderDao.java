@@ -57,5 +57,11 @@ public interface OrderDao {
 
     public ArrayList<Integer> getRoleGroupEvaluationPatterns(Connection connection, int merchantId) throws Exception;
 
+    //用户近30天的每日各个时间段的活跃程度分析
+    public ArrayList<Integer> getUserDailyActivityLevel(Connection connection, int userId) throws Exception;
+
+    //同名商家中查找客流量最大的商户
+    public int getMostVisitedMerchant(Connection connection , String merchantName) throws Exception;
+
 
 }

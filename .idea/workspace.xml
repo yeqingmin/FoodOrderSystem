@@ -9,7 +9,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b5d2a6a-612e-4175-b6b7-f8acd1ef54e7" name="Changes" comment="" />
+    <list default="true" id="9b5d2a6a-612e-4175-b6b7-f8acd1ef54e7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/activityHomePage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/activityTimeZone.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/customerAnalysis.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/monthly.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/weekly.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/customerAnalysis.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/activityHomePage.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/activityTimeZone.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/monthlyOrderFrequency.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/weeklyOrderFrequency.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Order/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Order/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Order/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Order/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Merchant/merchantServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Merchant/merchantServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Order/OrderServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Order/OrderServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/dishList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/dishList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantCommon/head.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantCommon/head.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/userCommon/head.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/userCommon/head.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/QueryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/QueryTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,66 +76,68 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;JUnit.QueryTest.BiggestBuyers.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.FavourTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.LoyalBuyers.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.LoyalBuyersDishNumbersTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.MonthlyTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.TestAgeFrequency.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.TestFavour.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.TestFrequency.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.TestGenderFrequency.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.WeeklyTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.YearlyTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.addDishToOrderTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.dishFavourTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.dish_getDishByNameAndMerchantTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.getDishReviewTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.getMerchantReviewTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.getMessageTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.getOnlineNumberTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.getOrderList.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.orderTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.reviewDishTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.reviewMerchantTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.QueryTest.test1.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.dishTest.testDishHistory.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.dishTest.testDsihPriceAdd.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.orderTest.addDishToOrderTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.Tomcat9.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/lenovo/Desktop/SEProject&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "JUnit.QueryTest.BiggestBuyers.executor": "Run",
+    "JUnit.QueryTest.FavourTest.executor": "Run",
+    "JUnit.QueryTest.LoyalBuyers.executor": "Run",
+    "JUnit.QueryTest.LoyalBuyersDishNumbersTest.executor": "Run",
+    "JUnit.QueryTest.MonthlyTest.executor": "Run",
+    "JUnit.QueryTest.TestActivityLevel.executor": "Run",
+    "JUnit.QueryTest.TestAgeFrequency.executor": "Run",
+    "JUnit.QueryTest.TestFavour.executor": "Run",
+    "JUnit.QueryTest.TestFrequency.executor": "Run",
+    "JUnit.QueryTest.TestGenderFrequency.executor": "Run",
+    "JUnit.QueryTest.TestStarMerchant.executor": "Run",
+    "JUnit.QueryTest.WeeklyTest.executor": "Run",
+    "JUnit.QueryTest.YearlyTest.executor": "Run",
+    "JUnit.QueryTest.addDishToOrderTest.executor": "Run",
+    "JUnit.QueryTest.dishFavourTest.executor": "Run",
+    "JUnit.QueryTest.dish_getDishByNameAndMerchantTest.executor": "Run",
+    "JUnit.QueryTest.getDishReviewTest.executor": "Run",
+    "JUnit.QueryTest.getMerchantReviewTest.executor": "Run",
+    "JUnit.QueryTest.getMessageTest.executor": "Run",
+    "JUnit.QueryTest.getOnlineNumberTest.executor": "Run",
+    "JUnit.QueryTest.getOrderList.executor": "Run",
+    "JUnit.QueryTest.orderTest.executor": "Run",
+    "JUnit.QueryTest.reviewDishTest.executor": "Run",
+    "JUnit.QueryTest.reviewMerchantTest.executor": "Run",
+    "JUnit.QueryTest.test1.executor": "Run",
+    "JUnit.dishTest.testDishHistory.executor": "Run",
+    "JUnit.dishTest.testDsihPriceAdd.executor": "Run",
+    "JUnit.orderTest.addDishToOrderTest.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Tomcat Server.Tomcat9.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Merging master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/lenovo/Desktop/SEProject",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
-      &quot;MySQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
+      "MySQL"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
-      &quot;MySQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
+      "MySQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\css" />
@@ -128,12 +154,22 @@
       <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\user\merchantManage" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.QueryTest.TestGenderFrequency">
+  <component name="RunManager" selected="JUnit.QueryTest.TestStarMerchant">
     <configuration name="QueryTest.BiggestBuyers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FoodOrderSystem" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="QueryTest" />
       <option name="METHOD_NAME" value="BiggestBuyers" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QueryTest.TestActivityLevel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FoodOrderSystem" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="QueryTest" />
+      <option name="METHOD_NAME" value="TestActivityLevel" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -149,31 +185,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QueryTest.TestFavour" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FoodOrderSystem" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="QueryTest" />
-      <option name="METHOD_NAME" value="TestFavour" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="QueryTest.TestFrequency" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FoodOrderSystem" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="QueryTest" />
-      <option name="METHOD_NAME" value="TestFrequency" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="QueryTest.TestGenderFrequency" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FoodOrderSystem" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="QueryTest" />
       <option name="METHOD_NAME" value="TestGenderFrequency" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QueryTest.TestStarMerchant" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FoodOrderSystem" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="QueryTest" />
+      <option name="METHOD_NAME" value="TestStarMerchant" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -268,20 +294,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.QueryTest.TestActivityLevel" />
+      <item itemvalue="JUnit.QueryTest.TestStarMerchant" />
       <item itemvalue="JUnit.QueryTest.TestAgeFrequency" />
       <item itemvalue="JUnit.QueryTest.TestGenderFrequency" />
       <item itemvalue="JUnit.QueryTest.BiggestBuyers" />
-      <item itemvalue="JUnit.QueryTest.TestFavour" />
-      <item itemvalue="JUnit.QueryTest.TestFrequency" />
       <item itemvalue="Tomcat Server.Tomcat9" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.QueryTest.TestStarMerchant" />
+        <item itemvalue="JUnit.QueryTest.TestActivityLevel" />
         <item itemvalue="JUnit.QueryTest.TestGenderFrequency" />
         <item itemvalue="JUnit.QueryTest.TestAgeFrequency" />
         <item itemvalue="JUnit.QueryTest.BiggestBuyers" />
-        <item itemvalue="JUnit.QueryTest.TestFavour" />
-        <item itemvalue="JUnit.QueryTest.TestFrequency" />
       </list>
     </recent_temporary>
   </component>
@@ -423,6 +449,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/QueryTest.java</url>
+          <line>181</line>
+          <properties class="QueryTest" method="TestActivityLevel">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

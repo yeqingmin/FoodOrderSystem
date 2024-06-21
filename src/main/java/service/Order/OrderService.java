@@ -33,7 +33,7 @@ public interface OrderService {
 
     public ArrayList<Integer> calculateWeeklyOrderFrequencyChanges(int userId);
 
-    public int modifyOrderOnlineOrOffline(int orderId,int isOnline);
+    public void modifyOrderOnlineOrOffline(int orderId, int isOnline);
 
     //下面三个方法是各个商店用户特征分布
 
@@ -58,5 +58,11 @@ public interface OrderService {
     public ArrayList<Integer> getAgeGroupEvaluationPatterns(int merchantId);
 
     public ArrayList<Integer> getRoleGroupEvaluationPatterns(int merchantId);
+
+    //返回一个用户近30天各时间段点餐频率
+    public ArrayList<Integer> getUserDailyActivityLevel( int userId) ;
+
+    //同名商家中卖的最好的一家
+    public int getMostVisitedMerchant(String merchantName);
 
 }

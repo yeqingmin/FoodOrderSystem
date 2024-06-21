@@ -4,6 +4,7 @@ import clojure.lang.IFn;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import com.mysql.cj.util.StringUtils;
 import pojo.*;
 import service.Dish.DishService;
@@ -82,8 +83,69 @@ public class merchantServlet extends HttpServlet {
             this.analysis(request,response);
         }else if(method!=null && method.equals("loyalUser")){
             this.getLoyalUsers(request,response);
+        }else if(method!=null&&method.equals("getGenderDistribution")){
+            this.getGenderDistribution(request,response);
+        }else if(method!=null&&method.equals("getAgeDistribution")){
+            this.getAgeDistribution(request,response);
+        }else if(method!=null&&method.equals("getRoleDistribution")){
+            this.getRoleDistribution(request,response);
+        }else if(method!=null&&method.equals("customerAnalysis")){
+            this.customerAnalysis(request,response);
         }
 
+    }
+
+    private void customerAnalysis(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("merchant/customerAnalysis.jsp").forward(request, response);
+    }
+
+    private void getGenderDistribution(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // 设置响应的内容类型和字符集
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        //根据session获取当前merchant的id
+        Integer merchantId=Session.getCurrentId(request);
+        // 获取用户身份的分布数据
+        OrderService orderService=new OrderServiceImpl();
+        ArrayList<Integer> genderDistribution=orderService.GenderConsumptionDistribution(merchantId);
+
+        // 使用Gson将数据转换为JSON格式并返回
+        String jsonResponse = new Gson().toJson(genderDistribution);
+        response.getWriter().write(jsonResponse);
+    }
+
+    private void getAgeDistribution(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // 设置响应的内容类型和字符集
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        // 获取年龄分布数据
+        //根据session获取当前merchant的id
+        Integer merchantId=Session.getCurrentId(request);
+        // 获取用户年龄的分布数据
+        OrderService orderService=new OrderServiceImpl();
+        ArrayList<Integer> ageDistribution=orderService.AgeConsumptionDistribution(merchantId);
+
+        // 使用Gson将数据转换为JSON格式并返回
+        String jsonResponse = new Gson().toJson(ageDistribution);
+        response.getWriter().write(jsonResponse);
+    }
+
+    private void getRoleDistribution(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // 设置响应的内容类型和字符集
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        //根据session获取当前merchant的id
+        Integer merchantId=Session.getCurrentId(request);
+        // 获取用户身份的分布数据
+        OrderService orderService=new OrderServiceImpl();
+        ArrayList<Integer> roleDistribution=orderService.RoleConsumptionDistribution(merchantId);
+
+        // 使用Gson将数据转换为JSON格式并返回
+        String jsonResponse = new Gson().toJson(roleDistribution);
+        response.getWriter().write(jsonResponse);
     }
 
     /**

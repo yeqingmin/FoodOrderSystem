@@ -627,5 +627,76 @@ public class OrderDaoImpl implements OrderDao{
         }
         return frequencies;
     }
+
+
+    public ArrayList<Integer> getUserDailyActivityLevel(Connection connection, int userId) throws Exception{
+        ArrayList<Integer> frequencies = new ArrayList<>();
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        int count = 0;
+        if (null != connection) {
+            String sql1 = "SELECT COUNT(*) FROM `order` WHERE orderTime >= (CURDATE() - INTERVAL 30 DAY) AND TIME(orderTime) BETWEEN '00:00:00' AND '06:00:00' AND userId = ?";
+            pstm = connection.prepareStatement(sql1);
+            Object[] params1 = {userId};
+            rs = BaseDao.execute(connection, pstm, rs, sql1, params1);
+            if (rs.next()){
+                count = rs.getInt(1);
+                frequencies.add(count);
+            }
+
+            String sql2 = "SELECT COUNT(*) FROM `order` WHERE orderTime >= (CURDATE() - INTERVAL 30 DAY) AND TIME(orderTime) BETWEEN '06:00:00' AND '12:00:00' AND userId = ?";
+            pstm = connection.prepareStatement(sql2);
+            Object[] params2 = {userId};
+            rs = BaseDao.execute(connection, pstm, rs, sql2, params2);
+            if (rs.next()){
+                count = rs.getInt(1);
+                frequencies.add(count);
+            }
+
+            String sql3 = "SELECT COUNT(*) FROM `order` WHERE orderTime >= (CURDATE() - INTERVAL 30 DAY) AND TIME(orderTime) BETWEEN '12:00:00' AND '18:00:00' AND userId = ?";
+            pstm = connection.prepareStatement(sql3);
+            Object[] params3 = {userId};
+            rs = BaseDao.execute(connection, pstm, rs, sql3, params3);
+            if (rs.next()){
+                count = rs.getInt(1);
+                frequencies.add(count);
+            }
+
+            String sql4 = "SELECT COUNT(*) FROM `order` WHERE orderTime >= (CURDATE() - INTERVAL 30 DAY) AND TIME(orderTime) BETWEEN '18:00:00' AND '24:00:00' AND userId = ?";
+            pstm = connection.prepareStatement(sql4);
+            Object[] params4 = {userId};
+            rs = BaseDao.execute(connection, pstm, rs, sql4, params4);
+            if (rs.next()){
+                count = rs.getInt(1);
+                frequencies.add(count);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return frequencies;
+    }
+
+    public int getMostVisitedMerchant(Connection connection , String merchantName) throws Exception{
+        int starMerchant=-1;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if (null != connection) {
+            String sql = "SELECT m.merchantId as ID, count(*) as salesVolume\n" +
+                    "FROM `order` as o \n" +
+                    "JOIN `merchant` as m ON m.merchantId = o.merchantId\n" +
+                    "WHERE m.merchantName = ?\n" +
+                    "GROUP BY m.merchantId\n" +
+                    "ORDER BY salesVolume DESC\n" +
+                    "LIMIT 1";
+            pstm = connection.prepareStatement(sql);
+            Object[] params = {merchantName};
+            rs = BaseDao.execute(connection, pstm, rs, sql, params);
+            if(rs.next()){
+                starMerchant = rs.getInt(2);
+            }
+            BaseDao.closeResource(null, pstm, rs);
+        }
+        return starMerchant;
+
+    }
 }
 
