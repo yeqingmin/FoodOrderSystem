@@ -56,6 +56,7 @@
                     <span><a class="deleteDish" href="javascript:;" dishId=${dish.dishId} dishName=${dish.dishName}><img
                             src="${pageContext.request.contextPath }/images/schu.png" alt="删除"
                             title="删除"/></a></span>
+                    <span><a class="userImage" href="javascript:;" dishId=${dish.dishId} dishName=${dish.dishName}>菜品用户画像</a></span>
                 </td>
             </tr>
         </c:forEach>

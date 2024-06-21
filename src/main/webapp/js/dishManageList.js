@@ -55,4 +55,8 @@ $(function(){
         changeDLGContent("你确定要删除菜品【"+dishObj.attr("dishName")+"】吗？");
         openYesOrNoDLG();
     });
+    $(".userImage").on("click",function(){
+        const obj = $(this);
+        window.location.href=path+"/jsp/dish?method=userImage&dishId="+ obj.attr("dishId");
+    });
 });

@@ -35,6 +35,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class merchantServlet extends HttpServlet {
@@ -79,20 +80,85 @@ public class merchantServlet extends HttpServlet {
             this.favorMerchant(request, response);
         } else if (method != null && method.equals("queryReview")) {
             this.queryReview(request, response);
-        } else if(method !=null && method.equals("analysis")){
-            this.analysis(request,response);
-        }else if(method!=null && method.equals("loyalUser")){
-            this.getLoyalUsers(request,response);
-        }else if(method!=null&&method.equals("getGenderDistribution")){
-            this.getGenderDistribution(request,response);
-        }else if(method!=null&&method.equals("getAgeDistribution")){
-            this.getAgeDistribution(request,response);
-        }else if(method!=null&&method.equals("getRoleDistribution")){
-            this.getRoleDistribution(request,response);
-        }else if(method!=null&&method.equals("customerAnalysis")){
-            this.customerAnalysis(request,response);
+        } else if (method != null && method.equals("analysis")) {
+            this.analysis(request, response);
+        } else if (method != null && method.equals("loyalUser")) {
+            this.getLoyalUsers(request, response);
+        } else if (method != null && method.equals("getGenderDistribution")) {
+            this.getGenderDistribution(request, response);
+        } else if (method != null && method.equals("getAgeDistribution")) {
+            this.getAgeDistribution(request, response);
+        } else if (method != null && method.equals("getRoleDistribution")) {
+            this.getRoleDistribution(request, response);
+        } else if (method != null && method.equals("customerAnalysis")) {
+            this.customerAnalysis(request, response);
+        } else if (method != null && method.equals("dishUserImage")) {
+            this.dishUserImage(request, response);
+        } else if (method != null && method.equals("getData")) {
+            this.getData(request, response);
         }
 
+    }
+
+    private void getData(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        //根据session获取当前商户的id
+        Integer merchantId = Session.getCurrentId(request);
+
+        /*服务信息：
+         //下面三个方法是各个性别，年龄段，角色在一个商店的评价分布和打分情况
+    //返回男生点评数量，女生点评数量，男生平均打分，女生平均打分
+    public ArrayList<Integer> getGenderGroupEvaluationPatterns(int merchantId);
+
+    //同上，先返回点评数量，再返回平局评分
+    public ArrayList<Integer> getAgeGroupEvaluationPatterns(int merchantId);
+
+    public ArrayList<Integer> getRoleGroupEvaluationPatterns(int merchantId);
+         */
+
+        // 获取数据
+        OrderService orderService=new OrderServiceImpl();
+
+        ArrayList<Integer> commentAmount = new ArrayList<>();
+        ArrayList<Integer> rating = new ArrayList<>();
+
+        ArrayList<Integer> gender=orderService.getGenderGroupEvaluationPatterns(merchantId);
+        ArrayList<Integer> age=orderService.getAgeGroupEvaluationPatterns(merchantId);
+        ArrayList<Integer> role=orderService.getRoleGroupEvaluationPatterns(merchantId);
+
+        commentAmount.add(gender.get(0));
+        commentAmount.add(gender.get(1));
+        rating.add(gender.get(2));
+        rating.add(gender.get(3));
+
+        commentAmount.add(age.get(0));
+        commentAmount.add(age.get(1));
+        commentAmount.add(age.get(2));
+        commentAmount.add(age.get(3));
+        rating.add(age.get(4));
+        rating.add(age.get(5));
+        rating.add(age.get(6));
+        rating.add(age.get(7));
+
+        commentAmount.add(role.get(0));
+        commentAmount.add(role.get(1));
+        rating.add(role.get(2));
+        rating.add(role.get(3));
+
+
+        // 创建一个结果对象
+        JSONObject result = new JSONObject();
+        result.put("commentAmount", commentAmount);
+        result.put("rating", rating);
+
+        // 写入响应
+        response.getWriter().write(result.toJSONString());
+    }
+
+    private void dishUserImage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("merchant/dishUserImage.jsp").forward(request, response);
     }
 
     private void customerAnalysis(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -105,10 +171,10 @@ public class merchantServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         //根据session获取当前merchant的id
-        Integer merchantId=Session.getCurrentId(request);
+        Integer merchantId = Session.getCurrentId(request);
         // 获取用户身份的分布数据
-        OrderService orderService=new OrderServiceImpl();
-        ArrayList<Integer> genderDistribution=orderService.GenderConsumptionDistribution(merchantId);
+        OrderService orderService = new OrderServiceImpl();
+        ArrayList<Integer> genderDistribution = orderService.GenderConsumptionDistribution(merchantId);
 
         // 使用Gson将数据转换为JSON格式并返回
         String jsonResponse = new Gson().toJson(genderDistribution);
@@ -122,10 +188,10 @@ public class merchantServlet extends HttpServlet {
 
         // 获取年龄分布数据
         //根据session获取当前merchant的id
-        Integer merchantId=Session.getCurrentId(request);
+        Integer merchantId = Session.getCurrentId(request);
         // 获取用户年龄的分布数据
-        OrderService orderService=new OrderServiceImpl();
-        ArrayList<Integer> ageDistribution=orderService.AgeConsumptionDistribution(merchantId);
+        OrderService orderService = new OrderServiceImpl();
+        ArrayList<Integer> ageDistribution = orderService.AgeConsumptionDistribution(merchantId);
 
         // 使用Gson将数据转换为JSON格式并返回
         String jsonResponse = new Gson().toJson(ageDistribution);
@@ -138,10 +204,10 @@ public class merchantServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         //根据session获取当前merchant的id
-        Integer merchantId=Session.getCurrentId(request);
+        Integer merchantId = Session.getCurrentId(request);
         // 获取用户身份的分布数据
-        OrderService orderService=new OrderServiceImpl();
-        ArrayList<Integer> roleDistribution=orderService.RoleConsumptionDistribution(merchantId);
+        OrderService orderService = new OrderServiceImpl();
+        ArrayList<Integer> roleDistribution = orderService.RoleConsumptionDistribution(merchantId);
 
         // 使用Gson将数据转换为JSON格式并返回
         String jsonResponse = new Gson().toJson(roleDistribution);
@@ -150,36 +216,38 @@ public class merchantServlet extends HttpServlet {
 
     /**
      * 获取当前商户的忠实用户
+     *
      * @param request
      * @param response
      */
     private void getLoyalUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int merchantId=Session.getCurrentId(request);
-        OrderService orderService=new OrderServiceImpl();
-        UserService userService=new UserServiceImpl();
-        ArrayList<Integer> userListId=orderService.getLoyalBuyers(merchantId);
-        ArrayList<User> users=new ArrayList<>();
-        for(int id:userListId){
-            User user=userService.getUserById(id);
+        int merchantId = Session.getCurrentId(request);
+        OrderService orderService = new OrderServiceImpl();
+        UserService userService = new UserServiceImpl();
+        ArrayList<Integer> userListId = orderService.getLoyalBuyers(merchantId);
+        ArrayList<User> users = new ArrayList<>();
+        for (int id : userListId) {
+            User user = userService.getUserById(id);
             users.add(user);
         }
-        request.setAttribute("userList",users);
+        request.setAttribute("userList", users);
         request.getRequestDispatcher("merchant/loyalUsers.jsp").forward(request, response);
     }
 
     /**
      * 该方法用于显示数据分析页面,需要根据dishId计算线上和线下的销量，然后需要得到购买其最多的用户
+     *
      * @param request
      * @param response
      */
     private void analysis(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //根据merchantId获取当前merchant的菜单
-        int merchantId=Session.getCurrentId(request);
+        int merchantId = Session.getCurrentId(request);
         String pageIndex = request.getParameter("pageIndex");
 
-        MerchantService merchantService=new MerchantServiceImpl();
-        DishService dishService=new DishServiceImpl();             //获取菜单和菜品总数
-        OrderService orderService=new OrderServiceImpl();         //获取线上线下销量和购买最多的用户
+        MerchantService merchantService = new MerchantServiceImpl();
+        DishService dishService = new DishServiceImpl();             //获取菜单和菜品总数
+        OrderService orderService = new OrderServiceImpl();         //获取线上线下销量和购买最多的用户
 
         ArrayList<Dish> menu = null;
         //设置页面容量
@@ -209,7 +277,7 @@ public class merchantServlet extends HttpServlet {
             currentPageNo = totalPageCount;
         }
 
-        menu = dishService.getDishWithSalesAndUserListByMerchantId(merchantId,currentPageNo,pageSize);
+        menu = dishService.getDishWithSalesAndUserListByMerchantId(merchantId, currentPageNo, pageSize);
         request.setAttribute("dishList", menu);
         request.setAttribute("totalPageCount", totalPageCount);
         request.setAttribute("totalCount", totalCount);

@@ -68,7 +68,31 @@ public class OrderServlet extends HttpServlet {
             this.monthReact(request,response);
         }else if(method!=null && method.equals("weekReact")){
             this.weekReact(request,response);
+        }else if(method!=null && method.equals("timeZoneReact")){
+            this.timeZoneReact(request,response);
         }
+    }
+
+    private void timeZoneReact(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //根据session获取userId
+        Integer userId=Session.getCurrentId(request);
+        OrderService orderService=new OrderServiceImpl();
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        // 使用PrintWriter来写入响应
+        PrintWriter out = response.getWriter();
+
+        // 获取订单总数数据
+        ArrayList<Integer> timeZoneCounts=orderService.getUserDailyActivityLevel(userId);
+
+        // 将订单总数数据转换为JSON格式的字符串
+        String jsonResponse = Arrays.toString(timeZoneCounts.toArray());
+
+        // 写入响应
+        out.print(jsonResponse);
+        out.flush();
     }
 
     private void weekReact(HttpServletRequest request, HttpServletResponse response) throws IOException {

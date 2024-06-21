@@ -595,4 +595,45 @@ public class OrderServiceImpl implements OrderService{
         }
         return result;
     }
+
+    public ArrayList<Integer> getUserDailyActivityLevel( int userId){
+
+        Connection connection=null;
+        ArrayList<Integer> result=new ArrayList<>();
+        try{
+            connection= BaseDao.getConnection();
+            result=orderDao.getUserDailyActivityLevel(connection,userId);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return result;
+    }
+
+    public int getMostVisitedMerchant(String merchantName){
+        Connection connection=null;
+        int merchantId=-1;
+        try{
+            connection= BaseDao.getConnection();
+            merchantId= orderDao.getMostVisitedMerchant(connection,merchantName);
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                System.out.println("rollback==================");
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        return merchantId;
+    }
 }

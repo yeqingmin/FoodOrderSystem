@@ -14,7 +14,6 @@
         <span>活跃度分析</span>
     </div>
     <div class="providerAddBtn">
-<%--        由于当前页面的userId可以根据session直接获取到，所以说不用传参数进去--%>
         <input type="button" class="week" value="查看每周点餐频率">
         <input type="button" class="month"  value="查看每月点餐频率">
         <input type="button" class="activity" value="查看不同时段的活跃程度">

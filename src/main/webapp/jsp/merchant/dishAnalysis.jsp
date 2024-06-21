@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="/jsp/user/userCommon/head.jsp"%>
+<%@include file="/jsp/merchant/merchantCommon/head.jsp"%>
 <div class="right">
     <div class="location">
         <strong>你现在所在的位置是:</strong>
@@ -66,6 +66,6 @@
     </div>
 </div>
 
-<%@include file="/jsp/user/userCommon/foot.jsp" %>
+<%@include file="/jsp/merchant/merchantCommon/foot.jsp" %>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/merchantMenuReviewView.js"></script>
 
