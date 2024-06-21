@@ -629,6 +629,8 @@ public class merchantServlet extends HttpServlet {
         ArrayList<Merchant> merchantList = null;
         MerchantService merchantService = new MerchantServiceImpl();
 
+        OrderService orderService=new OrderServiceImpl();
+
 
         //得到前端传来的数据
         String merchantName = request.getParameter("merchantName");
@@ -637,8 +639,10 @@ public class merchantServlet extends HttpServlet {
         }
         //根据前端传给我们的merchantName搜索对应的merchant列表
         merchantList = merchantService.getSimpleMerchantByName(merchantName);
-
-
+        int merchantBestId=orderService.getMostVisitedMerchant(merchantName);
+        Merchant merchantBest=merchantService.getMerchantById(merchantBestId);
+        System.out.println(merchantBest);
+        request.setAttribute("merchantBest",merchantBest);
         //这里设置的属性是后端数据库查出来的内容，然后转发给merchantList.jsp（下一个跳转页面的请求属性，让他来渲染我们查到的信息）
         request.setAttribute("merchantList", merchantList);
 

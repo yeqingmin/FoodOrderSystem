@@ -680,6 +680,7 @@ public class OrderDaoImpl implements OrderDao{
         PreparedStatement pstm = null;
         ResultSet rs = null;
         if (null != connection) {
+            //todo 修改sql查询的bug
             String sql = "SELECT m.merchantId as ID, count(*) as salesVolume\n" +
                     "FROM `order` as o \n" +
                     "JOIN `merchant` as m ON m.merchantId = o.merchantId\n" +
