@@ -34,6 +34,7 @@
                  <li><a href="${pageContext.request.contextPath }/jsp/dish?method=merchantManage">菜单管理</a></li>
                  <li><a href="${pageContext.request.contextPath }/jsp/merchant?method=analysis">菜品数据分析</a></li>
                  <li><a href="${pageContext.request.contextPath }/jsp/merchant?method=loyalUser">忠实用户列表</a></li>
+                 <li><a href="${pageContext.request.contextPath }/jsp/merchant?method=customerAnalysis">用户画像</a></li>
              </ul>
          </nav>
      </div>
