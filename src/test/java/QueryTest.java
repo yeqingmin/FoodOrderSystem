@@ -166,7 +166,7 @@ public class QueryTest {
     public void TestGenderFrequency(){
         ArrayList<Integer> list=new ArrayList<>();
         OrderService o=new OrderServiceImpl();
-        list=o.getRoleGroupEvaluationPatterns(1);
+        list=o.GenderConsumptionDistribution(1);
         System.out.println(list);
     }
 
