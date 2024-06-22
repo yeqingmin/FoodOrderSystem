@@ -691,7 +691,7 @@ public class OrderDaoImpl implements OrderDao{
             Object[] params = {merchantName};
             rs = BaseDao.execute(connection, pstm, rs, sql, params);
             if(rs.next()){
-                starMerchant = rs.getInt(2);
+                starMerchant = rs.getInt(1);
             }
             BaseDao.closeResource(null, pstm, rs);
         }
