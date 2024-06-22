@@ -69,12 +69,13 @@ option = {
 };
 
 $(document).ready(function() {
+    const dishId = $('#dishId').val();
     myChart.setOption(option);
     function fetchAndSetData(method, seriesIndex,startIndex) {
         return $.ajax({
-            url:  path + "/jsp/merchant",
+            url:  path + "/jsp/dish",
             type: 'GET',
-            data: {method: method},
+            data: {method: method ,dishId:dishId},
             dataType: 'json',
         }).done(function(data) {
             const seriesData = data.map(function (value, index) {
@@ -99,9 +100,5 @@ $(document).ready(function() {
     ).then(function() {
         // 所有数据都加载完成后的回调
         console.log('All data loaded and chart updated.');
-    });
-
-    $(".rate").on("click",function(){
-        window.location.href = path + "/jsp/merchant?method=dishUserImage";
     });
 });

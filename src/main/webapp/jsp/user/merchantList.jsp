@@ -24,6 +24,7 @@
     </div>
     <!--商户表格样式-->
     <table class="providerTable" cellpadding="0" cellspacing="0">
+        <h3>最高销量：地址为${merchantBest.merchantAddr}的${merchantBest.merchantName}</h3>
         <tr class="firstTr">
 <%--            <th width="10%">商户编码</th>--%>
             <th width="20%">商店名称</th>

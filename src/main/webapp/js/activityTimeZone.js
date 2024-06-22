@@ -1,91 +1,59 @@
 const chartDom = $('#main');
 const myChart = echarts.init(chartDom[0]);
 
-let option;
-
-option = {
-    title: {
-        text: 'Nightingale Chart',
-        subtext: 'Fake Data',
-        left: 'center'
+// 定义option的初始状态
+const option = {
+    xAxis: {
+        type: 'category',
+        data:  ['0:00-6:00 am', '6:00 am - 12:00 am', '12:00 pm - 18:00 pm', '18:00 pm - 24:00 pm']
     },
-    tooltip: {
-        trigger: 'item',
-        formatter: '{a} <br/>{b} : {c} ({d}%)'
-    },
-    legend: {
-        left: 'center',
-        top: 'bottom',
-        data: [
-            'rose1',
-            'rose2',
-            'rose3',
-            'rose4',
-            'rose5',
-            'rose6',
-            'rose7',
-            'rose8'
-        ]
-    },
-    toolbox: {
-        show: true,
-        feature: {
-            mark: { show: true },
-            dataView: { show: true, readOnly: false },
-            restore: { show: true },
-            saveAsImage: { show: true }
-        }
+    yAxis: {
+        type: 'value',
+        min: 0,
+        max: 30
     },
     series: [
         {
-            name: 'Radius Mode',
-            type: 'pie',
-            radius: [20, 140],
-            center: ['25%', '50%'],
-            roseType: 'radius',
-            itemStyle: {
-                borderRadius: 5
-            },
-            label: {
-                show: false
-            },
-            emphasis: {
-                label: {
-                    show: true
-                }
-            },
-            data: [
-                { value: 40, name: 'rose 1' },
-                { value: 33, name: 'rose 2' },
-                { value: 28, name: 'rose 3' },
-                { value: 22, name: 'rose 4' },
-                { value: 20, name: 'rose 5' },
-                { value: 15, name: 'rose 6' },
-                { value: 12, name: 'rose 7' },
-                { value: 10, name: 'rose 8' }
-            ]
-        },
-        {
-            name: 'Area Mode',
-            type: 'pie',
-            radius: [20, 140],
-            center: ['75%', '50%'],
-            roseType: 'area',
-            itemStyle: {
-                borderRadius: 5
-            },
-            data: [
-                { value: 30, name: 'rose 1' },
-                { value: 28, name: 'rose 2' },
-                { value: 26, name: 'rose 3' },
-                { value: 24, name: 'rose 4' },
-                { value: 22, name: 'rose 5' },
-                { value: 20, name: 'rose 6' },
-                { value: 18, name: 'rose 7' },
-                { value: 16, name: 'rose 8' }
-            ]
+            data: [], // 初始化为空数组，稍后用Ajax获取的数据填充
+            type: 'line',
+            areaStyle: {}
         }
     ]
 };
 
+// 确保option设置完毕后才调用setOption
 option && myChart.setOption(option);
+
+// 定义updateChart函数，用于更新图表数据
+function updateChart(obj) {
+    // 使用jQuery的Ajax方法调用后端接口
+    $.ajax({
+        url:  path + "/jsp/order",
+        type: 'GET',
+        data: {method:"timeZoneReact"},
+        dataType: 'json',
+        success: function(response) {
+            // 假设后端返回的数据格式是一个包含四个整数的数组
+            if (Array.isArray(response) && response.length === 4) {
+                // 更新x轴和y轴的数据
+                option.xAxis.data =  ['0:00-6:00 am', '6:00 am - 12:00 am', '12:00 pm - 18:00 pm', '18:00 pm - 24:00 pm'];
+                option.series[0].data = response;
+
+                // 使用新的option更新图表
+                myChart.setOption(option);
+            } else {
+                console.error('Invalid response format');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching data: ' + error);
+        }
+    });
+}
+
+// 绑定点击事件
+$(function() {
+    $('#update').on('click', function() {
+        updateChart($(this));
+    });
+});

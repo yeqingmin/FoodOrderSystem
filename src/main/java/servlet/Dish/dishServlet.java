@@ -76,8 +76,69 @@ public class dishServlet extends HttpServlet {
             this.viewOldPrice(request,response);
         }else if(method!=null &&method.equals("favorView")){
             this.favorView(request,response);
+        }else if(method!=null &&method.equals("userImage")){
+            this.userImage(request,response);
+        }else if(method!=null&&method.equals("getGenderDistribution")){
+            this.getGenderDistribution(request,response);
+        }else if(method!=null&&method.equals("getAgeDistribution")){
+            this.getAgeDistribution(request,response);
+        }else if(method!=null&&method.equals("getRoleDistribution")){
+            this.getRoleDistribution(request,response);
         }
 
+
+    }
+
+    private void getRoleDistribution(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // 设置响应的内容类型和字符集
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        String dishId=request.getParameter("dishId");
+        // 获取用户身份的分布数据
+        OrderService orderService=new OrderServiceImpl();
+        ArrayList<Integer> roleDistribution=orderService.dishRoleConsumptionDistribution(Integer.parseInt(dishId));
+
+        // 使用Gson将数据转换为JSON格式并返回
+        String jsonResponse = new Gson().toJson(roleDistribution);
+        response.getWriter().write(jsonResponse);
+    }
+
+    private void getAgeDistribution(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // 设置响应的内容类型和字符集
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        String dishId=request.getParameter("dishId");
+        // 获取用户身份的分布数据
+        OrderService orderService=new OrderServiceImpl();
+        ArrayList<Integer> ageDistribution=orderService.dishAgeConsumptionDistribution(Integer.parseInt(dishId));
+
+        // 使用Gson将数据转换为JSON格式并返回
+        String jsonResponse = new Gson().toJson(ageDistribution);
+        response.getWriter().write(jsonResponse);
+    }
+
+    private void getGenderDistribution(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // 设置响应的内容类型和字符集
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        String dishId=request.getParameter("dishId");
+        // 获取用户身份的分布数据
+        OrderService orderService=new OrderServiceImpl();
+        ArrayList<Integer> genderDistribution=orderService.dishGenderConsumptionDistribution(Integer.parseInt(dishId));
+
+        // 使用Gson将数据转换为JSON格式并返回
+        String jsonResponse = new Gson().toJson(genderDistribution);
+        response.getWriter().write(jsonResponse);
+    }
+
+    private void userImage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String dishId=request.getParameter("dishId");
+        Dish dish=dishService.getDishById(Integer.parseInt(dishId));
+        request.setAttribute("dish",dish);
+        request.getRequestDispatcher("merchant/dishCustomerAnalysis.jsp").forward(request, response);
     }
     /*
     当前方法用于显示用户收藏的菜品列表，以及其在一段时间内不同点餐方式的销量
