@@ -16,7 +16,7 @@
     <div class="providerView">
         <p><strong>商户名称：</strong><span>${merchant.merchantName}</span></p>
         <p><strong>商户地址：</strong><span>${merchant.merchantAddr}</span></p>
-        <p><strong>商户菜单：</strong></p>
+        <p><strong>主打菜品：</strong><span>${merchant.featureDish}</span></p>
 
         <div class="providerAddBtn">
             <input type="button" id="back" name="back" value="返回">

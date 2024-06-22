@@ -18,6 +18,7 @@
         <%--            <p><strong>用户编号：</strong><span>${user.userCode }</span></p>--%>
         <p><strong>商户名称：</strong><span>${merchant.merchantName }</span></p>
         <p><strong>商户地址：</strong><span>${merchant.merchantAddr }</span></p>
+        <p><strong>主打菜品：</strong><span>${merchant.featureDish }</span></p>
         <p>
             <strong>商户菜单：</strong>
         <form id="menuForm" method="get" action="${pageContext.request.contextPath }/jsp/merchant">
@@ -31,8 +32,10 @@
         <%--        <p><strong>用户地址：</strong><span>${user.address }</span></p>--%>
         <%--        <p><strong>用户角色：</strong><span>${user.userRoleName}</span></p>--%>
         <div class="providerAddBtn">
-            <input type="button" class="favor" merchantId=${merchant.merchantId} merchantName=${merchant.merchantName} value="收藏商家">
-            <input type="button" class="queryReview" merchantId=${merchant.merchantId} merchantName=${merchant.merchantName} value="查看评价和评分">
+            <input type="button" class="favor" merchantId=${merchant.merchantId} merchantName=${merchant.merchantName}
+                   value="收藏商家">
+            <input type="button" class="queryReview"
+                   merchantId=${merchant.merchantId} merchantName=${merchant.merchantName} value="查看评价和评分">
         </div>
         <div class="providerAddBtn">
             <%--            先提交隐藏表单交给后端merchantServlet进行一个方法：createOrder先插入一条Order数据（获取merchantId通过表单提交,userId通过获取session），然后重定向到orderPage.jsp页面--%>

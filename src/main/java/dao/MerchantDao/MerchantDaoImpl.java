@@ -31,7 +31,7 @@ public class MerchantDaoImpl implements MerchantDao{
                 merchant.setMerchantId(Integer.valueOf(resultSet.getString("merchantId")));
                 merchant.setMerchantName(resultSet.getString("merchantName"));
                 merchant.setMerchantAddr(resultSet.getString("merchantAddr"));
-//                merchant.setFeatureDish(resultSet.getString("featureDish"));
+                merchant.setFeatureDish(resultSet.getString("featureDish"));
                 merchants.add(merchant);
             }
             BaseDao.closeResource(null,preparedStatement,resultSet);
@@ -60,7 +60,7 @@ public class MerchantDaoImpl implements MerchantDao{
                 merchant.setMerchantId(id);
                 merchant.setMerchantName(resultSet.getString("merchantName"));
                 merchant.setMerchantAddr(resultSet.getString("merchantAddr"));
-//                merchant.setFeatureDish(resultSet.getString("featureDish"));
+                merchant.setFeatureDish(resultSet.getString("featureDish"));
             }
             BaseDao.closeResource(connection,preparedStatement,resultSet);
         }

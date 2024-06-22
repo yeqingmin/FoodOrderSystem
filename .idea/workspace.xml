@@ -9,7 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c48bddf-91d8-4e91-92f2-97591350ca12" name="Changes" comment="" />
+    <list default="true" id="6c48bddf-91d8-4e91-92f2-97591350ca12" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/merchantview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/createEntity.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/createEntity.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DishDao/DishDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DishDao/DishDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/MerchantDao/MerchantDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/MerchantDao/MerchantDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDao/OrderDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/Dish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/admin/adminCommon/head.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/admin/adminCommon/head.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantMenuViewToUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantMenuViewToUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantUserView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantUserView.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/merchant/merchantView.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/dishView.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/merchantList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/merchantList.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,10 +32,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Jsp File" />
         <option value="JavaScript File" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -52,68 +66,68 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "JUnit.QueryTest.BiggestBuyers.executor": "Run",
-    "JUnit.QueryTest.FavourTest.executor": "Run",
-    "JUnit.QueryTest.LoyalBuyers.executor": "Run",
-    "JUnit.QueryTest.LoyalBuyersDishNumbersTest.executor": "Run",
-    "JUnit.QueryTest.MonthlyTest.executor": "Run",
-    "JUnit.QueryTest.TestActivityLevel.executor": "Run",
-    "JUnit.QueryTest.TestAgeFrequency.executor": "Run",
-    "JUnit.QueryTest.TestFavour.executor": "Run",
-    "JUnit.QueryTest.TestFrequency.executor": "Run",
-    "JUnit.QueryTest.TestGenderFrequency.executor": "Run",
-    "JUnit.QueryTest.TestStarMerchant.executor": "Run",
-    "JUnit.QueryTest.WeeklyTest.executor": "Run",
-    "JUnit.QueryTest.YearlyTest.executor": "Run",
-    "JUnit.QueryTest.addDishToOrderTest.executor": "Run",
-    "JUnit.QueryTest.dishFavourTest.executor": "Run",
-    "JUnit.QueryTest.dish_getDishByNameAndMerchantTest.executor": "Run",
-    "JUnit.QueryTest.getDishReviewTest.executor": "Run",
-    "JUnit.QueryTest.getMerchantReviewTest.executor": "Run",
-    "JUnit.QueryTest.getMessageTest.executor": "Run",
-    "JUnit.QueryTest.getOnlineNumberTest.executor": "Run",
-    "JUnit.QueryTest.getOrderList.executor": "Run",
-    "JUnit.QueryTest.orderTest.executor": "Run",
-    "JUnit.QueryTest.reviewDishTest.executor": "Run",
-    "JUnit.QueryTest.reviewMerchantTest.executor": "Run",
-    "JUnit.QueryTest.test1.executor": "Run",
-    "JUnit.dishTest.testDishHistory.executor": "Run",
-    "JUnit.dishTest.testDsihPriceAdd.executor": "Run",
-    "JUnit.orderTest.addDishToOrderTest.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat9.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/lenovo/Desktop/SEProject",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;JUnit.QueryTest.BiggestBuyers.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.FavourTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.LoyalBuyers.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.LoyalBuyersDishNumbersTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.MonthlyTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.TestActivityLevel.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.TestAgeFrequency.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.TestFavour.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.TestFrequency.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.TestGenderFrequency.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.TestStarMerchant.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.WeeklyTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.YearlyTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.addDishToOrderTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.dishFavourTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.dish_getDishByNameAndMerchantTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.getDishReviewTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.getMerchantReviewTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.getMessageTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.getOnlineNumberTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.getOrderList.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.orderTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.reviewDishTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.reviewMerchantTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueryTest.test1.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.dishTest.testDishHistory.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.dishTest.testDsihPriceAdd.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.orderTest.addDishToOrderTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat9.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/lenovo/Desktop/SEProject&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
-      "MySQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;MySQL&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
-      "MySQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
+      &quot;MySQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\css" />
@@ -123,11 +137,11 @@
       <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\java\dao" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\merchant" />
       <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\admin" />
       <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\user" />
       <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\user\merchant" />
       <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\user\dish" />
+      <recent name="E:\Courses\DataBase\FoodOrderSystem\src\main\webapp\jsp\user\merchantManage" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat9">
@@ -330,7 +344,8 @@
       <workItem from="1718274007137" duration="4845000" />
       <workItem from="1718365185232" duration="2595000" />
       <workItem from="1718455850426" duration="369000" />
-      <workItem from="1718954122105" duration="16539000" />
+      <workItem from="1718777323807" duration="1251000" />
+      <workItem from="1718887888091" duration="10490000" />
     </task>
     <servers />
   </component>

@@ -25,6 +25,7 @@
         <p><strong>菜品收藏量：</strong><span>${dish.dishFavourNumber }</span></p>
         <p><strong>菜品线上销量：</strong><span>${onlineOrderNum}</span></p>
         <p><strong>菜品线下销量：</strong><span>${offlineOrderNum}</span></p>
+        <p><strong>菜品图片：</strong><img src="${dish.dishImage}" alt="菜品图片" height="100px" width="100px" align="center"></p>
 
         <%--        <p><strong>菜品描述：</strong><span>${user.address }</span></p>--%>
 

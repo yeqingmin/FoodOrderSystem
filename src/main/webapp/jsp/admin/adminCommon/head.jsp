@@ -32,7 +32,6 @@
              <ul class="list">
                  <li ><a href="${pageContext.request.contextPath }/jsp/user?method=adminManage">用户管理</a></li>
                  <li><a href="${pageContext.request.contextPath }/jsp/merchant?method=adminManage">商户管理</a></li>
-                 <li><a href="${pageContext.request.contextPath }/jsp/admin?method=home-page">数据分析</a></li>
              </ul>
          </nav>
      </div>

@@ -29,7 +29,7 @@ public class DishDaoImpl implements DishDao {
                 dish.setDishPrice(rs.getFloat("dishPrice"));
                 dish.setDishCategory(rs.getString("dishCategory"));
                 dish.setDishDescription(rs.getString("dishDescription"));
-                dish.setDishImage(rs.getBytes("dishImage"));
+                dish.setDishImage(rs.getString("dishImage"));
                 dish.setMerchantId(rs.getInt("merchantId"));
                 dish.setIsDelete(rs.getBoolean("isDeleted"));
                 if (rs.getBoolean("isDelete")) {
@@ -59,6 +59,7 @@ public class DishDaoImpl implements DishDao {
                 dish.setDishCategory(rs.getString("dishCategory"));
                 dish.setDishDescription(rs.getString("dishDescription"));
                 dish.setDishAllergens(rs.getString("dishAllergens"));
+                dish.setDishImage(rs.getString("dishImage"));
                 dish.setDishIngredients(rs.getString("dishIngredients"));
                 dish.setDishNutrition(rs.getString("dishNutrition"));
                 dish.setDishFavourNumber(rs.getInt("dishFavourNumber"));
@@ -120,7 +121,7 @@ public class DishDaoImpl implements DishDao {
         PreparedStatement pstm = null;
         int flag = 0;
         if (null != connection) {
-            String sql = "delete from dish where isDelete=0 and dishId=?";
+            String sql = "update dish set isDelete=1 where dishId=? and isDelete=0";
             Object[] params = {id};
             flag = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResource(null, pstm, null);
@@ -152,8 +153,8 @@ public class DishDaoImpl implements DishDao {
                 dish.setDishPrice(rs.getFloat("dishPrice"));
                 dish.setDishCategory(rs.getString("dishCategory"));
                 dish.setDishDescription(rs.getString("dishDescription"));
-//                dish.setDishImage(rs.getBytes("dishImage"));
-//                dish.setMerchantId(rs.getInt("merchantId"));
+                dish.setDishImage(rs.getString("dishImage"));
+                dish.setMerchantId(rs.getInt("merchantId"));
 //                dish.setIsDelete(rs.getBoolean("isDeleted"));
                 menu.add(dish);
             }
@@ -179,7 +180,7 @@ public class DishDaoImpl implements DishDao {
                 dish.setDishPrice(rs.getFloat("dishPrice"));
                 dish.setDishCategory(rs.getString("dishCategory"));
                 dish.setDishDescription(rs.getString("dishDescription"));
-//                dish.setDishImage(rs.getBytes("dishImage"));
+                dish.setDishImage(rs.getString("dishImage"));
                 dish.setMerchantId(rs.getInt("merchantId"));
 //                dish.setIsDelete(rs.getBoolean("isDeleted"));
 //                if(rs.getBoolean("isDelete")){
@@ -234,6 +235,7 @@ public class DishDaoImpl implements DishDao {
                 dish.setDishAllergens(rs.getString("dishAllergens"));
                 dish.setDishIngredients(rs.getString("dishIngredients"));
                 dish.setDishNutrition(rs.getString("dishNutrition"));
+                dish.setDishImage(rs.getString("dishImage"));
                 dish.setMerchantId(rs.getInt("merchantId"));
                 dishList.add(dish);
             }

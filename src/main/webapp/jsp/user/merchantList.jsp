@@ -26,11 +26,9 @@
     <table class="providerTable" cellpadding="0" cellspacing="0">
         <h3>最高销量：地址为${merchantBest.merchantAddr}的${merchantBest.merchantName}</h3>
         <tr class="firstTr">
-<%--            <th width="10%">商户编码</th>--%>
             <th width="20%">商店名称</th>
             <th width="20%">商店地址</th>
-<%--    todo 商店菜单--%>
-<%--            <th width="10%">商店菜单</th>--%>
+            <th width="20%">主打菜品</th>
             <th width="30%">操作</th>
         </tr>
         <c:forEach var="merchant" items="${merchantList}" varStatus="status">
@@ -40,6 +38,9 @@
                 </td>
                 <td>
                     <span>${merchant.merchantAddr}</span>
+                </td>
+                <td>
+                    <span>${merchant.featureDish}</span>
                 </td>
                 <td>
                     <span>

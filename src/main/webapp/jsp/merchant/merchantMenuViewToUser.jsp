@@ -21,8 +21,8 @@
             <th width="10%">菜品价格</th>
             <th width="10%">菜品分类</th>
             <th width="20%">菜品描述</th>
-            <th width="5">菜品线上销量</th>
-            <th width="5">菜品线下销量</th>
+            <th width="5%">菜品线上销量</th>
+            <th width="5%">菜品线下销量</th>
             <%--            <th width="10%">创建时间</th>--%>
             <th width="30%">操作</th>
         </tr>

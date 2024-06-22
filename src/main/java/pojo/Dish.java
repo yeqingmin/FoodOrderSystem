@@ -8,7 +8,7 @@ public class Dish {
     private Float dishPrice;
     private String dishCategory;
     private String dishDescription;
-    private byte[] dishImage; // Using byte array to represent BLOB data
+    private String dishImage; // Using byte array to represent BLOB data
     private Integer merchantId;
     private String dishAllergens;
     private String dishIngredients;
@@ -45,7 +45,7 @@ public class Dish {
         return dishDescription;
     }
 
-    public byte[] getDishImage() {
+    public String getDishImage() {
         return dishImage;
     }
 
@@ -78,7 +78,7 @@ public class Dish {
         this.dishDescription = dishDescription;
     }
 
-    public void setDishImage(byte[] dishImage) {
+    public void setDishImage(String dishImage) {
         this.dishImage = dishImage;
     }
 
